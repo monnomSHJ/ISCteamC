@@ -22,8 +22,8 @@ function preload() {
   MainMenu.preload();
   OpeningScene.preload();
   HomeMorning.preload();
-  /*
   WayToSchool.preload();
+/*
   School.preload();
   WayToHome.preload();
   HomeNight.preload();
@@ -53,6 +53,10 @@ function draw() {
   currentScene.display();
   //openingScene.display(); //오프닝씬
   //openingScene.updateDisplayedText(); //오프닝씬
+
+  wayToSchool.display();
+  
+
 
   //커서 이미지 적용
   push();
