@@ -8,19 +8,19 @@ class OpeningScene {
       this.alpha =0;
       this.fadeIn= true;
       this.displayedText = ""; // 현재 표시되는 텍스트
-      this.textAnimationSpeed = 10; // 애니메이션 속도
+      this.textAnimationSpeed = 5; // 애니메이션 속도
       this.textAnimationCounter = 0; // 애니메이션 카운터
-      this.nextScene = null; 
-      this.lastScene = false;
+      //this.nextScene = null; 
+      //this.lastScene = false;
     }
   
     static preload() {
         //여기에 이미지 로드하기 ex. MainMenu.imageName = loadImage()
         //아직 오브젝트 포함 흑백 이미지가 업로드되지 않아 이미지명은 추가 수정할 예정
             OpeningScene.images = [
-      //loadImage('assets/images/backgrounds/homeMorningFullMono.png'),
-      //loadImage('assets/images/backgrounds/wayToSchoolFullMono.png'),
-      //loadImage('assets/images/backgrounds/SchoolFullMono.png'),
+      loadImage('assets/images/backgrounds/homeMorningFullMono.png'),
+      loadImage('assets/images/backgrounds/wayToSchoolFullMono.png'),
+      loadImage('assets/images/backgrounds/SchoolFullMono.png'),
       loadImage('assets/images/backgrounds/wayToHomeMono.png'),
       loadImage('assets/images/backgrounds/homeNightMono.png'),
       loadImage('assets/images/backgrounds/mainImageMono.png')
@@ -71,10 +71,10 @@ class OpeningScene {
     handleClick() {
         //클릭 시 이벤트 여기에다가!
 
-      if (this.currentImageIndex === this.images.length - 1 && this.currentTextIndex === this.texts.length - 1) {
+      // if (this.currentImageIndex === this.images.length - 1 && this.currentTextIndex === this.texts.length - 1) {
             
-            this.lastScene = true;
-          }
+      //       this.lastScene = true;
+      //     }
 
       if(this.currentImageIndex ===this.images.length-1){
         if(this.currentTextIndex < this.texts.length-1){
@@ -89,14 +89,3 @@ class OpeningScene {
       this.fadeIn =true;
       this.displayedText = "";
     }
-
-    setNextScene(nextScene) {
-        this.nextScene = nextScene;
-      }
-    
-    transitionToNextScene() {
-        if (this.nextScene !== null && this.lastScene) {
-          currentScene = this.nextScene; 
-        }
-      }
-}
