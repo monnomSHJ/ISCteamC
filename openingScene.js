@@ -30,8 +30,7 @@ class OpeningScene {
     }
 
     display() {
-        //여기에 디스플레이 설정하기
-        //각 오브젝트 변수에 따라 다르게 디스플레이 할 것!
+  
       if (this.images.length > 0) {
        tint(255, this.alpha); // 이미지에 알파 값 적용
        image(this.images[this.currentImageIndex], 0,0, 1280, 720);
@@ -40,7 +39,7 @@ class OpeningScene {
         this.alpha += 10;
         if (this.alpha >= 255) {
           this.alpha = 255;
-          this.fadeIn = false;
+          this.fadeIn = false; //페이드인효과
         }
       }
     }
@@ -54,6 +53,7 @@ class OpeningScene {
       fill(255);
       //text(this.texts[this.currentTextIndex],640,637);
       text(this.displayedText, 640, 637);
+      currentScene.updateDisplayedText(); //텍스트 한글자씩 나오는 함수
       
     }
 
@@ -69,12 +69,12 @@ class OpeningScene {
       } //텍스트 순차적으로 나타나기 
 
     handleClick() {
-        //클릭 시 이벤트 여기에다가!
+      
 
-       if (this.currentImageIndex === this.images.length - 1 && this.currentTextIndex === this.texts.length - 1) {
+      if (this.currentImageIndex === this.images.length - 1 && this.currentTextIndex === this.texts.length - 1) {
             
             currentScene=homeMorning;
-          }
+          } //마지막 사진 나오고 클릭하면 homeMorning으로 전환
 
       if(this.currentImageIndex ===this.images.length-1){
         if(this.currentTextIndex < this.texts.length-1){
@@ -83,9 +83,9 @@ class OpeningScene {
         }        
       } else{
         this.currentImageIndex++;
-        this.currentTextIndex = this.currentImageIndex;
-      }
+        this.currentTextIndex = this.currentImageIndex; 
+      } //text와 image 대응, 이미지 클릭할 때마다 바꾸기 
       this.alpha = 0;
       this.fadeIn =true;
-      this.displayedText = "";
+      this.displayedText = ""; //장면 바뀔 때마다 페이드인, 텍스트 초기화
     }
