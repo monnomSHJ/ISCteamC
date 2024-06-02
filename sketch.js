@@ -4,20 +4,25 @@ let day = 1; //현재 일차
 let fontNeo;
 let cursorImage1;
 let cursorImage2;
-//let openingScene; //오프닝씬
+let openingScene;
+let homeMorning;
 
 function preload() {
   fontNeo = loadFont('assets/fonts/neoMo.TTF');
   cursorImage1 = loadImage('assets/images/mouseCursor1.png');
   cursorImage2 = loadImage('assets/images/mouseCursor2.png');
-  //OpeningScene.preload(); //오프닝씬
+  OpeningScene.preload();
+  HomeMorning.preload();
 }
 
 function setup() {
   createCanvas(1280, 720);
   currentScene = new MainMenu();
   noCursor();
- // openingScene = new OpeningScene(); //오프닝씬
+  openingScene = new OpeningScene();
+  homeMorning = new HomeMorning();
+  openingScene.setNextScene(homeMorning);
+  currentScene = openingScene;
 }
 
 function draw() {
@@ -30,5 +35,5 @@ function draw() {
 
 function mouseClicked() {
   currentScene.handleClick();
-  //openingScene.handleClick();//오프닝씬
+  //currentScene.transitionToNextScene();
 }
