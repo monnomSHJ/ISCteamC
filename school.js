@@ -16,15 +16,13 @@ class School {
 
           ];
 
-       // for (let i = 1; i <= 5; i++) {
-            //this.images.push(loadImage(`images/image${i}.jpg`));
         
     }
 
     display() {
         
         tint(255, this.alpha); // 이미지에 알파 값 적용
-        image(this.images[day-1],0,0,1280,720);
+        image(this.images[day-1],0,0,1280,720); //day값에 따라 인덱스 호출 (day 증가 함수는 전역변수로 넣을 것 같아서 이렇게 놔둠)
         noTint();
             if (this.fadeIn) {
              this.alpha += 10;
@@ -32,14 +30,14 @@ class School {
                this.alpha = 255;
                this.fadeIn = false;
              }
-           }
+           } //이미지 페이드인
          
         
         // day 변수의 값에 따라 이미지 표시
        
         setTimeout(() => {
             currentScene = wayToHome;
-        }, 3000)
+        }, 3000) //시간 3초 지나면 wayToHome으로 자동 전환 
 
     }
 
