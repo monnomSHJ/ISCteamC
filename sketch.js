@@ -54,16 +54,22 @@ function draw() {
   //openingScene.display(); //오프닝씬
   //openingScene.updateDisplayedText(); //오프닝씬
 
-  wayToSchool.display();
+  wayToSchool.display(); // 등굣길 오브젝트 디스플레이
+  wayToSchool.handleClick(); // 등굣길 촬영 이벤트
   
 
 
   //커서 이미지 적용
+  if( wayToSchool.changeCursor() == 2) { // wayToSchool과 연계, 상호작용 가능한 물체 위에 커서를 올릴 때 카메라 아이콘을 빨갛게 변화시키기
+    cursorImage = cursorImage2; // 상호작용 가능한 물체 위에 있을 때 커서이미지를 빨간색으로
+  } else cursorImage = cursorImage1; // 그 외의 경우 검은색으로
+
   push();
   translate(mouseX, mouseY);
   scale(0.5);
-  image(cursorImage1, 0, 0);
+  image(cursorImage, 0, 0); // 커서이미지로 사용하는 이미지 << 를 따로 변수로 지정
   pop();
+  // 등하굣길에서 상호작용 가능한 오브젝트 위에서 커서 색을 변경하는 코드를 추가했는데, 코드가 꼬이면 일단 삭제해두셔도 됩니다
 
   //테스트용: 현재 장면
   textFont(fontNeo);
