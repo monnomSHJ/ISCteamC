@@ -74,7 +74,7 @@ function draw() {
 
 function mouseClicked() {
   currentScene.handleClick();
-  //currentScene.transitionToNextScene();//오프닝씬->아침씬
+ 
 }
 
 //테스트용 키패드 입력 
