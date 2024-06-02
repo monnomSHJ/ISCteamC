@@ -18,9 +18,9 @@ class OpeningScene {
         //여기에 이미지 로드하기 ex. MainMenu.imageName = loadImage()
         //아직 오브젝트 포함 흑백 이미지가 업로드되지 않아 이미지명은 추가 수정할 예정
             OpeningScene.images = [
-      loadImage('assets/images/backgrounds/homeMorningFullMono.png'),
-      loadImage('assets/images/backgrounds/wayToSchoolFullMono.png'),
-      loadImage('assets/images/backgrounds/SchoolFullMono.png'),
+      //loadImage('assets/images/backgrounds/homeMorningFullMono.png'),
+      //loadImage('assets/images/backgrounds/wayToSchoolFullMono.png'),
+      //loadImage('assets/images/backgrounds/SchoolFullMono.png'),
       loadImage('assets/images/backgrounds/wayToHomeMono.png'),
       loadImage('assets/images/backgrounds/homeNightMono.png'),
       loadImage('assets/images/backgrounds/mainImageMono.png')
