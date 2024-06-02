@@ -1,6 +1,8 @@
 class HomeNight {
     static preload() {
         //여기에 이미지 로드하기 ex. MainMenu.imageName = loadImage()
+        HomeNight.homeNightColor = loadImage()
+        HomeNight.homeNightMono = loadImage()
     }
 
     display() {
