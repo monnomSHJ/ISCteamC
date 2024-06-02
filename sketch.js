@@ -46,10 +46,6 @@ function setup() {
 
   currentScene = mainMenu;
 
-  //openingScene = new OpeningScene();
-  //homeMorning = new HomeMorning();
-  //openingScene.setNextScene(homeMorning);
-  //currentScene = openingScene; //오프닝씬 관련 
 }
 
 function draw() {
