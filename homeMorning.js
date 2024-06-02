@@ -11,7 +11,6 @@ class HomeMorning {
         //여기에 디스플레이 설정하기
         //각 오브젝트 변수에 따라 다르게 디스플레이 할 것!
         image(HomeMorning.homeMorningColor, 0, 0, width, height);
-        image(HomeMorning.homeMorningMono, 0, 0, width, height);
 
     }
 
