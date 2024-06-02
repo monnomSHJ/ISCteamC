@@ -71,10 +71,10 @@ class OpeningScene {
     handleClick() {
         //클릭 시 이벤트 여기에다가!
 
-      // if (this.currentImageIndex === this.images.length - 1 && this.currentTextIndex === this.texts.length - 1) {
+       if (this.currentImageIndex === this.images.length - 1 && this.currentTextIndex === this.texts.length - 1) {
             
-      //       this.lastScene = true;
-      //     }
+            currentScene=homeMorning;
+          }
 
       if(this.currentImageIndex ===this.images.length-1){
         if(this.currentTextIndex < this.texts.length-1){
