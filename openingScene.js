@@ -2,12 +2,7 @@ class OpeningScene {
   
     constructor(){
       this.images = OpeningScene.images;
-      this.texts = ["눈을 뜨면, 똑같은 하루가 또다시 시작된다.", 
-                    "특별할 것 없는 길을 걸어, 학교에 간다.",
-                    "과제와 공부에 치여, 학교에서의 시간이 빠르게 흘러간다.", 
-                    "피곤에 절어 터덜터덜, 집으로 향한다.", 
-                    "집에 도착하면 벌써 늦은 밤. 생각할 여유 없이 잠에 든다.",
-                    "지루하게 반복되는 일상, 나의 행복은 어디에 있을까?"]
+      this.texts = ["눈을 뜨면, 똑같은 하루가 또다시 시작된다.", "특별할 것 없는 길을 걸어, 학교에 간다.", "과제와 공부에 치여, 학교에서의 시간이 빠르게 흘러간다.", "피곤에 절어 터덜터덜, 집으로 향한다.", "집에 도착하면 벌써 늦은 밤. 생각할 여유 없이 잠에 든다.", "지루하게 반복되는 일상, 나의 행복은 어디에 있을까?"]
       this.currentImageIndex = 0;
       this.currentTextIndex = 0;
       this.alpha =0;
@@ -15,6 +10,8 @@ class OpeningScene {
       this.displayedText = ""; // 현재 표시되는 텍스트
       this.textAnimationSpeed = 10; // 애니메이션 속도
       this.textAnimationCounter = 0; // 애니메이션 카운터
+      this.nextScene = null; 
+      this.lastScene = false;
     }
   
     static preload() {
@@ -73,11 +70,17 @@ class OpeningScene {
 
     handleClick() {
         //클릭 시 이벤트 여기에다가!
+
+      if (this.currentImageIndex === this.images.length - 1 && this.currentTextIndex === this.texts.length - 1) {
+            
+            this.lastScene = true;
+          }
+
       if(this.currentImageIndex ===this.images.length-1){
         if(this.currentTextIndex < this.texts.length-1){
           //this.currentTextIndex= this.currentImageIndex;
           this.currentTextIndex ++;
-        }
+        }        
       } else{
         this.currentImageIndex++;
         this.currentTextIndex = this.currentImageIndex;
@@ -86,4 +89,14 @@ class OpeningScene {
       this.fadeIn =true;
       this.displayedText = "";
     }
+
+    setNextScene(nextScene) {
+        this.nextScene = nextScene;
+      }
+    
+    transitionToNextScene() {
+        if (this.nextScene !== null && this.lastScene) {
+          currentScene = this.nextScene; 
+        }
+      }
 }
