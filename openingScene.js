@@ -50,6 +50,7 @@ class OpeningScene {
       
       fill(0);
       rect(0,height-120,1280,120);
+      rect(0,0,1280,120);
       
       textSize(32);
       textAlign(CENTER);
