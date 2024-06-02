@@ -17,7 +17,7 @@ class OpeningScene {
             this.images = [
       loadImage('assets/images/backgrounds/homeMorningMono.png'),
       loadImage('assets/images/backgrounds/wayToSchoolMono.png'),
-      loadImage('assets/images/backgrounds/SchoolMono.png'),
+      loadImage('assets/images/backgrounds/SchoolFullMono.png'),
       loadImage('assets/images/backgrounds/wayToHomeMono.png'),
       loadImage('assets/images/backgrounds/homeNightMono.png').
       loadImage('assets/images/backgrounds/mainImageMono.png')
