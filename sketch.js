@@ -50,7 +50,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(220);
   currentScene.display();
 
   // 커서 이미지 적용
