@@ -1,5 +1,6 @@
 let currentScene; //현재 장면
 let day = 1; //현재 일차
+let cursorImage; //커서이미지
 
 let fontNeo;
 let cursorImage1;
@@ -54,7 +55,6 @@ function draw() {
   //openingScene.display(); //오프닝씬
   //openingScene.updateDisplayedText(); //오프닝씬
 
-  wayToSchool.display(); // 등굣길 오브젝트 디스플레이
   wayToSchool.handleClick(); // 등굣길 촬영 이벤트
   
 

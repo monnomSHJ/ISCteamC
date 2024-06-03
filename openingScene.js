@@ -89,3 +89,4 @@ class OpeningScene {
       this.fadeIn =true;
       this.displayedText = ""; //장면 바뀔 때마다 페이드인, 텍스트 초기화
     }
+  }

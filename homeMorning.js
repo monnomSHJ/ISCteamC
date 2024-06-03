@@ -1,3 +1,4 @@
+
 class HomeMorning {
 
     constructor() {
@@ -19,4 +20,15 @@ class HomeMorning {
     handleClick() {
         //클릭 시 이벤트 여기에다가!
     }
+
+    createButton() {
+        let button = createButton('학교가기');
+        button.position(width - 100, height - 50);
+        button.mousePressed(() => {
+            //currentScene = wayToSchool;
+        });
+    }
+
+
 }
+
