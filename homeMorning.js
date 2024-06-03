@@ -1,17 +1,19 @@
 class HomeMorning {
     constructor() {
-      this.image = HomeMorning.image;
-      this.texts = [
-        '오늘은 월요일이다. 너무 힘들군.',
-        '오늘은 화요일이다. 학교에 가자.',
-        '오늘은 수요일이다. 이틀만 버티면 된다!.',
-        '오늘은 목요일이다. 내일은 불금이다!',
-        '오늘은 금요일이다. 이번 주는 뭔가 평소랑 다른 것 같다.'
-      ];
-      this.currentTextIndex = day;
-      this.displayedText = "";
-      this.textAnimationSpeed = 5; // 애니메이션 속도
-      this.textAnimationCounter = 0; // 애니메이션 카운터
+        this.image = HomeMorning.image;
+        this.texts = [
+            '오늘은 월요일이다. 너무 힘들군.',
+            '오늘은 화요일이다. 학교에 가자.',
+            '오늘은 수요일이다. 이틀만 버티면 된다!.',
+            '오늘은 목요일이다. 내일은 불금이다!',
+            '오늘은 금요일이다. 이번 주는 뭔가 평소랑 다른 것 같다.'
+        ];
+        this.currentTextIndex = day-1;
+        this.displayedText = "";
+        this.textAnimationSpeed = 5; // 애니메이션 속도
+        this.textAnimationCounter = 0; // 애니메이션 카운터
+
+        console.log(day);
     }
   
     static preload() {
