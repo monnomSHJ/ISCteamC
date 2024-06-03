@@ -1,6 +1,6 @@
 let currentScene; //현재 장면
-let day = 1; //현재 일차
-let cursorImage; //커서이미지
+let cursorImage; //커서 이미지
+let day; //현재 일차
 
 let fontNeo;
 let cursorImage1;
@@ -24,12 +24,10 @@ function preload() {
   OpeningScene.preload();
   HomeMorning.preload();
   WayToSchool.preload();
-/*
   School.preload();
   WayToHome.preload();
   HomeNight.preload();
   EndingScene.preload();
-  */
 }
 
 function setup() {
@@ -46,23 +44,21 @@ function setup() {
   endingScene = new EndingScene();
 
   currentScene = mainMenu;
-
+  if (currentScene.setup) {
+    currentScene.setup();
+  }
 }
 
 function draw() {
   background(220);
   currentScene.display();
-  //openingScene.display(); //오프닝씬
-  //openingScene.updateDisplayedText(); //오프닝씬
-
-  wayToSchool.handleClick(); // 등굣길 촬영 이벤트
   
-
-
-  //커서 이미지 적용
-  if( wayToSchool.changeCursor() == 2) { // wayToSchool과 연계, 상호작용 가능한 물체 위에 커서를 올릴 때 카메라 아이콘을 빨갛게 변화시키기
-    cursorImage = cursorImage2; // 상호작용 가능한 물체 위에 있을 때 커서이미지를 빨간색으로
-  } else cursorImage = cursorImage1; // 그 외의 경우 검은색으로
+  // 커서 이미지 적용
+  if (currentScene instanceof WayToSchool && currentScene.changeCursor() === 2) { // WayToSchool과 연계, 상호작용 가능한 물체 위에 커서를 올릴 때 카메라 아이콘을 빨갛게 변화시키기
+    cursorImage = cursorImage2; // 상호작용 가능한 물체 위에 있을 때 커서 이미지를 빨간색으로
+  } else {
+    cursorImage = cursorImage1; // 그 외의 경우 검은색으로
+  }
 
   push();
   translate(mouseX, mouseY);
@@ -80,7 +76,6 @@ function draw() {
 
 function mouseClicked() {
   currentScene.handleClick();
- 
 }
 
 //테스트용 키패드 입력 
@@ -107,4 +102,7 @@ function keyPressed() {
 // 페이지 전환 함수
 function changePage(newPage) {
   currentScene = newPage;
+  if (currentScene.setup) {
+    currentScene.setup();
+  }
 }
