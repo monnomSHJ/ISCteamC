@@ -8,10 +8,12 @@ class HomeMorning {
             '오늘은 목요일이다. 내일은 불금이다!',
             '오늘은 금요일이다. 이번 주는 뭔가 평소랑 다른 것 같다.'
         ];
-        this.currentTextIndex = day - 1;
+        this.currentTextIndex = day-1;
         this.displayedText = "";
         this.textAnimationSpeed = 5; // 애니메이션 속도
         this.textAnimationCounter = 0; // 애니메이션 카운터
+
+        console.log(day);
     }
 
     static preload() {

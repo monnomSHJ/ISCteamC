@@ -1,6 +1,6 @@
 let currentScene; //현재 장면
 let cursorImage; //커서 이미지
-let day=1; //현재 일차
+let day=1;
 
 let fontNeo;
 let cursorImage1;
