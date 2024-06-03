@@ -2,11 +2,12 @@ class HomeNight {
     constructor() {
       this.fadeInAlpha = 0;
       this.showBookImage = false;
+      this.image = HomeNight.image;
+
     }
   
     static preload() {
-      HomeNight.homeNightColor = loadImage('assets/images/backgrounds/homeNightColor.png');
-      HomeNight.homeNightMono = loadImage('assets/images/backgrounds/homeNightMono.png');
+      HomeNight.image = loadImage('assets/images/backgrounds/homeNightColor.png');
       HomeNight.homeNightBook = loadImage('assets/images/objects/homeNightBook.png');
     }
   
@@ -19,6 +20,8 @@ class HomeNight {
     }
   
     display() {
+        image(this.image, 0, 0, width, height);
+
       if (this.showBookImage) {
         tint(255, this.fadeInAlpha);
         image(HomeNight.homeNightBook, width / 2 - HomeNight.homeNightBook.width / 2, height / 2 - HomeNight.homeNightBook.height / 2);
