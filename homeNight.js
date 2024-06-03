@@ -65,9 +65,9 @@ class HomeNight {
       if (mouseX > width - 100 && mouseX < width - 20 && mouseY > height - 50 && mouseY < height - 20) {
         if (day < 5) {
           day++;
-          changePage(homeMorning);
+          changePage(homeMorning, 'loading...');
         } else {
-          changePage(endingScene);
+          changePage(endingScene, 'loading...');
         }
       }
     }

@@ -1,19 +1,19 @@
-let currentScene; //현재 장면
-let cursorImage; //커서 이미지
-let day=1; //현재 일차
+let currentScene; // 현재 장면
+let cursorImage; // 커서 이미지
+let day = 1; // 현재 일차
 
 let fontNeo;
 let cursorImage1;
 let cursorImage2;
 
-let mainMenu; //메인화면
-let openingScene; //오프닝
-let homeMorning; //집(아침)
-let wayToSchool; //등굣길
-let school; //학교
-let wayToHome; //하굣길
-let homeNight; //집(밤)
-let endingScene; //엔딩
+let mainMenu; // 메인화면
+let openingScene; // 오프닝
+let homeMorning; // 집(아침)
+let wayToSchool; // 등굣길
+let school; // 학교
+let wayToHome; // 하굣길
+let homeNight; // 집(밤)
+let endingScene; // 엔딩
 
 function preload() {
   fontNeo = loadFont('assets/fonts/neoMo.TTF');
@@ -50,11 +50,11 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(0);
   currentScene.display();
-  
+
   // 커서 이미지 적용
-  if (currentScene instanceof WayToSchool && currentScene.changeCursor() === 2) { // WayToSchool과 연계, 상호작용 가능한 물체 위에 커서를 올릴 때 카메라 아이콘을 빨갛게 변화시키기
+  if (currentScene instanceof WayToSchool && currentScene.changeCursor() === 2) {
     cursorImage = cursorImage2; // 상호작용 가능한 물체 위에 있을 때 커서 이미지를 빨간색으로
   } else {
     cursorImage = cursorImage1; // 그 외의 경우 검은색으로
@@ -63,11 +63,10 @@ function draw() {
   push();
   translate(mouseX, mouseY);
   scale(0.5);
-  image(cursorImage, 0, 0); // 커서이미지로 사용하는 이미지 << 를 따로 변수로 지정
+  image(cursorImage, 0, 0);
   pop();
-  // 등하굣길에서 상호작용 가능한 오브젝트 위에서 커서 색을 변경하는 코드를 추가했는데, 코드가 꼬이면 일단 삭제해두셔도 됩니다
 
-  //테스트용: 현재 장면
+  // 테스트용: 현재 장면 출력
   textFont(fontNeo);
   textSize(20);
   textAlign(LEFT, CENTER);
@@ -78,31 +77,29 @@ function mouseClicked() {
   currentScene.handleClick();
 }
 
-//테스트용 키패드 입력 
+// 테스트용 키패드 입력 
 function keyPressed() {
   if (key === '1') {
-    changePage(mainMenu);
+    changePage(mainMenu, 'Loading...');
   } else if (key === '2') {
-    changePage(openingScene);
+    changePage(openingScene, 'Loading...');
   } else if (key === '3') {
-    changePage(homeMorning);
+    changePage(homeMorning, 'Loading...');
   } else if (key === '4') {
-    changePage(wayToSchool);
+    changePage(wayToSchool, 'Loading...');
   } else if (key === '5') {
-    changePage(school);
+    changePage(school, 'Loading...');
   } else if (key === '6') {
-    changePage(wayToHome);
+    changePage(wayToHome, 'Loading...');
   } else if (key === '7') {
-    changePage(homeNight);
+    changePage(homeNight, 'Loading...');
   } else if (key === '8') {
-    changePage(endingScene);
+    changePage(endingScene, 'Loading...');
   }
 }
 
-// 페이지 전환 함수
-function changePage(newPage) {
-  currentScene = newPage;
-  if (currentScene.setup) {
-    currentScene.setup();
-  }
+function changePage(newPage, transitionText = 'Loading...') {
+  let transitionScene = new Transition(currentScene, newPage, transitionText); // 전환 장면을 거쳐서 다음 장면으로 전환
+  transitionScene.setup();
+  currentScene = transitionScene;
 }
