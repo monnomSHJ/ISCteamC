@@ -26,10 +26,10 @@ class HomeMorning {
       rect(0, height - 120, 1280, 120);
       rect(0, 0, 1280, 120);
   
-      textSize(32);
+      textSize(24);
       textAlign(CENTER);
       fill(255);
-      text(this.displayedText, 640, height - 60);
+      text(this.displayedText, 640, 637);
       this.updateDisplayedText(); // 텍스트 한글자씩 나오는 함수
     }
   

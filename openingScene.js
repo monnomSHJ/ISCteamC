@@ -22,8 +22,7 @@ class OpeningScene {
     OpeningScene.images = [
       loadImage('assets/images/backgrounds/homeMorningFullMono.png'),
       loadImage('assets/images/backgrounds/SchoolFullMono.png'),
-      loadImage('assets/images/backgrounds/wayToHomeSkyMono.png'),
-      loadImage('assets/images/backgrounds/WayToHomeRoadMono.png'),
+      loadImage('assets/images/backgrounds/wayToHomeMono.png'),
       loadImage('assets/images/backgrounds/homeNightMono.png'),
       loadImage('assets/images/backgrounds/mainImageMono.png')
     ];
@@ -47,7 +46,7 @@ class OpeningScene {
     rect(0, height - 120, 1280, 120);
     rect(0, 0, 1280, 120);
 
-    textSize(32);
+    textSize(24);
     textAlign(CENTER);
     fill(255);
     text(this.displayedText, 640, 637);
@@ -67,7 +66,7 @@ class OpeningScene {
 
   handleClick() {
     if (this.currentImageIndex === this.images.length - 1 && this.currentTextIndex === this.texts.length - 1) {
-      changePage(homeMorning, 'DAY');
+      changePage(homeMorning, 'DAY'+day);
     } else if (this.currentImageIndex === this.images.length - 1) {
       if (this.currentTextIndex < this.texts.length - 1) {
         this.currentTextIndex++;
