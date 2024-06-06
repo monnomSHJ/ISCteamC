@@ -13,8 +13,10 @@ class WayToHome {
 
   static preload() {
     // 이미지 로드
-    WayToHome.wthBG = loadImage('assets/images/backgrounds/wayToHomeColor.png');
-    WayToHome.wthBGM = loadImage('assets/images/backgrounds/wayToHomeMono.png');
+    WayToHome.wthBG = loadImage('assets/images/backgrounds/wayToHomeSkyColor.png');
+    WayToHome.wthBGR = loadImage('assets/images/backgrounds/wayToHomeRoadColor.png');
+    WayToHome.wthBGM = loadImage('assets/images/backgrounds/wayToHomeSkyMono.png');
+    WayToHome.wthBGRM = loadImage('assets/images/backgrounds/wayToHomeRoadMono.png');
     WayToHome.wthBS = loadImage('assets/images/objects/wayBusStopColor.png');
     WayToHome.wthBSM = loadImage('assets/images/objects/wayBusStopMono.png');
     WayToHome.wthWallBG = loadImage('assets/images/objects/wayToHomeBGWall.png');
@@ -166,6 +168,3 @@ class WayToHome {
     else return 1;
   }
 }
-  
-}
-*/

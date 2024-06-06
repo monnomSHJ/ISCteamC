@@ -25,7 +25,7 @@ function preload() {
   HomeMorning.preload();
   WayToSchool.preload();
   School.preload();
-  WayToHome.preload();
+  //WayToHome.preload();
   HomeNight.preload();
   EndingScene.preload();
 }

@@ -22,7 +22,8 @@ class OpeningScene {
     OpeningScene.images = [
       loadImage('assets/images/backgrounds/homeMorningFullMono.png'),
       loadImage('assets/images/backgrounds/SchoolFullMono.png'),
-      loadImage('assets/images/backgrounds/wayToHomeMono.png'),
+      loadImage('assets/images/backgrounds/wayToHomeSkyMono.png'),
+      loadImage('assets/images/backgrounds/WayToHomeRoadMono.png'),
       loadImage('assets/images/backgrounds/homeNightMono.png'),
       loadImage('assets/images/backgrounds/mainImageMono.png')
     ];
