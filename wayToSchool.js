@@ -156,3 +156,19 @@ class WayToSchool {
     else return 1;
   }
 }
+
+showSelectedStore(){
+    return this.wtsStoreSelected;
+  }
+
+  showSelectedFlower(){
+    return this.wtsFlowerSelected;
+  }
+
+  showSelectedCat(){
+    return this.wtsCatSelected;
+  }
+
+  showSelectedCycle(){
+    return this.wtsCycleSelected;
+  }
