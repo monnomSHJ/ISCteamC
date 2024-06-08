@@ -61,8 +61,8 @@ class WayToSchool {
           } else if (keyCode === 68) {
             this.wtsStoreSelected = WayToSchool.wtsStoreJuice;
           } else if (keyCode === 27) {
-            day += 1;
             this.eventOccur = false;
+            changePage(school, 'Loading...');
           }
         }
       } else if (day == 2) {
@@ -76,8 +76,8 @@ class WayToSchool {
           } else if (keyCode === 68) {
             this.wtsFlowerSelected = WayToSchool.wtsFlowerLily;
           } else if (keyCode === 27) {
-            day += 1;
             this.eventOccur = false;
+            changePage(school, 'Loading...');
           }
         }
       } else if (day == 3) {
@@ -91,8 +91,8 @@ class WayToSchool {
           } else if (keyCode === 68) {
             this.wtsCatSelected = WayToSchool.wtsCatCheese;
           } else if (keyCode === 27) {
-            day += 1;
             this.eventOccur = false;
+            changePage(school, 'Loading...');
           }
         }
       } else if (day == 4) {
@@ -106,12 +106,12 @@ class WayToSchool {
           } else if (keyCode === 68) {
             this.wtsCycleSelected = WayToSchool.wtsCycleUni;
           } else if (keyCode === 27) {
-            day += 1;
             this.eventOccur = false;
+            changePage(school, 'Loading...');
           }
         }
       } else if (day == 5) {
-        image(this.wtsBGSelected, 251, 151, 780, 420, 0, 0, 1280, 720);
+        image(this.wtsBGSelected, 281, 191, 720, 340, 0, 0, 1280, 720);
         image(WayToSchool.pCamClean, 249, 149);
 
         if (keyIsPressed) {
@@ -119,8 +119,8 @@ class WayToSchool {
             this.wtsBGSelected = WayToSchool.wtsBG;
             this.wtsBSSelected = WayToSchool.wtsBS;
           } else if (keyCode === 27) {
-            day += 1;
             this.eventOccur = false;
+            changePage(school, 'Loading...');
           }
         }
       }
