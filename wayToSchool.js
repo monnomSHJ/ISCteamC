@@ -7,6 +7,17 @@ class WayToSchool {
     this.wtsCatSelected = WayToSchool.wtsCat; // 기본 고양이 이미지 설정
     this.wtsCycleSelected = WayToSchool.wtsCycle; // 기본 자전거 이미지 설정
     this.eventOccur = false;
+    this.blackBar = 0;
+
+    this.texts = [
+      '새로 생긴 가게인가 보네... 뭐 하는 곳이지?',
+      'A: 빵집    S: 카페    D: 주스 가게',
+
+    ];
+    this.currentTextIndex = 2 * (day - 1);
+    this.displayedText = "";
+    this.textAnimationSpeed = 5; // 애니메이션 속도
+    this.textAnimationCounter = 0; // 애니메이션 카운터
   }
 
   static preload() {
@@ -45,13 +56,37 @@ class WayToSchool {
 
     if (this.eventOccur) {
       fill(0);
-      rect(0, height - 120, 1280, 120);
-      rect(0, 0, 1280, 120);
+      rect(0, 720, 1280, -this.blackBar);
+      rect(0, 0, 1280, this.blackBar);
+      if (this.blackBar < 120){
+        this.blackBar += 2;
+      }
 
       image(WayToSchool.pCam, 249, 149);
 
       if (day == 1) {
         image(this.wtsStoreSelected, 445, 204.5);
+
+        if(this.blackBar > 118){
+          textSize(24);
+          textAlign(CENTER);
+          fill(255);
+          text(this.displayedText, 640, 637);
+          this.updateDisplayedText(); // 텍스트 한글자씩 나오는 함수
+          
+          if (keyIsPressed){
+            if (keyCode === 32) {
+              this.displayedText = ""
+              this.currentTextIndex = 1;
+              this.updateDisplayedText()
+            }
+          }
+
+      
+        }
+
+        
+
 
         if (keyIsPressed) {
           if (keyCode === 65) {
@@ -155,6 +190,7 @@ class WayToSchool {
     if (this.over() != 0) return 2;
     else return 1;
   }
+
   showSelectedStore(){
     return this.wtsStoreSelected;
   }
@@ -170,7 +206,15 @@ class WayToSchool {
   showSelectedCycle(){
     return this.wtsCycleSelected;
   }
+
+  updateDisplayedText() {
+    if (this.textAnimationCounter < this.textAnimationSpeed) {
+      this.textAnimationCounter++;
+    } else {
+      if (this.displayedText.length < this.texts[this.currentTextIndex].length) {
+        this.displayedText = this.texts[this.currentTextIndex].substring(0, this.displayedText.length + 1);
+      }
+      this.textAnimationCounter = 0;
+    }
+  }
 }
-
-
-  
