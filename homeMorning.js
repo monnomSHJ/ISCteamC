@@ -13,7 +13,10 @@ class HomeMorning {
         this.textAnimationSpeed = 5; // 애니메이션 속도
         this.textAnimationCounter = 0; // 애니메이션 카운터
 
-        console.log(day);
+        console.log("현재 day 값:", day);
+        console.log("currentTextIndex 값:", this.currentTextIndex);
+                console.log("currentTextIndex 값:", this.currentTextIndex);
+
     }
   
     static preload() {
@@ -42,6 +45,8 @@ class HomeMorning {
         }
         this.textAnimationCounter = 0;
       }
+      console.log("현재 displayedText:", this.displayedText); // 현재 표시된 텍스트 로그
+
     }
   
     handleClick() {

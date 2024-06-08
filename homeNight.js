@@ -1,105 +1,104 @@
 class HomeNight {
     constructor() {
-        this.image = HomeNight.image;
-        this.book = HomeNight.book;
-        this.texts = [
-            '오늘은 @@과 @@을 발견했다.',
-            '오늘은 @@과 @@을 발견했다.',
-            '오늘은 @@과 @@을 발견했다.',
-            '오늘은 @@과 @@을 발견했다.',
-            '오늘은 @@과 @@을 발견했다.',
-        ];
-        this.currentTextIndex = day - 1;
-        this.displayedText = "";
-        this.textAnimationSpeed = 5; // 애니메이션 속도
-        this.textAnimationCounter = 0; // 애니메이션 카운터
-        this.fadeInAlpha = 0; // 페이드 인 알파 값
+      this.image = HomeNight.image;
+      this.book = HomeNight.book;
+      this.texts = [
+        '오늘은 @@과 @@을 발견했다.',
+        '오늘은 @@과 @@을 발견했다.',
+        '오늘은 @@과 @@을 발견했다.',
+        '오늘은 @@과 @@을 발견했다.',
+        '오늘은 @@과 @@을 발견했다.',
+      ];
+      this.currentTextIndex = day - 1;
+      this.displayedText = "";
+      this.textAnimationSpeed = 5; // 애니메이션 속도
+      this.textAnimationCounter = 0; // 애니메이션 카운터
+      this.fadeInAlpha = 0; // 페이드 인 알파 값
     }
-
+  
     static preload() {
-        HomeNight.book = loadImage('assets/images/objects/homeNightBook.png');
-
-        if (day == 1) {
-            HomeNight.image = loadImage('assets/images/backgrounds/homeNightMono.png');
-        } else {
-            HomeNight.image = loadImage('assets/images/backgrounds/homeNightColor.png');
-        }
+      HomeNight.book = loadImage('assets/images/objects/homeNightBook.png');
+      if (day == 1) {
+        HomeNight.image = loadImage('assets/images/backgrounds/homeNightMono.png');
+      } else {
+        HomeNight.image = loadImage('assets/images/backgrounds/homeNightColor.png');
+      }
     }
-
+  
     display() {
-        if (day == 1) {
-            image(this.image, 0, 0, width, height);
-        } else {
-            let tintValue = day * 51; // day 값에 따라 0에서 255로 매핑
-            // 흑백 효과를 위해 RGB 값을 동일하게 설정
-            tint(tintValue, tintValue, tintValue, 255);
-            image(this.image, 0, 0, width, height);
-        }
-
-        noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
-
-        fill(0);
-        rect(0, height - 120, 1280, 120);
-        rect(0, 0, 1280, 120);
-
-        textSize(32);
-        textAlign(CENTER, CENTER);
-        fill(255);
-        text(this.displayedText, 640, height - 70);
-        this.updateDisplayedText(); // 텍스트 한글자씩 나오는 함수
-
-        if (this.displayedText.length === this.texts[this.currentTextIndex].length) {
-            this.drawSleepButton(); // 모든 텍스트가 다 나오면 버튼을 그리기
-            this.drawNightBook(); // 페이드 인 효과로 책 이미지 표시
-        }
+      if (day == 1) {
+        image(this.image, 0, 0, width, height);
+      } else {
+        let tintValue = day * 51; // day 값에 따라 0에서 255로 매핑
+        tint(tintValue, tintValue, tintValue, 255);
+        image(this.image, 0, 0, width, height);
+      }
+  
+      noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
+  
+      fill(0);
+      rect(0, height - 120, 1280, 120);
+      rect(0, 0, 1280, 120);
+  
+      textSize(32);
+      textAlign(CENTER, CENTER);
+      fill(255);
+      text(this.displayedText, 640, height - 70);
+      this.updateDisplayedText(); // 텍스트 한글자씩 나오는 함수
+  
+      if (this.displayedText.length === this.texts[this.currentTextIndex].length) {
+        this.drawSleepButton(); // 모든 텍스트가 다 나오면 버튼을 그리기
+        this.drawNightBook(); // 페이드 인 효과로 책 이미지 표시
+      }
     }
-
+  
     updateDisplayedText() {
-        if (this.textAnimationCounter < this.textAnimationSpeed) {
-            this.textAnimationCounter++;
-        } else {
-            if (this.displayedText.length < this.texts[this.currentTextIndex].length) {
-                this.displayedText = this.texts[this.currentTextIndex].substring(0, this.displayedText.length + 1);
-            }
-            this.textAnimationCounter = 0;
+      if (this.textAnimationCounter < this.textAnimationSpeed) {
+        this.textAnimationCounter++;
+      } else {
+        if (this.displayedText.length < this.texts[this.currentTextIndex].length) {
+          this.displayedText = this.texts[this.currentTextIndex].substring(0, this.displayedText.length + 1);
         }
+        this.textAnimationCounter = 0;
+      }
     }
-
+  
     drawNightBook() {
-        if (this.fadeInAlpha < 255) {
-            this.fadeInAlpha += 5; // 페이드 인 속도 조절
-        }
-        tint(255, this.fadeInAlpha); // 알파 값 적용
-        image(this.book, width / 2 - this.book.width / 2, height / 2 - this.book.height / 2);
-        noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
+      if (this.fadeInAlpha < 255) {
+        this.fadeInAlpha += 5; // 페이드 인 속도 조절
+      }
+      tint(255, this.fadeInAlpha); // 알파 값 적용
+      image(this.book, width / 2 - this.book.width / 2, height / 2 - this.book.height / 2);
+      noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
     }
-
+  
     drawSleepButton() {
-        if (mouseX > width - 110 && mouseX < width - 10 && mouseY > height - 60 && mouseY < height - 10) {
-            fill(200); // hover 상태일 때 색상 (회색)
-        } else {
-            fill(255); // 기본 상태일 때 색상 (흰색)
-        }
-        rect(width - 110, height - 60, 100, 40); // 가로 세로 크기 각각 10px 증가
-        textSize(16);
-        fill(0);
-        textAlign(CENTER, CENTER);
-        text('잠자기', width - 60, height - 40);
+      if (mouseX > width - 110 && mouseX < width - 10 && mouseY > height - 60 && mouseY < height - 10) {
+        fill(200); // hover 상태일 때 색상 (회색)
+      } else {
+        fill(255); // 기본 상태일 때 색상 (흰색)
+      }
+      rect(width - 110, height - 60, 100, 40); // 가로 세로 크기 각각 10px 증가
+      textSize(16);
+      fill(0);
+      textAlign(CENTER, CENTER);
+      text('잠자기', width - 60, height - 40);
     }
-    
-
+  
     handleClick() {
-        if (this.displayedText.length === this.texts[this.currentTextIndex].length &&
-            mouseX > width - 100 && mouseX < width - 20 && mouseY > height - 50 && mouseY < height - 20) {
-            if (day < 5) {
-                day++;
-                changePage(homeMorning);
-            } else {
-                changePage(endingScene);
-            }
+      if (this.displayedText.length === this.texts[this.currentTextIndex].length &&
+          mouseX > width - 100 && mouseX < width - 20 && mouseY > height - 50 && mouseY < height - 20) {
+        if (day < 5) {
+          day++;
+          console.log(day);
+          changePage(new HomeMorning()); // HomeMorning의 새로운 인스턴스로 전환
+        } else {
+          changePage(endingScene);
         }
+      }
     }
-}
+  }
+  
 
 
 /*

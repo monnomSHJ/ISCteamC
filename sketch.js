@@ -99,6 +99,13 @@ function keyPressed() {
 }
 
 function changePage(newPage, transitionText = 'Loading...') {
+  if (newPage.constructor.name === 'HomeMorning') {
+    homeMorning = new HomeMorning(); // 새로운 HomeMorning 인스턴스 생성
+    newPage = homeMorning; // 새로운 인스턴스를 newPage로 설정
+  } else if (newPage.constructor.name === 'HomeNight') {
+    homeNight = new HomeNight();
+    newPage = new HomeNight();
+  }
   let transitionScene = new Transition(currentScene, newPage, transitionText); // 전환 장면을 거쳐서 다음 장면으로 전환
   transitionScene.setup();
   currentScene = transitionScene;
