@@ -176,4 +176,6 @@ class WayToHome {
     if (this.over() != 0) return 2;
     else return 1;
   }
+
+  
 }
