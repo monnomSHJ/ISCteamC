@@ -34,6 +34,10 @@ class HomeMorning {
       fill(255);
       text(this.displayedText, 640, 637);
       this.updateDisplayedText(); // 텍스트 한글자씩 나오는 함수
+      if (this.displayedText.length === this.texts[this.currentTextIndex].length) {
+        this.drawSchoolButton(); // 모든 텍스트가 다 나오면 버튼을 그리기
+      }
+
     }
   
     updateDisplayedText() {
@@ -45,12 +49,27 @@ class HomeMorning {
         }
         this.textAnimationCounter = 0;
       }
-      console.log("현재 displayedText:", this.displayedText); // 현재 표시된 텍스트 로그
 
+    }
+
+    drawSchoolButton() {
+      if (mouseX > width - 110 && mouseX < width - 10 && mouseY > height - 60 && mouseY < height - 10) {
+        fill(200); // hover 상태일 때 색상 (회색)
+      } else {
+        fill(255); // 기본 상태일 때 색상 (흰색)
+      }
+      rect(width - 110, height - 60, 100, 40); // 가로 세로 크기 각각 10px 증가
+      textSize(16);
+      fill(0);
+      textAlign(CENTER, CENTER);
+      text('학교가기', width - 60, height - 40);
     }
   
     handleClick() {
-      changePage(wayToSchool, 'Loading...');
+      if (this.displayedText.length === this.texts[this.currentTextIndex].length &&
+          mouseX > width - 100 && mouseX < width - 20 && mouseY > height - 50 && mouseY < height - 20) {
+            changePage(wayToSchool, 'Loading...');
+      }
     }
   }
   

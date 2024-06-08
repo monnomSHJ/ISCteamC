@@ -3,11 +3,10 @@ class HomeNight {
       this.image = HomeNight.image;
       this.book = HomeNight.book;
       this.texts = [
-        '오늘은 @@과 @@을 발견했다.',
-        '오늘은 @@과 @@을 발견했다.',
-        '오늘은 @@과 @@을 발견했다.',
-        '오늘은 @@과 @@을 발견했다.',
-        '오늘은 @@과 @@을 발견했다.',
+        '월요일, 오늘은 가게와 낙서를 발견했다.',
+        '오늘은 꽃과 포스터를 발견했다.',
+        '오늘은 고양이와 산을 발견했다.',
+        '오늘은 자전거와 새를 발견했다.'
       ];
       this.currentTextIndex = day - 1;
       this.displayedText = "";

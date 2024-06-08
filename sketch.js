@@ -54,7 +54,7 @@ function draw() {
   currentScene.display();
 
   // 커서 이미지 적용
-  if (currentScene instanceof WayToSchool && currentScene.changeCursor() === 2) {
+  if ((currentScene instanceof WayToSchool || currentScene instanceof WayToHome)&& currentScene.changeCursor() === 2) {
     cursorImage = cursorImage2; // 상호작용 가능한 물체 위에 있을 때 커서 이미지를 빨간색으로
   } else {
     cursorImage = cursorImage1; // 그 외의 경우 검은색으로
@@ -67,6 +67,7 @@ function draw() {
   pop();
 
   // 테스트용: 현재 장면 출력
+  fill(255);
   textFont(fontNeo);
   textSize(20);
   textAlign(LEFT, CENTER);
