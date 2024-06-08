@@ -54,11 +54,11 @@ class WayToSchool {
         image(this.wtsStoreSelected, 445, 204.5);
 
         if (keyIsPressed) {
-          if (keyCode === 49) {
+          if (keyCode === 65) {
             this.wtsStoreSelected = WayToSchool.wtsStoreBakery;
-          } else if (keyCode === 50) {
+          } else if (keyCode === 83) {
             this.wtsStoreSelected = WayToSchool.wtsStoreCafe;
-          } else if (keyCode === 51) {
+          } else if (keyCode === 68) {
             this.wtsStoreSelected = WayToSchool.wtsStoreJuice;
           } else if (keyCode === 27) {
             day += 1;
@@ -69,11 +69,11 @@ class WayToSchool {
         image(this.wtsFlowerSelected, 550, 350);
 
         if (keyIsPressed) {
-          if (keyCode === 49) {
+          if (keyCode === 65) {
             this.wtsFlowerSelected = WayToSchool.wtsFlowerRose;
-          } else if (keyCode === 50) {
+          } else if (keyCode === 83) {
             this.wtsFlowerSelected = WayToSchool.wtsFlowerHydrangea;
-          } else if (keyCode === 51) {
+          } else if (keyCode === 68) {
             this.wtsFlowerSelected = WayToSchool.wtsFlowerLily;
           } else if (keyCode === 27) {
             day += 1;
@@ -84,11 +84,11 @@ class WayToSchool {
         image(this.wtsCatSelected, 550, 350);
 
         if (keyIsPressed) {
-          if (keyCode === 49) {
+          if (keyCode === 65) {
             this.wtsCatSelected = WayToSchool.wtsCatCookie;
-          } else if (keyCode === 50) {
+          } else if (keyCode === 83) {
             this.wtsCatSelected = WayToSchool.wtsCatFish;
-          } else if (keyCode === 51) {
+          } else if (keyCode === 68) {
             this.wtsCatSelected = WayToSchool.wtsCatCheese;
           } else if (keyCode === 27) {
             day += 1;
@@ -99,11 +99,11 @@ class WayToSchool {
         image(this.wtsCycleSelected, 550, 350);
 
         if (keyIsPressed) {
-          if (keyCode === 49) {
+          if (keyCode === 65) {
             this.wtsCycleSelected = WayToSchool.wtsCycleRed;
-          } else if (keyCode === 50) {
+          } else if (keyCode === 83) {
             this.wtsCycleSelected = WayToSchool.wtsCycleChild;
-          } else if (keyCode === 51) {
+          } else if (keyCode === 68) {
             this.wtsCycleSelected = WayToSchool.wtsCycleUni;
           } else if (keyCode === 27) {
             day += 1;
@@ -115,7 +115,7 @@ class WayToSchool {
         image(WayToSchool.pCamClean, 249, 149);
 
         if (keyIsPressed) {
-          if (keyCode === 49) {
+          if (keyCode === 65) {
             this.wtsBGSelected = WayToSchool.wtsBG;
             this.wtsBSSelected = WayToSchool.wtsBS;
           } else if (keyCode === 27) {
