@@ -26,9 +26,14 @@ class OpeningScene {
       loadImage('assets/images/backgrounds/homeNightMono.png'),
       loadImage('assets/images/backgrounds/mainImageMono.png')
     ];
+    OpeningScene.bgm = loadSound('assets/sounds/openingSceneBgm.mp3');//수정
   }
 
   display() {
+    if (!OpeningScene.bgm.isPlaying()) {
+      OpeningScene.bgm.loop(); // 배경음악을 반복 재생 //수정
+    }
+
     if (this.images.length > 0) {
       tint(255, this.alpha); // 이미지에 알파 값 적용
       image(this.images[this.currentImageIndex], 0, 0, 1280, 720);
