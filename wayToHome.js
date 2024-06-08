@@ -7,7 +7,8 @@ class WayToHome {
     this.wthMountainSelected = WayToHome.wthMountainM; // 기본 산 이미지 설정
     this.wthBirdSelected = WayToHome.wthBird; // 기본 새 이미지 설정
     this.wthBusStopSelected = WayToHome.wthBusStopM; // 기본 버정(요소) 이미지 설정
-    this.wthWallBGSelected = WayToHome.wthWallBG;
+    this.wthWallBGSelected = WayToHome.wthWallBGM; //기본 벽(배경) 이미지 설정
+    this.wthRoadSelected = WayToHome.wthBGRM; //기본 길(배경) 이미지 설정
     this.eventOccur = false;
   }
 
@@ -17,10 +18,12 @@ class WayToHome {
     WayToHome.wthBGR = loadImage('assets/images/backgrounds/wayToHomeRoadColor.png');
     WayToHome.wthBGM = loadImage('assets/images/backgrounds/wayToHomeSkyMono.png');
     WayToHome.wthBGRM = loadImage('assets/images/backgrounds/wayToHomeRoadMono.png');
+    WayToHome.wthWallBG = loadImage('assets/images/backgrounds/wayToHomeWallBG.png');
+    WayToHome.wthWallBGM = loadImage('assets/images/backgrounds/wayToHomeWallBGMono.png')
+
     WayToHome.wthBS = loadImage('assets/images/objects/wayBusStopColor.png');
     WayToHome.wthBSM = loadImage('assets/images/objects/wayBusStopMono.png');
-    WayToHome.wthWallBG = loadImage('assets/images/objects/wayToHomeBGWall.png');
-
+    
     WayToHome.wthWall = loadImage('assets/images/objects/wayToHomeWall0.png');
     WayToHome.wthWallFun = loadImage('assets/images/objects/wayToHomeWall1.png');
     WayToHome.wthWallLove = loadImage('assets/images/objects/wayToHomeWall2.png');
@@ -48,14 +51,21 @@ class WayToHome {
 
   display() {
     image(this.wthBGSelected, 0, 0);
-    //image(this.wthMountainSelected, 0, 0);
-    //image(this.wthWallBGSelected, 880, -250);
-    //image(this.wthBSSelected, 30, 260);
-    //image(this.wthWallSelected, 650, 200);
-    //image(this.wthPosterSelected, 200, 380);
+    image(this.wthMountainSelected, 0, 0);
+    image(this.wthRoadSelected, 0, 0);
+    image(this.wthWallBGSelected, 880, -230);
+    image(this.wthBSSelected, 30, 260);
+    image(this.wthWallSelected, 880, 20);
+    image(this.wthPosterSelected, 1050, 210); 
+    image(this.wthBirdSelected, 1000, 520);
+    image(this.wthBusStopSelected, 300, 140);
     
-    //image(this.wthBirdSelected, 1100, 370);
-    //image(this.wthBusStopSelected, 1100, 370);
+    if (day == 5) {
+      this.wthBGSelected = WayToHome.wthBG;
+      this.wthBSSelected = WayToHome.wthBS;
+      this.wthRoadSelected = WayToHome.wthBGR;
+      this.wthWallBGSelected = WayToHome.wthWallBG;
+    }
 
     if (this.eventOccur) {
       fill(0);
@@ -65,74 +75,73 @@ class WayToHome {
       image(WayToHome.pCam, 249, 149);
 
       if (day == 1) {
-        image(this.wthWallSelected, 445, 204.5);
+        image(this.wthWallSelected, 510, 240);
 
         if (keyIsPressed) {
-          if (keyCode === 49) {
+          if (keyCode === 65) {
             this.wthWallSelected = WayToHome.wthWallFun;
-          } else if (keyCode === 50) {
+          } else if (keyCode === 83) {
             this.wthWallSelected = WayToHome.wthWallLove;
-          } else if (keyCode === 51) {
+          } else if (keyCode === 68) {
             this.wthWallSelected = WayToHome.wthWallSeize;
           } else if (keyCode === 27) {
-            day += 1;
             this.eventOccur = false;
+            changePage(homeNight, 'Loading...');
           }
         }
       } else if (day == 2) {
-        image(this.wthPosterSelected, 550, 350);
+        image(this.wthPosterSelected, 500, 225);
 
         if (keyIsPressed) {
-          if (keyCode === 49) {
+          if (keyCode === 65) {
             this.wthPosterSelected = WayToHome.wthPosterDance;
-          } else if (keyCode === 50) {
+          } else if (keyCode === 83) {
             this.wthPosterSelected = WayToHome.wthPosterSong;
-          } else if (keyCode === 51) {
+          } else if (keyCode === 68) {
             this.wthPosterSelected = WayToHome.wthPosterCook;
           } else if (keyCode === 27) {
-            day += 1;
             this.eventOccur = false;
+            changePage(homeNight, 'Loading...');
           }
         }
       } else if (day == 3) {
-        image(this.wthMountainSelected, 251, 151, 780, 420, 0, 0, 1280, 720);
+        image(this.wthMountainSelected, 265, 140, 740, 380, 0, 0, 1280, 720);
         image(WayToHome.pCamClean, 249, 149);
 
         if (keyIsPressed) {
-          if (keyCode === 49) {
+          if (keyCode === 65) {
             this.wthMountainSelected = WayToHome.wthMountain;
           } else if (keyCode === 27) {
-            day += 1;
             this.eventOccur = false;
+            changePage(homeNight, 'Loading...');
           }
         }
       } else if (day == 4) {
         image(this.wthBirdSelected, 550, 350);
 
         if (keyIsPressed) {
-          if (keyCode === 49) {
+          if (keyCode === 65) {
             this.wthBirdSelected = WayToHome.wthBirdDove;
-          } else if (keyCode === 50) {
+          } else if (keyCode === 83) {
             this.wthBirdSelected = WayToHome.wthBirdSmall;
-          } else if (keyCode === 51) {
+          } else if (keyCode === 68) {
             this.wthBirdSelected = WayToHome.wthBirdBlack;
           } else if (keyCode === 27) {
-            day += 1;
             this.eventOccur = false;
+            changePage(homeNight, 'Loading...');
           }
         }
       } else if (day == 5) {
-        this.wthBGSelected = WayToHome.wthBG
-        this.wthBSSelected = WayToHome.wthBS
+        
 
-        image(this.wthBusStopSelected, 445, 204.5);
+        image(this.wthBusStopSelected, 380, 240, 500, 260, 0, 0);
 
         if (keyIsPressed) {
-          if (keyCode === 49) {
+          if (keyCode === 65) {
             this.wthBusStopSelected = WayToHome.wthBusStop;
           } else if (keyCode === 27) {
-            day += 1;
             this.eventOccur = false;
+            changePage(homeNight, 'Loading...');
           }
         }
       }
@@ -147,16 +156,16 @@ class WayToHome {
 
   over() {
     if (day == 1) {
-      if (650 < mouseX && mouseX < 1040 && 200 < mouseY && mouseY < 511) return 1;
+      if (880 < mouseX && mouseX < 880+194 && 20 < mouseY && mouseY < 20+194) return 1;
       else return 0;
     } else if (day == 2) {
-      if (200 < mouseX && mouseX < 322 && 380 < mouseY && mouseY < 503) return 2;
+      if (1050 < mouseX && mouseX < 1050+218 && 210 < mouseY && mouseY < 210+254) return 2;
       else return 0;
     } else if (day == 3) {
-      if (550 < mouseX && mouseX < 673 && 370 < mouseY && mouseY < 501) return 3;
+      if (0 < mouseX && mouseX < 880 && 150 < mouseY && mouseY < 480) return 3;
       else return 0;
     } else if (day == 4) {
-      if (1100 < mouseX && mouseX < 1273 && 370 < mouseY && mouseY < 496) return 4;
+      if (1000 < mouseX && mouseX < 1000+164 && 520 < mouseY && mouseY < 520+147) return 4;
       else return 0;
     } else if (day == 5) {
       return 5;
