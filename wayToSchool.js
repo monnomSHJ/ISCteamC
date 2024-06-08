@@ -155,9 +155,7 @@ class WayToSchool {
     if (this.over() != 0) return 2;
     else return 1;
   }
-}
-
-showSelectedStore(){
+  showSelectedStore(){
     return this.wtsStoreSelected;
   }
 
@@ -172,3 +170,7 @@ showSelectedStore(){
   showSelectedCycle(){
     return this.wtsCycleSelected;
   }
+}
+
+
+  
