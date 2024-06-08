@@ -8,6 +8,12 @@ class HomeNight {
         '오늘은 고양이와 산을 발견했다.',
         '오늘은 자전거와 새를 발견했다.'
       ];
+      this.selectedStore = WayToSchool.wtsStore;
+      this.selectedPoster = WayToHome.wthPoster;
+      this.selectedFlower = WayToSchool.wtsFlower;
+      this.selectedCat = WayToSchool.wtsCat;
+      this.selectedCycle = WayToSchool.wtsCycle;
+
       this.currentTextIndex = day - 1;
       this.displayedText = "";
       this.textAnimationSpeed = 5; // 애니메이션 속도
@@ -48,6 +54,7 @@ class HomeNight {
       if (this.displayedText.length === this.texts[this.currentTextIndex].length) {
         this.drawSleepButton(); // 모든 텍스트가 다 나오면 버튼을 그리기
         this.drawNightBook(); // 페이드 인 효과로 책 이미지 표시
+        this.drawSelected();
       }
     }
   
@@ -69,33 +76,67 @@ class HomeNight {
       tint(255, this.fadeInAlpha); // 알파 값 적용
       image(this.book, width / 2 - this.book.width / 2, height / 2 - this.book.height / 2);
       noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
+
     }
-  
-    drawSleepButton() {
-      if (mouseX > width - 110 && mouseX < width - 10 && mouseY > height - 60 && mouseY < height - 10) {
-        fill(200); // hover 상태일 때 색상 (회색)
-      } else {
-        fill(255); // 기본 상태일 때 색상 (흰색)
-      }
-      rect(width - 110, height - 60, 100, 40); // 가로 세로 크기 각각 10px 증가
-      textSize(16);
-      fill(0);
-      textAlign(CENTER, CENTER);
-      text('잠자기', width - 60, height - 40);
-    }
-  
-    handleClick() {
-      if (this.displayedText.length === this.texts[this.currentTextIndex].length &&
-          mouseX > width - 100 && mouseX < width - 20 && mouseY > height - 50 && mouseY < height - 20) {
-        if (day < 5) {
-          day++;
-          console.log(day);
-          changePage(new HomeMorning()); // HomeMorning의 새로운 인스턴스로 전환
-        } else {
-          changePage(endingScene);
+
+    drawSelected() {
+        if (this.storeFadeInAlpha < 255) {
+          this.storeFadeInAlpha += 3; // 페이드 인 속도 조절
+        }
+        if (day == 1) {
+          let targetWidth = 300;
+          let aspectRatio1 = this.selectedStore.width / this.selectedStore.height;
+          let targetHeight1 = targetWidth / aspectRatio1;
+          tint(255, this.storeFadeInAlpha); // 알파 값 적용
+          image(this.selectedStore, 660, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
+          noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
+        }
+        else if (day == 2) {
+            let targetWidth = 300;
+            let aspectRatio1 = this.selectedFlower.width / this.selectedFlower.height;
+            let targetHeight1 = targetWidth / aspectRatio1;
+            tint(255, this.storeFadeInAlpha); // 알파 값 적용
+            image(this.selectedFlower, 660, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
+            noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
+        }
+        else if (day == 3) {
+            let targetWidth = 300;
+            let aspectRatio1 = this.selectedCat.width / this.selectedCat.height;
+            let targetHeight1 = targetWidth / aspectRatio1;
+            tint(255, this.storeFadeInAlpha); // 알파 값 적용
+            image(this.selectedCat, 660, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
+            noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
         }
       }
-    }
+    
+  
+      drawSleepButton() {
+        if (mouseX > width - 110 && mouseX < width - 10 && mouseY > height - 60 && mouseY < height - 10) {
+          fill(200); // hover 상태일 때 색상 (회색)
+        } else {
+          fill(255); // 기본 상태일 때 색상 (흰색)
+        }
+        rect(width - 110, height - 60, 100, 40); // 버튼의 시각적 크기는 유지
+        textSize(16);
+        fill(0);
+        textAlign(CENTER, CENTER);
+        text('잠자기', width - 60, height - 40);
+      }
+      
+      handleClick() {
+        // 클릭 범위를 시각적 버튼보다 위로 확장
+        if (this.displayedText.length === this.texts[this.currentTextIndex].length &&
+            mouseX > width - 110 && mouseX < width - 10 && mouseY > height - 80 && mouseY < height - 10) {
+          if (day < 5) {
+            day++;
+            console.log(day);
+            changePage(new HomeMorning()); // HomeMorning의 새로운 인스턴스로 전환
+          } else {
+            changePage(endingScene);
+          }
+        }
+      }
+      
   }
   
 

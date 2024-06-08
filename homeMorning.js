@@ -67,7 +67,7 @@ class HomeMorning {
   
     handleClick() {
       if (this.displayedText.length === this.texts[this.currentTextIndex].length &&
-          mouseX > width - 100 && mouseX < width - 20 && mouseY > height - 50 && mouseY < height - 20) {
+        mouseX > width - 110 && mouseX < width - 10 && mouseY > height - 80 && mouseY < height - 10) {
             changePage(wayToSchool, 'Loading...');
       }
     }
