@@ -150,3 +150,38 @@ function changePage(newPage, transitionText = 'Loading...') {
   transitionScene.setup();
   currentScene = transitionScene;
 }
+
+function resetAll() {
+  day = 1; // day 변수 초기화
+
+  mainMenu = new MainMenu();
+  openingScene = new OpeningScene();
+  homeMorning = new HomeMorning();
+  wayToSchool = new WayToSchool();
+  school = new School();
+  wayToHome = new WayToHome();
+  homeNight = new HomeNight();
+  endingScene = new EndingScene();
+
+  currentScene = mainMenu;
+  if (currentScene.setup) {
+    currentScene.setup();
+  }
+  
+  wtsBG = 0; 
+  wtsBS = 0; 
+  wtsStore = 0; 
+  wtsFlower = 0;
+  wtsCat = 0; 
+  wtsCycle = 0; 
+
+  wthBG = 0;
+  wthBS = 0;
+  wthWall = 0;
+  wthPoster = 0; 
+  wthMountain = 0;
+  wthBird = 0; 
+  wthBusStop = 0; 
+  wthRoad = 0;
+
+}
