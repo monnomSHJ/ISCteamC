@@ -54,6 +54,10 @@ class WayToSchool {
     image(this.wtsCatSelected, 550, 370);
     image(this.wtsCycleSelected, 1100, 370);
 
+    fill(0);
+    rect(0, height - 120, 1280, 120);
+    rect(0, 0, 1280, 120);
+    
     if (this.eventOccur) {
       fill(0);
       rect(0, 720, 1280, -this.blackBar);

@@ -25,9 +25,6 @@ class HomeMorning {
   
     display() {
       image(this.image, 0, 0, width, height);
-      fill(0);
-      rect(0, height - 120, 1280, 120);
-      rect(0, 0, 1280, 120);
   
       textSize(24);
       textAlign(CENTER);
@@ -37,7 +34,6 @@ class HomeMorning {
       if (this.displayedText.length === this.texts[this.currentTextIndex].length) {
         this.drawSchoolButton(); // 모든 텍스트가 다 나오면 버튼을 그리기
       }
-
     }
   
     updateDisplayedText() {

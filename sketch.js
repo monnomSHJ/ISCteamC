@@ -60,18 +60,25 @@ function draw() {
     cursorImage = cursorImage1; // 그 외의 경우 검은색으로
   }
 
+  if (currentScene instanceof HomeMorning || currentScene instanceof WayToSchool || currentScene instanceof School || currentScene instanceof WayToHome || currentScene instanceof HomeNight) {
+    //사각형
+    fill(0);
+    rect(0, height - 120, 1280, 120);
+    rect(0, 0, 1280, 120);
+    
+    //status
+    fill(255);  
+    textFont(fontNeo);
+    textSize(24);
+    textAlign(LEFT, CENTER);
+    text("DAY "+day+" "+currentScene.constructor.name, 50 , 80);
+  }
+  
   push();
   translate(mouseX, mouseY);
-  scale(0.5);
+  scale(0.55);
   image(cursorImage, 0, 0);
   pop();
-
-  // 테스트용: 현재 장면 출력
-  fill(255);
-  textFont(fontNeo);
-  textSize(20);
-  textAlign(LEFT, CENTER);
-  text(currentScene.constructor.name, 10, 30);
 }
 
 function mouseClicked() {
