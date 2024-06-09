@@ -72,6 +72,7 @@ class OpeningScene {
   handleClick() {
     if (this.currentImageIndex === this.images.length - 1 && this.currentTextIndex === this.texts.length - 1) {
       changePage(homeMorning, 'DAY'+day);
+      OpeningScene.bgm.stop();
     } else if (this.currentImageIndex === this.images.length - 1) {
       if (this.currentTextIndex < this.texts.length - 1) {
         this.currentTextIndex++;
