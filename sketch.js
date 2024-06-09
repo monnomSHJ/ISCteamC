@@ -75,15 +75,6 @@ function draw() {
   noStroke();
   currentScene.display();
 
-  // 커서 이미지 조건문
-  if ((currentScene instanceof WayToSchool || currentScene instanceof WayToHome)&& currentScene.changeCursor() === 2
-    || (currentScene instanceof OpeningScene && openingScene.textComplete == true)
-    || currentScene instanceof MainMenu
-    || (currentScene instanceof HomeMorning && homeMorning.textComplete && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > height/2 - 150 && mouseY < height/2 + 150)) {
-    cursorImage = cursorImage2; // 상호작용 가능한 물체 위에 있을 때 커서 이미지를 빨간색으로
-  } else {
-    cursorImage = cursorImage1; // 그 외의 경우 검은색으로
-  }
 
   //현재 일차 및 장소 확인
   if (currentScene instanceof HomeMorning || currentScene instanceof WayToSchool || currentScene instanceof School || currentScene instanceof WayToHome || currentScene instanceof HomeNight) {
@@ -103,6 +94,28 @@ function draw() {
     pop();
   }
   
+  //리셋 안내
+  if (currentScene instanceof OpeningScene || currentScene instanceof HomeMorning
+    || currentScene instanceof WayToSchool || currentScene instanceof School
+    || currentScene instanceof WayToHome || currentScene instanceof HomeNight
+    || currentScene instanceof EndingScene) {
+    textFont(fontNeo);
+    textSize(16);
+    fill(255, 150);
+    textAlign(RIGHT, CENTER);
+    text("처음으로 돌아가려면 'r'을 입력하세요.", width-30, 80);
+  }
+
+  // 커서 이미지 조건문
+  if ((currentScene instanceof WayToSchool || currentScene instanceof WayToHome)&& currentScene.changeCursor() === 2
+    || (currentScene instanceof OpeningScene && openingScene.textComplete == true)
+    || currentScene instanceof MainMenu
+    || (currentScene instanceof HomeMorning && homeMorning.textComplete && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > height/2 - 150 && mouseY < height/2 + 150)) {
+    cursorImage = cursorImage2; // 상호작용 가능한 물체 위에 있을 때 커서 이미지를 빨간색으로
+  } else {
+    cursorImage = cursorImage1; // 그 외의 경우 검은색으로
+  }
+
   //커서 이미지 적용
   push();
   translate(mouseX, mouseY);
@@ -136,6 +149,11 @@ function keyPressed() {
   } else if (key === '9') {
     day =+ 5
   }
+
+  //리셋
+  if (key === 'r') {
+    resetAll();
+  }
 }
 
 function changePage(newPage, transitionText = 'Loading...') {
@@ -154,6 +172,8 @@ function changePage(newPage, transitionText = 'Loading...') {
 function resetAll() {
   day = 1; // day 변수 초기화
 
+  OpeningScene.bgm.stop();
+
   mainMenu = new MainMenu();
   openingScene = new OpeningScene();
   homeMorning = new HomeMorning();
@@ -167,7 +187,7 @@ function resetAll() {
   if (currentScene.setup) {
     currentScene.setup();
   }
-  
+
   wtsBG = 0; 
   wtsBS = 0; 
   wtsStore = 0; 
@@ -183,5 +203,4 @@ function resetAll() {
   wthBird = 0; 
   wthBusStop = 0; 
   wthRoad = 0;
-
 }
