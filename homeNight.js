@@ -55,10 +55,10 @@ class HomeNight {
       rect(0, height - 120, 1280, 120);
       rect(0, 0, 1280, 120);
   
-      textSize(32);
+      textSize(24);
       textAlign(CENTER, CENTER);
       fill(255);
-      text(this.displayedText, 640, height - 70);
+      text(this.displayedText, 640, 637);
       
       if (day < 5) {
         this.updateDisplayedText(); // 텍스트 한글자씩 나오는 함수
@@ -171,7 +171,8 @@ class HomeNight {
             mouseX > width - 110 && mouseX < width - 10 && mouseY > height - 80 && mouseY < height - 10) {
           day++;
           console.log(day);
-          changePage(new HomeMorning()); // HomeMorning의 새로운 인스턴스로 전환
+          changePage(new HomeMorning(), 'DYA '+day); // HomeMorning의 새로운 인스턴스로 전환
+          cameraSound.play();
         } else if (day == 5 && this.displayEndingMessage && this.endingMessageComplete) {
           if (this.endingMessageIndex < this.endingmessages.length - 1) {
             this.endingMessageIndex++;
@@ -179,6 +180,7 @@ class HomeNight {
             this.endingMessageComplete = false;
           } else {
             changePage(endingScene, 'Ending...');
+            cameraSound.play();
           }
         }
       }

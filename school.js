@@ -20,7 +20,8 @@ class School {
       this.fadeIn = true;
       setTimeout(() => {
         changePage(wayToHome, 'Loading...');
-      }, 3000); // 3초 후에 wayToHome으로 전환
+        cameraSound.play();
+      }, 5000); // 5초 후에 wayToHome으로 전환
     }
   
     display() {
@@ -34,6 +35,11 @@ class School {
           this.fadeIn = false;
         }
       } // 이미지 페이드인
+
+      fill(0);
+      rectMode(CORNER);
+      rect(0, height - 120, 1280, 120);
+      rect(0, 0, 1280, 120);
     }
   
     handleClick() {
