@@ -426,6 +426,7 @@ class WayToHome {
         if (this.choosing){
           if (day == 5){
             if (540 < mouseX && mouseX < 740 && 615 < mouseY && mouseY < 705) return 'a';
+            else return 0;
           } else {
             if (240 < mouseX && mouseX < 440 && 615 < mouseY && mouseY < 705) return 'a';
             else if (540 < mouseX && mouseX < 740 && 615 < mouseY && mouseY < 705) return 'b';
