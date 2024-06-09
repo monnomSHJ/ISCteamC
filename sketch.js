@@ -62,7 +62,7 @@ function setup() {
   school = new School();
   wayToHome = new WayToHome();
   homeNight = new HomeNight();
-  endingScene = new EndingScene();
+  endingScene = new EndingScene(wayToSchool, wayToHome);
 
   currentScene = mainMenu;
   if (currentScene.setup) {
