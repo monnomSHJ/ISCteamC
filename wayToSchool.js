@@ -6,14 +6,13 @@ class WayToSchool {
     this.wtsFlowerSelected = WayToSchool.wtsFlower; // 기본 꽃 이미지 설정
     this.wtsCatSelected = WayToSchool.wtsCat; // 기본 고양이 이미지 설정
     this.wtsCycleSelected = WayToSchool.wtsCycle; // 기본 자전거 이미지 설정
-    this.eventOccur = false;
-    this.blackBar = 0;
-
-    this.Reading = false;
-    this.finishRead = false;
-    this.choosing = false;
-    this.chosen = 0;
-    this.selected = false;
+    this.eventOccur = false; // 이벤트 발생 스위치
+    this.blackBar = 0; // 상하단 흑색 바 애니메이션
+    this.Reading = false; // 출력된 텍스트를 읽고 있는가
+    this.finishRead = false; // 출력된 텍스트를 다 읽었는가
+    this.choosing = false; // 선택지를 고르고 있는가
+    this.chosen = 0; // 선택지에서 몇 번을 선택했는가. 전역변수로 값이 나갈 예정
+    this.selected = false; // 선택을 했는가.
 
   }
 

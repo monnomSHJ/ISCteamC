@@ -171,7 +171,7 @@ class HomeNight {
             mouseX > width - 110 && mouseX < width - 10 && mouseY > height - 80 && mouseY < height - 10) {
           day++;
           console.log(day);
-          changePage(new HomeMorning(), 'DYA '+day); // HomeMorning의 새로운 인스턴스로 전환
+          changePage(new HomeMorning(), 'DAY '+day); // HomeMorning의 새로운 인스턴스로 전환
           cameraSound.play();
         } else if (day == 5 && this.displayEndingMessage && this.endingMessageComplete) {
           if (this.endingMessageIndex < this.endingmessages.length - 1) {
