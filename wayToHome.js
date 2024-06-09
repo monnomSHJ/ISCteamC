@@ -75,40 +75,117 @@ class WayToHome {
 
     if (this.eventOccur) {
       fill(0);
-      rect(0, height - 120, 1280, 120);
-      rect(0, 0, 1280, 120);
+      rect(0, 720, 1280, -this.blackBar);
+      rect(0, 0, 1280, this.blackBar);
+      if (this.blackBar < 120){
+        this.blackBar += 2;
+      }
 
       image(WayToHome.pCam, 249, 149);
 
       if (day == 1) {
         image(this.wthWallSelected, 510, 240);
 
-        if (keyIsPressed) {
-          if (keyCode === 65) {
-            this.wthWallSelected = WayToHome.wthWallFun;
-          } else if (keyCode === 83) {
-            this.wthWallSelected = WayToHome.wthWallLove;
-          } else if (keyCode === 68) {
-            this.wthWallSelected = WayToHome.wthWallSeize;
-          } else if (keyCode === 27) {
-            this.eventOccur = false;
-            changePage(homeNight, 'Loading...');
+        if(this.blackBar > 118){
+          textSize(24);
+          textAlign(CENTER);
+          fill(255);
+          text('누가 이런 곳에 낙서를 해 놨네..', 640, 637);
+          this.Reading = true;
+          
+          if(this.finishRead){
+            this.Reading = false;
+            fill(0);
+            rect(0, 600, 1280, 120);
+            fill(255);
+            rect(240, 615, 200, 90);
+            rect(540, 615, 200, 90);
+            rect(840, 615, 200, 90);
+            fill(0);
+            rect(245, 620, 190, 80);
+            rect(545, 620, 190, 80);
+            rect(845, 620, 190, 80);
+            fill(255);
+            text('웃는 낙서', 340, 660);
+            text('연인의 낙서', 640, 660);
+            text('명언', 940, 660);
+            this.choosing = true;
+          }
+
+          if (this.chosen != 0){
+            fill(0)
+            rect(0, 600, 1280, 120);
+            if (this.chosen == 1){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('유쾌한 사람이었나 보네.', 640, 637);
+            } else if (this.chosen == 2){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('좋아 보이네...', 640, 637);
+            } else if (this.chosen == 3){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('멋진 말인걸.', 640, 637);
+            }
+
+            this.selected = true;
           }
         }
 
       } else if (day == 2) {
         image(this.wthPosterSelected, 500, 225);
 
-        if (keyIsPressed) {
-          if (keyCode === 65) {
-            this.wthPosterSelected = WayToHome.wthPosterDance;
-          } else if (keyCode === 83) {
-            this.wthPosterSelected = WayToHome.wthPosterSong;
-          } else if (keyCode === 68) {
-            this.wthPosterSelected = WayToHome.wthPosterCook;
-          } else if (keyCode === 27) {
-            this.eventOccur = false;
-            changePage(homeNight, 'Loading...');
+        if(this.blackBar > 118){
+          textSize(24);
+          textAlign(CENTER);
+          fill(255);
+          text('동아리 홍보 포스터다. 구경이나 해 볼까..', 640, 637);
+          this.Reading = true;
+          
+          if(this.finishRead){
+            this.Reading = false;
+            fill(0);
+            rect(0, 600, 1280, 120);
+            fill(255);
+            rect(240, 615, 200, 90);
+            rect(540, 615, 200, 90);
+            rect(840, 615, 200, 90);
+            fill(0);
+            rect(245, 620, 190, 80);
+            rect(545, 620, 190, 80);
+            rect(845, 620, 190, 80);
+            fill(255);
+            text('춤 동아리', 340, 660);
+            text('노래 동아리', 640, 660);
+            text('요리 동아리', 940, 660);
+            this.choosing = true;
+          }
+
+          if (this.chosen != 0){
+            fill(0)
+            rect(0, 600, 1280, 120);
+            if (this.chosen == 1){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('춤은 정말 못 추겠더라, 나는.', 640, 637);
+            } else if (this.chosen == 2){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('노래 잘 부르는 사람들이 부럽단 말이지.', 640, 637);
+            } else if (this.chosen == 3){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('요리는 가끔 하긴 하는데...', 640, 637);
+            }
+
+            this.selected = true;
           }
         }
 
@@ -116,27 +193,105 @@ class WayToHome {
         image(this.wthMountainSelected, 265, 140, 740, 380, 0, 0, 1280, 720);
         image(WayToHome.pCamClean, 249, 149);
 
-        if (keyIsPressed) {
-          if (keyCode === 65) {
-            this.wthMountainSelected = WayToHome.wthMountain;
-          } else if (keyCode === 27) {
-            this.eventOccur = false;
-            changePage(homeNight, 'Loading...');
+        if(this.blackBar > 118){
+          textSize(24);
+          textAlign(CENTER);
+          fill(255);
+          text('누가 학교를 산에다 지어서...', 640, 637);
+          this.Reading = true;
+          
+          if(this.finishRead){
+            this.Reading = false;
+            fill(0);
+            rect(0, 600, 1280, 120);
+            fill(255);
+            rect(240, 615, 200, 90);
+            rect(540, 615, 200, 90);
+            rect(840, 615, 200, 90);
+            fill(0);
+            rect(245, 620, 190, 80);
+            rect(545, 620, 190, 80);
+            rect(845, 620, 190, 80);
+            fill(255);
+            text('정말 푸르다.', 340, 660);
+            text('운동이 되는걸.', 640, 660);
+            text('자연친화적이네.', 940, 660);
+            this.choosing = true;
+          }
+
+          if (this.chosen != 0){
+            fill(0)
+            rect(0, 600, 1280, 120);
+            if (this.chosen == 1){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('여름이라 그런가?', 640, 637);
+            } else if (this.chosen == 2){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('주말엔 등산이라도 가 볼까.', 640, 637);
+            } else if (this.chosen == 3){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('공기는 참 좋네.', 640, 637);
+            }
+
+            this.selected = true;
           }
         }
       } else if (day == 4) {
         image(this.wthBirdSelected, 550, 350);
 
-        if (keyIsPressed) {
-          if (keyCode === 65) {
-            this.wthBirdSelected = WayToHome.wthBirdDove;
-          } else if (keyCode === 83) {
-            this.wthBirdSelected = WayToHome.wthBirdSmall;
-          } else if (keyCode === 68) {
-            this.wthBirdSelected = WayToHome.wthBirdBlack;
-          } else if (keyCode === 27) {
-            this.eventOccur = false;
-            changePage(homeNight, 'Loading...');
+        if(this.blackBar > 118){
+          textSize(24);
+          textAlign(CENTER);
+          fill(255);
+          text('차도에 저거...새인가? 위험하지 않으려나..', 640, 637);
+          this.Reading = true;
+          
+          if(this.finishRead){
+            this.Reading = false;
+            fill(0);
+            rect(0, 600, 1280, 120);
+            fill(255);
+            rect(240, 615, 200, 90);
+            rect(540, 615, 200, 90);
+            rect(840, 615, 200, 90);
+            fill(0);
+            rect(245, 620, 190, 80);
+            rect(545, 620, 190, 80);
+            rect(845, 620, 190, 80);
+            fill(255);
+            text('비둘기', 340, 660);
+            text('참새', 640, 660);
+            text('까치', 940, 660);
+            this.choosing = true;
+          }
+
+          if (this.chosen != 0){
+            fill(0)
+            rect(0, 600, 1280, 120);
+            if (this.chosen == 1){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('...알아서 날아가겠지..?', 640, 637);
+            } else if (this.chosen == 2){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('귀엽긴 하네.', 640, 637);
+            } else if (this.chosen == 3){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('내일은 운수가 좋을 지도.', 640, 637);
+            }
+
+            this.selected = true;
           }
         }
       } else if (day == 5) {
@@ -144,11 +299,32 @@ class WayToHome {
 
         image(this.wthBusStopSelected, 380, 240, 500, 260, 0, 0);
 
-        if (keyIsPressed) {
-          if (keyCode === 65) {
-            this.wthBusStopSelected = WayToHome.wthBusStop;
-          } else if (keyCode === 27) {
-            this.eventOccur = false;
+        if(this.blackBar > 118){
+          textSize(24);
+          textAlign(CENTER);
+          fill(255);
+          text('정류장 유리창에 어렴풋이 얼굴이 비친다.', 640, 637);
+          this.Reading = true;
+          
+          if(this.finishRead){
+            this.Reading = false;
+            fill(0);
+            rect(0, 600, 1280, 120);
+            fill(255);
+            rect(540, 615, 200, 90);
+            fill(0);
+            rect(545, 620, 190, 80);
+            fill(255);
+            text('...오랜만이야.', 640, 660);
+            this.choosing = true;
+          }
+
+          if (this.chosen != 0){
+            this.selected = true;
+            this.selected = false;
+            this.blackBar = 0;
+            this.chosen = 0;
+            this.finishRead = false;
             changePage(homeNight, 'Loading...');
           }
         }
@@ -248,10 +424,14 @@ class WayToHome {
     } else {
       if (this.eventOccur){
         if (this.choosing){
-          if (240 < mouseX && mouseX < 440 && 615 < mouseY && mouseY < 705) return 'a';
-          else if (540 < mouseX && mouseX < 740 && 615 < mouseY && mouseY < 705) return 'b';
-          else if (840 < mouseX && mouseX < 1040 && 615 < mouseY && mouseY < 705) return 'c';
-          else return 0;
+          if (day == 5){
+            if (540 < mouseX && mouseX < 740 && 615 < mouseY && mouseY < 705) return 'a';
+          } else {
+            if (240 < mouseX && mouseX < 440 && 615 < mouseY && mouseY < 705) return 'a';
+            else if (540 < mouseX && mouseX < 740 && 615 < mouseY && mouseY < 705) return 'b';
+            else if (840 < mouseX && mouseX < 1040 && 615 < mouseY && mouseY < 705) return 'c';
+            else return 0;
+          }
         } else return 0;
       } else {
         if (day == 1) {
