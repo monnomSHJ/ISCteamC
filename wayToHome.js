@@ -95,6 +95,7 @@ class WayToHome {
             changePage(homeNight, 'Loading...');
           }
         }
+
       } else if (day == 2) {
         image(this.wthPosterSelected, 500, 225);
 
@@ -110,6 +111,7 @@ class WayToHome {
             changePage(homeNight, 'Loading...');
           }
         }
+
       } else if (day == 3) {
         image(this.wthMountainSelected, 265, 140, 740, 380, 0, 0, 1280, 720);
         image(WayToHome.pCamClean, 249, 149);
@@ -155,29 +157,122 @@ class WayToHome {
   }
 
   handleClick() {
-    if (this.over() == day) {
+
+    if (this.over() == day) {  /// 이벤트 발생 트리거: this.over = 날짜
       this.eventOccur = true;
+    }
+
+    if (this.eventOccur){ /// 이벤트 발생 시작 후
+      if (this.Reading){ /// 읽기 중
+        this.finishRead = true; // 마우스 클릭 시 읽기
+      }
+    }
+
+      if (this.selected){ /// 선택이 완료되었다면
+        this.eventOccur = false; /// 이벤트 발생 스위치를 off
+      }
+
+    if(this.over() == 'a' || this.over() =='b' || this.over() =='c'){ ///만약 버튼을 눌렀다면
+      if(this.over() == 'a'){ /// 1번 선택지 누를 시
+        this.chosen = 1;
+
+        if (day == 1){
+          this.wthWallSelected = WayToHome.wthWallFun;
+          wthWall = this.chosen
+        } else if (day == 2){
+          this.wthPosterSelected = WayToHome.wthPosterDance;
+          wthPoster = this.chosen
+        } else if (day == 3){
+          this.wthMountainSelected = WayToHome.wthMountain;
+        } else if (day == 4){
+          this.wthBirdSelected = WayToHome.wthBirdDove;
+          wthBird = this.chosen
+        } else if (day == 5){
+          this.wthBusStopSelected = WayToHome.wthBusStop;
+        }
+
+      } else if (this.over() == 'b'){ /// 2번 선택지 누를 시
+        this.chosen = 2;
+
+        if (day == 1){
+          this.wthWallSelected = WayToHome.wthWallLove;
+          wthWall = this.chosen
+        } else if (day == 2){
+          this.wthPosterSelected = WayToHome.wthPosterSong;
+          wthPoster = this.chosen
+        } else if (day == 3){
+          this.wthMountainSelected = WayToHome.wthMountain;
+        } else if (day == 4){
+          this.wthBirdSelected = WayToHome.wthBirdSmall;
+          wthBird = this.chosen
+        } else if (day == 5){
+          this.wthBusStopSelected = WayToHome.wthBusStop;
+        }
+
+      } else if (this.over() == 'c'){ /// 3번 선택지 누를 시
+        this.chosen = 3;
+
+        if (day == 1){
+          this.wthWallSelected = WayToHome.wthWallSeize;
+          wthWall = this.chosen
+        } else if (day == 2){
+          this.wthPosterSelected = WayToHome.wthPosterCook;
+          wthPoster = this.chosen
+        } else if (day == 3){
+          this.wthMountainSelected = WayToHome.wthMountain;
+        } else if (day == 4){
+          this.wthBirdSelected = WayToHome.wthBirdBlack;
+          wthBird = this.chosen
+        } else if (day == 5){
+          this.wthBusStopSelected = WayToHome.wthBusStop;
+        }
+      }
+      this.choosing = false;
+    }
+
+    if (this.over() == 'go'){
+      this.selected = false;
+      this.blackBar = 0;
+      this.chosen = 0;
+      this.finishRead = false;
+      changePage(homeNight, 'Loading...');
     }
   }
 
   over() {
-    if (day == 1) {
-      if (880 < mouseX && mouseX < 880+194 && 20 < mouseY && mouseY < 20+194) return 1;
-      else return 0;
-    } else if (day == 2) {
-      if (1050 < mouseX && mouseX < 1050+218 && 210 < mouseY && mouseY < 210+254) return 2;
-      else return 0;
-    } else if (day == 3) {
-      if (0 < mouseX && mouseX < 880 && 150 < mouseY && mouseY < 480) return 3;
-      else return 0;
-    } else if (day == 4) {
-      if (1000 < mouseX && mouseX < 1000+164 && 520 < mouseY && mouseY < 520+147) return 4;
-      else return 0;
-    } else if (day == 5) {
-      if (300 < mouseX && mouseX < 300 + 679 && 140 < mouseY && mouseY < 140+385) return 5;
-      else return 0;
-    } else return 0;
-  } 
+
+    if(this.selected){
+      if(30 < mouseX && mouseX < 30+132 && 260 < mouseY && mouseY < 260+230){
+        return 'go';
+      } else return 0;
+    } else {
+      if (this.eventOccur){
+        if (this.choosing){
+          if (240 < mouseX && mouseX < 440 && 615 < mouseY && mouseY < 705) return 'a';
+          else if (540 < mouseX && mouseX < 740 && 615 < mouseY && mouseY < 705) return 'b';
+          else if (840 < mouseX && mouseX < 1040 && 615 < mouseY && mouseY < 705) return 'c';
+          else return 0;
+        } else return 0;
+      } else {
+        if (day == 1) {
+          if (880 < mouseX && mouseX < 880+194 && 20 < mouseY && mouseY < 20+194) return 1;
+          else return 0;
+        } else if (day == 2) {
+          if (1050 < mouseX && mouseX < 1050+218 && 210 < mouseY && mouseY < 210+254) return 2;
+          else return 0;
+        } else if (day == 3) {
+          if (0 < mouseX && mouseX < 880 && 150 < mouseY && mouseY < 480) return 3;
+          else return 0;
+        } else if (day == 4) {
+          if (1000 < mouseX && mouseX < 1000+164 && 520 < mouseY && mouseY < 520+147) return 4;
+          else return 0;
+        } else if (day == 5) {
+          if (300 < mouseX && mouseX < 300 + 679 && 140 < mouseY && mouseY < 140+385) return 5;
+          else return 0;
+        } else return 0;
+      }
+    }
+  }
 
   changeCursor() {
     if (this.over() != 0) return 2;

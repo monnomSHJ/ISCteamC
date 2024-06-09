@@ -352,6 +352,7 @@ class WayToSchool {
           wtsCycle = this.chosen;
         } else if (day == 5){
           this.wtsBGSelected = WayToSchool.wtsBG;
+          this.wtsBSSelected = WayToSchool.wtsBS;
         }
 
       } else if (this.over() == 'b'){ /// 2번 선택지 누를 시
@@ -371,6 +372,7 @@ class WayToSchool {
           wtsCycle = this.chosen;
         } else if (day == 5){
           this.wtsBGSelected = WayToSchool.wtsBG;
+          this.wtsBSSelected = WayToSchool.wtsBS;
         }
 
       } else if (this.over() == 'c'){ /// 3번 선택지 누를 시
