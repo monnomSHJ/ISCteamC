@@ -104,10 +104,13 @@ class WayToSchool {
         if (keyIsPressed) {
           if (keyCode === 65) {
             this.wtsFlowerSelected = WayToSchool.wtsFlowerRose;
+            wtsFlower = 1;
           } else if (keyCode === 83) {
             this.wtsFlowerSelected = WayToSchool.wtsFlowerHydrangea;
+            wtsFlower = 2;
           } else if (keyCode === 68) {
             this.wtsFlowerSelected = WayToSchool.wtsFlowerLily;
+            wtsFlower = 3;
           } else if (keyCode === 27) {
             this.eventOccur = false;
             changePage(school, 'Loading...');
@@ -119,10 +122,13 @@ class WayToSchool {
         if (keyIsPressed) {
           if (keyCode === 65) {
             this.wtsCatSelected = WayToSchool.wtsCatCookie;
+            wtsCat = 1;
           } else if (keyCode === 83) {
             this.wtsCatSelected = WayToSchool.wtsCatFish;
+            wtsCat = 2;
           } else if (keyCode === 68) {
             this.wtsCatSelected = WayToSchool.wtsCatCheese;
+            wtsCat = 3;
           } else if (keyCode === 27) {
             this.eventOccur = false;
             changePage(school, 'Loading...');
@@ -134,10 +140,13 @@ class WayToSchool {
         if (keyIsPressed) {
           if (keyCode === 65) {
             this.wtsCycleSelected = WayToSchool.wtsCycleRed;
+            wtsCycle = 1;
           } else if (keyCode === 83) {
             this.wtsCycleSelected = WayToSchool.wtsCycleChild;
+            wtsCycle = 2;
           } else if (keyCode === 68) {
             this.wtsCycleSelected = WayToSchool.wtsCycleUni;
+            wtsCycle = 3;
           } else if (keyCode === 27) {
             this.eventOccur = false;
             changePage(school, 'Loading...');

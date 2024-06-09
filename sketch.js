@@ -17,6 +17,24 @@ let wayToHome; // 하굣길
 let homeNight; // 집(밤)
 let endingScene; // 엔딩
 
+//등굣길 변수
+let wtsBG = 0; //배경 이미지
+let wtsBS = 0; //버스 정류장 이미지
+let wtsStore = 0; //가게 이미지(1: 빵, 2: 카페, 3: 주스)
+let wtsFlower = 0; //꽃 이미지(1: 장미, 2: 수국, 3: 백합)
+let wtsCat = 0; // 고양이 이미지(1: Cookie, 2: Fish, 3: Cheeze)
+let wtsCycle = 0; // 자전거 이미지(1: 빨강, 2: 어린이, 3: 외발)
+
+//하굣길 변수
+let wthBG = 0; //기본 배경 이미지
+let wthBS = 0; //버스 정류장 이미지
+let wthWall = 0; //낙서 이미지(1: Fun, 2: Love, 3: Seize)
+let wthPoster = 0; //포스터 이미지(1: Dance, 2: Song, 3: Cook)
+let wthMountain = 0; //산 이미지
+let wthBird = 0; //새 이미지(1: Dove, 2: Small, 3: Black)
+let wthBusStop = 0; //버스 정류장(상호작용 가능)
+let wthRoad = 0; //길(배경 요소)
+
 function preload() {
   fontNeo = loadFont('assets/fonts/neoMo.TTF');
   cursorImage1 = loadImage('assets/images/mouseCursor1.png');
