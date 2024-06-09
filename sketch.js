@@ -75,7 +75,7 @@ function draw() {
   noStroke();
   currentScene.display();
 
-  // 커서 이미지 적용
+  // 커서 이미지 조건문
   if ((currentScene instanceof WayToSchool || currentScene instanceof WayToHome)&& currentScene.changeCursor() === 2
     || (currentScene instanceof OpeningScene && openingScene.textComplete == true)
     || currentScene instanceof MainMenu
@@ -103,6 +103,7 @@ function draw() {
     pop();
   }
   
+  //커서 이미지 적용
   push();
   translate(mouseX, mouseY);
   scale(0.55);
