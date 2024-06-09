@@ -31,6 +31,7 @@ class OpeningScene {
 
   display() {
     if (!OpeningScene.bgm.isPlaying()) {
+      OpeningScene.bgm.setVolume(0.3);
       OpeningScene.bgm.loop(); // 배경음악을 반복 재생 //수정
     }
 

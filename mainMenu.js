@@ -41,6 +41,7 @@ class MainMenu {
     }
   
     handleClick() {
+      cameraSound.play();
       changePage(openingScene, 'Loading...');
     }
   }
