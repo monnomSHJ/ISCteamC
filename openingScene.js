@@ -82,6 +82,8 @@ class OpeningScene {
   }
   handleClick() {
     if (this.textComplete) {
+      cameraSound.setVolume(0.3);
+      cameraSound.play();
       if (this.currentImageIndex === this.images.length - 1 && this.currentTextIndex === this.texts.length - 1) {
         changePage(homeMorning, 'DAY' + day);
         OpeningScene.bgm.stop();
