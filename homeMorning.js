@@ -25,7 +25,9 @@ class HomeMorning {
   
     display() {
       image(this.image, 0, 0, width, height);
-  
+      fill(0);
+      rect(0, height - 120, 1280, 120);
+      rect(0, 0, 1280, 120);
       textSize(24);
       textAlign(CENTER);
       fill(255);

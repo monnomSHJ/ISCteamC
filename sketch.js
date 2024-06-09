@@ -61,11 +61,6 @@ function draw() {
   }
 
   if (currentScene instanceof HomeMorning || currentScene instanceof WayToSchool || currentScene instanceof School || currentScene instanceof WayToHome || currentScene instanceof HomeNight) {
-    //사각형
-    fill(0);
-    rect(0, height - 120, 1280, 120);
-    rect(0, 0, 1280, 120);
-    
     //status
     fill(255);  
     textFont(fontNeo);
