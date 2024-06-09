@@ -168,9 +168,10 @@ class WayToHome {
       if (1000 < mouseX && mouseX < 1000+164 && 520 < mouseY && mouseY < 520+147) return 4;
       else return 0;
     } else if (day == 5) {
-      return 5;
+      if (300 < mouseX && mouseX < 300 + 679 && 140 < mouseY && mouseY < 140+385) return 5;
+      else return 0;
     } else return 0;
-  }
+  } 
 
   changeCursor() {
     if (this.over() != 0) return 2;
