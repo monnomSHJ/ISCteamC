@@ -8,22 +8,13 @@ class WayToSchool {
     this.wtsCycleSelected = WayToSchool.wtsCycle; // 기본 자전거 이미지 설정
     this.eventOccur = false;
     this.blackBar = 0;
-    this.finishedText = false;
-    this.textEnded = false;
-    this.proceed = false;
 
-    this.texts = [
-      '새로 생긴 가게인가 보네... 뭐 하는 곳이지?',
-      '좋은 냄새가 난다.',
-      '향긋한 냄새가 난다.',
-      '달콤한 냄새가 난다.'
+    this.Reading = false;
+    this.finishRead = false;
+    this.choosing = false;
+    this.chosen = 0;
+    this.selected = false;
 
-    ];
-    this.currentTextIndex = 0;
-    this.displayedText = "";
-    this.textAnimationSpeed = 5; // 애니메이션 속도
-    this.textAnimationCounter = 0; // 애니메이션 카운터
-    this.textComplete = false;
   }
 
   static preload() {
@@ -77,63 +68,158 @@ class WayToSchool {
           textSize(24);
           textAlign(CENTER);
           fill(255);
-          text(this.displayedText, 640, 637);
-          this.updateDisplayedText(); // 텍스트 한글자씩 나오는 함수
+          text('새로 생긴 가게인가 보네… 뭐 하는 가게지?', 640, 637);
+          this.Reading = true;
           
-          if (this.textComplete) {
-            if (frameCount % 60 < 30) {
-              let textWidthValue = textWidth(this.displayedText);
-              text('▼', 640 + textWidthValue / 2 + 24, 637); // 텍스트 끝에 '▼' 기호 추가
-              this.textEnded = true;
-            }
-          }
-
-          if (this.finishedText) {
+          if(this.finishRead){
+            this.Reading = false;
             fill(0);
             rect(0, 600, 1280, 120);
             fill(255);
             rect(240, 615, 200, 90);
             rect(540, 615, 200, 90);
             rect(840, 615, 200, 90);
+            fill(0);
+            rect(245, 620, 190, 80);
+            rect(545, 620, 190, 80);
+            rect(845, 620, 190, 80);
+            fill(255);
+            text('빵집', 340, 660);
+            text('카페', 640, 660);
+            text('주스 가게', 940, 660);
+            this.choosing = true;
+          }
+
+          if (this.chosen != 0){
+            fill(0)
+            rect(0, 600, 1280, 120);
+            if (this.chosen == 1){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('좋은 냄새가 난다.', 640, 637);
+            } else if (this.chosen == 2){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('향긋한 냄새가 난다.', 640, 637);
+            } else if (this.chosen == 3){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('달콤한 냄새가 난다.', 640, 637);
+            }
+
+            this.selected = true;
           }
         }
 
       } else if (day == 2) {
         image(this.wtsFlowerSelected, 550, 350);
 
-        if (keyIsPressed) {
-          if (keyCode === 65) {
-            this.wtsFlowerSelected = WayToSchool.wtsFlowerRose;
-            wtsFlower = 1;
-          } else if (keyCode === 83) {
-            this.wtsFlowerSelected = WayToSchool.wtsFlowerHydrangea;
-            wtsFlower = 2;
-          } else if (keyCode === 68) {
-            this.wtsFlowerSelected = WayToSchool.wtsFlowerLily;
-            wtsFlower = 3;
-          } else if (keyCode === 27) {
-            this.eventOccur = false;
-            changePage(school, 'Loading...');
+        if(this.blackBar > 118){
+          textSize(24);
+          textAlign(CENTER);
+          fill(255);
+          text('지금 보니, 골목에 꽃이 피었네.', 640, 637);
+          this.Reading = true;
+          
+          if(this.finishRead){
+            this.Reading = false;
+            fill(0);
+            rect(0, 600, 1280, 120);
+            fill(255);
+            rect(240, 615, 200, 90);
+            rect(540, 615, 200, 90);
+            rect(840, 615, 200, 90);
+            fill(0);
+            rect(245, 620, 190, 80);
+            rect(545, 620, 190, 80);
+            rect(845, 620, 190, 80);
+            fill(255);
+            text('붉은 장미', 340, 660);
+            text('푸른 수국', 640, 660);
+            text('하얀 백합', 940, 660);
+            this.choosing = true;
+          }
+
+          if (this.chosen != 0){
+            fill(0)
+            rect(0, 600, 1280, 120);
+            if (this.chosen == 1){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('화려한 여름의 색이다.', 640, 637);
+            } else if (this.chosen == 2){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('시원한 푸른 색이다.', 640, 637);
+            } else if (this.chosen == 3){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('깨끗하고 예쁜 색이다.', 640, 637);
+            }
+
+            this.selected = true;
           }
         }
+
       } else if (day == 3) {
         image(this.wtsCatSelected, 550, 350);
 
-        if (keyIsPressed) {
-          if (keyCode === 65) {
-            this.wtsCatSelected = WayToSchool.wtsCatCookie;
-            wtsCat = 1;
-          } else if (keyCode === 83) {
-            this.wtsCatSelected = WayToSchool.wtsCatFish;
-            wtsCat = 2;
-          } else if (keyCode === 68) {
-            this.wtsCatSelected = WayToSchool.wtsCatCheese;
-            wtsCat = 3;
-          } else if (keyCode === 27) {
-            this.eventOccur = false;
-            changePage(school, 'Loading...');
+        if(this.blackBar > 118){
+          textSize(24);
+          textAlign(CENTER);
+          fill(255);
+          text('저기 저 털뭉치는…뭐지?', 640, 637);
+          this.Reading = true;
+          
+          if(this.finishRead){
+            this.Reading = false;
+            fill(0);
+            rect(0, 600, 1280, 120);
+            fill(255);
+            rect(240, 615, 200, 90);
+            rect(540, 615, 200, 90);
+            rect(840, 615, 200, 90);
+            fill(0);
+            rect(245, 620, 190, 80);
+            rect(545, 620, 190, 80);
+            rect(845, 620, 190, 80);
+            fill(255);
+            text('쿠앤크냥', 340, 660);
+            text('고등어냥', 640, 660);
+            text('치즈냥', 940, 660);
+            this.choosing = true;
+          }
+
+          if (this.chosen != 0){
+            fill(0)
+            rect(0, 600, 1280, 120);
+            if (this.chosen == 1){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('...왠지 아이스크림이 먹고싶은걸.', 640, 637);
+            } else if (this.chosen == 2){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('발은 하얀데 등은 까맣네. 양말 신은 것 같다.', 640, 637);
+            } else if (this.chosen == 3){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('노란 고양이는 왠지... 더 귀엽단 말이지.', 640, 637);
+            }
+
+            this.selected = true;
           }
         }
+
       } else if (day == 4) {
         image(this.wtsCycleSelected, 550, 350);
 
@@ -171,69 +257,108 @@ class WayToSchool {
 
   handleClick() {
 
-    if (this.over() == day) {
+    if (this.over() == day) {  /// 이벤트 발생 트리거: this.over = 날짜
       this.eventOccur = true;
     }
 
-    if (this.eventOccur){
-      if (this.textEnded){
-        this.finishedText = true;
-      }
-      if (this.proceed){
-        this.eventOccur = false;
+    if (this.eventOccur){ /// 이벤트 발생 시작 후
+      if (this.Reading){ /// 읽기 중
+        this.finishRead = true; // 마우스 클릭 시 읽기
       }
     }
 
-    if(this.over() == 'a' || this.over() =='b' || this.over() =='c'){
-      this.finishedText = false;
-      this.displayedText = "";
-      this.textComplete = false;
-      if(this.over() == 'a'){
+      if (this.selected){ /// 선택이 완료되었다면
+        this.eventOccur = false; /// 이벤트 발생 스위치를 off
+      }
+
+    if(this.over() == 'a' || this.over() =='b' || this.over() =='c'){ ///만약 버튼을 눌렀다면
+      if(this.over() == 'a'){ /// 1번 선택지 누를 시
+        this.chosen = 1;
+
         if (day == 1){
-          this.currentTextIndex = 1;
-          this.wtsStoreSelected = WayToSchool.wtsStoreBakery; 
+          this.wtsStoreSelected = WayToSchool.wtsStoreBakery;
+          wtsStore = this.chosen
+        } else if (day == 2){
+          this.wtsFlowerSelected = WayToSchool.wtsFlowerRose
+          wtsFlower = this.chosen
+        } else if (day == 3){
+          this.wtsCatSelected = WayToSchool.wtsCatCookie;
+          wtsCat = this.chosen
         }
-      } else if (this.over() == 'b'){
+
+      } else if (this.over() == 'b'){ /// 2번 선택지 누를 시
+        this.chosen = 2;
+
         if (day == 1){
-          this.currentTextIndex = 2;
           this.wtsStoreSelected = WayToSchool.wtsStoreCafe;
+          wtsStore = this.chosen
+        } else if (day == 2){
+          this.wtsFlowerSelected = WayToSchool.wtsFlowerHydrangea;
+          wtsFlower = this.chosen
+        } else if (day == 3){
+          this.wtsCatSelected = WayToSchool.wtsCatFish;
+          wtsCat = this.chosen
         }
-      } else if (this.over() == 'c'){
+
+      } else if (this.over() == 'c'){ /// 3번 선택지 누를 시
+        this.chosen = 3;
+
         if (day == 1){
-          this.currentTextIndex = 3;
           this.wtsStoreSelected = WayToSchool.wtsStoreJuice;
+          wtsStore = this.chosen
+        } else if (day == 2){
+          this.wtsFlowerSelected = WayToSchool.wtsFlowerLily
+          wtsFlower = this.chosen
+        } else if (day == 3){
+          this.wtsCatSelected = WayToSchool.wtsCatCheese;
+          wtsCat = this.chosen
         }
       }
-      this.textEnded = false;
-      this.proceed = true;
+      this.choosing = false;
     }
-    
+
+    if (this.over() == 'go'){
+      this.selected = false;
+      this.blackBar = 0;
+      this.chosen = 0;
+      this.finishRead = false;
+      changePage(school, 'Loading...');
+    }
   }
 
+
+
   over() {
-    if (this.eventOccur){
-      if (this.textEnded){
-        if (240 < mouseX && mouseX < 440 && 615 < mouseY && mouseY < 705) return 'a';
-        else if (540 < mouseX && mouseX < 740 && 615 < mouseY && mouseY < 705) return 'b';
-        else if (840 < mouseX && mouseX < 1040 && 615 < mouseY && mouseY < 705) return 'c';
-        else return 0;
+
+    if(this.selected){
+      if(1040 < mouseX && mouseX < 1040+132 && 265 < mouseY && mouseY < 265+230){
+        return 'go';
       } else return 0;
     } else {
-      if (day == 1) {
-        if (650 < mouseX && mouseX < 1040 && 200 < mouseY && mouseY < 511) return 1;
-        else return 0;
-      } else if (day == 2) {
-        if (200 < mouseX && mouseX < 322 && 380 < mouseY && mouseY < 503) return 2;
-        else return 0;
-      } else if (day == 3) {
-        if (550 < mouseX && mouseX < 673 && 370 < mouseY && mouseY < 501) return 3;
-        else return 0;
-      } else if (day == 4) {
-        if (1100 < mouseX && mouseX < 1273 && 370 < mouseY && mouseY < 496) return 4;
-        else return 0;
-      } else if (day == 5) {
-        return 5;
-      } else return 0;
+      if (this.eventOccur){
+        if (this.choosing){
+          if (240 < mouseX && mouseX < 440 && 615 < mouseY && mouseY < 705) return 'a';
+          else if (540 < mouseX && mouseX < 740 && 615 < mouseY && mouseY < 705) return 'b';
+          else if (840 < mouseX && mouseX < 1040 && 615 < mouseY && mouseY < 705) return 'c';
+          else return 0;
+        } else return 0;
+      } else {
+        if (day == 1) {
+          if (650 < mouseX && mouseX < 1040 && 200 < mouseY && mouseY < 511) return 1;
+          else return 0;
+        } else if (day == 2) {
+          if (200 < mouseX && mouseX < 322 && 380 < mouseY && mouseY < 503) return 2;
+          else return 0;
+        } else if (day == 3) {
+          if (550 < mouseX && mouseX < 673 && 370 < mouseY && mouseY < 501) return 3;
+          else return 0;
+        } else if (day == 4) {
+          if (1100 < mouseX && mouseX < 1273 && 370 < mouseY && mouseY < 496) return 4;
+          else return 0;
+        } else if (day == 5) {
+          return 5;
+        } else return 0;
+      }
     }
   }
 
@@ -257,20 +382,4 @@ class WayToSchool {
   showSelectedCycle(){
     return this.wtsCycleSelected;
   }
-
-  updateDisplayedText() {
-    if (this.textAnimationCounter < this.textAnimationSpeed) {
-      this.textAnimationCounter++;
-    } else {
-      if (this.displayedText.length < this.texts[this.currentTextIndex].length) {
-        this.displayedText = this.texts[this.currentTextIndex].substring(0, this.displayedText.length + 1);
-        this.textComplete = false; // 텍스트 출력 중
-      } else {
-        this.textComplete = true; // 텍스트 출력 완료
-      }
-      this.textAnimationCounter = 0;
-    }
-  }
-
-
 }
