@@ -63,13 +63,22 @@ function draw() {
     cursorImage = cursorImage1; // 그 외의 경우 검은색으로
   }
 
+  //현재 일차 및 장소 확인
   if (currentScene instanceof HomeMorning || currentScene instanceof WayToSchool || currentScene instanceof School || currentScene instanceof WayToHome || currentScene instanceof HomeNight) {
-    //status
     fill(255);  
     textFont(fontNeo);
     textSize(24);
     textAlign(LEFT, CENTER);
     text("DAY "+day+" "+currentScene.constructor.name, 30 , 80);
+
+    push();
+    translate(30, 50);
+    rectMode(CENTER);
+    for(let d = 1; d < 6; d++) {
+      if(d == day) {fill(255)} else {fill(80)}
+      rect(d*20 - 15, 0, 10, 10);
+    }
+    pop();
   }
   
   push();
