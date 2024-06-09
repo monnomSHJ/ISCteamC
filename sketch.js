@@ -69,7 +69,7 @@ function draw() {
     textFont(fontNeo);
     textSize(24);
     textAlign(LEFT, CENTER);
-    text("DAY "+day+" "+currentScene.constructor.name, 50 , 80);
+    text("DAY "+day+" "+currentScene.constructor.name, 30 , 80);
   }
   
   push();

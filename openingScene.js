@@ -16,6 +16,7 @@ class OpeningScene {
     this.displayedText = ""; // 현재 표시되는 텍스트
     this.textAnimationSpeed = 5; // 애니메이션 속도
     this.textAnimationCounter = 0; // 애니메이션 카운터
+    this.textComplete = false;
   }
 
   static preload() {
@@ -57,6 +58,13 @@ class OpeningScene {
     fill(255);
     text(this.displayedText, 640, 637);
     this.updateDisplayedText(); // 텍스트 한글자씩 나오는 함수
+
+    if (this.textComplete) {
+      if (frameCount % 60 < 30) {
+        let textWidthValue = textWidth(this.displayedText);
+        text('▼', 640 + textWidthValue / 2 + 24, 637); // 텍스트 끝에 '▼' 기호 추가
+      }
+    }
   }
 
   updateDisplayedText() {
@@ -65,25 +73,30 @@ class OpeningScene {
     } else {
       if (this.displayedText.length < this.texts[this.currentTextIndex].length) {
         this.displayedText = this.texts[this.currentTextIndex].substring(0, this.displayedText.length + 1);
+        this.textComplete = false; // 텍스트 출력 중
+      } else {
+        this.textComplete = true; // 텍스트 출력 완료
       }
       this.textAnimationCounter = 0;
     }
   }
-
   handleClick() {
-    if (this.currentImageIndex === this.images.length - 1 && this.currentTextIndex === this.texts.length - 1) {
-      changePage(homeMorning, 'DAY'+day);
-      OpeningScene.bgm.stop();
-    } else if (this.currentImageIndex === this.images.length - 1) {
-      if (this.currentTextIndex < this.texts.length - 1) {
-        this.currentTextIndex++;
+    if (this.textComplete) {
+      if (this.currentImageIndex === this.images.length - 1 && this.currentTextIndex === this.texts.length - 1) {
+        changePage(homeMorning, 'DAY' + day);
+        OpeningScene.bgm.stop();
+      } else if (this.currentImageIndex === this.images.length - 1) {
+        if (this.currentTextIndex < this.texts.length - 1) {
+          this.currentTextIndex++;
+        }
+      } else {
+        this.currentImageIndex++;
+        this.currentTextIndex = this.currentImageIndex;
       }
-    } else {
-      this.currentImageIndex++;
-      this.currentTextIndex = this.currentImageIndex;
+      this.alpha = 0;
+      this.fadeIn = true;
+      this.displayedText = "";
+      this.textComplete = false; // 새로운 텍스트 출력 시작
     }
-    this.alpha = 0;
-    this.fadeIn = true;
-    this.displayedText = "";
   }
 }
