@@ -35,6 +35,7 @@ class Transition {
     }
 
     // 검은 사각형과 텍스트 표시
+    rectMode(CORNER);
     fill(0, this.alpha);
     rect(0, 0, width, height);
     fill(255, this.alpha);

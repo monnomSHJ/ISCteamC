@@ -1,6 +1,7 @@
 class HomeMorning {
     constructor() {
         this.image = HomeMorning.image;
+        this.backPackImages = HomeMorning.backPackImages
         this.texts = [
             '오늘은 월요일이다. 너무 힘들군.',
             '오늘은 화요일이다. 학교에 가자.',
@@ -22,11 +23,20 @@ class HomeMorning {
   
     static preload() {
       HomeMorning.image = loadImage('assets/images/backgrounds/homeMorningFullMono.png');
+      HomeMorning.backPackImages = [
+        loadImage('assets/images/objects/backPackMono.png'),
+        loadImage('assets/images/objects/backPackColor2.png'),
+        loadImage('assets/images/objects/backPackColor3.png'),
+        loadImage('assets/images/objects/backPackColor4.png'),
+        loadImage('assets/images/objects/backPackColor5.png')
+      ];
     }
   
     display() {
+      noStroke();
       image(this.image, 0, 0, width, height);
       fill(0);
+      rectMode(CORNER);
       rect(0, height - 120, 1280, 120);
       rect(0, 0, 1280, 120);
       textSize(24);
@@ -34,15 +44,16 @@ class HomeMorning {
       fill(255);
       text(this.displayedText, 640, 637);
       this.updateDisplayedText(); // 텍스트 한글자씩 나오는 함수
-      if (this.displayedText.length === this.texts[this.currentTextIndex].length) {
+      if (this.textComplete) {
         this.drawSchoolButton(); // 모든 텍스트가 다 나오면 버튼을 그리기
       }
+      noStroke();
 
       fill(255);
       if (this.textComplete) {
         if (frameCount % 60 < 30) {
           let textWidthValue = textWidth(this.displayedText);
-          text('▼', 640 + textWidthValue, 637); // 텍스트 끝에 '▼' 기호 추가
+          text('▼', 640 + textWidthValue/2 + 40, 637); // 텍스트 끝에 '▼' 기호 추가
         }
       }
     }
@@ -63,22 +74,29 @@ class HomeMorning {
     }
 
     drawSchoolButton() {
-      if (mouseX > width - 110 && mouseX < width - 10 && mouseY > height - 60 && mouseY < height - 10) {
-        fill(200); // hover 상태일 때 색상 (회색)
+      if(mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > height/2 - 150 && mouseY < height/2 + 150) {
+        image(this.backPackImages[day - 1], width/2 - 165, height/2 - 165, 330, 330);
+        rectMode(CENTER);
+        fill(0, 100);
+        noStroke();
+        rect(width/2, height/2, 200, 40);
+
+        fill(255);
+        textSize(32);
+        textFont(fontNeo);
+        textAlign(CENTER, CENTER);
+        text("등교하기", width/2, height/2);
       } else {
-        fill(255); // 기본 상태일 때 색상 (흰색)
+        image(this.backPackImages[day - 1], width/2 - 150, height/2 - 150, 300, 300);
       }
-      rect(width - 110, height - 60, 100, 40); // 가로 세로 크기 각각 10px 증가
-      textSize(16);
-      fill(0);
-      textAlign(CENTER, CENTER);
-      text('학교가기', width - 60, height - 40);
+      
     }
   
     handleClick() {
-      if (this.displayedText.length === this.texts[this.currentTextIndex].length &&
-        mouseX > width - 110 && mouseX < width - 10 && mouseY > height - 80 && mouseY < height - 10) {
+      if (this.textComplete &&
+        mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > height/2 - 150 && mouseY < height/2 + 150) {
             changePage(wayToSchool, 'Loading...');
+            cameraSound.play();
       }
     }
   }

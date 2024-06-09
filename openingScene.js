@@ -80,6 +80,7 @@ class OpeningScene {
       this.textAnimationCounter = 0;
     }
   }
+  
   handleClick() {
     if (this.textComplete) {
       cameraSound.setVolume(0.3);
