@@ -12,6 +12,7 @@ class HomeMorning {
         this.displayedText = "";
         this.textAnimationSpeed = 5; // 애니메이션 속도
         this.textAnimationCounter = 0; // 애니메이션 카운터
+        this.textComplete = false;
 
         console.log("현재 day 값:", day);
         console.log("currentTextIndex 값:", this.currentTextIndex);
@@ -36,6 +37,14 @@ class HomeMorning {
       if (this.displayedText.length === this.texts[this.currentTextIndex].length) {
         this.drawSchoolButton(); // 모든 텍스트가 다 나오면 버튼을 그리기
       }
+
+      fill(255);
+      if (this.textComplete) {
+        if (frameCount % 60 < 30) {
+          let textWidthValue = textWidth(this.displayedText);
+          text('▼', 640 + textWidthValue, 637); // 텍스트 끝에 '▼' 기호 추가
+        }
+      }
     }
   
     updateDisplayedText() {
@@ -44,6 +53,9 @@ class HomeMorning {
       } else {
         if (this.displayedText.length < this.texts[this.currentTextIndex].length) {
           this.displayedText = this.texts[this.currentTextIndex].substring(0, this.displayedText.length + 1);
+          this.textComplete = false;
+        } else {
+          this.textComplete = true;
         }
         this.textAnimationCounter = 0;
       }
