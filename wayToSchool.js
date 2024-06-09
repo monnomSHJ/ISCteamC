@@ -33,8 +33,8 @@ class WayToSchool {
     WayToSchool.wtsFlowerLily = loadImage('assets/images/objects/wayToSchoolFlower3.png');
     WayToSchool.wtsCat = loadImage('assets/images/objects/wayToSchoolCat0.png');
     WayToSchool.wtsCatCookie = loadImage('assets/images/objects/wayToSchoolCat1.png');
-    WayToSchool.wtsCatFish = loadImage('assets/images/objects/wayToSchoolCat2.png');
-    WayToSchool.wtsCatCheese = loadImage('assets/images/objects/wayToSchoolCat3.png');
+    WayToSchool.wtsCatFish = loadImage('assets/images/objects/wayToSchoolCat3.png');
+    WayToSchool.wtsCatCheese = loadImage('assets/images/objects/wayToSchoolCat2.png');
     WayToSchool.wtsCycle = loadImage('assets/images/objects/wayToSchoolCycle0.png');
     WayToSchool.wtsCycleRed = loadImage('assets/images/objects/wayToSchoolCycle1.png');
     WayToSchool.wtsCycleChild = loadImage('assets/images/objects/wayToSchoolCycle2.png');
@@ -49,7 +49,7 @@ class WayToSchool {
     image(this.wtsStoreSelected, 650, 200);
     image(this.wtsFlowerSelected, 200, 380);
     image(this.wtsCatSelected, 550, 370);
-    image(this.wtsCycleSelected, 1100, 370);
+    image(this.wtsCycleSelected, 1100, 390);
     
     if (this.eventOccur) {
       fill(0);
@@ -223,32 +223,96 @@ class WayToSchool {
       } else if (day == 4) {
         image(this.wtsCycleSelected, 550, 350);
 
-        if (keyIsPressed) {
-          if (keyCode === 65) {
-            this.wtsCycleSelected = WayToSchool.wtsCycleRed;
-            wtsCycle = 1;
-          } else if (keyCode === 83) {
-            this.wtsCycleSelected = WayToSchool.wtsCycleChild;
-            wtsCycle = 2;
-          } else if (keyCode === 68) {
-            this.wtsCycleSelected = WayToSchool.wtsCycleUni;
-            wtsCycle = 3;
-          } else if (keyCode === 27) {
-            this.eventOccur = false;
-            changePage(school, 'Loading...');
+        if(this.blackBar > 118){
+          textSize(24);
+          textAlign(CENTER);
+          fill(255);
+          text('길가에 자전거 주차해 두면…누가 안 훔쳐가려나?', 640, 637);
+          this.Reading = true;
+          
+          if(this.finishRead){
+            this.Reading = false;
+            fill(0);
+            rect(0, 600, 1280, 120);
+            fill(255);
+            rect(240, 615, 200, 90);
+            rect(540, 615, 200, 90);
+            rect(840, 615, 200, 90);
+            fill(0);
+            rect(245, 620, 190, 80);
+            rect(545, 620, 190, 80);
+            rect(845, 620, 190, 80);
+            fill(255);
+            text('빨간 자전거', 340, 660);
+            text('어린이용 자전거', 640, 660);
+            text('외발 자전거', 940, 660);
+            this.choosing = true;
+          }
+
+          if (this.chosen != 0){
+            fill(0)
+            rect(0, 600, 1280, 120);
+            if (this.chosen == 1){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('...훔쳐가기에는 눈에 좀 띄려나.', 640, 637);
+            } else if (this.chosen == 2){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('귀엽네. 애기들 건가?', 640, 637);
+            } else if (this.chosen == 3){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('...저런 건 훔쳐가도 못 타겠지?', 640, 637);
+            }
+
+            this.selected = true;
           }
         }
       } else if (day == 5) {
         image(this.wtsBGSelected, 281, 191, 720, 340, 0, 0, 1280, 720);
         image(WayToSchool.pCamClean, 249, 149);
 
-        if (keyIsPressed) {
-          if (keyCode === 65) {
-            this.wtsBGSelected = WayToSchool.wtsBG;
-            this.wtsBSSelected = WayToSchool.wtsBS;
-          } else if (keyCode === 27) {
-            this.eventOccur = false;
-            changePage(school, 'Loading...');
+        if(this.blackBar > 118){
+          textSize(24);
+          textAlign(CENTER);
+          fill(255);
+          text('오늘은 날씨가 좋네. 하늘이 참...', 640, 637);
+          this.Reading = true;
+          
+          if(this.finishRead){
+            this.Reading = false;
+            fill(0);
+            rect(0, 600, 1280, 120);
+            fill(255);
+            rect(240, 615, 200, 90);
+            rect(540, 615, 200, 90);
+            rect(840, 615, 200, 90);
+            fill(0);
+            rect(245, 620, 190, 80);
+            rect(545, 620, 190, 80);
+            rect(845, 620, 190, 80);
+            fill(255);
+            text('파랗다', 340, 660);
+            text('높다', 640, 660);
+            text('아름답다', 940, 660);
+            this.choosing = true;
+          }
+
+          if (this.chosen != 0){
+            fill(0)
+            rect(0, 600, 1280, 120);
+            if (this.chosen != 0){
+              textSize(24);
+              textAlign(CENTER);
+              fill(255);
+              text('...고개 좀 들고 다녀야겠네.', 640, 637);
+            }
+
+            this.selected = true;
           }
         }
       }
@@ -284,6 +348,11 @@ class WayToSchool {
         } else if (day == 3){
           this.wtsCatSelected = WayToSchool.wtsCatCookie;
           wtsCat = this.chosen
+        } else if (day == 4){
+          this.wtsCycleSelected = WayToSchool.wtsCycleRed;
+          wtsCycle = this.chosen;
+        } else if (day == 5){
+          this.wtsBGSelected = WayToSchool.wtsBG;
         }
 
       } else if (this.over() == 'b'){ /// 2번 선택지 누를 시
@@ -298,6 +367,11 @@ class WayToSchool {
         } else if (day == 3){
           this.wtsCatSelected = WayToSchool.wtsCatFish;
           wtsCat = this.chosen
+        } else if (day == 4){
+          this.wtsCycleSelected = WayToSchool.wtsCycleChild;
+          wtsCycle = this.chosen;
+        } else if (day == 5){
+          this.wtsBGSelected = WayToSchool.wtsBG;
         }
 
       } else if (this.over() == 'c'){ /// 3번 선택지 누를 시
@@ -312,6 +386,12 @@ class WayToSchool {
         } else if (day == 3){
           this.wtsCatSelected = WayToSchool.wtsCatCheese;
           wtsCat = this.chosen
+        } else if (day == 4){
+          this.wtsCycleSelected = WayToSchool.wtsCycleUni;
+          wtsCycle = this.chosen;
+        } else if (day == 5){
+          this.wtsBGSelected = WayToSchool.wtsBG;
+          this.wtsBSSelected = WayToSchool.wtsBS;
         }
       }
       this.choosing = false;
