@@ -260,7 +260,7 @@ class HomeNight {
           day++;
           console.log(day);
           changePage(new HomeMorning(), 'DAY '+day); // HomeMorning의 새로운 인스턴스로 전환
-          cameraSound.play();
+          clickSound.play();
         } else if (day == 5 && this.displayEndingMessage && this.endingMessageComplete) {
           if (this.endingMessageIndex < this.endingmessages.length - 1) {
             this.endingMessageIndex++;
