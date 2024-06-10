@@ -126,6 +126,13 @@ class HomeNight {
       } else if (day == 5) {
         this.drawPreEnding();
       }
+
+      if (this.textComplete) {
+        if (frameCount % 60 < 30) {
+          let textWidthValue = textWidth(this.displayedText);
+          text('▼', 640 + textWidthValue/2 + 40, 637); // 텍스트 끝에 '▼' 기호 추가
+        }
+      }
     }
   
     updateDisplayedText() {
@@ -249,7 +256,7 @@ class HomeNight {
       }
   
       fill(255);
-      textSize(32);
+      textSize(24);
       textAlign(CENTER, CENTER);
       text(this.endingMessageDisplayed, width / 2, height / 2);
     }
