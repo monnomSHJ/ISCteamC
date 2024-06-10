@@ -10,6 +10,7 @@ let cameraSound;
 let clickSound;
 let busSound;
 let schoolSound;
+let bookSound;
 
 let mainMenu; // 메인화면
 let openingScene; // 오프닝
@@ -46,6 +47,7 @@ function preload() {
   clickSound = loadSound('assets/sounds/objectClickSound.mp3');
   busSound = loadSound('assets/sounds/busSound.mp3');
   schoolSound = loadSound('assets/sounds/schoolSound.mp3');
+  bookSound = loadSound('assets/sounds/bookOpenSound.mp3');
 
   MainMenu.preload();
   OpeningScene.preload();
@@ -180,6 +182,12 @@ function resetAll() {
   day = 1; // day 변수 초기화
 
   OpeningScene.bgm.stop();
+  EndingScene.bgm.stop();
+  cameraSound.stop();
+  clickSound.stop();
+  busSound.stop();
+  schoolSound.stop();
+  bookSound.stop();
 
   mainMenu = new MainMenu();
   openingScene = new OpeningScene();

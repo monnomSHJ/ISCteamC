@@ -82,6 +82,7 @@ class HomeNight {
       this.endingMessageComplete = false;
       this.displayEndingMessage = false;
       this.textComplete = false;
+      this.bookSoundPlayed = false;
     }
   
     static preload() {
@@ -152,6 +153,11 @@ class HomeNight {
     }
   
     drawNightBook() {
+      if(!this.bookSoundPlayed) {
+        bookSound.play();
+        this.bookSoundPlayed = true;
+      }
+      
       if (this.fadeInAlpha < 255) {
         this.fadeInAlpha += 5; // 페이드 인 속도 조절
       }
@@ -272,7 +278,7 @@ class HomeNight {
             this.endingMessageComplete = false;
           } else {
             changePage(endingScene, 'Ending...');
-            cameraSound.play();
+            clickSound.play();
           }
         }
       }
