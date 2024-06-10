@@ -268,7 +268,7 @@ class HomeNight {
             this.endingMessageComplete = false;
           } else {
             changePage(endingScene, 'Ending...');
-            clickSound.play();
+            cameraSound.play();
           }
         }
       }

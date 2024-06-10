@@ -6,7 +6,7 @@ class EndingScene {
     this.alpha = 0;
     this.fadeIn = true;
     this.lastChangeTime = 0;
-    this.changeInterval = 3000;
+    this.changeInterval = 5000;
     this.graphicsArray = [];
   
 
@@ -20,12 +20,20 @@ class EndingScene {
 
     this.texts = [
       "평범해 보이는 무채색의 하루에도",
+      "",
       "작은 행복은 언제나 존재합니다.",
+      "",
       "일상의 공간을 둘러보고",
+      "",
       "일상의 소리에 귀를 기울이며",
+      "",
       "나만의 이야기와 색으로",
+      "",
       "일상을 채워넣어보세요.",
-      "오늘도 당신의 행복을 응원합니다."
+      "",
+      "오늘도 당신의 행복을 응원합니다.",
+      "",
+      "플레이해주셔서 감사합니다."
     ];
 
     this.displayedTexts = [];
@@ -293,7 +301,7 @@ class EndingScene {
     textSize(23);
     textAlign(CENTER, CENTER);
     let combinedText = this.displayedTexts.concat(this.displayedText).join("\n");
-    text(combinedText, 900, 350);
+    text(combinedText, 900, 400);
 
  
   }
