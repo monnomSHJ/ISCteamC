@@ -328,6 +328,7 @@ class WayToSchool {
     if (this.eventOccur){ /// 이벤트 발생 시작 후
       if (this.Reading){ /// 읽기 중
         this.finishRead = true; // 마우스 클릭 시 읽기
+        clickSound.play();
       }
     }
 
@@ -336,6 +337,7 @@ class WayToSchool {
       }
 
     if(this.over() == 'a' || this.over() =='b' || this.over() =='c'){ ///만약 버튼을 눌렀다면
+      clickSound.play();
       if(this.over() == 'a'){ /// 1번 선택지 누를 시
         this.chosen = 1;
 
@@ -404,6 +406,7 @@ class WayToSchool {
       this.blackBar = 0;
       this.chosen = 0;
       this.finishRead = false;
+      clickSound.play();
       changePage(school, 'Loading...');
     }
   }
