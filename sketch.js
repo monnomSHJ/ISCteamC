@@ -143,6 +143,7 @@ function mouseClicked() {
 
 // 테스트용 키패드 입력 
 function keyPressed() {
+  /*
   if (key === '1') {
     changePage(mainMenu, 'Loading...');
   } else if (key === '2') {
@@ -162,6 +163,7 @@ function keyPressed() {
   } else if (key === '9') {
     day += 1;
   }
+    */
 
   //리셋
   if (key === 'r') {

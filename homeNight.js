@@ -266,6 +266,7 @@ class HomeNight {
             this.endingMessageIndex++;
             this.endingMessageDisplayed = "";
             this.endingMessageComplete = false;
+            clickSound.play();
           } else {
             changePage(endingScene, 'Ending...');
             cameraSound.play();
