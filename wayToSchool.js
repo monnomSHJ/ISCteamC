@@ -31,8 +31,8 @@ class WayToSchool {
     WayToSchool.wtsFlowerHydrangea = loadImage('assets/images/objects/wayToSchoolFlower2.png');
     WayToSchool.wtsFlowerLily = loadImage('assets/images/objects/wayToSchoolFlower3.png');
     WayToSchool.wtsCat = loadImage('assets/images/objects/wayToSchoolCat0.png');
-    WayToSchool.wtsCatCookie = loadImage('assets/images/objects/wayToSchoolCat1.png');
-    WayToSchool.wtsCatFish = loadImage('assets/images/objects/wayToSchoolCat3.png');
+    WayToSchool.wtsCatCookie = loadImage('assets/images/objects/wayToSchoolCat3.png');
+    WayToSchool.wtsCatFish = loadImage('assets/images/objects/wayToSchoolCat1.png');
     WayToSchool.wtsCatCheese = loadImage('assets/images/objects/wayToSchoolCat2.png');
     WayToSchool.wtsCycle = loadImage('assets/images/objects/wayToSchoolCycle0.png');
     WayToSchool.wtsCycleRed = loadImage('assets/images/objects/wayToSchoolCycle1.png');
