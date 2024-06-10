@@ -110,7 +110,8 @@ function draw() {
   if ((currentScene instanceof WayToSchool || currentScene instanceof WayToHome)&& currentScene.changeCursor() === 2
     || (currentScene instanceof OpeningScene && openingScene.textComplete == true)
     || currentScene instanceof MainMenu
-    || (currentScene instanceof HomeMorning && homeMorning.textComplete && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > height/2 - 150 && mouseY < height/2 + 150)) {
+    || (currentScene instanceof HomeMorning && homeMorning.textComplete && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > height/2 - 150 && mouseY < height/2 + 150)
+    || (currentScene instanceof HomeNight && currentScene.textComplete && mouseX > width - 250 && mouseX < width -30 && mouseY > height - 300 && mouseY < height - 80)) {
     cursorImage = cursorImage2; // 상호작용 가능한 물체 위에 있을 때 커서 이미지를 빨간색으로
   } else {
     cursorImage = cursorImage1; // 그 외의 경우 검은색으로

@@ -1,6 +1,7 @@
 class HomeNight {
     constructor() {
       this.images = HomeNight.images;
+      this.bedImages = HomeNight.bedImages;
       this.book = HomeNight.book;
       this.texts = [
         '월요일, 오늘은 가게와 낙서를 발견했다.',
@@ -80,6 +81,7 @@ class HomeNight {
       this.endingMessageAnimationCounter = 0;
       this.endingMessageComplete = false;
       this.displayEndingMessage = false;
+      this.textComplete = false;
     }
   
     static preload() {
@@ -90,6 +92,12 @@ class HomeNight {
         loadImage('assets/images/backgrounds/homeNightFullColor3.png'),
         loadImage('assets/images/backgrounds/homeNightFullColor4.png'),
         loadImage('assets/images/backgrounds/homeNightFullColor.png')
+      ]
+      HomeNight.bedImages = [
+        loadImage('assets/images/objects/bedMono.png'),
+        loadImage('assets/images/objects/bedColor2.png'),
+        loadImage('assets/images/objects/bedColor3.png'),
+        loadImage('assets/images/objects/bedColor4.png')
       ]
     }
   
@@ -123,6 +131,9 @@ class HomeNight {
       } else {
         if (this.displayedText.length < this.texts[this.currentTextIndex].length) {
           this.displayedText = this.texts[this.currentTextIndex].substring(0, this.displayedText.length + 1);
+          this.textComplete = false;
+        } else {
+          this.textComplete = true;
         }
         this.textAnimationCounter = 0;
       }
@@ -136,7 +147,7 @@ class HomeNight {
       image(this.book, width / 2 - this.book.width / 2, height / 2 - this.book.height / 2);
       noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
     }
-  
+
     drawSelected() {
       if (this.storeFadeInAlpha < 255) {
         this.storeFadeInAlpha += 3; // 페이드 인 속도 조절
@@ -234,8 +245,8 @@ class HomeNight {
     }
   
     handleClick() {
-        if (day < 5 && this.displayedText.length === this.texts[this.currentTextIndex].length &&
-            mouseX > width - 110 && mouseX < width - 10 && mouseY > height - 80 && mouseY < height - 10) {
+        if (day < 5 && this.textComplete &&
+          mouseX > width - 250 && mouseX < width -30 && mouseY > height - 300 && mouseY < height - 80) {
           day++;
           console.log(day);
           changePage(new HomeMorning(), 'DAY '+day); // HomeMorning의 새로운 인스턴스로 전환
@@ -253,16 +264,22 @@ class HomeNight {
       }
     
     drawSleepButton() {
-      if (mouseX > width - 110 && mouseX < width - 10 && mouseY > height - 60 && mouseY < height - 10) {
-        fill(200); // hover 상태일 때 색상 (회색)
+      if(mouseX > width - 250 && mouseX < width -30 && mouseY > height - 300 && mouseY < height - 80) {
+        image(this.bedImages[day-1], width - 265, height - 315, 250, 250);
+        rectMode(CENTER);
+        fill(0, 100);
+        noStroke();
+        rect(width - 140, height - 190, 200, 40);
+
+        fill(255);
+        textSize(32);
+        textFont(fontNeo);
+        textAlign(CENTER, CENTER);
+        text("잠자기", width - 140, height - 190);
       } else {
-        fill(255); // 기본 상태일 때 색상 (흰색)
+        image(this.bedImages[day-1], width - 250, height - 300, 220, 220);
       }
-      rect(width - 110, height - 60, 100, 40); // 버튼의 시각적 크기는 유지
-      textSize(16);
-      fill(0);
-      textAlign(CENTER, CENTER);
-      text('잠자기', width - 60, height - 40);
+      
     }
   }
   
