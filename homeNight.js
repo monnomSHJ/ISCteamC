@@ -47,11 +47,11 @@ class HomeNight {
       }
 
     if (wtsCat == 1) {
-        this.selectedCat = loadImage('assets/images/objects/wayToSchoolCat1.png');
-      } else if (wtsCat == 2) {
-        this.selectedCat = loadImage('assets/images/objects/wayToSchoolCat2.png');
-      } else if (wtsCat == 3) {
         this.selectedCat = loadImage('assets/images/objects/wayToSchoolCat3.png');
+      } else if (wtsCat == 2) {
+        this.selectedCat = loadImage('assets/images/objects/wayToSchoolCat1.png');
+      } else if (wtsCat == 3) {
+        this.selectedCat = loadImage('assets/images/objects/wayToSchoolCat2.png');
       }
 
       if (wtsCycle == 1) {
@@ -162,24 +162,26 @@ class HomeNight {
 
         tint(255, this.storeFadeInAlpha); // 알파 값 적용
         image(this.selectedStore, 660, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
-        image(this.selectedWall, 300, 220, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
+        image(this.selectedWall, 320, 220, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
 
         noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
       } else if (day == 2) {
-        let targetWidth = 300;
+        let targetWidth1 = 300;
+        let targetWidth2 = 250;
+
         let aspectRatio1 = this.selectedFlower.width / this.selectedFlower.height;
         let aspectRatio2 = this.selectedPoster.width / this.selectedPoster.height;
 
-        let targetHeight1 = targetWidth / aspectRatio1;
-        let targetHeight2 = targetWidth / aspectRatio2;
+        let targetHeight1 = targetWidth1 / aspectRatio1;
+        let targetHeight2 = targetWidth2 / aspectRatio2;
 
         tint(255, this.storeFadeInAlpha); // 알파 값 적용
-        image(this.selectedFlower, 660, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
-        image(this.selectedPoster, 260, 250, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
+        image(this.selectedFlower, 660, 250, targetWidth1, targetHeight1); // 이미지를 특정 위치와 크기로 표시
+        image(this.selectedPoster, 360, 200, targetWidth2, targetHeight2); // 이미지를 특정 위치와 크기로 표시
 
         noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
       } else if (day == 3) {
-        let targetWidth = 300;
+        let targetWidth = 260;
         let aspectRatio1 = this.selectedCat.width / this.selectedCat.height;
         let aspectRatio2 = this.selectedMountain.width / this.selectedMountain.height;
 
@@ -188,13 +190,13 @@ class HomeNight {
 
         tint(255, this.storeFadeInAlpha); // 알파 값 적용
         image(this.selectedCat, 660, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
-        image(this.selectedMountain, 260, 250, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
+        image(this.selectedMountain, 320, 250, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
 
         noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
       } else if (day == 4) {
         let targetWidth = 300;
         let aspectRatio1 = this.selectedCycle.width / this.selectedCycle.height;
-        let aspectRatio2 = this.selectedBird.width / this.Bird.height;
+        let aspectRatio2 = this.selectedBird.width / this.selectedBird.height;
         let targetHeight1 = targetWidth / aspectRatio1;
         let targetHeight2 = targetWidth / aspectRatio2;
 
