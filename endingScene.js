@@ -46,7 +46,7 @@ class EndingScene {
     this.finalMessageDisplayed = false;
 
     
-    if(wtsStore ==0){
+    if(wtsStore ==1){
       this.selectedStore =  EndingScene.wtsStore1;
     }else if(wtsStore ==2){
       this.selectedStore =  EndingScene.wtsStore2;
@@ -54,7 +54,7 @@ class EndingScene {
       this.selectedStore =  EndingScene.wtsStore3;
     }
 
-    if(wtsFlower ==0){
+    if(wtsFlower ==1){
       this.selectedFlower =  EndingScene.wtsFlower1;
     }else if(wtsFlower ==2){
       this.selectedFlower = EndingScene.wtsFlower2;
@@ -62,7 +62,7 @@ class EndingScene {
       this.selectedFlower = EndingScene.wtsFlower3;
     }
 
-    if(wtsCat ==0){
+    if(wtsCat ==1){
       this.selectedCat = EndingScene.wtsCat1;
     }else if(wtsCat ==2){
       this.selectedCat = EndingScene.wtsCat2;
@@ -70,7 +70,7 @@ class EndingScene {
       this.selectedCat = EndingScene.wtsCat3;
     }
 
-    if(wtsCycle ==0){
+    if(wtsCycle ==1){
       this.selectedCycle = EndingScene.wtsCycle1;
     }else if(wtsCycle ==2){
       this.selectedCycle = EndingScene.wtsCycle2;
@@ -78,7 +78,7 @@ class EndingScene {
       this.selectedCycle = EndingScene.wtsCycle3;
     }
 
-    if(wthWall ==0){
+    if(wthWall ==1){
       this.wthWallSelected = EndingScene.wthWall1;
     }else if(wthWall ==2){
       this.wthWallSelected = EndingScene.wthWall2;
@@ -86,7 +86,7 @@ class EndingScene {
       this.wthWallSelected = EndingScene.wthWall3;
     }
 
-    if(wthPoster ==0){
+    if(wthPoster ==1){
       this.wthPosterSelected = EndingScene.wthPoster1;
     }else if(wthPoster ==2){
       this.wthPosterSelected = EndingScene.wthPoster2;
@@ -94,7 +94,7 @@ class EndingScene {
       this.wthPosterSelected = EndingScene.wthPoster3;
     }
 
-    if(wthBird ==0){
+    if(wthBird ==1){
       this.wthBirdSelected = EndingScene.wthBird1;
     }else if(wthBird ==2){
       this.wthBirdSelected = EndingScene.wthBird2;
