@@ -102,6 +102,8 @@ class HomeNight {
     }
   
     display() {
+      busSound.stop();
+
       image(this.images[day-1], 0, 0, width, height);
       fill(0);
       rectMode(CORNER);
