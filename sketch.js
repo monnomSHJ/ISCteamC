@@ -126,11 +126,16 @@ function draw() {
   }
 
   //커서 이미지 적용
-  push();
-  translate(mouseX, mouseY);
-  scale(0.55);
-  image(cursorImage, 0, 0);
-  pop();
+  if(currentScene instanceof EndingScene) {
+
+  } else {
+    push();
+    translate(mouseX, mouseY);
+    scale(0.55);
+    image(cursorImage, 0, 0);
+    pop();
+  }
+
 }
 
 function mouseClicked() {
