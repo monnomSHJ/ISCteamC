@@ -40,7 +40,7 @@ class EndingScene {
     this.currentTextIndex = 0;
     this.displayedText = "";
     this.textAnimationCounter = 0;
-    this.textAnimationSpeed = 8;
+    this.textAnimationSpeed = 5;
     this.textComplete = false;
 
     this.finalMessageDisplayed = false;
