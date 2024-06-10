@@ -321,6 +321,7 @@ class WayToSchool {
   handleClick() {
 
     if (this.over() == day) {  /// 이벤트 발생 트리거: this.over = 날짜
+      cameraSound.play();
       this.eventOccur = true;
     }
 
