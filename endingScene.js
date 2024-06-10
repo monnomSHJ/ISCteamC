@@ -251,6 +251,7 @@ class EndingScene {
     background(0);
     //clip(80, 200, 480, 270);
     if (!EndingScene.bgm.isPlaying()) {
+      EndingScene.bgm.setVolume(0.5);
       EndingScene.bgm.loop(); // 배경음악을 반복 재생 //수정
     }
     

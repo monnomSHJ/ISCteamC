@@ -109,7 +109,7 @@ function draw() {
   }
 
   // 커서 이미지 조건문
-  if ((currentScene instanceof WayToSchool || currentScene instanceof WayToHome)&& currentScene.changeCursor() === 2
+  if ((currentScene instanceof WayToSchool || currentScene instanceof WayToHome)&& (currentScene.changeCursor() === 2|| currentScene.Reading) 
     || (currentScene instanceof OpeningScene && openingScene.textComplete == true)
     || currentScene instanceof MainMenu
     || (currentScene instanceof HomeMorning && homeMorning.textComplete && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > height/2 - 150 && mouseY < height/2 + 150)

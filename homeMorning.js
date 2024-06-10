@@ -102,7 +102,7 @@ class HomeMorning {
       if (this.textComplete &&
         mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > height/2 - 150 && mouseY < height/2 + 150) {
             changePage(wayToSchool, 'Loading...');
-            cameraSound.play();
+            clickSound.play();
       }
     }
   }

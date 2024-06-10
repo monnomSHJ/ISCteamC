@@ -20,7 +20,6 @@ class School {
       this.fadeIn = true;
       setTimeout(() => {
         changePage(wayToHome, 'Loading...');
-        cameraSound.play();
       }, 5000); // 5초 후에 wayToHome으로 전환
     }
   

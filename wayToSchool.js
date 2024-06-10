@@ -31,8 +31,8 @@ class WayToSchool {
     WayToSchool.wtsFlowerHydrangea = loadImage('assets/images/objects/wayToSchoolFlower2.png');
     WayToSchool.wtsFlowerLily = loadImage('assets/images/objects/wayToSchoolFlower3.png');
     WayToSchool.wtsCat = loadImage('assets/images/objects/wayToSchoolCat0.png');
-    WayToSchool.wtsCatCookie = loadImage('assets/images/objects/wayToSchoolCat1.png');
-    WayToSchool.wtsCatFish = loadImage('assets/images/objects/wayToSchoolCat3.png');
+    WayToSchool.wtsCatCookie = loadImage('assets/images/objects/wayToSchoolCat3.png');
+    WayToSchool.wtsCatFish = loadImage('assets/images/objects/wayToSchoolCat1.png');
     WayToSchool.wtsCatCheese = loadImage('assets/images/objects/wayToSchoolCat2.png');
     WayToSchool.wtsCycle = loadImage('assets/images/objects/wayToSchoolCycle0.png');
     WayToSchool.wtsCycleRed = loadImage('assets/images/objects/wayToSchoolCycle1.png');
@@ -321,12 +321,14 @@ class WayToSchool {
   handleClick() {
 
     if (this.over() == day) {  /// 이벤트 발생 트리거: this.over = 날짜
+      cameraSound.play();
       this.eventOccur = true;
     }
 
     if (this.eventOccur){ /// 이벤트 발생 시작 후
       if (this.Reading){ /// 읽기 중
         this.finishRead = true; // 마우스 클릭 시 읽기
+        clickSound.play();
       }
     }
 
@@ -335,6 +337,7 @@ class WayToSchool {
       }
 
     if(this.over() == 'a' || this.over() =='b' || this.over() =='c'){ ///만약 버튼을 눌렀다면
+      clickSound.play();
       if(this.over() == 'a'){ /// 1번 선택지 누를 시
         this.chosen = 1;
 
@@ -403,6 +406,7 @@ class WayToSchool {
       this.blackBar = 0;
       this.chosen = 0;
       this.finishRead = false;
+      clickSound.play();
       changePage(school, 'Loading...');
     }
   }
