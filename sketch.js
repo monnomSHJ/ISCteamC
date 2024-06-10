@@ -8,6 +8,7 @@ let cursorImage2;
 
 let cameraSound;
 let clickSound;
+let busSound;
 
 let mainMenu; // 메인화면
 let openingScene; // 오프닝
@@ -42,6 +43,7 @@ function preload() {
   cursorImage2 = loadImage('assets/images/mouseCursor2.png');
   cameraSound = loadSound('assets/sounds/cursorClickSound.mp3');
   clickSound = loadSound('assets/sounds/objectClickSound.mp3');
+  busSound = loadSound('assets/sounds/busSound.mp3');
 
   MainMenu.preload();
   OpeningScene.preload();

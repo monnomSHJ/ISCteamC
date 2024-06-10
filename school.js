@@ -24,6 +24,7 @@ class School {
     }
   
     display() {
+      busSound.stop();
       tint(255, this.alpha); // 이미지에 알파 값 적용
       image(this.images[day - 1], 0, 0, 1280, 720); // day 값에 따라 인덱스 호출
       noTint();
