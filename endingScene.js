@@ -44,9 +44,8 @@ class EndingScene {
     this.textComplete = false;
 
     this.finalMessageDisplayed = false;
-
     
-    if(wtsStore ==1){
+    if(wtsStore ==1 || wtsStore ==0){
       this.selectedStore =  EndingScene.wtsStore1;
     }else if(wtsStore ==2){
       this.selectedStore =  EndingScene.wtsStore2;
@@ -54,7 +53,7 @@ class EndingScene {
       this.selectedStore =  EndingScene.wtsStore3;
     }
 
-    if(wtsFlower ==1){
+    if(wtsFlower ==1 || wtsFlower ==0){
       this.selectedFlower =  EndingScene.wtsFlower1;
     }else if(wtsFlower ==2){
       this.selectedFlower = EndingScene.wtsFlower2;
@@ -62,7 +61,7 @@ class EndingScene {
       this.selectedFlower = EndingScene.wtsFlower3;
     }
 
-    if(wtsCat ==1){
+    if(wtsCat ==1 || wtsCat ==0){
       this.selectedCat = EndingScene.wtsCat1;
     }else if(wtsCat ==2){
       this.selectedCat = EndingScene.wtsCat2;
@@ -70,7 +69,7 @@ class EndingScene {
       this.selectedCat = EndingScene.wtsCat3;
     }
 
-    if(wtsCycle ==1){
+    if(wtsCycle ==1 || wtsCycle ==0){
       this.selectedCycle = EndingScene.wtsCycle1;
     }else if(wtsCycle ==2){
       this.selectedCycle = EndingScene.wtsCycle2;
@@ -78,7 +77,7 @@ class EndingScene {
       this.selectedCycle = EndingScene.wtsCycle3;
     }
 
-    if(wthWall ==1){
+    if(wthWall ==1 || wthWall ==0){
       this.wthWallSelected = EndingScene.wthWall1;
     }else if(wthWall ==2){
       this.wthWallSelected = EndingScene.wthWall2;
@@ -86,7 +85,7 @@ class EndingScene {
       this.wthWallSelected = EndingScene.wthWall3;
     }
 
-    if(wthPoster ==1){
+    if(wthPoster ==1 || wthPoster ==0){
       this.wthPosterSelected = EndingScene.wthPoster1;
     }else if(wthPoster ==2){
       this.wthPosterSelected = EndingScene.wthPoster2;
@@ -94,7 +93,7 @@ class EndingScene {
       this.wthPosterSelected = EndingScene.wthPoster3;
     }
 
-    if(wthBird ==1){
+    if(wthBird ==1 || wthBird ==0){
       this.wthBirdSelected = EndingScene.wthBird1;
     }else if(wthBird ==2){
       this.wthBirdSelected = EndingScene.wthBird2;
@@ -178,7 +177,7 @@ class EndingScene {
     EndingScene.wthBird1 = loadImage('assets/images/objects/wayToHomeBird1.png');
     EndingScene.wthBird2 = loadImage('assets/images/objects/wayToHomeBird2.png');
     EndingScene.wthBird3 = loadImage('assets/images/objects/wayToHomeBird3.png');
-    EndingScene.mainMenu = loadImage('assets/images/backgrounds/mainMenuColor.png')
+    EndingScene.mainMenu = loadImage('assets/images/backgrounds/mainMenuColor.png');
 
 
 

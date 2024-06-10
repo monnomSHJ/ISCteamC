@@ -54,14 +54,6 @@ class HomeMorning {
         this.drawSchoolButton(); // 모든 텍스트가 다 나오면 버튼을 그리기
       }
       noStroke();
-
-      fill(255);
-      if (this.textComplete) {
-        if (frameCount % 60 < 30) {
-          let textWidthValue = textWidth(this.displayedText);
-          text('▼', 640 + textWidthValue/2 + 40, 637); // 텍스트 끝에 '▼' 기호 추가
-        }
-      }
     }
   
     updateDisplayedText() {

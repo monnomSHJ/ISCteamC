@@ -126,9 +126,8 @@ function draw() {
   }
 
   //커서 이미지 적용
-  if(currentScene instanceof EndingScene) {
-
-  } else {
+  if(currentScene instanceof EndingScene) {}
+  else {
     push();
     translate(mouseX, mouseY);
     scale(0.55);
