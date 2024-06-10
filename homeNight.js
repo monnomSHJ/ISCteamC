@@ -13,8 +13,23 @@ class HomeNight {
         '금요일이라 그런가...피곤해서 눈이 감긴다.',
         '이번 주는 많은 일들이 있었던 것 같다.'
       ];
-      this.selectedStore = WayToSchool.wtsStore;
-      this.selectedPoster = WayToHome.wthPoster;
+      console.log(wtsStore);
+      if (wtsStore == 1) {
+        this.selectedStore = loadImage('assets/images/objects/wayToSchoolStore1.png');
+      } else if (wtsStore == 2) {
+        this.selectedStore = loadImage('assets/images/objects/wayToSchoolStore2.png');
+      } else if (wtsStore == 3) {
+        this.selectedStore = loadImage('assets/images/objects/wayToSchoolStore3.png');
+      }
+  
+      if (wthPoster == 1) {
+        this.selectedPoster = loadImage('assets/images/objects/wayToSchoolStore1.png');
+      } else if (wthPoster == 2) {
+        this.selectedPoster = loadImage('assets/images/objects/wayToSchoolStore2.png');
+      } else if (wthPoster == 3) {
+        this.selectedPoster = loadImage('assets/images/objects/wayToSchoolStore3.png');
+      }
+      this.selectedPoster = wthPoster;
       this.selectedFlower = WayToSchool.wtsFlower;
       this.selectedCat = WayToSchool.wtsCat;
       this.selectedCycle = WayToSchool.wtsCycle;
