@@ -123,16 +123,6 @@ class HomeNight {
       } else if (day == 5) {
         this.drawPreEnding();
       }
-
-      if (this.textComplete) {
-        if (frameCount % 60 < 30) {
-          textSize(24);
-          textAlign(CENTER, CENTER);
-          fill(255);
-          let textWidthValue = textWidth(this.displayedText);
-          text('▼', 640 + textWidthValue/2 + 40, 637); // 텍스트 끝에 '▼' 기호 추가
-        }
-      }
     }
   
     updateDisplayedText() {
@@ -199,12 +189,12 @@ class HomeNight {
         let targetHeight2 = targetWidth / aspectRatio2;
 
         tint(255, this.storeFadeInAlpha); // 알파 값 적용
-        image(this.selectedCat, 660, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
-        image(this.selectedMountain, 320, 250, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
+        image(this.selectedCat, 680, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
+        image(this.selectedMountain, 350, 250, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
 
         noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
       } else if (day == 4) {
-        let targetWidth = 300;
+        let targetWidth = 280;
         let aspectRatio1 = this.selectedCycle.width / this.selectedCycle.height;
         let aspectRatio2 = this.selectedBird.width / this.selectedBird.height;
         let targetHeight1 = targetWidth / aspectRatio1;
@@ -212,7 +202,7 @@ class HomeNight {
 
         tint(255, this.storeFadeInAlpha); // 알파 값 적용
         image(this.selectedCycle, 660, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
-        image(this.selectedBird, 260, 250, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
+        image(this.selectedBird, 340, 250, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
         noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
       }
     }
