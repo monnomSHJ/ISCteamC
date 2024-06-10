@@ -415,6 +415,8 @@ class WayToHome {
       this.chosen = 0;
       this.finishRead = false;
       clickSound.play();
+      busSound.setVolume(0.5);
+      busSound.play();
       changePage(homeNight, 'Loading...');
     }
   }
