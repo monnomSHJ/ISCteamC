@@ -20,18 +20,54 @@ class HomeNight {
       } else if (wtsStore == 3) {
         this.selectedStore = loadImage('assets/images/objects/wayToSchoolStore3.png');
       }
-  
-      if (wthPoster == 1) {
-        this.selectedPoster = loadImage('assets/images/objects/wayToSchoolStore1.png');
-      } else if (wthPoster == 2) {
-        this.selectedPoster = loadImage('assets/images/objects/wayToSchoolStore2.png');
-      } else if (wthPoster == 3) {
-        this.selectedPoster = loadImage('assets/images/objects/wayToSchoolStore3.png');
+
+      if (wthWall == 1) {
+        this.selectedWall = loadImage('assets/images/objects/wayToHomeWall1.png');
+      } else if (wthWall == 2) {
+        this.selectedWall = loadImage('assets/images/objects/wayToHomeWall2.png');
+      } else if (wthWall == 3) {
+        this.selectedWall = loadImage('assets/images/objects/wayToHomeWall3.png');
       }
-      this.selectedPoster = wthPoster;
-      this.selectedFlower = WayToSchool.wtsFlower;
-      this.selectedCat = WayToSchool.wtsCat;
-      this.selectedCycle = WayToSchool.wtsCycle;
+
+      if (wtsFlower == 1) {
+        this.selectedFlower = loadImage('assets/images/objects/wayToSchoolFlower1.png');
+      } else if (wtsStore == 2) {
+        this.selectedFlower = loadImage('assets/images/objects/wayToSchoolFlower2.png');
+      } else if (wtsStore == 3) {
+        this.selectedFlower = loadImage('assets/images/objects/wayToSchoolFlower3.png');
+      }
+
+      if (wthPoster == 1) {
+        this.selectedPoster = loadImage('assets/images/objects/wayToHomePoster1.png');
+      } else if (wthPoster == 2) {
+        this.selectedPoster = loadImage('assets/images/objects/wayToHomePoster2.png');
+      } else if (wthPoster == 3) {
+        this.selectedPoster = loadImage('assets/images/objects/wayToHomePoster3.png');
+      }
+
+    if (wtsCat == 1) {
+        this.selectedCat = loadImage('assets/images/objects/wayToSchoolCat1.png');
+      } else if (wtsCat == 2) {
+        this.selectedCat = loadImage('assets/images/objects/wayToSchoolCat2.png');
+      } else if (wtsCat == 3) {
+        this.selectedCat = loadImage('assets/images/objects/wayToSchoolCat3.png');
+      }
+
+      if (wtsCycle == 1) {
+        this.selectedCycle = loadImage('assets/images/objects/wayToSchoolCycle1.png');
+      } else if (wtsCycle == 2) {
+        this.selectedCycle = loadImage('assets/images/objects/wayToSchoolCycle2.png');
+      } else if (wtsCycle == 3) {
+        this.selectedCycle = loadImage('assets/images/objects/wayToSchoolCycle3.png');
+      }
+      if (wthBird == 1) {
+        this.selectedBird = loadImage('assets/images/objects/wayToHomeBird1.png');
+      } else if (wthBird == 2) {
+        this.selectedBird = loadImage('assets/images/objects/wayToHomeBird2.png');
+      } else if (wthBird == 3) {
+        this.selectedBird = loadImage('assets/images/objects/wayToHomeBird3.png');
+      }
+      this.selectedMountain = loadImage('assets/images/objects/wayToHomeMountainColor.png');
       this.currentTextIndex = day - 1;
       this.displayedText = "";
       this.textAnimationSpeed = 5; // 애니메이션 속도
@@ -108,30 +144,52 @@ class HomeNight {
       if (day == 1) {
         let targetWidth = 300;
         let aspectRatio1 = this.selectedStore.width / this.selectedStore.height;
+        //let aspectRatio2 = this.selectedWall.width / this.selectedWall.height;
+
         let targetHeight1 = targetWidth / aspectRatio1;
+        //let targetHeight2 = targetWidth / aspectRatio2;
+
         tint(255, this.storeFadeInAlpha); // 알파 값 적용
         image(this.selectedStore, 660, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
+        //image(this.selectedWall, 260, 250, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
+
         noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
       } else if (day == 2) {
         let targetWidth = 300;
         let aspectRatio1 = this.selectedFlower.width / this.selectedFlower.height;
+        //let aspectRatio2 = this.selectedPoster.width / this.selectedPoster.height;
+
         let targetHeight1 = targetWidth / aspectRatio1;
+        //let targetHeight2 = targetWidth / aspectRatio2;
+
         tint(255, this.storeFadeInAlpha); // 알파 값 적용
         image(this.selectedFlower, 660, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
+        //image(this.selectedPoster, 260, 250, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
+
         noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
       } else if (day == 3) {
         let targetWidth = 300;
         let aspectRatio1 = this.selectedCat.width / this.selectedCat.height;
+        //let aspectRatio2 = this.selectedMountain.width / this.selectedMountain.height;
+
         let targetHeight1 = targetWidth / aspectRatio1;
+        //let targetHeight2 = targetWidth / aspectRatio2;
+
         tint(255, this.storeFadeInAlpha); // 알파 값 적용
         image(this.selectedCat, 660, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
+        //image(this.selectedMountain, 260, 250, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
+
         noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
       } else if (day == 4) {
         let targetWidth = 300;
         let aspectRatio1 = this.selectedCycle.width / this.selectedCycle.height;
+        //let aspectRatio2 = this.selectedBird.width / this.Bird.height;
         let targetHeight1 = targetWidth / aspectRatio1;
+        //let targetHeight2 = targetWidth / aspectRatio2;
+
         tint(255, this.storeFadeInAlpha); // 알파 값 적용
         image(this.selectedCycle, 660, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
+       // image(this.selectedBird, 260, 250, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
         noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
       }
     }
