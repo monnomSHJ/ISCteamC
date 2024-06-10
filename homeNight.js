@@ -1,6 +1,6 @@
 class HomeNight {
     constructor() {
-      this.image = HomeNight.image;
+      this.images = HomeNight.images;
       this.book = HomeNight.book;
       this.texts = [
         '월요일, 오늘은 가게와 낙서를 발견했다.',
@@ -33,25 +33,19 @@ class HomeNight {
   
     static preload() {
       HomeNight.book = loadImage('assets/images/objects/homeNightBook.png');
-      if (day == 1) {
-        HomeNight.image = loadImage('assets/images/backgrounds/homeNightMono.png');
-      } else {
-        HomeNight.image = loadImage('assets/images/backgrounds/homeNightColor.png');
-      }
+      HomeNight.images = [
+        loadImage('assets/images/backgrounds/homeNightFullMono.png'),
+        loadImage('assets/images/backgrounds/homeNightFullColor2.png'),
+        loadImage('assets/images/backgrounds/homeNightFullColor3.png'),
+        loadImage('assets/images/backgrounds/homeNightFullColor4.png'),
+        loadImage('assets/images/backgrounds/homeNightFullColor.png')
+      ]
     }
   
     display() {
-      if (day == 1) {
-        image(this.image, 0, 0, width, height);
-      } else {
-        let tintValue = day * 51; // day 값에 따라 0에서 255로 매핑
-        tint(tintValue, tintValue, tintValue, 255);
-        image(this.image, 0, 0, width, height);
-      }
-  
-      noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
-  
+      image(this.images[day-1], 0, 0, width, height);
       fill(0);
+      rectMode(CORNER);
       rect(0, height - 120, 1280, 120);
       rect(0, 0, 1280, 120);
   

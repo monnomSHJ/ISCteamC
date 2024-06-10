@@ -1,7 +1,7 @@
 class HomeMorning {
     constructor() {
-        this.image = HomeMorning.image;
-        this.backPackImages = HomeMorning.backPackImages
+        this.images = HomeMorning.images;
+        this.backPackImages = HomeMorning.backPackImages;
         this.texts = [
             '오늘은 월요일이다. 너무 힘들군.',
             '오늘은 화요일이다. 학교에 가자.',
@@ -22,7 +22,13 @@ class HomeMorning {
     }
   
     static preload() {
-      HomeMorning.image = loadImage('assets/images/backgrounds/homeMorningFullMono.png');
+      HomeMorning.images = [
+        loadImage('assets/images/backgrounds/homeMorningFullMono.png'),
+        loadImage('assets/images/backgrounds/homeMorningFullColor2.png'),
+        loadImage('assets/images/backgrounds/homeMorningFullColor3.png'),
+        loadImage('assets/images/backgrounds/homeMorningFullColor4.png'),
+        loadImage('assets/images/backgrounds/homeMorningFullColor.png')
+      ]
       HomeMorning.backPackImages = [
         loadImage('assets/images/objects/backPackMono.png'),
         loadImage('assets/images/objects/backPackColor2.png'),
@@ -34,7 +40,7 @@ class HomeMorning {
   
     display() {
       noStroke();
-      image(this.image, 0, 0, width, height);
+      image(this.images[day - 1], 0, 0, width, height);
       fill(0);
       rectMode(CORNER);
       rect(0, height - 120, 1280, 120);

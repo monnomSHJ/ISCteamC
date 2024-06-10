@@ -147,7 +147,7 @@ function keyPressed() {
   } else if (key === '8') {
     changePage(endingScene, 'Loading...');
   } else if (key === '9') {
-    day =+ 5
+    day += 1;
   }
 
   //리셋
