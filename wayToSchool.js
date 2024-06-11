@@ -14,6 +14,8 @@ class WayToSchool {
     this.chosen = 0; // 선택지에서 몇 번을 선택했는가. 전역변수로 값이 나갈 예정
     this.selected = false; // 선택을 했는가.
 
+    this.flashAlpha = 0; // 플래시의 투명도
+    this.isFlashing = false; // 플래시 켜져있나?
   }
 
   static preload() {
@@ -38,8 +40,9 @@ class WayToSchool {
     WayToSchool.wtsCycleRed = loadImage('assets/images/objects/wayToSchoolCycle1.png');
     WayToSchool.wtsCycleChild = loadImage('assets/images/objects/wayToSchoolCycle2.png');
     WayToSchool.wtsCycleUni = loadImage('assets/images/objects/wayToSchoolCycle3.png');
-    WayToSchool.pCam = loadImage('assets/images/objects/phoneCamerafilled.png');
-    WayToSchool.pCamClean = loadImage('assets/images/objects/phoneCamera.png');
+    WayToSchool.pCam = loadImage('assets/images/objects/phoneCamera.png');
+    WayToSchool.pCamClean = loadImage('assets/images/objects/phoneCamera2transparent.png');
+    WayToSchool.blurImage = loadImage('assets/images/backgrounds/blurImage.png');
   }
 
   display() {
@@ -52,13 +55,25 @@ class WayToSchool {
     
     if (this.eventOccur) {
       fill(0);
-      rect(0, 720, 1280, -this.blackBar);
+      rectMode(CORNER);
+      rect(0, height, 1280, - this.blackBar);
       rect(0, 0, 1280, this.blackBar);
-      if (this.blackBar < 120){
-        this.blackBar += 2;
-      }
 
-      image(WayToSchool.pCam, 249, 149);
+      if (this.blackBar < 120){
+        this.blackBar += 3;
+      } 
+
+      image(WayToSchool.blurImage, 0, 0, 1280, 720);
+
+      
+      rectMode(CENTER);
+      fill(0, 220);
+      rect(width/2, height/2, 730, 340);
+      rectMode(CORNER);
+
+      image(WayToSchool.pCam, width/2 - 370, height/2 - 174, 740, 348);
+
+ 
 
       if (day == 1) {
         image(this.wtsStoreSelected, 445, 204.5);
@@ -316,13 +331,17 @@ class WayToSchool {
         }
       }
     }
+
+    this.cameraFlash();
   }
 
   handleClick() {
 
     if (this.over() == day) {  /// 이벤트 발생 트리거: this.over = 날짜
       cameraSound.play();
+      this.cameraFlashTrigger();
       this.eventOccur = true;
+      
     }
 
     if (this.eventOccur){ /// 이벤트 발생 시작 후
@@ -413,7 +432,25 @@ class WayToSchool {
     }
   }
 
+  cameraFlashTrigger() {
+    this.flashAlpha = 255;
+    this.isFlashing = true;
+  }
 
+  cameraFlash() {
+    if(this.isFlashing) {
+      this.flashAlpha -= 5;
+      if(this.flashAlpha <= 0) {
+        this.flashAlpha = 0;
+        this.isFlasing = false;
+      }
+    }
+
+    if(this.flashAlpha > 0) {
+      fill(255, this.flashAlpha);
+      rect(0, 0, width, height);
+    }
+  }
 
   over() {
 

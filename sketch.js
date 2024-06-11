@@ -41,7 +41,7 @@ let wthRoad = 0; //길(배경 요소)
 
 function preload() {
   fontNeo = loadFont('assets/fonts/neoMo.TTF');
-  cursorImage1 = loadImage('assets/images/mouseCursor1.png');
+  cursorImage1 = loadImage('assets/images/mouseCursor3.png');
   cursorImage2 = loadImage('assets/images/mouseCursor2.png');
   cameraSound = loadSound('assets/sounds/cursorClickSound.mp3');
   clickSound = loadSound('assets/sounds/objectClickSound.mp3');
@@ -128,11 +128,20 @@ function draw() {
   //커서 이미지 적용
   if(currentScene instanceof EndingScene) {}
   else {
-    push();
-    translate(mouseX, mouseY);
-    scale(0.55);
-    image(cursorImage, 0, 0);
-    pop();
+    if(cursorImage == cursorImage2) {
+      push();
+      translate(mouseX, mouseY);
+      scale(0.55);
+      image(cursorImage, -60, -60, 120, 120);
+      pop();
+    } else {
+      push();
+      translate(mouseX, mouseY);
+      scale(0.55);
+      image(cursorImage, -50, -50, 100, 100);
+      pop();
+    }
+    
   }
 
 }
