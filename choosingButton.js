@@ -24,7 +24,7 @@ class ChoosingButton {
         textFont(fontNeo);
         textSize(20);
         textAlign(CENTER, CENTER);
-        text(this.buttonText, this.x[this.number] + this.buttonWidth / 2, this.y + this.buttonHeight / 2 - 5);
+        text(this.buttonText, this.x[this.number] + this.buttonWidth / 2, this.y + this.buttonHeight / 2 - 2);
       }
 
     isMouseOver() {

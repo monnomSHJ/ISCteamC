@@ -8,7 +8,9 @@ class WayToSchool {
     this.wtsCycleSelected = WayToSchool.wtsCycle; // 기본 자전거 이미지 설정
     this.eventOccur = false; // 이벤트 발생 스위치
     this.blackBar = 0; // 상하단 흑색 바 애니메이션
+    this.blackBarAnimation = 0; //흑색 바 애니메이션 설정 (0: 없음, 1: 올라오기, 2: 고정, 3: 내려가기)
     this.Reading = false; // 출력된 텍스트를 읽고 있는가
+    this.Reading2 = false; // 선택 후 텍스트 읽고 있는가
     this.finishRead = false; // 출력된 텍스트를 다 읽었는가
     this.choosing = false; // 선택지를 고르고 있는가
     this.chosen = 0; // 선택지에서 몇 번을 선택했는가. 전역변수로 값이 나갈 예정
@@ -23,28 +25,28 @@ class WayToSchool {
 
     this.discoveryText = [
       ["이런 곳에 가게가 있었나?", "주위를 둘러보질 않으니 이런 게 생겼는지도 몰랐네.", "뭐하는 곳이지?"],
-      ["이런 곳에 가게가 있었나?", "새로 생긴 것 같은데...", "뭐하는 곳이지?"],
-      ["이런 곳에 가게가 있었나?", "새로 생긴 것 같은데...", "뭐하는 곳이지?"],
-      ["이런 곳에 가게가 있었나?", "새로 생긴 것 같은데...", "뭐하는 곳이지?"],
-      ["이런 곳에 가게가 있었나?", "새로 생긴 것 같은데...", "뭐하는 곳이지?"]
+      ["이런 좁은 골목에 꽃이 피어있다.", "이렇게 삭막한 곳에서도 튼튼히 자라는구나.", "이 꽃 이름이 뭐더라?"],
+      ["그냥 털뭉치인 줄 알았는데... 움직인다.", "뭐야, 고양이잖아?", "이 고양이... 뭔가 닮았는데..."],
+      ["이런 데에 자전거가 세워져 있다.", "이렇게 아무 데나 두면 누가 훔쳐가지 않으려나?", "가만 보니 내가 어릴 때 타던 자전거랑 비슷하게 생겼다.", "어떤 자전거였더라?"],
+      ["매일 걷는 길인데도 오늘은 뭔가 색다르다.", "내 할 일에만 몰두하느라 주위를 둘러보는 법을 잊었던 것 같다.", "오늘 하늘이 정말..."]
     ];
 
     this.afterText = [
       [["오랜만에 맡는 빵냄새, 기분 좋다.", "어렸을 때는 왜 그렇게 빵이 맛있게 느껴졌지?", "빵 하나를 샀다.", "이제 버스를 타고 학교로 가자."],
-      ["빵빵", "빵빵", "빵빵"],
-      ["빵빵", "빵빵", "빵빵"]],
-      [["빵빵", "빵빵", "빵빵"],
-      ["빵빵", "빵빵", "빵빵"],
-      ["빵빵", "빵빵", "빵빵"]],
-      [["빵빵", "빵빵", "빵빵"],
-      ["빵빵", "빵빵", "빵빵"],
-      ["빵빵", "빵빵", "빵빵"]],
-      [["빵빵", "빵빵", "빵빵"],
-      ["빵빵", "빵빵", "빵빵"],
-      ["빵빵", "빵빵", "빵빵"]],
-      [["빵빵", "빵빵", "빵빵"],
-      ["빵빵", "빵빵", "빵빵"],
-      ["빵빵", "빵빵", "빵빵"]]
+      ["커피 향이 원래 이렇게 좋았나?", "시험 공부하느라 아무 생각 없이 마실 때는 몰랐는데.", "커피 한 잔을 샀다.", "이제 버스를 타고 학교로 가자."],
+      ["날이 더워서 그런지 확실히 사람이 많은 것 같네.", "어렸을 때에는 여름방학에 수박 먹는 게 제일 좋았는데.", "수박 주스를 한 잔 샀다.", "이제 버스를 타고 학교로 가자."]],
+      [["ㅇㅇ", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
+      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
+      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."]],
+      [["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
+      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
+      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."]],
+      [["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
+      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
+      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."]],
+      [["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
+      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
+      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."]]
     ];
 
     this.textAnimations = null;
@@ -55,26 +57,26 @@ class WayToSchool {
 
     this.button1Text = [
       "빵집",
-      "빵집",
-      "빵집",
-      "빵집",
-      "빵집"
+      "빨간 장미",
+      "...오레오",
+      "두발 자전거",
+      "푸르네."
     ];
 
     this.button2Text = [
       "카페",
-      "카페",
-      "카페",
-      "카페",
-      "카페"
+      "파란 수국",
+      "...고등어",
+      "네발 자전거",
+      "아름답네."
     ];
 
     this.button3Text = [
       "주스가게",
-      "주스가게",
-      "주스가게",
-      "주스가게",
-      "주스가게"
+      "하얀 백합",
+      "...치즈",
+      "외발 자전거",
+      "높네."
     ];
   }
 
@@ -123,15 +125,9 @@ class WayToSchool {
     image(this.wtsCycleSelected, 1100, 390);
     this.busStopDisplay();
 
-    fill(0);
-    rectMode(CORNER);
-    rect(0, height, 1280, - this.blackBar);
-    rect(0, 0, 1280, this.blackBar);
+    this.blackBarDisplay();
 
     if (this.eventOccur) {
-      if (this.blackBar <= 120) {
-        this.blackBar += 3;
-      }
 
       if (this.isCapturing == false) {
         image(WayToSchool.blurImage, 0, 0, 1280, 720);
@@ -161,9 +157,10 @@ class WayToSchool {
         this.button2.display();
         this.button2.update();
         this.button3.display();
-        this.button3.update();
+        this.button3.update(); 
 
-      } else if (this.chosen > 0) {
+      } else if (this.Reading2) {
+
         this.textAnimations.update();
         this.textAnimations.display();
         if (this.textAnimations.isComplete()) {
@@ -171,21 +168,19 @@ class WayToSchool {
         } 
       }
 
-    } else {
-      if (this.blackBar >= 0) {
-        this.blackBar -= 3;
-    }
   }
 }
 
   handleClick() {
 
     if (!this.textAnimations.isComplete() && (this.Reading || this.chosen > 0)) {
+      clickSound.play();
       this.textAnimations.nextLine();
     }
 
     if (this.over() == day && !this.eventOccur) {  /// 이벤트 발생 트리거: this.over = 날짜
       this.textAnimations = new TextAnimation(this.discoveryText[day-1], 640, 637, 50);
+      this.blackBarAnimation = 1;
       cameraSound.play();
       this.captureTool();
       this.eventOccur = true;
@@ -203,40 +198,40 @@ class WayToSchool {
     } 
 
     if (this.choosing) {
-      if (this.button1.isMouseOver()) {
+      if (this.button1.isMouseOver() || this.button2.isMouseOver() || this.button3.isMouseOver()) {
+
+        if (this.button1.isMouseOver()) {
+          this.chosen = 1;
+  
+        } else if (this.button2.isMouseOver()) {
+          this.chosen = 2;
+  
+        } else if (this.button3.isMouseOver()) {
+          this.chosen = 3;
+        }
+        
         clickSound.play();
         this.captureTool();
-        this.chosen = 1;
         this.choosing = false;
         this.updateSelections();
+        this.textAnimations = new TextAnimation(this.afterText[day-1][this.chosen-1], 640, 637, 50);
 
-      } else if (this.button2.isMouseOver()) {
-        clickSound.play();
-        this.captureTool();
-        this.chosen = 2;
-        this.choosing = false;
-        this.updateSelections();
-
-      } else if (this.button3.isMouseOver()) {
-        clickSound.play();
-        this.captureTool();
-        this.chosen = 3;
-        this.choosing = false;
-        this.updateSelections();
-      }
-
-    if (this.chosen > 0) {
-      this.textAnimations = new TextAnimation(this.afterText[day-1][this.chosen-1], 640, 637, 50);
-    }
+        setTimeout(() => {
+          this.Reading2 = true;
+        }, 800);
+      } 
+    
   }
 
     if (this.selected){ /// 선택이 완료되었다면
+      this.blackBarAnimation = 3;
       this.eventOccur = false; /// 이벤트 발생 스위치를 off
+      this.Reading2 = false;
     }
 
     if (this.over() == 'go'){
       this.selected = false;
-      this.blackBar = 0;
+      this.blackBarAnimation = 0;
       clickSound.play();
       busSound.setVolume(0.5);
       busSound.play();
@@ -295,7 +290,35 @@ class WayToSchool {
     if(this.flashAlpha > 0) {
       fill(255, this.flashAlpha);
       rect(0, 0, width, height);
+      this.blcakBar = 120;
+      
     }
+  }
+
+  blackBarDisplay() {
+    
+    if (this.blackBarAnimation == 0) {
+      this.blackBar = 0;
+    } else if (this.blackBarAnimation == 1) {
+      if (this.blackBar < 120) {
+        this.blackBar += 3;
+      } else {
+        this.blackBarAnimation = 2;
+      }
+    } else if (this.blackBarAnimation == 2) {
+      this.blackBar = 120;
+    } else if (this.blackBarAnimation == 3) {
+      if (this.blackBar > 0) {
+        this.blackBar -= 3;
+      } else {
+        this.blackBarAnimation = 0;
+      }
+    }
+    
+    fill(0);
+    rectMode(CORNER);
+    rect(0, height, 1280, - this.blackBar);
+    rect(0, 0, 1280, this.blackBar);
   }
 
   capturePositioning() { //캡처 위치 설정
@@ -303,30 +326,57 @@ class WayToSchool {
       this.capturePosition[0] = 450;
       this.capturePosition[1] = 150;
     } else if (day == 2) {
-      this.capturePosition[0] = 230;
-      this.capturePosition[1] = 400;
+      this.capturePosition[0] = 35;
+      this.capturePosition[1] = 280;
     } else if (day == 3) {
-      this.capturePosition[0] = 230;
-      this.capturePosition[1] = 400;
+      this.capturePosition[0] = 390;
+      this.capturePosition[1] = 300;
     } else if (day == 4) {
-      this.capturePosition[0] = 230;
-      this.capturePosition[1] = 400;
+      this.capturePosition[0] = 900;
+      this.capturePosition[1] = 300;
     } else if (day == 5) {
-      this.capturePosition[0] = 230;
-      this.capturePosition[1] = 400;
+      this.capturePosition[0] = 0;
+      this.capturePosition[1] = 0;
     }
   }
 
   captureTool() { //캡처 도구
+    let captureSizeW;
+    let captureSizeH;
+
+    if (day == 1) {
+      captureSizeW = 888;
+      captureSizeH = 417.6;
+
+    } else if (day == 2) {
+      captureSizeW = 532.8;
+      captureSizeH = 250.56;
+
+    } else if (day == 3) {
+      captureSizeW = 444;
+      captureSizeH = 208.8;
+
+    } else if (day == 4) {
+      captureSizeW = 532.8;
+      captureSizeH = 250.56;
+
+    } else if (day == 5) {
+      captureSizeW = 1280;
+      captureSizeH = 720;
+    }
+
     this.isCapturing = true;
+    this.blackBarAnimation = 0;
+
     setTimeout(() => {
-      this.captureImage = get(this.capturePosition[0], this.capturePosition[1],888, 417.6);
-    }, 80);
+      this.captureImage = get(this.capturePosition[0], this.capturePosition[1], captureSizeW, captureSizeH);
+    }, 100);
 
     setTimeout(() => {
       this.cameraFlashTrigger();
       this.isCapturing = false;
-    },100);
+      this.blackBarAnimation = 1;
+    }, 100);
   }
 
   
