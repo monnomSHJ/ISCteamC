@@ -16,6 +16,66 @@ class WayToSchool {
 
     this.flashAlpha = 0; // 플래시의 투명도
     this.isFlashing = false; // 플래시 켜져있나?
+
+    this.captureImage;
+    this.isCapturing = false;
+    this.capturePosition = [0, 0];
+
+    this.discoveryText = [
+      ["이런 곳에 가게가 있었나?", "주위를 둘러보질 않으니 이런 게 생겼는지도 몰랐네.", "뭐하는 곳이지?"],
+      ["이런 곳에 가게가 있었나?", "새로 생긴 것 같은데...", "뭐하는 곳이지?"],
+      ["이런 곳에 가게가 있었나?", "새로 생긴 것 같은데...", "뭐하는 곳이지?"],
+      ["이런 곳에 가게가 있었나?", "새로 생긴 것 같은데...", "뭐하는 곳이지?"],
+      ["이런 곳에 가게가 있었나?", "새로 생긴 것 같은데...", "뭐하는 곳이지?"]
+    ];
+
+    this.afterText = [
+      [["오랜만에 맡는 빵냄새, 기분 좋다.", "어렸을 때는 왜 그렇게 빵이 맛있게 느껴졌지?", "빵 하나를 샀다.", "이제 버스를 타고 학교로 가자."],
+      ["빵빵", "빵빵", "빵빵"],
+      ["빵빵", "빵빵", "빵빵"]],
+      [["빵빵", "빵빵", "빵빵"],
+      ["빵빵", "빵빵", "빵빵"],
+      ["빵빵", "빵빵", "빵빵"]],
+      [["빵빵", "빵빵", "빵빵"],
+      ["빵빵", "빵빵", "빵빵"],
+      ["빵빵", "빵빵", "빵빵"]],
+      [["빵빵", "빵빵", "빵빵"],
+      ["빵빵", "빵빵", "빵빵"],
+      ["빵빵", "빵빵", "빵빵"]],
+      [["빵빵", "빵빵", "빵빵"],
+      ["빵빵", "빵빵", "빵빵"],
+      ["빵빵", "빵빵", "빵빵"]]
+    ];
+
+    this.textAnimations = null;
+
+    this.button1;
+    this.button2;
+    this.button3;
+
+    this.button1Text = [
+      "빵집",
+      "빵집",
+      "빵집",
+      "빵집",
+      "빵집"
+    ];
+
+    this.button2Text = [
+      "카페",
+      "카페",
+      "카페",
+      "카페",
+      "카페"
+    ];
+
+    this.button3Text = [
+      "주스가게",
+      "주스가게",
+      "주스가게",
+      "주스가게",
+      "주스가게"
+    ];
   }
 
   static preload() {
@@ -45,390 +105,176 @@ class WayToSchool {
     WayToSchool.blurImage = loadImage('assets/images/backgrounds/blurImage.png');
   }
 
+  setup() {
+    this.button1 = new ChoosingButton(0, this.button1Text[day-1], ",");
+    this.button2 = new ChoosingButton(1, this.button2Text[day-1], ",");
+    this.button3 = new ChoosingButton(2, this.button3Text[day-1], ",");
+
+    this.textAnimations = new TextAnimation(this.discoveryText[day-1], 640, 637, 50);
+  }
+
   display() {
+    this.capturePositioning();
+
     image(this.wtsBGSelected, 0, 0);
-    image(this.wtsBSSelected, 1040, 265);
     image(this.wtsStoreSelected, 650, 200);
     image(this.wtsFlowerSelected, 200, 380);
     image(this.wtsCatSelected, 550, 370);
     image(this.wtsCycleSelected, 1100, 390);
-    
+    this.busStopDisplay();
+
+    fill(0);
+    rectMode(CORNER);
+    rect(0, height, 1280, - this.blackBar);
+    rect(0, 0, 1280, this.blackBar);
+
     if (this.eventOccur) {
-      fill(0);
-      rectMode(CORNER);
-      rect(0, height, 1280, - this.blackBar);
-      rect(0, 0, 1280, this.blackBar);
-
-      if (this.blackBar < 120){
+      if (this.blackBar <= 120) {
         this.blackBar += 3;
-      } 
-
-      image(WayToSchool.blurImage, 0, 0, 1280, 720);
-
-      
-      rectMode(CENTER);
-      fill(0, 220);
-      rect(width/2, height/2, 730, 340);
-      rectMode(CORNER);
-
-      image(WayToSchool.pCam, width/2 - 370, height/2 - 174, 740, 348);
-
- 
-
-      if (day == 1) {
-        image(this.wtsStoreSelected, 445, 204.5);
-
-        if(this.blackBar > 118){
-          textSize(24);
-          textAlign(CENTER);
-          fill(255);
-          text('새로 생긴 가게인가 보네… 뭐 하는 가게지?', 640, 637);
-          this.Reading = true;
-          
-          if(this.finishRead){
-            this.Reading = false;
-            fill(0);
-            rect(0, 600, 1280, 120);
-            fill(255);
-            rect(240, 615, 200, 90);
-            rect(540, 615, 200, 90);
-            rect(840, 615, 200, 90);
-            fill(0);
-            rect(245, 620, 190, 80);
-            rect(545, 620, 190, 80);
-            rect(845, 620, 190, 80);
-            fill(255);
-            text('빵집', 340, 660);
-            text('카페', 640, 660);
-            text('주스 가게', 940, 660);
-            this.choosing = true;
-          }
-
-          if (this.chosen != 0){
-            fill(0)
-            rect(0, 600, 1280, 120);
-            if (this.chosen == 1){
-              textSize(24);
-              textAlign(CENTER);
-              fill(255);
-              text('좋은 냄새가 난다.', 640, 637);
-            } else if (this.chosen == 2){
-              textSize(24);
-              textAlign(CENTER);
-              fill(255);
-              text('향긋한 냄새가 난다.', 640, 637);
-            } else if (this.chosen == 3){
-              textSize(24);
-              textAlign(CENTER);
-              fill(255);
-              text('달콤한 냄새가 난다.', 640, 637);
-            }
-
-            this.selected = true;
-          }
-        }
-
-      } else if (day == 2) {
-        image(this.wtsFlowerSelected, 550, 350);
-
-        if(this.blackBar > 118){
-          textSize(24);
-          textAlign(CENTER);
-          fill(255);
-          text('지금 보니, 골목에 꽃이 피었네.', 640, 637);
-          this.Reading = true;
-          
-          if(this.finishRead){
-            this.Reading = false;
-            fill(0);
-            rect(0, 600, 1280, 120);
-            fill(255);
-            rect(240, 615, 200, 90);
-            rect(540, 615, 200, 90);
-            rect(840, 615, 200, 90);
-            fill(0);
-            rect(245, 620, 190, 80);
-            rect(545, 620, 190, 80);
-            rect(845, 620, 190, 80);
-            fill(255);
-            text('붉은 장미', 340, 660);
-            text('푸른 수국', 640, 660);
-            text('하얀 백합', 940, 660);
-            this.choosing = true;
-          }
-
-          if (this.chosen != 0){
-            fill(0)
-            rect(0, 600, 1280, 120);
-            if (this.chosen == 1){
-              textSize(24);
-              textAlign(CENTER);
-              fill(255);
-              text('화려한 여름의 색이다.', 640, 637);
-            } else if (this.chosen == 2){
-              textSize(24);
-              textAlign(CENTER);
-              fill(255);
-              text('시원한 푸른 색이다.', 640, 637);
-            } else if (this.chosen == 3){
-              textSize(24);
-              textAlign(CENTER);
-              fill(255);
-              text('깨끗하고 예쁜 색이다.', 640, 637);
-            }
-
-            this.selected = true;
-          }
-        }
-
-      } else if (day == 3) {
-        image(this.wtsCatSelected, 550, 350);
-
-        if(this.blackBar > 118){
-          textSize(24);
-          textAlign(CENTER);
-          fill(255);
-          text('저기 저 털뭉치는…뭐지?', 640, 637);
-          this.Reading = true;
-          
-          if(this.finishRead){
-            this.Reading = false;
-            fill(0);
-            rect(0, 600, 1280, 120);
-            fill(255);
-            rect(240, 615, 200, 90);
-            rect(540, 615, 200, 90);
-            rect(840, 615, 200, 90);
-            fill(0);
-            rect(245, 620, 190, 80);
-            rect(545, 620, 190, 80);
-            rect(845, 620, 190, 80);
-            fill(255);
-            text('쿠앤크냥', 340, 660);
-            text('고등어냥', 640, 660);
-            text('치즈냥', 940, 660);
-            this.choosing = true;
-          }
-
-          if (this.chosen != 0){
-            fill(0)
-            rect(0, 600, 1280, 120);
-            if (this.chosen == 1){
-              textSize(24);
-              textAlign(CENTER);
-              fill(255);
-              text('...왠지 아이스크림이 먹고싶은걸.', 640, 637);
-            } else if (this.chosen == 2){
-              textSize(24);
-              textAlign(CENTER);
-              fill(255);
-              text('발은 하얀데 등은 까맣네. 양말 신은 것 같다.', 640, 637);
-            } else if (this.chosen == 3){
-              textSize(24);
-              textAlign(CENTER);
-              fill(255);
-              text('노란 고양이는 왠지... 더 귀엽단 말이지.', 640, 637);
-            }
-
-            this.selected = true;
-          }
-        }
-
-      } else if (day == 4) {
-        image(this.wtsCycleSelected, 550, 350);
-
-        if(this.blackBar > 118){
-          textSize(24);
-          textAlign(CENTER);
-          fill(255);
-          text('길가에 자전거 주차해 두면…누가 안 훔쳐가려나?', 640, 637);
-          this.Reading = true;
-          
-          if(this.finishRead){
-            this.Reading = false;
-            fill(0);
-            rect(0, 600, 1280, 120);
-            fill(255);
-            rect(240, 615, 200, 90);
-            rect(540, 615, 200, 90);
-            rect(840, 615, 200, 90);
-            fill(0);
-            rect(245, 620, 190, 80);
-            rect(545, 620, 190, 80);
-            rect(845, 620, 190, 80);
-            fill(255);
-            text('빨간 자전거', 340, 660);
-            text('어린이용 자전거', 640, 660);
-            text('외발 자전거', 940, 660);
-            this.choosing = true;
-          }
-
-          if (this.chosen != 0){
-            fill(0)
-            rect(0, 600, 1280, 120);
-            if (this.chosen == 1){
-              textSize(24);
-              textAlign(CENTER);
-              fill(255);
-              text('...훔쳐가기에는 눈에 좀 띄려나.', 640, 637);
-            } else if (this.chosen == 2){
-              textSize(24);
-              textAlign(CENTER);
-              fill(255);
-              text('귀엽네. 애기들 건가?', 640, 637);
-            } else if (this.chosen == 3){
-              textSize(24);
-              textAlign(CENTER);
-              fill(255);
-              text('...저런 건 훔쳐가도 못 타겠지?', 640, 637);
-            }
-
-            this.selected = true;
-          }
-        }
-      } else if (day == 5) {
-        image(this.wtsBGSelected, 281, 191, 720, 340, 0, 0, 1280, 720);
-        image(WayToSchool.pCamClean, 249, 149);
-
-        if(this.blackBar > 118){
-          textSize(24);
-          textAlign(CENTER);
-          fill(255);
-          text('오늘은 날씨가 좋네. 하늘이 참...', 640, 637);
-          this.Reading = true;
-          
-          if(this.finishRead){
-            this.Reading = false;
-            fill(0);
-            rect(0, 600, 1280, 120);
-            fill(255);
-            rect(240, 615, 200, 90);
-            rect(540, 615, 200, 90);
-            rect(840, 615, 200, 90);
-            fill(0);
-            rect(245, 620, 190, 80);
-            rect(545, 620, 190, 80);
-            rect(845, 620, 190, 80);
-            fill(255);
-            text('파랗다', 340, 660);
-            text('높다', 640, 660);
-            text('아름답다', 940, 660);
-            this.choosing = true;
-          }
-
-          if (this.chosen != 0){
-            fill(0)
-            rect(0, 600, 1280, 120);
-            if (this.chosen != 0){
-              textSize(24);
-              textAlign(CENTER);
-              fill(255);
-              text('...고개 좀 들고 다녀야겠네.', 640, 637);
-            }
-
-            this.selected = true;
-          }
-        }
       }
-    }
 
-    this.cameraFlash();
+      if (this.isCapturing == false) {
+        image(WayToSchool.blurImage, 0, 0, 1280, 720);
+  
+        rectMode(CENTER);
+        fill(0, 220);
+        rect(width/2, height/2, 730, 340);
+        rectMode(CORNER);
+  
+        image(this.captureImage, width/2 - 370, height/2 - 174, 740, 348);
+  
+        image(WayToSchool.pCam, width/2 - 370, height/2 - 174, 740, 348);
+      }
+
+      this.cameraFlash(); //플래시 이펙트
+
+      if (this.Reading) {
+        this.textAnimations.update();
+        this.textAnimations.display();
+        if (this.textAnimations.isComplete()) {
+          this.finishRead = true;
+        }
+
+      } else if (this.choosing) {
+        this.button1.display();
+        this.button1.update();
+        this.button2.display();
+        this.button2.update();
+        this.button3.display();
+        this.button3.update();
+
+      } else if (this.chosen > 0) {
+        this.textAnimations.update();
+        this.textAnimations.display();
+        if (this.textAnimations.isComplete()) {
+          this.selected = true;
+        } 
+      }
+
+    } else {
+      if (this.blackBar >= 0) {
+        this.blackBar -= 3;
+    }
   }
+}
 
   handleClick() {
 
-    if (this.over() == day) {  /// 이벤트 발생 트리거: this.over = 날짜
+    if (!this.textAnimations.isComplete() && (this.Reading || this.chosen > 0)) {
+      this.textAnimations.nextLine();
+    }
+
+    if (this.over() == day && !this.eventOccur) {  /// 이벤트 발생 트리거: this.over = 날짜
+      this.textAnimations = new TextAnimation(this.discoveryText[day-1], 640, 637, 50);
       cameraSound.play();
-      this.cameraFlashTrigger();
+      this.captureTool();
       this.eventOccur = true;
-      
+
+      setTimeout(() => {
+        this.Reading = true;
+      }, 800);
     }
 
-    if (this.eventOccur){ /// 이벤트 발생 시작 후
-      if (this.Reading){ /// 읽기 중
-        this.finishRead = true; // 마우스 클릭 시 읽기
-        clickSound.play();
-      }
-    }
-
-      if (this.selected){ /// 선택이 완료되었다면
-        this.eventOccur = false; /// 이벤트 발생 스위치를 off
-      }
-
-    if(this.over() == 'a' || this.over() =='b' || this.over() =='c'){ ///만약 버튼을 눌렀다면
+    if (this.eventOccur && this.finishRead){ /// 이벤트 발생 시작 후
+      this.choosing = true; // 마우스 클릭 시 읽기
+      this.Reading = false;
+      this.finishRead = false;
       clickSound.play();
-      if(this.over() == 'a'){ /// 1번 선택지 누를 시
+    } 
+
+    if (this.choosing) {
+      if (this.button1.isMouseOver()) {
+        clickSound.play();
+        this.captureTool();
         this.chosen = 1;
+        this.choosing = false;
+        this.updateSelections();
 
-        if (day == 1){
-          this.wtsStoreSelected = WayToSchool.wtsStoreBakery;
-          wtsStore = this.chosen
-        } else if (day == 2){
-          this.wtsFlowerSelected = WayToSchool.wtsFlowerRose
-          wtsFlower = this.chosen
-        } else if (day == 3){
-          this.wtsCatSelected = WayToSchool.wtsCatCookie;
-          wtsCat = this.chosen
-        } else if (day == 4){
-          this.wtsCycleSelected = WayToSchool.wtsCycleRed;
-          wtsCycle = this.chosen;
-        } else if (day == 5){
-          this.wtsBGSelected = WayToSchool.wtsBG;
-          this.wtsBSSelected = WayToSchool.wtsBS;
-        }
-
-      } else if (this.over() == 'b'){ /// 2번 선택지 누를 시
+      } else if (this.button2.isMouseOver()) {
+        clickSound.play();
+        this.captureTool();
         this.chosen = 2;
+        this.choosing = false;
+        this.updateSelections();
 
-        if (day == 1){
-          this.wtsStoreSelected = WayToSchool.wtsStoreCafe;
-          wtsStore = this.chosen
-        } else if (day == 2){
-          this.wtsFlowerSelected = WayToSchool.wtsFlowerHydrangea;
-          wtsFlower = this.chosen
-        } else if (day == 3){
-          this.wtsCatSelected = WayToSchool.wtsCatFish;
-          wtsCat = this.chosen
-        } else if (day == 4){
-          this.wtsCycleSelected = WayToSchool.wtsCycleChild;
-          wtsCycle = this.chosen;
-        } else if (day == 5){
-          this.wtsBGSelected = WayToSchool.wtsBG;
-          this.wtsBSSelected = WayToSchool.wtsBS;
-        }
-
-      } else if (this.over() == 'c'){ /// 3번 선택지 누를 시
+      } else if (this.button3.isMouseOver()) {
+        clickSound.play();
+        this.captureTool();
         this.chosen = 3;
-
-        if (day == 1){
-          this.wtsStoreSelected = WayToSchool.wtsStoreJuice;
-          wtsStore = this.chosen
-        } else if (day == 2){
-          this.wtsFlowerSelected = WayToSchool.wtsFlowerLily
-          wtsFlower = this.chosen
-        } else if (day == 3){
-          this.wtsCatSelected = WayToSchool.wtsCatCheese;
-          wtsCat = this.chosen
-        } else if (day == 4){
-          this.wtsCycleSelected = WayToSchool.wtsCycleUni;
-          wtsCycle = this.chosen;
-        } else if (day == 5){
-          this.wtsBGSelected = WayToSchool.wtsBG;
-          this.wtsBSSelected = WayToSchool.wtsBS;
-        }
+        this.choosing = false;
+        this.updateSelections();
       }
-      this.choosing = false;
+
+    if (this.chosen > 0) {
+      this.textAnimations = new TextAnimation(this.afterText[day-1][this.chosen-1], 640, 637, 50);
+    }
+  }
+
+    if (this.selected){ /// 선택이 완료되었다면
+      this.eventOccur = false; /// 이벤트 발생 스위치를 off
     }
 
     if (this.over() == 'go'){
       this.selected = false;
       this.blackBar = 0;
-      this.chosen = 0;
-      this.finishRead = false;
       clickSound.play();
       busSound.setVolume(0.5);
       busSound.play();
       changePage(school, 'Loading...');
+    }
+  }
+
+  updateSelections() {
+    // day와 chosen 값에 따라 이미지 업데이트
+    if (day == 1) {
+      wtsStore = this.chosen;
+      if (this.chosen == 1) this.wtsStoreSelected = WayToSchool.wtsStoreBakery;
+      else if (this.chosen == 2) this.wtsStoreSelected = WayToSchool.wtsStoreCafe;
+      else if (this.chosen == 3) this.wtsStoreSelected = WayToSchool.wtsStoreJuice;
+
+    } else if (day == 2) {
+      wtsFlower = this.chosen;
+      if (this.chosen == 1) this.wtsFlowerSelected = WayToSchool.wtsFlowerRose;
+      else if (this.chosen == 2) this.wtsFlowerSelected = WayToSchool.wtsFlowerHydrangea;
+      else if (this.chosen == 3) this.wtsFlowerSelected = WayToSchool.wtsFlowerLily;
+
+    } else if (day == 3) {
+      wtsCat = this.chosen;
+      if (this.chosen == 1) this.wtsCatSelected = WayToSchool.wtsCatCookie;
+      else if (this.chosen == 2) this.wtsCatSelected = WayToSchool.wtsCatFish;
+      else if (this.chosen == 3) this.wtsCatSelected = WayToSchool.wtsCatCheese;
+
+    } else if (day == 4) {
+      wtsCycle = this.chosen;
+      if (this.chosen == 1) this.wtsCycleSelected = WayToSchool.wtsCycleRed;
+      else if (this.chosen == 2) this.wtsCycleSelected = WayToSchool.wtsCycleChild;
+      else if (this.chosen == 3) this.wtsCycleSelected = WayToSchool.wtsCycleUni;
+
+    } else if (day == 5) {
+      wtsBG = 1;
+      wtsBS = 1;
+      this.wtsBGSelected = WayToSchool.wtsBG;
+      this.wtsBSSelected = WayToSchool.wtsBS;
     }
   }
 
@@ -439,7 +285,7 @@ class WayToSchool {
 
   cameraFlash() {
     if(this.isFlashing) {
-      this.flashAlpha -= 5;
+        this.flashAlpha -= 10;
       if(this.flashAlpha <= 0) {
         this.flashAlpha = 0;
         this.isFlasing = false;
@@ -452,38 +298,83 @@ class WayToSchool {
     }
   }
 
-  over() {
-
-    if(this.selected){
-      if(1040 < mouseX && mouseX < 1040+132 && 265 < mouseY && mouseY < 265+230){
-        return 'go';
-      } else return 0;
-    } else {
-      if (this.eventOccur){
-        if (this.choosing){
-          if (240 < mouseX && mouseX < 440 && 615 < mouseY && mouseY < 705) return 'a';
-          else if (540 < mouseX && mouseX < 740 && 615 < mouseY && mouseY < 705) return 'b';
-          else if (840 < mouseX && mouseX < 1040 && 615 < mouseY && mouseY < 705) return 'c';
-          else return 0;
-        } else return 0;
-      } else {
-        if (day == 1) {
-          if (650 < mouseX && mouseX < 1040 && 200 < mouseY && mouseY < 511) return 1;
-          else return 0;
-        } else if (day == 2) {
-          if (200 < mouseX && mouseX < 322 && 380 < mouseY && mouseY < 503) return 2;
-          else return 0;
-        } else if (day == 3) {
-          if (550 < mouseX && mouseX < 673 && 370 < mouseY && mouseY < 501) return 3;
-          else return 0;
-        } else if (day == 4) {
-          if (1100 < mouseX && mouseX < 1273 && 370 < mouseY && mouseY < 496) return 4;
-          else return 0;
-        } else if (day == 5) {
-          return 5;
-        } else return 0;
-      }
+  capturePositioning() { //캡처 위치 설정
+    if(day == 1){
+      this.capturePosition[0] = 450;
+      this.capturePosition[1] = 150;
+    } else if (day == 2) {
+      this.capturePosition[0] = 230;
+      this.capturePosition[1] = 400;
+    } else if (day == 3) {
+      this.capturePosition[0] = 230;
+      this.capturePosition[1] = 400;
+    } else if (day == 4) {
+      this.capturePosition[0] = 230;
+      this.capturePosition[1] = 400;
+    } else if (day == 5) {
+      this.capturePosition[0] = 230;
+      this.capturePosition[1] = 400;
     }
+  }
+
+  captureTool() { //캡처 도구
+    this.isCapturing = true;
+    setTimeout(() => {
+      this.captureImage = get(this.capturePosition[0], this.capturePosition[1],888, 417.6);
+    }, 80);
+
+    setTimeout(() => {
+      this.cameraFlashTrigger();
+      this.isCapturing = false;
+    },100);
+  }
+
+  
+  busStopDisplay() {
+
+    if(this.selected && (1040 < mouseX && mouseX < 1040+132 && 265 < mouseY && mouseY < 265+230)) {
+      imageMode(CENTER);
+      image(this.wtsBSSelected, 1040+66, 265+115, 158.4, 276);
+      imageMode(CORNER);
+
+      rectMode(CENTER);
+      fill(0, 100);
+      noStroke();
+      rect(1040+66, 265+115, 200, 40);
+
+      fill(255);
+        textSize(32);
+        textFont(fontNeo);
+        textAlign(CENTER, CENTER);
+        text("버스타기", 1040+66, 265+115);
+
+    } else {
+      imageMode(CENTER);
+      image(this.wtsBSSelected, 1040+66, 265+115, 132, 230);
+      imageMode(CORNER);
+    }
+  }
+
+  over() {
+    if(!this.selected && !this.eventOccur) {
+      if ((day == 1) && (650 < mouseX && mouseX < 1040 && 200 < mouseY && mouseY < 511)) {
+        return 1;
+      } else if ((day == 2) && (200 < mouseX && mouseX < 322 && 380 < mouseY && mouseY < 503)) {
+        return 2;
+      } else if ((day == 3) && (550 < mouseX && mouseX < 673 && 370 < mouseY && mouseY < 501)) {
+        return 3;
+      } else if ((day == 4) && (1100 < mouseX && mouseX < 1273 && 370 < mouseY && mouseY < 496)) {
+        return 4;
+      } else if (day == 5) {
+        return 5;
+      } else { return 0 };
+    } else if (this.selected && (1040 < mouseX && mouseX < 1040+132 && 265 < mouseY && mouseY < 265+230)) {
+      return 'go';
+    } else if (this.Reading || (this.chosen > 0 && this.eventOccur)) {
+      return 1;
+    } else if (this.button1.isMouseOver() || this.button2.isMouseOver() || this.button3.isMouseOver()) {
+      return 1;
+    } else { return 0;}
   }
 
   changeCursor() {
