@@ -137,7 +137,7 @@ class WayToSchool {
         rect(width/2, height/2, 730, 340);
         rectMode(CORNER);
   
-        image(this.captureImage, width/2 - 370, height/2 - 174, 740, 348);
+        image(this.captureImage, width/2 - 370, height/2 - 174, 740, 360);
   
         image(WayToSchool.pCam, width/2 - 370, height/2 - 174, 740, 348);
       }
@@ -420,10 +420,6 @@ class WayToSchool {
       } else { return 0 };
     } else if (this.selected && (1040 < mouseX && mouseX < 1040+132 && 265 < mouseY && mouseY < 265+230)) {
       return 'go';
-    } else if (this.Reading || (this.chosen > 0 && this.eventOccur)) {
-      return 1;
-    } else if (this.button1.isMouseOver() || this.button2.isMouseOver() || this.button3.isMouseOver()) {
-      return 1;
     } else { return 0;}
   }
 
