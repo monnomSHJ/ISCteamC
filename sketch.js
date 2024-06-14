@@ -86,7 +86,8 @@ function draw() {
 
 
   //현재 일차 및 장소 확인
-  if (currentScene instanceof HomeMorning || currentScene instanceof WayToSchool || currentScene instanceof School || currentScene instanceof WayToHome || currentScene instanceof HomeNight) {
+  if ((currentScene instanceof HomeMorning || currentScene instanceof WayToSchool || currentScene instanceof School || currentScene instanceof WayToHome || currentScene instanceof HomeNight)
+    && !currentScene.isCapturing) {
     fill(255);  
     textFont(fontNeo);
     textSize(24);
@@ -103,6 +104,7 @@ function draw() {
     pop();
   }
   
+  /*
   //리셋 안내
   if (currentScene instanceof OpeningScene || currentScene instanceof HomeMorning
     || currentScene instanceof WayToSchool || currentScene instanceof School
@@ -114,6 +116,7 @@ function draw() {
     textAlign(RIGHT, CENTER);
     text("처음으로 돌아가려면 'r'을 입력하세요.", width-30, 80);
   }
+    */
 
   // 커서 이미지 조건문
   if (((currentScene instanceof WayToSchool || currentScene instanceof WayToHome)&& (currentScene.changeCursor() === 2))

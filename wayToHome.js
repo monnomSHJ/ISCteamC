@@ -127,9 +127,17 @@ class WayToHome {
     this.button3 = new ChoosingButton(2, this.button3Text[day-1], ",");
 
     this.textAnimations = new TextAnimation(this.discoveryText[day-1], 640, 637, 50);
+
+    if (day === 5) {
+      this.wthBGSelected = WayToHome.wthBG;
+      this.wthBSSelected = WayToHome.wthBS;
+      this.wthRoadSelected = WayToHome.wthBGR;
+      this.wthWallBGSelected = WayToHome.wthWallBG;
+    }
   }
 
   display() {
+    
     this.capturePositioning();
     image(this.wthBGSelected, 0, 0);
     image(this.wthMountainSelected, 0, 0);
@@ -166,12 +174,18 @@ class WayToHome {
           }
   
         } else if (this.choosing) {
+          if (day === 5) {
+            this.button2.display();
+            this.button2.update();
+          } else {
           this.button1.display();
           this.button1.update();
           this.button2.display();
           this.button2.update();
           this.button3.display();
           this.button3.update(); 
+          }
+          
   
         } else if (this.Reading2) {
   
@@ -278,16 +292,8 @@ class WayToHome {
       else if (this.chosen == 3) this.wthBirdSelected = WayToHome.wthBirdBlack;
 
     } else if (day == 5) {
-      wthBG = 1;
-      wthBS = 1;
-      wthRoad = 1;
       wthBusStop = this.chosen;
-
-      this.wthBGSelected = WayToHome.wthBG;
-      this.wthBSSelected = WayToHome.wthBS;
-      this.wthRoadSelected = WayToHome.wthBGR;
       this.wthBusStopSelected = WayToHome.wthBusStop;
-      this.wthWallBGSelected = WayToHome.wthWallBG;
     }
   }
 
@@ -341,20 +347,20 @@ class WayToHome {
 
   capturePositioning() { //캡처 위치 설정
     if(day == 1){
-      this.capturePosition[0] = 450;
-      this.capturePosition[1] = 150;
-    } else if (day == 2) {
-      this.capturePosition[0] = 35;
-      this.capturePosition[1] = 280;
-    } else if (day == 3) {
-      this.capturePosition[0] = 390;
-      this.capturePosition[1] = 300;
-    } else if (day == 4) {
-      this.capturePosition[0] = 900;
-      this.capturePosition[1] = 300;
-    } else if (day == 5) {
-      this.capturePosition[0] = 0;
+      this.capturePosition[0] = 700;
       this.capturePosition[1] = 0;
+    } else if (day == 2) {
+      this.capturePosition[0] = 570;
+      this.capturePosition[1] = 110;
+    } else if (day == 3) {
+      this.capturePosition[0] = -100;
+      this.capturePosition[1] = 0;
+    } else if (day == 4) {
+      this.capturePosition[0] = 820;
+      this.capturePosition[1] = 450;
+    } else if (day == 5) {
+      this.capturePosition[0] = 170;
+      this.capturePosition[1] = 50;
     }
   }
 
@@ -363,24 +369,24 @@ class WayToHome {
     let captureSizeH;
 
     if (day == 1) {
-      captureSizeW = 888;
-      captureSizeH = 417.6;
-
-    } else if (day == 2) {
       captureSizeW = 532.8;
       captureSizeH = 250.56;
 
+    } else if (day == 2) {
+      captureSizeW = 888;
+      captureSizeH = 417.6;
+
     } else if (day == 3) {
-      captureSizeW = 444;
-      captureSizeH = 208.8;
+      captureSizeW = 1024;
+      captureSizeH = 576;
 
     } else if (day == 4) {
       captureSizeW = 532.8;
       captureSizeH = 250.56;
 
     } else if (day == 5) {
-      captureSizeW = 1280;
-      captureSizeH = 720;
+      captureSizeW = 1024;
+      captureSizeH = 576;
     }
 
     this.isCapturing = true;
@@ -399,25 +405,25 @@ class WayToHome {
 
   busStopDisplay() {
 
-    if(this.selected && (this.selected && 30 < mouseX && mouseX < 30+132 && 260 < mouseY && mouseY < 260+230)) {
+    if(this.selected && (this.selected && 50 < mouseX && mouseX < 50+132 && 260 < mouseY && mouseY < 260+230)) {
       imageMode(CENTER);
-      image(this.wthBSSelected, 30+66, 260+115, 158.4, 276);
+      image(this.wthBSSelected, 50+66, 260+115, 158.4, 276);
       imageMode(CORNER);
 
       rectMode(CENTER);
       fill(0, 100);
       noStroke();
-      rect(30+66, 260+115, 200, 40);
+      rect(50+66, 260+115, 200, 40);
 
       fill(255);
         textSize(32);
         textFont(fontNeo);
         textAlign(CENTER, CENTER);
-        text("버스타기", 30+66, 260+115);
+        text("버스타기", 50+66, 260+115);
 
     } else {
       imageMode(CENTER);
-      image(this.wthBSSelected, 30+66, 260+115, 132, 230);
+      image(this.wthBSSelected, 50+66, 260+115, 132, 230);
       imageMode(CORNER);
     }
   }
@@ -435,7 +441,7 @@ class WayToHome {
       } else if ((day == 5) && (300 < mouseX && mouseX < 300 + 679 && 140 < mouseY && mouseY < 140+385)) {
         return 5;
       } else { return 0 };
-    } else if (this.selected && 30 < mouseX && mouseX < 30+132 && 260 < mouseY && mouseY < 260+230) {
+    } else if (this.selected && 50 < mouseX && mouseX < 50+132 && 260 < mouseY && mouseY < 260+230) {
       return 'go';
     } else { return 0; } 
   }
