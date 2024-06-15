@@ -32,9 +32,9 @@ class HomeNight {
 
       if (wtsFlower == 1) {
         this.selectedFlower = loadImage('assets/images/objects/wayToSchoolFlower1.png');
-      } else if (wtsStore == 2) {
+      } else if (wtsFlower == 2) {
         this.selectedFlower = loadImage('assets/images/objects/wayToSchoolFlower2.png');
-      } else if (wtsStore == 3) {
+      } else if (wtsFlower == 3) {
         this.selectedFlower = loadImage('assets/images/objects/wayToSchoolFlower3.png');
       }
 
@@ -266,6 +266,7 @@ class HomeNight {
             this.endingMessageIndex++;
             this.endingMessageDisplayed = "";
             this.endingMessageComplete = false;
+            clickSound.play();
           } else {
             changePage(endingScene, 'Ending...');
             cameraSound.play();

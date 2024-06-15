@@ -41,7 +41,7 @@ let wthRoad = 0; //길(배경 요소)
 
 function preload() {
   fontNeo = loadFont('assets/fonts/neoMo.TTF');
-  cursorImage1 = loadImage('assets/images/mouseCursor1.png');
+  cursorImage1 = loadImage('assets/images/mouseCursor3.png');
   cursorImage2 = loadImage('assets/images/mouseCursor2.png');
   cameraSound = loadSound('assets/sounds/cursorClickSound.mp3');
   clickSound = loadSound('assets/sounds/objectClickSound.mp3');
@@ -57,6 +57,7 @@ function preload() {
   WayToHome.preload();
   HomeNight.preload();
   EndingScene.preload();
+  ChoosingButton.preload();
 }
 
 function setup() {
@@ -85,7 +86,8 @@ function draw() {
 
 
   //현재 일차 및 장소 확인
-  if (currentScene instanceof HomeMorning || currentScene instanceof WayToSchool || currentScene instanceof School || currentScene instanceof WayToHome || currentScene instanceof HomeNight) {
+  if ((currentScene instanceof HomeMorning || currentScene instanceof WayToSchool || currentScene instanceof School || currentScene instanceof WayToHome || currentScene instanceof HomeNight)
+    && !currentScene.isCapturing) {
     fill(255);  
     textFont(fontNeo);
     textSize(24);
@@ -102,6 +104,7 @@ function draw() {
     pop();
   }
   
+  /*
   //리셋 안내
   if (currentScene instanceof OpeningScene || currentScene instanceof HomeMorning
     || currentScene instanceof WayToSchool || currentScene instanceof School
@@ -113,12 +116,13 @@ function draw() {
     textAlign(RIGHT, CENTER);
     text("처음으로 돌아가려면 'r'을 입력하세요.", width-30, 80);
   }
+    */
 
   // 커서 이미지 조건문
-  if ((currentScene instanceof WayToSchool || currentScene instanceof WayToHome)&& (currentScene.changeCursor() === 2|| currentScene.Reading) 
-    || (currentScene instanceof OpeningScene && openingScene.textComplete == true)
+  if (((currentScene instanceof WayToSchool || currentScene instanceof WayToHome)&& (currentScene.changeCursor() === 2))
+    || (currentScene instanceof OpeningScene && currentScene.textComplete == true)
     || currentScene instanceof MainMenu
-    || (currentScene instanceof HomeMorning && homeMorning.textComplete && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > height/2 - 150 && mouseY < height/2 + 150)
+    || (currentScene instanceof HomeMorning && currentScene.textComplete && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > height/2 - 150 && mouseY < height/2 + 150)
     || (currentScene instanceof HomeNight && currentScene.textComplete && mouseX > width - 250 && mouseX < width -30 && mouseY > height - 300 && mouseY < height - 80)) {
     cursorImage = cursorImage2; // 상호작용 가능한 물체 위에 있을 때 커서 이미지를 빨간색으로
   } else {
@@ -126,13 +130,25 @@ function draw() {
   }
 
   //커서 이미지 적용
-  if(currentScene instanceof EndingScene) {}
-  else {
-    push();
-    translate(mouseX, mouseY);
-    scale(0.55);
-    image(cursorImage, 0, 0);
-    pop();
+  if(currentScene instanceof EndingScene == false) {
+    if((currentScene instanceof WayToSchool || currentScene instanceof WayToHome) && currentScene.isCapturing == true) {
+  } else {
+    if(cursorImage == cursorImage2) {
+      push();
+      translate(mouseX, mouseY);
+      scale(0.55);
+      image(cursorImage, -60, -60, 120, 120);
+      pop();
+    } else {
+      push();
+      translate(mouseX, mouseY);
+      scale(0.55);
+      image(cursorImage, -50, -50, 100, 100);
+      pop();
+    }
+  }
+    
+    
   }
 
 }
@@ -143,6 +159,7 @@ function mouseClicked() {
 
 // 테스트용 키패드 입력 
 function keyPressed() {
+
   if (key === '1') {
     changePage(mainMenu, 'Loading...');
   } else if (key === '2') {
@@ -162,6 +179,7 @@ function keyPressed() {
   } else if (key === '9') {
     day += 1;
   }
+
 
   //리셋
   if (key === 'r') {

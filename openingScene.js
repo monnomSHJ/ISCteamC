@@ -2,21 +2,58 @@ class OpeningScene {
   constructor() {
     this.images = OpeningScene.images;
     this.texts = [
-      "눈을 뜨면, 똑같은 하루가 또다시 시작된다.",
-      "특별할 것 없는 길을 걸어, 학교에 간다.",
-      "과제와 공부에 치여, 학교에서의 시간이 빠르게 흘러간다.",
-      "피곤에 절어 터덜터덜, 집으로 향한다.",
-      "집에 도착하면 벌써 늦은 밤. 생각할 여유 없이 잠에 든다.",
-      "지루하게 반복되는 일상, 나의 행복은 어디에 있을까?"
+      //scene 1
+      ["아침이 밝아 눈을 뜨면, 어제와 다를 바 없는 하루가 또 다시 나를 기다리고 있다.",
+      "특별할 것 없는 길을 지나, 늘 타던 버스를 타고,",
+      "학교에 도착할 때까지 사람들 사이에 끼어서 멍하니 음악만 듣다가,",
+      "우르르 내리는 사람들 속에 몸을 맡기다보면 어느새 강의실 앞이다.",
+      ],
+
+      //scene 2
+      ["쏟아지는 잠을 억지로 참으며 수업을 듣다 보면 어느새 수업은 끝나 있고,",
+      "집에 가서 조금 쉬어 볼까 잠시 고민하다가",
+      "여태껏 무시하려 애썼던 밀린 과제들을 하기 시작한다."
+      ],
+
+      //scene 3
+      ["...",
+      "재미가 없다.",
+      "내가 붙들고 있는 과제 때문이 아니다.",
+      "삶 자체에 대한 회의감이다.",
+      "이렇게 다람쥐 쳇바퀴 돌 듯 살아가는 게 무슨 의미가 있지?",
+      "이렇게 살면 미래에는 행복해질 수 있는 걸까?",
+      "머리가 복잡해져 노트북을 덮고 다시 집으로 돌아가기로 했다.",
+      ],
+      
+      //scene 4
+      ["대학만 오면 마냥 행복할 줄 알았던 고등학생 시절,",
+      "그때의 헛된 상상은 이미 현실 앞에 무너진 지 오래이다.",
+      "언젠가는 열정에 타올라 이것저것 시도해보기도 했고,",
+      "오늘이 마지막인 것처럼 세상 모든 일들에 최선을 다하기도 했다.",
+      "그런데 언제부턴가 나의 삶의 색이 바래기 시작했다.",
+      "미래에 대한 불안과 걱정...",
+      "아니, 그 이전에 지금 당장 코앞에 있는 문제들을 해결하려 애쓰며 살아가다보니...",
+      "어느 순간 나는 텅 빈 껍데기가 되어버린 것 같다는 생각이 들었다."
+      ],
+
+      //scene 5
+      ["프랑스어 교양 시간에 배운 표현이 있다.",
+        "'Métro-Boulot-Dodo'",
+        "직역하면 '지하철-일-잠'이라는 뜻인데, 괜히 내 얘기 같다.",
+        "매일같이 반복되는 삶...",
+        "...",
+        "내일부터는 다이어리 좀 써볼까."
+      ]
     ];
+
+    this.textAnimations = null;
+    this.textBlockIndex = 0;
+
     this.currentImageIndex = 0;
-    this.currentTextIndex = 0;
+    this.currentImageSubIndex = 0;
+
     this.alpha = 0;
     this.fadeIn = true;
-    this.displayedText = ""; // 현재 표시되는 텍스트
-    this.textAnimationSpeed = 5; // 애니메이션 속도
-    this.textAnimationCounter = 0; // 애니메이션 카운터
-    this.textComplete = false;
   }
 
   static preload() {
@@ -30,22 +67,25 @@ class OpeningScene {
     OpeningScene.bgm = loadSound('assets/sounds/openingSceneBgm.mp3');//수정
   }
 
+  setup() {
+    this.textBlockIndex = 0;
+    this.textAnimations = new TextAnimation(this.texts[this.textBlockIndex], width/2, 637, 50);
+  }
+
   display() {
     if (!OpeningScene.bgm.isPlaying()) {
-      OpeningScene.bgm.setVolume(0.3);
+      OpeningScene.bgm.setVolume(0.1);
       OpeningScene.bgm.loop(); // 배경음악을 반복 재생 //수정
     }
 
-    if (this.images.length > 0) {
-      tint(255, this.alpha); // 이미지에 알파 값 적용
-      image(this.images[this.currentImageIndex], 0, 0, 1280, 720);
-      noTint();
-      if (this.fadeIn) {
-        this.alpha += 10;
-        if (this.alpha >= 255) {
-          this.alpha = 255;
-          this.fadeIn = false; // 페이드인 효과
-        }
+    tint(255, this.alpha);
+    image(this.images[this.textBlockIndex], 0, 0, 1280, 720);
+    noTint();
+    if (this.fadeIn) {
+      this.alpha += 10;
+      if (this.alpha >= 255) {
+        this.alpha = 255;
+        this.fadeIn = false;
       }
     }
 
@@ -53,53 +93,29 @@ class OpeningScene {
     rect(0, height - 120, 1280, 120);
     rect(0, 0, 1280, 120);
 
-    textSize(24);
-    textAlign(CENTER);
-    fill(255);
-    text(this.displayedText, 640, 637);
-    this.updateDisplayedText(); // 텍스트 한글자씩 나오는 함수
-
-    if (this.textComplete) {
-      if (frameCount % 60 < 30) {
-        let textWidthValue = textWidth(this.displayedText);
-        text('▼', 640 + textWidthValue / 2 + 24, 637); // 텍스트 끝에 '▼' 기호 추가
-      }
-    }
-  }
-
-  updateDisplayedText() {
-    if (this.textAnimationCounter < this.textAnimationSpeed) {
-      this.textAnimationCounter++;
-    } else {
-      if (this.displayedText.length < this.texts[this.currentTextIndex].length) {
-        this.displayedText = this.texts[this.currentTextIndex].substring(0, this.displayedText.length + 1);
-        this.textComplete = false; // 텍스트 출력 중
-      } else {
-        this.textComplete = true; // 텍스트 출력 완료
-      }
-      this.textAnimationCounter = 0;
-    }
+    this.textAnimations.update();
+    this.textAnimations.display();
   }
   
   handleClick() {
-    if (this.textComplete) {
-      cameraSound.setVolume(0.3);
+
+    if (!this.textAnimations.isComplete()) {
+      clickSound.setVolume(0.3);
       clickSound.play();
-      if (this.currentImageIndex === this.images.length - 1 && this.currentTextIndex === this.texts.length - 1) {
+      this.textAnimations.nextLine();
+    } else {
+      if(this.textBlockIndex < 4) {
+        clickSound.setVolume(0.3);
+        clickSound.play();
+        this.textBlockIndex++;
+        this.textAnimations = new TextAnimation(this.texts[this.textBlockIndex], width/2, 637, 50);
+        this.alpha = 0;
+        this.fadeIn = true;
+      } else {
+        cameraSound.play();
         changePage(homeMorning, 'DAY' + day);
         OpeningScene.bgm.stop();
-      } else if (this.currentImageIndex === this.images.length - 1) {
-        if (this.currentTextIndex < this.texts.length - 1) {
-          this.currentTextIndex++;
-        }
-      } else {
-        this.currentImageIndex++;
-        this.currentTextIndex = this.currentImageIndex;
       }
-      this.alpha = 0;
-      this.fadeIn = true;
-      this.displayedText = "";
-      this.textComplete = false; // 새로운 텍스트 출력 시작
     }
   }
 }
