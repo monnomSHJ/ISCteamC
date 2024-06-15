@@ -58,6 +58,11 @@ function preload() {
   HomeNight.preload();
   EndingScene.preload();
   ChoosingButton.preload();
+  bgmDay1 = loadSound('assets/sounds/wayBgmDay1.mp3');
+  bgmDay2 = loadSound('assets/sounds/wayBgmDay2.mp3');
+  bgmDay3 = loadSound('assets/sounds/wayBgmDay3.mp3');
+  bgmDay4= loadSound('assets/sounds/wayBgmDay4.mp3');
+  bgmDay5 = loadSound('assets/sounds/wayBgmDay5.mp3');
 }
 
 function setup() {
@@ -83,6 +88,38 @@ function draw() {
   background(220);
   noStroke();
   currentScene.display();
+  //사운드
+  if (currentScene == homeMorning || currentScene == homeNight || currentScene == wayToSchool || currentScene ==WayToHome || currentScene ==school){
+  
+    if (day==1){
+      if (!bgmDay1.isPlaying()) {
+      bgmDay1.setVolume(0.1);
+      bgmDay1.loop(); // 배경음악을 반복 재생 //수정
+    }
+    }else if(day==2){
+      bgmDay1.stop();
+      if (!bgmDay2.isPlaying()) {
+        bgmDay2.setVolume(0.1);
+        bgmDay2.loop();
+    }}else if(day==3){
+      bgmDay2.stop();
+      if (!bgmDay3.isPlaying()) {
+        bgmDay3.setVolume(0.1);
+        bgmDay3.loop();
+    }}else if(day==4){
+      bgmDay3.stop();
+      if (!bgmDay4.isPlaying()) {
+        bgmDay4.setVolume(0.1);
+        bgmDay4.loop();
+    }}else{
+      bgmDay4.stop();
+      if (!bgmDay5.isPlaying()) {
+        bgmDay5.setVolume(0.1);
+        bgmDay5.loop();
+    }
+  }
+    
+  }
 
 
   //현재 일차 및 장소 확인
@@ -188,6 +225,7 @@ function keyPressed() {
 }
 
 function changePage(newPage, transitionText = 'Loading...') {
+  
   if (newPage.constructor.name === 'HomeMorning') {
     homeMorning = new HomeMorning(); // 새로운 HomeMorning 인스턴스 생성
     newPage = homeMorning; // 새로운 인스턴스를 newPage로 설정

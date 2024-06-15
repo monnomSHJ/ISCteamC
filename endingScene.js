@@ -10,13 +10,13 @@ class EndingScene {
     this.graphicsArray = [];
   
 
-    this.selectedStore = null;
-    this.selectedFlower = null;
-    this.selectedCat = null;
-    this.selectedCycle = null;
-    this.wthWallSelected = null;
-    this.wthPosterSelected = null;
-    this.wthBirdSelected = null;
+    // this.selectedStore ;
+    // this.selectedFlower;
+    // this.selectedCat ;
+    // this.selectedCycle ;
+    // this.wthWallSelected ;
+    // this.wthPosterSelected;
+    // this.wthBirdSelected;
 
     this.texts = [
       "평범해 보이는 무채색의 하루에도",
@@ -45,6 +45,74 @@ class EndingScene {
 
     this.finalMessageDisplayed = false;
     
+    // if(wtsStore ==1 || wtsStore ==0){
+    //   this.selectedStore =  EndingScene.wtsStore1;
+    // }else if(wtsStore ==2){
+    //   this.selectedStore =  EndingScene.wtsStore2;
+    // }else if(wtsStore ==3){
+    //   this.selectedStore =  EndingScene.wtsStore3;
+    // }
+
+    // if(wtsFlower ==1 || wtsFlower ==0){
+    //   this.selectedFlower =  EndingScene.wtsFlower1;
+    // }else if(wtsFlower ==2){
+    //   this.selectedFlower = EndingScene.wtsFlower2;
+    // }else if(wtsFlower ==3){
+    //   this.selectedFlower = EndingScene.wtsFlower3;
+    // }
+
+    // if(wtsCat ==1 || wtsCat ==0){
+    //   this.selectedCat = EndingScene.wtsCat1;
+    // }else if(wtsCat ==2){
+    //   this.selectedCat = EndingScene.wtsCat2;
+    // }else if(wtsCat ==3){
+    //   this.selectedCat = EndingScene.wtsCat3;
+    // }
+
+    // if(wtsCycle ==1 || wtsCycle ==0){
+    //   this.selectedCycle = EndingScene.wtsCycle1;
+    // }else if(wtsCycle ==2){
+    //   this.selectedCycle = EndingScene.wtsCycle2;
+    // }else if(wtsCycle ==3){
+    //   this.selectedCycle = EndingScene.wtsCycle3;
+    // }
+
+    // if(wthWall ==1 || wthWall ==0){
+    //   this.wthWallSelected = EndingScene.wthWall1;
+    // }else if(wthWall ==2){
+    //   this.wthWallSelected = EndingScene.wthWall2;
+    // }else if(wthWall ==3){
+    //   this.wthWallSelected = EndingScene.wthWall3;
+    // }
+
+    // if(wthPoster ==1 || wthPoster ==0){
+    //   this.wthPosterSelected = EndingScene.wthPoster1;
+    // }else if(wthPoster ==2){
+    //   this.wthPosterSelected = EndingScene.wthPoster2;
+    // }else if(wthPoster ==3){
+    //   this.wthPosterSelected = EndingScene.wthPoster3;
+    // }
+
+    // if(wthBird ==1 || wthBird ==0){
+    //   this.wthBirdSelected = EndingScene.wthBird1;
+    // }else if(wthBird ==2){
+    //   this.wthBirdSelected = EndingScene.wthBird2;
+    // }else if(wthBird ==3){
+    //   this.wthBirdSelected = EndingScene.wthBird3;
+    // }
+
+    this.updateImages();
+    this.createGraphicsTool();
+    
+
+
+    
+  }
+
+  
+
+
+  updateImages(){
     if(wtsStore ==1 || wtsStore ==0){
       this.selectedStore =  EndingScene.wtsStore1;
     }else if(wtsStore ==2){
@@ -100,19 +168,6 @@ class EndingScene {
     }else if(wthBird ==3){
       this.wthBirdSelected = EndingScene.wthBird3;
     }
-
-    this.updateImages();
-    this.createGraphicsTool();
-    
-
-
-    
-  }
-
-  
-
-
-  updateImages(){
     this.images = [
       EndingScene.imgHomeMorning,
       EndingScene.imgHomeMorning,
