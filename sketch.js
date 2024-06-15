@@ -39,6 +39,7 @@ let wthBird = 0; //새 이미지(1: Dove, 2: Small, 3: Black)
 let wthBusStop = 0; //버스 정류장(상호작용 가능)
 let wthRoad = 0; //길(배경 요소)
 
+let wtsStoreForEnding = 0;
 function preload() {
   fontNeo = loadFont('assets/fonts/neoMo.TTF');
   cursorImage1 = loadImage('assets/images/mouseCursor3.png');
@@ -212,7 +213,7 @@ function keyPressed() {
   } else if (key === '7') {
     changePage(homeNight, 'Loading...');
   } else if (key === '8') {
-    changePage(endingScene, 'Loading...');
+    changePage(new EndingScene, 'Loading...');
   } else if (key === '9') {
     day += 1;
   }

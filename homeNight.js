@@ -104,7 +104,6 @@ class HomeNight {
   
     display() {
       busSound.stop();
-
       image(this.images[day-1], 0, 0, width, height);
       fill(0);
       rectMode(CORNER);
@@ -268,7 +267,7 @@ class HomeNight {
             this.endingMessageComplete = false;
             clickSound.play();
           } else {
-            changePage(endingScene, 'Ending...');
+            changePage(new EndingScene, 'Ending...');
             cameraSound.play();
           }
         }

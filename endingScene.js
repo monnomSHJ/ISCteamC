@@ -1,6 +1,6 @@
-class EndingScene {
+class EndingScene{
   constructor() {
-    
+    console.log(day);
     
     this.currentImageIndex = 0;
     this.alpha = 0;
@@ -103,6 +103,7 @@ class EndingScene {
 
     this.updateImages();
     this.createGraphicsTool();
+    console.log(wtsStore);
     
 
 
@@ -113,11 +114,11 @@ class EndingScene {
 
 
   updateImages(){
-    if(wtsStore ==1 || wtsStore ==0){
+    if(wtsStore ===1 || wtsStore ===0){
       this.selectedStore =  EndingScene.wtsStore1;
-    }else if(wtsStore ==2){
+    }else if(wtsStore===2){
       this.selectedStore =  EndingScene.wtsStore2;
-    }else if(wtsStore ==3){
+    }else if(wtsStore ===3){
       this.selectedStore =  EndingScene.wtsStore3;
     }
 
@@ -168,6 +169,8 @@ class EndingScene {
     }else if(wthBird ==3){
       this.wthBirdSelected = EndingScene.wthBird3;
     }
+
+    console.log(wtsStore);
     this.images = [
       EndingScene.imgHomeMorning,
       EndingScene.imgHomeMorning,
@@ -310,6 +313,11 @@ class EndingScene {
 
 
   display() {
+    bgmDay1.stop();
+    bgmDay2.stop();
+    bgmDay3.stop();
+    bgmDay4.stop();
+    bgmDay5.stop();
     background(0);
     //clip(80, 200, 480, 270);
     if (!EndingScene.bgm.isPlaying()) {

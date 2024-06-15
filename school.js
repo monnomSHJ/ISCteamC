@@ -3,6 +3,15 @@ class School {
       this.images = School.images;
       this.alpha = 0;
       this.fadeIn = true;
+      this.textAnimations = null;
+      this.textBlockIndex = 0;
+      this.schoolText = [
+        ["월요일이라 그런지 너무 졸리다...빨리 수업 끝나면 좋겠어."],
+        ["어제보단 덜 졸리네... 오늘은 그래도 수업 들어봐야지."],
+        ["왠지 강의실이 좀 더 환해보여. 공부할 마음이 드는걸?"],
+        ["오늘 수업은 조금 흥미로운 것 같아. 이런 수업인 줄 몰랐었네."],
+        ["오늘은 평소와 다르게 수업도 즐겁다. 시간이 금방 가."]
+      ];
     }
   
     static preload() {
@@ -20,10 +29,13 @@ class School {
       this.fadeIn = true;
       schoolSound.setVolume(0.6);
       schoolSound.play();
+      this.textAnimations = new TextAnimation(this.schoolText[day-1], width/2, 637, 50);
+      
       setTimeout(() => {
         schoolSound.stop();
         changePage(wayToHome, 'Loading...');
       }, 5000); // 5초 후에 wayToHome으로 전환
+
     }
   
     display() {
@@ -44,6 +56,9 @@ class School {
       rectMode(CORNER);
       rect(0, height - 120, 1280, 120);
       rect(0, 0, 1280, 120);
+      fill(255);
+      this.textAnimations.update();
+      this.textAnimations.display();
     }
   
     handleClick() {
