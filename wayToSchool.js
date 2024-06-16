@@ -137,7 +137,7 @@ class WayToSchool {
         rect(width/2, height/2, 730, 340);
         rectMode(CORNER);
   
-        image(this.captureImage, width/2 - 370, height/2 - 174, 740, 360);
+        image(this.captureImage, 345, 190, 520, 340);
   
         image(WayToSchool.pCam, width/2 - 370, height/2 - 174, 740, 348);
       }
@@ -207,7 +207,7 @@ class WayToSchool {
     } 
 
     if (this.choosing) {
-      if (this.button1.isMouseOver() || this.button2.isMouseOver() || this.button3.isMouseOver()) {
+      if (day !== 5 && (this.button1.isMouseOver() || this.button2.isMouseOver() || this.button3.isMouseOver())) {
 
         if (this.button1.isMouseOver()) {
           this.chosen = 1;
@@ -218,19 +218,32 @@ class WayToSchool {
         } else if (this.button3.isMouseOver()) {
           this.chosen = 3;
         }
-        
+
         clickSound.play();
         this.captureTool();
         this.choosing = false;
         this.updateSelections();
         this.textAnimations = new TextAnimation(this.afterText[day-1][this.chosen-1], 640, 637, 50);
-
+  
         setTimeout(() => {
           this.Reading2 = true;
         }, 800);
-      } 
-    
-  }
+
+      } else if (day === 5 && this.button2.isMouseOver()) {
+
+        this.chosen = 2;
+
+        clickSound.play();
+        this.captureTool();
+        this.choosing = false;
+        this.updateSelections();
+        this.textAnimations = new TextAnimation(this.afterText[day-1][this.chosen-1], 640, 637, 50);
+  
+        setTimeout(() => {
+          this.Reading2 = true;
+        }, 800);
+      }
+    } 
 
     if (this.selected){ /// 선택이 완료되었다면
       this.blackBarAnimation = 3;
@@ -335,19 +348,19 @@ class WayToSchool {
 
   capturePositioning() { //캡처 위치 설정
     if(day == 1){
-      this.capturePosition[0] = 450;
-      this.capturePosition[1] = 150;
+      this.capturePosition[0] = 470;
+      this.capturePosition[1] = 80;
     } else if (day == 2) {
-      this.capturePosition[0] = 35;
-      this.capturePosition[1] = 280;
+      this.capturePosition[0] = 15;
+      this.capturePosition[1] = 270;
     } else if (day == 3) {
-      this.capturePosition[0] = 390;
-      this.capturePosition[1] = 350;
+      this.capturePosition[0] = 350;
+      this.capturePosition[1] = 280;
     } else if (day == 4) {
       this.capturePosition[0] = 900;
-      this.capturePosition[1] = 300;
+      this.capturePosition[1] = 310;
     } else if (day == 5) {
-      this.capturePosition[0] = 0;
+      this.capturePosition[0] = 90;
       this.capturePosition[1] = 0;
     }
   }
@@ -357,23 +370,23 @@ class WayToSchool {
     let captureSizeH;
 
     if (day == 1) {
-      captureSizeW = 888;
-      captureSizeH = 417.6;
+      captureSizeW = 780;
+      captureSizeH = 510;
 
     } else if (day == 2) {
-      captureSizeW = 532.8;
-      captureSizeH = 250.56;
+      captureSizeW = 520;
+      captureSizeH = 340;
 
     } else if (day == 3) {
-      captureSizeW = 444;
-      captureSizeH = 208.8;
+      captureSizeW = 468;
+      captureSizeH = 306;
 
     } else if (day == 4) {
-      captureSizeW = 532.8;
-      captureSizeH = 250.56;
+      captureSizeW = 364;
+      captureSizeH = 238;
 
     } else if (day == 5) {
-      captureSizeW = 1280;
+      captureSizeW = 1100;
       captureSizeH = 720;
     }
 

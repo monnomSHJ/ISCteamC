@@ -2,8 +2,8 @@ class Diary {
     constructor() {
       this.bookImages = Diary.bookImages;
 
-      this.rectW = 142;
-      this.rectH = 70;
+      this.rectW = 156;
+      this.rectH = 102;
 
       this.rects = [
         { x: 344, y: 334, index: 0, status: 0 },

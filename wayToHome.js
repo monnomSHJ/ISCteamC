@@ -160,7 +160,7 @@ class WayToHome {
         rect(width/2, height/2, 730, 340);
         rectMode(CORNER);
 
-        image(this.captureImage, width/2 - 370, height/2 - 174, 740, 360);
+        image(this.captureImage, 345, 190, 520, 340);
   
         image(WayToHome.pCam, width/2 - 370, height/2 - 174, 740, 348);
 
@@ -229,7 +229,7 @@ class WayToHome {
     } 
 
     if (this.choosing) {
-      if (this.button1.isMouseOver() || this.button2.isMouseOver() || this.button3.isMouseOver()) {
+      if (day !== 5 && (this.button1.isMouseOver() || this.button2.isMouseOver() || this.button3.isMouseOver())) {
 
         if (this.button1.isMouseOver()) {
           this.chosen = 1;
@@ -250,7 +250,21 @@ class WayToHome {
         setTimeout(() => {
           this.Reading2 = true;
         }, 800);
-      } 
+
+      } else if (day === 5 && this.button2.isMouseOver()) {
+
+        this.chosen = 2;
+
+        clickSound.play();
+        this.captureTool();
+        this.choosing = false;
+        this.updateSelections();
+        this.textAnimations = new TextAnimation(this.afterText[day-1][this.chosen-1], 640, 637, 50);
+
+        setTimeout(() => {
+          this.Reading2 = true;
+        }, 800);
+      }
     
   }
 
@@ -353,16 +367,16 @@ class WayToHome {
       this.capturePosition[0] = 700;
       this.capturePosition[1] = 0;
     } else if (day == 2) {
-      this.capturePosition[0] = 570;
-      this.capturePosition[1] = 110;
+      this.capturePosition[0] = 800;
+      this.capturePosition[1] = 160;
     } else if (day == 3) {
-      this.capturePosition[0] = -100;
-      this.capturePosition[1] = 0;
+      this.capturePosition[0] = 20;
+      this.capturePosition[1] = 50;
     } else if (day == 4) {
       this.capturePosition[0] = 820;
       this.capturePosition[1] = 450;
     } else if (day == 5) {
-      this.capturePosition[0] = 170;
+      this.capturePosition[0] = 240;
       this.capturePosition[1] = 50;
     }
   }
@@ -372,24 +386,24 @@ class WayToHome {
     let captureSizeH;
 
     if (day == 1) {
-      captureSizeW = 532.8;
-      captureSizeH = 250.56;
+      captureSizeW = 520;
+      captureSizeH = 340;
 
     } else if (day == 2) {
-      captureSizeW = 888;
-      captureSizeH = 417.6;
+      captureSizeW = 468;
+      captureSizeH = 306;
 
     } else if (day == 3) {
-      captureSizeW = 1024;
-      captureSizeH = 576;
+      captureSizeW = 780;
+      captureSizeH = 510;
 
     } else if (day == 4) {
-      captureSizeW = 532.8;
-      captureSizeH = 250.56;
+      captureSizeW = 364;
+      captureSizeH = 238;
 
     } else if (day == 5) {
-      captureSizeW = 1024;
-      captureSizeH = 576;
+      captureSizeW = 780;
+      captureSizeH = 510;
     }
 
     this.isCapturing = true;
