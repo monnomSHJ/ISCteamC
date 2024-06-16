@@ -6,7 +6,7 @@ class EndingScene{
     this.alpha = 0;
     this.fadeIn = true;
     this.lastChangeTime = 0;
-    this.changeInterval = 5000;
+    this.changeInterval = 2800;
     this.graphicsArray = [];
   
 
@@ -29,7 +29,7 @@ class EndingScene{
       "",
       "나만의 이야기와 색으로",
       "",
-      "일상을 채워넣어보세요.",
+      "삶을 채워보세요.",
       "",
       "오늘도 당신의 행복을 응원합니다.",
       "",
@@ -40,70 +40,18 @@ class EndingScene{
     this.currentTextIndex = 0;
     this.displayedText = "";
     this.textAnimationCounter = 0;
-    this.textAnimationSpeed = 5;
+    this.textAnimationSpeed = 6;
     this.textComplete = false;
 
     this.finalMessageDisplayed = false;
     
-    // if(wtsStore ==1 || wtsStore ==0){
-    //   this.selectedStore =  EndingScene.wtsStore1;
-    // }else if(wtsStore ==2){
-    //   this.selectedStore =  EndingScene.wtsStore2;
-    // }else if(wtsStore ==3){
-    //   this.selectedStore =  EndingScene.wtsStore3;
-    // }
+    
 
-    // if(wtsFlower ==1 || wtsFlower ==0){
-    //   this.selectedFlower =  EndingScene.wtsFlower1;
-    // }else if(wtsFlower ==2){
-    //   this.selectedFlower = EndingScene.wtsFlower2;
-    // }else if(wtsFlower ==3){
-    //   this.selectedFlower = EndingScene.wtsFlower3;
-    // }
-
-    // if(wtsCat ==1 || wtsCat ==0){
-    //   this.selectedCat = EndingScene.wtsCat1;
-    // }else if(wtsCat ==2){
-    //   this.selectedCat = EndingScene.wtsCat2;
-    // }else if(wtsCat ==3){
-    //   this.selectedCat = EndingScene.wtsCat3;
-    // }
-
-    // if(wtsCycle ==1 || wtsCycle ==0){
-    //   this.selectedCycle = EndingScene.wtsCycle1;
-    // }else if(wtsCycle ==2){
-    //   this.selectedCycle = EndingScene.wtsCycle2;
-    // }else if(wtsCycle ==3){
-    //   this.selectedCycle = EndingScene.wtsCycle3;
-    // }
-
-    // if(wthWall ==1 || wthWall ==0){
-    //   this.wthWallSelected = EndingScene.wthWall1;
-    // }else if(wthWall ==2){
-    //   this.wthWallSelected = EndingScene.wthWall2;
-    // }else if(wthWall ==3){
-    //   this.wthWallSelected = EndingScene.wthWall3;
-    // }
-
-    // if(wthPoster ==1 || wthPoster ==0){
-    //   this.wthPosterSelected = EndingScene.wthPoster1;
-    // }else if(wthPoster ==2){
-    //   this.wthPosterSelected = EndingScene.wthPoster2;
-    // }else if(wthPoster ==3){
-    //   this.wthPosterSelected = EndingScene.wthPoster3;
-    // }
-
-    // if(wthBird ==1 || wthBird ==0){
-    //   this.wthBirdSelected = EndingScene.wthBird1;
-    // }else if(wthBird ==2){
-    //   this.wthBirdSelected = EndingScene.wthBird2;
-    // }else if(wthBird ==3){
-    //   this.wthBirdSelected = EndingScene.wthBird3;
-    // }
 
     this.updateImages();
     this.createGraphicsTool();
     console.log(wtsStore);
+    
     
 
 
@@ -111,69 +59,100 @@ class EndingScene{
   }
 
   
+  
 
 
   updateImages(){
     if(wtsStore ===1 || wtsStore ===0){
       this.selectedStore =  EndingScene.wtsStore1;
+      //this.selectedStoreGray =  EndingScene.wtsStore1Gray;
     }else if(wtsStore===2){
       this.selectedStore =  EndingScene.wtsStore2;
+      //this.selectedStoreGray =  EndingScene.wtsStore2Gray;
     }else if(wtsStore ===3){
       this.selectedStore =  EndingScene.wtsStore3;
+      //this.selectedStoreGray =  EndingScene.wtsStore3Gray;
     }
 
     if(wtsFlower ==1 || wtsFlower ==0){
       this.selectedFlower =  EndingScene.wtsFlower1;
+      //this.selectedFlowerGray =  EndingScene.wtsFlower1Gray;
     }else if(wtsFlower ==2){
       this.selectedFlower = EndingScene.wtsFlower2;
+      //this.selectedFlowerGray = EndingScene.wtsFlower2Gray;
     }else if(wtsFlower ==3){
       this.selectedFlower = EndingScene.wtsFlower3;
+      //this.selectedFlowerGray = EndingScene.wtsFlower3Gray;
     }
 
     if(wtsCat ==1 || wtsCat ==0){
       this.selectedCat = EndingScene.wtsCat1;
+      //this.selectedCatGray = EndingScene.wtsCat1Gray;
     }else if(wtsCat ==2){
       this.selectedCat = EndingScene.wtsCat2;
+      //this.selectedCatGray = EndingScene.wtsCat2Gray;
     }else if(wtsCat ==3){
       this.selectedCat = EndingScene.wtsCat3;
+      //this.selectedCatGray = EndingScene.wtsCat3Gray;
     }
 
     if(wtsCycle ==1 || wtsCycle ==0){
       this.selectedCycle = EndingScene.wtsCycle1;
+      //this.selectedCycleGray = EndingScene.wtsCycle1Gray;
     }else if(wtsCycle ==2){
       this.selectedCycle = EndingScene.wtsCycle2;
+      //this.selectedCycleGray = EndingScene.wtsCycle2Gray;
     }else if(wtsCycle ==3){
       this.selectedCycle = EndingScene.wtsCycle3;
+      //this.selectedCycleGray = EndingScene.wtsCycle3Gray;
     }
 
     if(wthWall ==1 || wthWall ==0){
       this.wthWallSelected = EndingScene.wthWall1;
+      //this.wthWallSelectedGray = EndingScene.wthWall1Gray;
     }else if(wthWall ==2){
       this.wthWallSelected = EndingScene.wthWall2;
+      //this.wthWallSelectedGray = EndingScene.wthWall2Gray;
     }else if(wthWall ==3){
       this.wthWallSelected = EndingScene.wthWall3;
+     // this.wthWallSelectedGray = EndingScene.wthWall3Gray;
     }
 
     if(wthPoster ==1 || wthPoster ==0){
       this.wthPosterSelected = EndingScene.wthPoster1;
+     // this.wthPosterSelectedGray = EndingScene.wthPoster1Gray;
     }else if(wthPoster ==2){
       this.wthPosterSelected = EndingScene.wthPoster2;
+      //this.wthPosterSelectedGray = EndingScene.wthPoster2Gray;
     }else if(wthPoster ==3){
       this.wthPosterSelected = EndingScene.wthPoster3;
+      //this.wthPosterSelectedGray = EndingScene.wthPoster3Gray;
     }
 
     if(wthBird ==1 || wthBird ==0){
       this.wthBirdSelected = EndingScene.wthBird1;
+      //this.wthBirdSelectedGray = EndingScene.wthBird1Gray;
     }else if(wthBird ==2){
       this.wthBirdSelected = EndingScene.wthBird2;
+      //this.wthBirdSelectedGray = EndingScene.wthBird2Gray;
     }else if(wthBird ==3){
       this.wthBirdSelected = EndingScene.wthBird3;
+      //this.wthBirdSelectedGray = EndingScene.wthBird3Gray;
     }
 
     console.log(wtsStore);
     this.images = [
+      EndingScene.imgHomeMorningGray,
+      EndingScene.imgHomeMorningGray,
       EndingScene.imgHomeMorning,
-      EndingScene.imgHomeMorning,
+      
+      EndingScene.imgWayToSchoolGray,
+        //this.selectedStoreGray,
+        //this.selectedFlowerGray,
+        //this.selectedCatGray,
+        //this.selectedCycleGray
+  
+      
     [
       EndingScene.imgWayToSchool,
       this.selectedStore,
@@ -182,7 +161,21 @@ class EndingScene{
       this.selectedCycle
 
     ],
+    EndingScene.imgSchoolGray,
     EndingScene.imgSchool,
+    [
+      EndingScene.imgWayToHomeGray,
+      EndingScene.imgWayToHomeMountainColorGray,
+      EndingScene.imgWayToHomeRoadColorGray,
+      EndingScene.imgWayToHomeWallBgGray,
+      EndingScene.imgWayToHomeBusStopColorGray,
+      EndingScene.imgWayBusStopColorGray,
+      //EndingScene.imgWayToHomeWallBg,
+      //this.wthWallSelectedGray,
+      //this.wthPosterSelectedGray,
+      //this.wthBirdSelectedGray
+      //wayToHome.wthBusStopSelected
+    ],
     [
       EndingScene.imgWayToHome,
       EndingScene.imgWayToHomeMountainColor,
@@ -196,46 +189,179 @@ class EndingScene{
       this.wthBirdSelected
       //wayToHome.wthBusStopSelected
     ],
+    EndingScene.imgHomeNightGray,
     EndingScene.imgHomeNight,
+    EndingScene.mainMenuGray,
     EndingScene.mainMenu
   ];
 
   }
 
   static preload() {
-    EndingScene.imgHomeMorning = loadImage('assets/images/backgrounds/homeMorningFullColor.png');
-    EndingScene.imgWayToSchool = loadImage('assets/images/backgrounds/wayToSchoolColor.png');
-    EndingScene.imgSchool = loadImage('assets/images/backgrounds/SchoolColor.png');
-    EndingScene.imgWayToHome = loadImage('assets/images/backgrounds/wayToHomeColor.png');
-    EndingScene.imgHomeNight = loadImage('assets/images/backgrounds/homeNightFullColor.png');
-    EndingScene.imgWayToHomeWallBg = loadImage('assets/images/backgrounds/wayToHomeWallBG.png');
-    EndingScene.imgWayToHomeMountainColor = loadImage('assets/images/objects/wayToHomeMountainColor.png');
-    EndingScene.imgWayToHomeBusStopColor = loadImage('assets/images/objects/wayToHomeBusStopColor.png');
-    EndingScene.imgWayBusStopColor = loadImage('assets/images/objects/WayBusStopColor.png');
-    EndingScene.imgWayToHomeRoadColor = loadImage('assets/images/backgrounds/WayToHomeRoadColor.png');
-    EndingScene.bgm = loadSound('assets/sounds/endingSceneBgm.mp3');
-    EndingScene.wtsStore1 = loadImage('assets/images/objects/wayToSchoolStore1.png');
-    EndingScene.wtsStore2 = loadImage('assets/images/objects/wayToSchoolStore2.png');
-    EndingScene.wtsStore3 = loadImage('assets/images/objects/wayToSchoolStore3.png');
-    EndingScene.wtsFlower1 = loadImage('assets/images/objects/wayToSchoolFlower1.png');
-    EndingScene.wtsFlower2 = loadImage('assets/images/objects/wayToSchoolFlower2.png');
-    EndingScene.wtsFlower3 = loadImage('assets/images/objects/wayToSchoolFlower3.png');
-    EndingScene.wtsCat1 = loadImage('assets/images/objects/wayToSchoolCat1.png');
-    EndingScene.wtsCat2 = loadImage('assets/images/objects/wayToSchoolCat2.png');
-    EndingScene.wtsCat3 = loadImage('assets/images/objects/wayToSchoolCat3.png');
-    EndingScene.wtsCycle1 = loadImage('assets/images/objects/wayToSchoolCycle1.png');
-    EndingScene.wtsCycle2 = loadImage('assets/images/objects/wayToSchoolCycle2.png');
-    EndingScene.wtsCycle3 = loadImage('assets/images/objects/wayToSchoolCycle3.png');
-    EndingScene.wthWall1 = loadImage('assets/images/objects/wayToHomeWall1.png');
-    EndingScene.wthWall2 = loadImage('assets/images/objects/wayToHomeWall2.png');
-    EndingScene.wthWall3 = loadImage('assets/images/objects/wayToHomeWall3.png');
-    EndingScene.wthPoster1 = loadImage('assets/images/objects/wayToHomePoster1.png');
-    EndingScene.wthPoster2 = loadImage('assets/images/objects/wayToHomePoster2.png');
-    EndingScene.wthPoster3 = loadImage('assets/images/objects/wayToHomePoster3.png');
-    EndingScene.wthBird1 = loadImage('assets/images/objects/wayToHomeBird1.png');
-    EndingScene.wthBird2 = loadImage('assets/images/objects/wayToHomeBird2.png');
-    EndingScene.wthBird3 = loadImage('assets/images/objects/wayToHomeBird3.png');
-    EndingScene.mainMenu = loadImage('assets/images/backgrounds/mainMenuColor.png');
+    // EndingScene.imgHomeMorning = loadImage('assets/images/backgrounds/homeMorningFullColor.png');
+    // EndingScene.imgWayToSchool = loadImage('assets/images/backgrounds/wayToSchoolColor.png');
+    // EndingScene.imgSchool = loadImage('assets/images/backgrounds/SchoolColor.png');
+    // EndingScene.imgWayToHome = loadImage('assets/images/backgrounds/wayToHomeColor.png');
+    // EndingScene.imgHomeNight = loadImage('assets/images/backgrounds/homeNightFullColor.png');
+    // EndingScene.imgWayToHomeWallBg = loadImage('assets/images/backgrounds/wayToHomeWallBG.png');
+    // EndingScene.imgWayToHomeMountainColor = loadImage('assets/images/objects/wayToHomeMountainColor.png');
+    // EndingScene.imgWayToHomeBusStopColor = loadImage('assets/images/objects/wayToHomeBusStopColor.png');
+    // EndingScene.imgWayBusStopColor = loadImage('assets/images/objects/WayBusStopColor.png');
+    // EndingScene.imgWayToHomeRoadColor = loadImage('assets/images/backgrounds/WayToHomeRoadColor.png');
+    // EndingScene.bgm = loadSound('assets/sounds/endingSceneBgm.mp3');
+    // EndingScene.wtsStore1 = loadImage('assets/images/objects/wayToSchoolStore1.png');
+    // EndingScene.wtsStore2 = loadImage('assets/images/objects/wayToSchoolStore2.png');
+    // EndingScene.wtsStore3 = loadImage('assets/images/objects/wayToSchoolStore3.png');
+    // EndingScene.wtsFlower1 = loadImage('assets/images/objects/wayToSchoolFlower1.png');
+    // EndingScene.wtsFlower2 = loadImage('assets/images/objects/wayToSchoolFlower2.png');
+    // EndingScene.wtsFlower3 = loadImage('assets/images/objects/wayToSchoolFlower3.png');
+    // EndingScene.wtsCat1 = loadImage('assets/images/objects/wayToSchoolCat1.png');
+    // EndingScene.wtsCat2 = loadImage('assets/images/objects/wayToSchoolCat2.png');
+    // EndingScene.wtsCat3 = loadImage('assets/images/objects/wayToSchoolCat3.png');
+    // EndingScene.wtsCycle1 = loadImage('assets/images/objects/wayToSchoolCycle1.png');
+    // EndingScene.wtsCycle2 = loadImage('assets/images/objects/wayToSchoolCycle2.png');
+    // EndingScene.wtsCycle3 = loadImage('assets/images/objects/wayToSchoolCycle3.png');
+    // EndingScene.wthWall1 = loadImage('assets/images/objects/wayToHomeWall1.png');
+    // EndingScene.wthWall2 = loadImage('assets/images/objects/wayToHomeWall2.png');
+    // EndingScene.wthWall3 = loadImage('assets/images/objects/wayToHomeWall3.png');
+    // EndingScene.wthPoster1 = loadImage('assets/images/objects/wayToHomePoster1.png');
+    // EndingScene.wthPoster2 = loadImage('assets/images/objects/wayToHomePoster2.png');
+    // EndingScene.wthPoster3 = loadImage('assets/images/objects/wayToHomePoster3.png');
+    // EndingScene.wthBird1 = loadImage('assets/images/objects/wayToHomeBird1.png');
+    // EndingScene.wthBird2 = loadImage('assets/images/objects/wayToHomeBird2.png');
+    // EndingScene.wthBird3 = loadImage('assets/images/objects/wayToHomeBird3.png');
+    // EndingScene.mainMenu = loadImage('assets/images/backgrounds/mainMenuColor.png');
+
+
+    EndingScene.imgHomeMorning = loadImage('assets/images/backgrounds/homeMorningFullColor.png', img => {
+      EndingScene.imgHomeMorningGray = img.get();
+      EndingScene.imgHomeMorningGray.filter(GRAY);
+  });
+  EndingScene.imgWayToSchool = loadImage('assets/images/backgrounds/wayToSchoolColor.png', img => {
+      EndingScene.imgWayToSchoolGray = img.get();
+      EndingScene.imgWayToSchoolGray.filter(GRAY);
+  });
+  EndingScene.imgSchool = loadImage('assets/images/backgrounds/SchoolColor.png', img => {
+      EndingScene.imgSchoolGray = img.get();
+      EndingScene.imgSchoolGray.filter(GRAY);
+  });
+  EndingScene.imgWayToHome = loadImage('assets/images/backgrounds/wayToHomeColor.png', img => {
+      EndingScene.imgWayToHomeGray = img.get();
+      EndingScene.imgWayToHomeGray.filter(GRAY);
+  });
+  EndingScene.imgHomeNight = loadImage('assets/images/backgrounds/homeNightFullColor.png', img => {
+      EndingScene.imgHomeNightGray = img.get();
+      EndingScene.imgHomeNightGray.filter(GRAY);
+  });
+  EndingScene.imgWayToHomeWallBg = loadImage('assets/images/backgrounds/wayToHomeWallBG.png', img => {
+      EndingScene.imgWayToHomeWallBgGray = img.get();
+      EndingScene.imgWayToHomeWallBgGray.filter(GRAY);
+  });
+  EndingScene.imgWayToHomeMountainColor = loadImage('assets/images/objects/wayToHomeMountainColor.png', img => {
+      EndingScene.imgWayToHomeMountainColorGray = img.get();
+      EndingScene.imgWayToHomeMountainColorGray.filter(GRAY);
+  });
+  EndingScene.imgWayToHomeBusStopColor = loadImage('assets/images/objects/wayToHomeBusStopColor.png', img => {
+      EndingScene.imgWayToHomeBusStopColorGray = img.get();
+      EndingScene.imgWayToHomeBusStopColorGray.filter(GRAY);
+  });
+  EndingScene.imgWayBusStopColor = loadImage('assets/images/objects/WayBusStopColor.png', img => {
+      EndingScene.imgWayBusStopColorGray = img.get();
+      EndingScene.imgWayBusStopColorGray.filter(GRAY);
+  });
+  EndingScene.imgWayToHomeRoadColor = loadImage('assets/images/backgrounds/WayToHomeRoadColor.png', img => {
+      EndingScene.imgWayToHomeRoadColorGray = img.get();
+      EndingScene.imgWayToHomeRoadColorGray.filter(GRAY);
+  });
+  EndingScene.bgm = loadSound('assets/sounds/endingSceneBgm.mp3');
+  EndingScene.wtsStore1 = loadImage('assets/images/objects/wayToSchoolStore1.png', img => {
+      EndingScene.wtsStore1Gray = img.get();
+      EndingScene.wtsStore1Gray.filter(GRAY);
+  });
+  EndingScene.wtsStore2 = loadImage('assets/images/objects/wayToSchoolStore2.png', img => {
+      EndingScene.wtsStore2Gray = img.get();
+      EndingScene.wtsStore2Gray.filter(GRAY);
+  });
+  EndingScene.wtsStore3 = loadImage('assets/images/objects/wayToSchoolStore3.png', img => {
+      EndingScene.wtsStore3Gray = img.get();
+      EndingScene.wtsStore3Gray.filter(GRAY);
+  });
+  EndingScene.wtsFlower1 = loadImage('assets/images/objects/wayToSchoolFlower1.png', img => {
+      EndingScene.wtsFlower1Gray = img.get();
+      EndingScene.wtsFlower1Gray.filter(GRAY);
+  });
+  EndingScene.wtsFlower2 = loadImage('assets/images/objects/wayToSchoolFlower2.png', img => {
+      EndingScene.wtsFlower2Gray = img.get();
+      EndingScene.wtsFlower2Gray.filter(GRAY);
+  });
+  EndingScene.wtsFlower3 = loadImage('assets/images/objects/wayToSchoolFlower3.png', img => {
+      EndingScene.wtsFlower3Gray = img.get();
+      EndingScene.wtsFlower3Gray.filter(GRAY);
+  });
+  EndingScene.wtsCat1 = loadImage('assets/images/objects/wayToSchoolCat1.png', img => {
+      EndingScene.wtsCat1Gray = img.get();
+      EndingScene.wtsCat1Gray.filter(GRAY);
+  });
+  EndingScene.wtsCat2 = loadImage('assets/images/objects/wayToSchoolCat2.png', img => {
+      EndingScene.wtsCat2Gray = img.get();
+      EndingScene.wtsCat2Gray.filter(GRAY);
+  });
+  EndingScene.wtsCat3 = loadImage('assets/images/objects/wayToSchoolCat3.png', img => {
+      EndingScene.wtsCat3Gray = img.get();
+      EndingScene.wtsCat3Gray.filter(GRAY);
+  });
+  EndingScene.wtsCycle1 = loadImage('assets/images/objects/wayToSchoolCycle1.png', img => {
+      EndingScene.wtsCycle1Gray = img.get();
+      EndingScene.wtsCycle1Gray.filter(GRAY);
+  });
+  EndingScene.wtsCycle2 = loadImage('assets/images/objects/wayToSchoolCycle2.png', img => {
+      EndingScene.wtsCycle2Gray = img.get();
+      EndingScene.wtsCycle2Gray.filter(GRAY);
+  });
+  EndingScene.wtsCycle3 = loadImage('assets/images/objects/wayToSchoolCycle3.png', img => {
+      EndingScene.wtsCycle3Gray = img.get();
+      EndingScene.wtsCycle3Gray.filter(GRAY);
+  });
+  EndingScene.wthWall1 = loadImage('assets/images/objects/wayToHomeWall1.png', img => {
+      EndingScene.wthWall1Gray = img.get();
+      EndingScene.wthWall1Gray.filter(GRAY);
+  });
+  EndingScene.wthWall2 = loadImage('assets/images/objects/wayToHomeWall2.png', img => {
+      EndingScene.wthWall2Gray = img.get();
+      EndingScene.wthWall2Gray.filter(GRAY);
+  });
+  EndingScene.wthWall3 = loadImage('assets/images/objects/wayToHomeWall3.png', img => {
+      EndingScene.wthWall3Gray = img.get();
+      EndingScene.wthWall3Gray.filter(GRAY);
+  });
+  EndingScene.wthPoster1 = loadImage('assets/images/objects/wayToHomePoster1.png', img => {
+      EndingScene.wthPoster1Gray = img.get();
+      EndingScene.wthPoster1Gray.filter(GRAY);
+  });
+  EndingScene.wthPoster2 = loadImage('assets/images/objects/wayToHomePoster2.png', img => {
+      EndingScene.wthPoster2Gray = img.get();
+      EndingScene.wthPoster2Gray.filter(GRAY);
+  });
+  EndingScene.wthPoster3 = loadImage('assets/images/objects/wayToHomePoster3.png', img => {
+      EndingScene.wthPoster3Gray = img.get();
+      EndingScene.wthPoster3Gray.filter(GRAY);
+  });
+  EndingScene.wthBird1 = loadImage('assets/images/objects/wayToHomeBird1.png', img => {
+      EndingScene.wthBird1Gray = img.get();
+      EndingScene.wthBird1Gray.filter(GRAY);
+  });
+  EndingScene.wthBird2 = loadImage('assets/images/objects/wayToHomeBird2.png', img => {
+      EndingScene.wthBird2Gray = img.get();
+      EndingScene.wthBird2Gray.filter(GRAY);
+  });
+  EndingScene.wthBird3 = loadImage('assets/images/objects/wayToHomeBird3.png', img => {
+      EndingScene.wthBird3Gray = img.get();
+      EndingScene.wthBird3Gray.filter(GRAY);
+  });
+  EndingScene.mainMenu = loadImage('assets/images/backgrounds/mainMenuColor.png', img => {
+      EndingScene.mainMenuGray = img.get();
+      EndingScene.mainMenuGray.filter(GRAY);
+  });
 
 
 
@@ -247,15 +373,40 @@ class EndingScene{
     const imageConfigurations = [
       { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270 }] },
       { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270 }] },
-      { count: 5, positions: [
-          { x: 80, y: 200, w: 480, h: 270 },
-          { x: 404, y: 275, w: 150, h: 113 },
-          { x: 155, y: 343, w: 49, h: 49 },
-          { x: 286, y: 339, w: 41, h: 41 },
-          { x: 493, y: 339, w: 56, h: 38 }
+      { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270 }] },
+      { count: 1, positions: [
+          { x: 80, y: 200, w: 480, h: 270 }
+          //{ x: 404, y: 275, w: 150, h: 113 },
+          //{ x: 155, y: 343, w: 49, h: 49 },
+          //{ x: 286, y: 339, w: 41, h: 41 },
+          //{ x: 493, y: 339, w: 56, h: 38 }
         ]
       },
+      { count: 5, positions: [
+        { x: 80, y: 200, w: 480, h: 270 },
+        { x: 404, y: 275, w: 150, h: 113 },
+        { x: 155, y: 343, w: 49, h: 49 },
+        { x: 286, y: 339, w: 41, h: 41 },
+        { x: 493, y: 339, w: 56, h: 38 }
+      ]
+    },
       { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270 }] },
+      { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270 }] },
+      { count: 6, positions: [
+        { x: 80, y: 200, w: 480, h: 270 }, //배경
+        { x: 80, y: 200, w: 480, h: 270 }, //산
+        { x: 80, y: 200, w: 480, h: 270 },
+        { x:410, y:114, w:228, h:270}, //벽
+        { x: 193, y: 252, w: 255, h: 144 },//버스정류장
+        { x: 91, y: 290, w: 50, h: 86 } //표지판
+        
+        //{ x: 410, y: 208, w: 68, h:68}, //벽 낙서
+        //{ x: 474, y: 279, w: 68, h: 83 }, //포스터
+        //{ x: 455, y: 395, w: 56, h: 45}, //새
+        //{ x: 193, y: 252, w: 255, h: 144}
+      ]
+    },
+
       { count: 9, positions: [
           { x: 80, y: 200, w: 480, h: 270 }, //배경
           { x: 80, y: 200, w: 480, h: 270 }, //산
@@ -270,6 +421,9 @@ class EndingScene{
           //{ x: 193, y: 252, w: 255, h: 144}
         ]
       },
+      
+      { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270}] },
+      { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270}] },
       { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270}] },
       { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270}] }
     ];
@@ -324,31 +478,40 @@ class EndingScene{
       EndingScene.bgm.setVolume(0.5);
       EndingScene.bgm.loop(); // 배경음악을 반복 재생 //수정
     }
+
+    
     
 
     if (this.graphicsArray.length > 0) {
       if (millis() - this.lastChangeTime > this.changeInterval) {
         if (this.currentImageIndex < this.graphicsArray.length - 1) {
-          this.currentImageIndex++;
-          this.lastChangeTime = millis();
-          this.alpha = 0; // 새 이미지로 변경 시 페이드 인 효과 초기화
-          this.fadeIn = true;
+            this.currentImageIndex++;
+            this.lastChangeTime = millis();
+            this.alpha = 0; // 새 이미지로 변경 시 페이드 인 효과 초기화
+            this.fadeIn = true;
         }
-      }
+    }
+    let currentGraphics = this.graphicsArray[this.currentImageIndex];
+    tint(255, this.alpha); // 이미지에 알파 값 적용
+    image(currentGraphics, 0, 0, 1280, 720); // 기본 크기로 이미지 그리기
+    noTint();
 
-      let currentGraphics = this.graphicsArray[this.currentImageIndex];
-      tint(255, this.alpha); // 이미지에 알파 값 적용
-      image(currentGraphics, 0, 0, 1280, 720); // 기본 크기로 이미지 그리기
-      noTint();
-
-      if (this.fadeIn) {
+    if (this.fadeIn) {
         this.alpha += 10;
         if (this.alpha >= 255) {
-          this.alpha = 255;
-          this.fadeIn = false; // 페이드인 효과
+            this.alpha = 255;
+            this.fadeIn = false; // 페이드인 효과 완료
         }
-      }
     }
+    }
+
+
+ 
+   
+
+
+    
+    
   
 
     fill(0);
@@ -364,6 +527,8 @@ class EndingScene{
     textAlign(CENTER, CENTER);
     let combinedText = this.displayedTexts.concat(this.displayedText).join("\n");
     text(combinedText, 900, 400);
+
+    
 
  
   }
