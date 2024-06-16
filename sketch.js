@@ -146,6 +146,14 @@ function draw() {
     text("처음으로 돌아가려면 'f5'를 눌러 새로고침하세요.", width-30, 20);
   }
 
+  if (currentScene instanceof EndingScene) {
+    textFont(fontNeo);
+    textSize(16);
+    fill(255);
+    textAlign(RIGHT, CENTER);
+    text("처음으로 돌아가려면 'f5'를 눌러 새로고침하세요.", width-30, 20);
+  }
+
   // 커서 이미지 조건문
   if (((currentScene instanceof WayToSchool || currentScene instanceof WayToHome)&& (currentScene.changeCursor() === 2))
     || (currentScene instanceof OpeningScene && currentScene.textComplete == true)
