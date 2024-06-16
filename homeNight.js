@@ -99,6 +99,7 @@ class HomeNight {
 
     if (this.status === 2) {
       diary.display();
+
     } else if (this.status === 3) {
       if (this.textAnimations.isComplete()) {
         this.drawSleepButton();
@@ -109,12 +110,13 @@ class HomeNight {
         this.status = 5;
       }
 
+    } else if (this.status === 6) {
+      this.drawPreEnding();
     }
   }
 
   handleClick() {
     if (!this.textAnimations.isComplete()) {
-      clickSound.setVolume(0.3);
       clickSound.play();
       this.textAnimations.nextLine();
     }
@@ -126,7 +128,6 @@ class HomeNight {
         diary.handleClick();
 
       } else if (this.status === 2 && diary.isFilled) {
-        clickSound.setVolume(0.3);
         clickSound.play();
 
         if (day !== 5) {
@@ -146,9 +147,11 @@ class HomeNight {
           clickSound.play();
         }
       } else if (this.status === 5) {
+        this.status = 6;
+        bgmDay[day-1].stop();
 
+      } else if (this.status === 6) {
         if (!this.preEndingTextAni.isComplete()) {
-          clickSound.setVolume(0.3);
           clickSound.play();
           this.preEndingTextAni.nextLine();
 

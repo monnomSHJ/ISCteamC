@@ -203,7 +203,7 @@ class WayToSchool {
 
       setTimeout(() => {
         this.choosing = true; // 마우스 클릭 시 읽기
-      }, 100);
+      }, 200);
     } 
 
     if (this.choosing) {

@@ -114,12 +114,10 @@ class OpeningScene {
   handleClick() {
 
     if (!this.textAnimations.isComplete()) {
-      clickSound.setVolume(0.3);
       clickSound.play();
       this.textAnimations.nextLine();
     } else {
       if(this.textBlockIndex < 4) {
-        clickSound.setVolume(0.3);
         clickSound.play();
         this.textBlockIndex++;
         this.textAnimations = new TextAnimation(this.texts[this.textBlockIndex], width/2, 637, 50);

@@ -138,12 +138,7 @@ function draw() {
       rect(d*20 - 15, 0, 10, 10);
     }
     pop();
-  }
-  
-  if (currentScene instanceof OpeningScene || currentScene instanceof HomeMorning
-    || currentScene instanceof WayToSchool || currentScene instanceof School
-    || currentScene instanceof WayToHome || currentScene instanceof HomeNight
-    || currentScene instanceof EndingScene) {
+
     textFont(fontNeo);
     textSize(16);
     fill(255, 150);

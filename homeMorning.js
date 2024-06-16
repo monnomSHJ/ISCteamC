@@ -84,7 +84,6 @@ class HomeMorning {
 
   handleClick() {
     if (!this.textAnimations.isComplete()) {
-      clickSound.setVolume(0.3);
       clickSound.play();
       this.textAnimations.nextLine();
     } else {

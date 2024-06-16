@@ -467,6 +467,11 @@ class EndingScene{
 
 
   display() {
+    bgmDay1.stop();
+    bgmDay2.stop();
+    bgmDay3.stop();
+    bgmDay4.stop();
+    bgmDay5.stop();
     // bgmDay1.stop();
     // bgmDay2.stop();
     // bgmDay3.stop();
