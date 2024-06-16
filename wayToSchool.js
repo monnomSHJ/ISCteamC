@@ -35,18 +35,18 @@ class WayToSchool {
       [["오랜만에 맡는 빵냄새, 기분 좋다.", "어렸을 때는 왜 그렇게 빵이 맛있게 느껴졌지?", "빵 하나를 샀다.", "이제 버스를 타고 학교로 가자."],
       ["커피 향이 원래 이렇게 좋았나?", "시험 공부하느라 아무 생각 없이 마실 때는 몰랐는데.", "커피 한 잔을 샀다.", "이제 버스를 타고 학교로 가자."],
       ["날이 더워서 그런지 확실히 사람이 많은 것 같네.", "어렸을 때에는 여름방학에 수박 먹는 게 제일 좋았는데.", "수박 주스를 한 잔 샀다.", "이제 버스를 타고 학교로 가자."]],
-      [["ㅇㅇ", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
-      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
-      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."]],
-      [["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
-      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
-      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."]],
-      [["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
-      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
-      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."]],
-      [["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
-      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."],
-      ["빵빵", "빵빵", "빵빵", "이제 버스를 타고 학교로 가자."]]
+      [["정말 열정적인 색이네.", "나도 이렇게 열정적인 사람이 될 수 있을까?", "...", "이제 버스를 타고 학교로 가자."],
+      ["정말 시원한 색이네.", "나도 이렇게 쿨한 사람이 될 수 있을까?", "...", "이제 버스를 타고 학교로 가자."],
+      ["정말 순수한 색이네.", "나도 이렇게 순수한 사람이 될 수 있을까?", "...", "이제 버스를 타고 학교로 가자."]],
+      [["아이스크림 같은 고양이다.", "웃는 모습이 귀엽다.", "네 웃는 얼굴 덕분에 나도 행복해졌어. 고마워.", "이제 버스를 타고 학교로 가자."],
+      ["고등어 같은 고양이다.", "웃는 모습이 귀엽다.", "네 웃는 얼굴 덕분에 나도 행복해졌어. 고마워.", "이제 버스를 타고 학교로 가자."],
+      ["치즈 같은 고양이다.", "웃는 모습이 귀엽다.", "네 웃는 얼굴 덕분에 나도 행복해졌어. 고마워.", "이제 버스를 타고 학교로 가자."]],
+      [["두발 자전거를 타려고 피나는 노력을 했었지.", "그때는 넘어지는 게 무섭지 않았었나?", "그래, 새로운 도전에도 겁없이 뛰어들었던 때가 있었지.", "이제 버스를 타고 학교로 가자."],
+      ["두발 자전거는 무서워서 네발 자전거만 타고 다녔었지.", "그래도 나름 재미있었어.", "그래, 남들보다 느려도 불안에 떨지 않았던 때가 있었지.", "이제 버스를 타고 학교로 가자."],
+      ["무슨 생각에서인지 외발 자전거를 타고 싶어했지.", "나름 특별한 사람이 되고 싶었어.", "그래, 주위의 시선에 위축되지 않고 내가 원하는 것을 하던 때가 있었지.", "이제 버스를 타고 학교로 가자."]],
+      [[""],
+      ["하늘이 어떤 색이었는지도 잊고 있었나보다.", "하루하루가 이렇게 다채로운데...", "앞으로 고개 좀 들고 다녀야겠네.", "이제 버스를 타고 학교로 가자."],
+      [""]]
     ];
 
     this.textAnimations = null;
@@ -58,25 +58,25 @@ class WayToSchool {
     this.button1Text = [
       "빵집",
       "빨간 장미",
-      "...오레오",
+      "오레오냥",
       "두발 자전거",
-      "푸르네."
+      ""
     ];
 
     this.button2Text = [
       "카페",
       "파란 수국",
-      "...고등어",
+      "고등어냥",
       "네발 자전거",
-      "아름답네."
+      "푸르네."
     ];
 
     this.button3Text = [
       "주스가게",
       "하얀 백합",
-      "...치즈",
+      "치즈냥",
       "외발 자전거",
-      "높네."
+      ""
     ];
   }
 
@@ -121,7 +121,7 @@ class WayToSchool {
     image(this.wtsBGSelected, 0, 0);
     image(this.wtsStoreSelected, 650, 200);
     image(this.wtsFlowerSelected, 200, 380);
-    image(this.wtsCatSelected, 550, 370);
+    image(this.wtsCatSelected, 550, 420);
     image(this.wtsCycleSelected, 1100, 390);
     this.busStopDisplay();
 
@@ -152,12 +152,17 @@ class WayToSchool {
         }
 
       } else if (this.choosing) {
-        this.button1.display();
-        this.button1.update();
-        this.button2.display();
-        this.button2.update();
-        this.button3.display();
-        this.button3.update(); 
+        if (day === 5) {
+          this.button2.display();
+          this.button2.update();
+        } else {
+          this.button1.display();
+          this.button1.update();
+          this.button2.display();
+          this.button2.update();  
+          this.button3.display();
+          this.button3.update(); 
+        }
 
       } else if (this.Reading2) {
 
@@ -191,10 +196,14 @@ class WayToSchool {
     }
 
     if (this.eventOccur && this.finishRead){ /// 이벤트 발생 시작 후
-      this.choosing = true; // 마우스 클릭 시 읽기
+
       this.Reading = false;
       this.finishRead = false;
       clickSound.play();
+
+      setTimeout(() => {
+        this.choosing = true; // 마우스 클릭 시 읽기
+      }, 100);
     } 
 
     if (this.choosing) {
@@ -268,6 +277,9 @@ class WayToSchool {
     } else if (day == 5) {
       wtsBG = 1;
       wtsBS = 1;
+      wthBG = 1;
+      wthBS = 1;
+      wthRoad = 1;
       this.wtsBGSelected = WayToSchool.wtsBG;
       this.wtsBSSelected = WayToSchool.wtsBS;
     }
@@ -330,7 +342,7 @@ class WayToSchool {
       this.capturePosition[1] = 280;
     } else if (day == 3) {
       this.capturePosition[0] = 390;
-      this.capturePosition[1] = 300;
+      this.capturePosition[1] = 350;
     } else if (day == 4) {
       this.capturePosition[0] = 900;
       this.capturePosition[1] = 300;
@@ -370,6 +382,7 @@ class WayToSchool {
 
     setTimeout(() => {
       this.captureImage = get(this.capturePosition[0], this.capturePosition[1], captureSizeW, captureSizeH);
+      this.saveCaptureToDiary();
     }, 100);
 
     setTimeout(() => {
@@ -411,7 +424,7 @@ class WayToSchool {
         return 1;
       } else if ((day == 2) && (200 < mouseX && mouseX < 322 && 380 < mouseY && mouseY < 503)) {
         return 2;
-      } else if ((day == 3) && (550 < mouseX && mouseX < 673 && 370 < mouseY && mouseY < 501)) {
+      } else if ((day == 3) && (550 < mouseX && mouseX < 673 && 420 < mouseY && mouseY < 551)) {
         return 3;
       } else if ((day == 4) && (1100 < mouseX && mouseX < 1273 && 370 < mouseY && mouseY < 496)) {
         return 4;
@@ -421,6 +434,20 @@ class WayToSchool {
     } else if (this.selected && (1040 < mouseX && mouseX < 1040+132 && 265 < mouseY && mouseY < 265+230)) {
       return 'go';
     } else { return 0;}
+  }
+
+  saveCaptureToDiary() {
+    if (day == 1) {
+      diaryPictures[0] = this.captureImage;
+    } else if (day == 2) {
+      diaryPictures[2] = this.captureImage;
+    } else if (day == 3) {
+      diaryPictures[4] = this.captureImage;
+    } else if (day == 4) {
+      diaryPictures[6] = this.captureImage;
+    } else if (day == 5) {
+      diaryPictures[8] = this.captureImage;
+    }
   }
 
   changeCursor() {
