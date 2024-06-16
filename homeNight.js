@@ -1,295 +1,208 @@
 class HomeNight {
-    constructor() {
-      this.images = HomeNight.images;
-      this.bedImages = HomeNight.bedImages;
-      this.book = HomeNight.book;
-      this.texts = [
-        '월요일, 오늘은 가게와 낙서를 발견했다.',
-        '오늘은 꽃과 포스터를 발견했다.',
-        '오늘은 고양이와 산을 발견했다.',
-        '오늘은 자전거와 새를 발견했다.'
-      ];
-      this.endingmessages = [
-        '금요일이라 그런가...피곤해서 눈이 감긴다.',
-        '이번 주는 많은 일들이 있었던 것 같다.'
-      ];
-      console.log(wtsStore);
-      if (wtsStore == 1) {
-        this.selectedStore = loadImage('assets/images/objects/wayToSchoolStore1.png');
-      } else if (wtsStore == 2) {
-        this.selectedStore = loadImage('assets/images/objects/wayToSchoolStore2.png');
-      } else if (wtsStore == 3) {
-        this.selectedStore = loadImage('assets/images/objects/wayToSchoolStore3.png');
-      }
+  constructor() {
+    this.images = HomeNight.images;
+    this.bedImages = HomeNight.bedImages;
 
-      if (wthWall == 1) {
-        this.selectedWall = loadImage('assets/images/objects/wayToHomeWall1.png');
-      } else if (wthWall == 2) {
-        this.selectedWall = loadImage('assets/images/objects/wayToHomeWall2.png');
-      } else if (wthWall == 3) {
-        this.selectedWall = loadImage('assets/images/objects/wayToHomeWall3.png');
-      }
+    this.bedMouseOver = false;
 
-      if (wtsFlower == 1) {
-        this.selectedFlower = loadImage('assets/images/objects/wayToSchoolFlower1.png');
-      } else if (wtsFlower == 2) {
-        this.selectedFlower = loadImage('assets/images/objects/wayToSchoolFlower2.png');
-      } else if (wtsFlower == 3) {
-        this.selectedFlower = loadImage('assets/images/objects/wayToSchoolFlower3.png');
-      }
-
-      if (wthPoster == 1) {
-        this.selectedPoster = loadImage('assets/images/objects/wayToHomePoster1.png');
-      } else if (wthPoster == 2) {
-        this.selectedPoster = loadImage('assets/images/objects/wayToHomePoster2.png');
-      } else if (wthPoster == 3) {
-        this.selectedPoster = loadImage('assets/images/objects/wayToHomePoster3.png');
-      }
-
-    if (wtsCat == 1) {
-        this.selectedCat = loadImage('assets/images/objects/wayToSchoolCat3.png');
-      } else if (wtsCat == 2) {
-        this.selectedCat = loadImage('assets/images/objects/wayToSchoolCat1.png');
-      } else if (wtsCat == 3) {
-        this.selectedCat = loadImage('assets/images/objects/wayToSchoolCat2.png');
-      }
-
-      if (wtsCycle == 1) {
-        this.selectedCycle = loadImage('assets/images/objects/wayToSchoolCycle1.png');
-      } else if (wtsCycle == 2) {
-        this.selectedCycle = loadImage('assets/images/objects/wayToSchoolCycle2.png');
-      } else if (wtsCycle == 3) {
-        this.selectedCycle = loadImage('assets/images/objects/wayToSchoolCycle3.png');
-      }
-      if (wthBird == 1) {
-        this.selectedBird = loadImage('assets/images/objects/wayToHomeBird1.png');
-      } else if (wthBird == 2) {
-        this.selectedBird = loadImage('assets/images/objects/wayToHomeBird2.png');
-      } else if (wthBird == 3) {
-        this.selectedBird = loadImage('assets/images/objects/wayToHomeBird3.png');
-      }
-      this.selectedMountain = loadImage('assets/images/objects/wayToHomeMountainColor.png');
-      this.currentTextIndex = day - 1;
-      this.displayedText = "";
-      this.textAnimationSpeed = 5; // 애니메이션 속도
-      this.textAnimationCounter = 0; // 애니메이션 카운터
-      this.fadeInAlpha = 0; // 페이드 인 알파 값
-      this.storeFadeInAlpha = 0; // 선택 이미지 페이드 인 알파 값
-      this.fadeOutAlpha = 0; // 눈 감는 효과 페이드 아웃 알파 값
-      this.endingMessageIndex = 0;
-      this.endingMessageDisplayed = "";
-      this.endingMessageAnimationCounter = 0;
-      this.endingMessageComplete = false;
-      this.displayEndingMessage = false;
-      this.textComplete = false;
-      this.bookSoundPlayed = false;
-    }
-  
-    static preload() {
-      HomeNight.book = loadImage('assets/images/objects/homeNightBook.png');
-      HomeNight.images = [
-        loadImage('assets/images/backgrounds/homeNightFullMono.png'),
-        loadImage('assets/images/backgrounds/homeNightFullColor2.png'),
-        loadImage('assets/images/backgrounds/homeNightFullColor3.png'),
-        loadImage('assets/images/backgrounds/homeNightFullColor4.png'),
-        loadImage('assets/images/backgrounds/homeNightFullColor.png')
+    this.texts = [
+      ["오늘은 가게와 낙서를 발견했다.",
+        "다이어리에 사진을 붙여넣어보자."
+      ],
+      ["오늘은 꽃과 포스터를 발견했다.",
+        "다이어리에 사진을 붙여넣어보자."
+      ],
+      ["오늘은 고양이와 산을 발견했다.",
+        "다이어리에 사진을 붙여넣어보자."
+      ],
+      ["오늘은 자전거와 새를 발견했다.",
+        "다이어리에 사진을 붙여넣어보자."
+      ],
+      ["오늘은 많은 것을 발견했다.",
+        "다이어리에 사진을 붙여넣어보자."
       ]
-      HomeNight.bedImages = [
-        loadImage('assets/images/objects/bedMono.png'),
-        loadImage('assets/images/objects/bedColor2.png'),
-        loadImage('assets/images/objects/bedColor3.png'),
-        loadImage('assets/images/objects/bedColor4.png')
-      ]
-    }
-  
-    display() {
-      busSound.stop();
-      image(this.images[day-1], 0, 0, width, height);
-      fill(0);
-      rectMode(CORNER);
-      rect(0, height - 120, 1280, 120);
-      rect(0, 0, 1280, 120);
-  
-      textSize(24);
-      textAlign(CENTER, CENTER);
-      fill(255);
-      text(this.displayedText, 640, 637);
-      
-      if (day < 5) {
-        this.updateDisplayedText(); // 텍스트 한글자씩 나오는 함수
-        if (this.displayedText.length === this.texts[this.currentTextIndex].length) {
-          this.drawSleepButton(); // 모든 텍스트가 다 나오면 버튼을 그리기
-          this.drawNightBook(); // 페이드 인 효과로 책 이미지 표시
-          this.drawSelected();
-        }
-      } else if (day == 5) {
-        this.drawPreEnding();
-      }
-    }
-  
-    updateDisplayedText() {
-      if (this.textAnimationCounter < this.textAnimationSpeed) {
-        this.textAnimationCounter++;
-      } else {
-        if (this.displayedText.length < this.texts[this.currentTextIndex].length) {
-          this.displayedText = this.texts[this.currentTextIndex].substring(0, this.displayedText.length + 1);
-          this.textComplete = false;
-        } else {
-          this.textComplete = true;
-        }
-        this.textAnimationCounter = 0;
-      }
-    }
-  
-    drawNightBook() {
-      if(!this.bookSoundPlayed) {
-        bookSound.play();
-        this.bookSoundPlayed = true;
-      }
-      
-      if (this.fadeInAlpha < 255) {
-        this.fadeInAlpha += 5; // 페이드 인 속도 조절
-      }
-      tint(255, this.fadeInAlpha); // 알파 값 적용
-      image(this.book, width / 2 - this.book.width / 2, height / 2 - this.book.height / 2);
-      noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
-    }
+    ]
 
-    drawSelected() {
-      if (this.storeFadeInAlpha < 255) {
-        this.storeFadeInAlpha += 3; // 페이드 인 속도 조절
-      }
-      if (day == 1) {
-        let targetWidth = 300;
-        let aspectRatio1 = this.selectedStore.width / this.selectedStore.height;
-        let aspectRatio2 = this.selectedWall.width / this.selectedWall.height;
+    this.afterTexts = [
+      "오늘 찍은 사진들을 보며 하루를 돌아보았다.",
+      "피곤하니까 이제 슬슬 자볼까."
+    ]
 
-        let targetHeight1 = targetWidth / aspectRatio1;
-        let targetHeight2 = targetWidth / aspectRatio2;
+    this.day5afterTexts = [
+      "금요일이라 그런가, 피곤해서 눈이 감긴다.",
+      "이번 주는 뭔가 많은 일이 있었던 것 같다."
+    ]
 
-        tint(255, this.storeFadeInAlpha); // 알파 값 적용
-        image(this.selectedStore, 660, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
-        image(this.selectedWall, 320, 220, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
+    this.preEndingMessage = [
+      "",
+      "평소와 크게 다를 바 없는 일주일이었지만,",
+      "주위를 둘러보며 일상 속 순간들을 포착하다보니...",
+      "숨어있던 소소한 행복들을 다시금 발견할 수 있었다.",
+      "...",
+      "만일 당신도 나와 같은 고민을 하고 있다면,",
+      "하루에 하나씩만이라도, 일상 속에 숨어있는 자그마한 행복들을 찾아",
+      "당신의 하루하루를 색칠해보길 바란다.",
+      "우리 모두 조금만 힘내 보자.",
+      "...지금의 나를 너무 밀어 붙이지는 말고.",
+      "조금 더 여유롭게, 천천히...",
+      "'나'인 그대로.",
+      ""
+    ]
 
-        noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
-      } else if (day == 2) {
-        let targetWidth1 = 300;
-        let targetWidth2 = 250;
+    this.textAnimations = null;
+    this.preEndingTextAni = null;
 
-        let aspectRatio1 = this.selectedFlower.width / this.selectedFlower.height;
-        let aspectRatio2 = this.selectedPoster.width / this.selectedPoster.height;
+    this.status = 0; //0: 대사 출력, 1: 대사 완독, 2: 다이어리, 3: 잠자기, 4: 5일차, 5: preEnding
 
-        let targetHeight1 = targetWidth1 / aspectRatio1;
-        let targetHeight2 = targetWidth2 / aspectRatio2;
+    this.fadeOutAlpha = 0;
+  }
 
-        tint(255, this.storeFadeInAlpha); // 알파 값 적용
-        image(this.selectedFlower, 660, 250, targetWidth1, targetHeight1); // 이미지를 특정 위치와 크기로 표시
-        image(this.selectedPoster, 360, 200, targetWidth2, targetHeight2); // 이미지를 특정 위치와 크기로 표시
+  static preload() {
+    HomeNight.images = [
+      loadImage('assets/images/backgrounds/homeNightFullMono.png'),
+      loadImage('assets/images/backgrounds/homeNightFullColor2.png'),
+      loadImage('assets/images/backgrounds/homeNightFullColor3.png'),
+      loadImage('assets/images/backgrounds/homeNightFullColor4.png'),
+      loadImage('assets/images/backgrounds/homeNightFullColor.png')
+    ]
 
-        noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
-      } else if (day == 3) {
-        let targetWidth = 260;
-        let aspectRatio1 = this.selectedCat.width / this.selectedCat.height;
-        let aspectRatio2 = this.selectedMountain.width / this.selectedMountain.height;
+    HomeNight.bedImages = [
+      loadImage('assets/images/objects/bedMono.png'),
+      loadImage('assets/images/objects/bedColor2.png'),
+      loadImage('assets/images/objects/bedColor3.png'),
+      loadImage('assets/images/objects/bedColor4.png')
+    ]
+  }
 
-        let targetHeight1 = targetWidth / aspectRatio1;
-        let targetHeight2 = targetWidth / aspectRatio2;
+  setup() {
+    this.textAnimations = new TextAnimation(this.texts[day-1], width/2, 637, 50);
+    this.preEndingTextAni = new TextAnimation(this.preEndingMessage, width/2, height/2, 50);
+  }
 
-        tint(255, this.storeFadeInAlpha); // 알파 값 적용
-        image(this.selectedCat, 680, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
-        image(this.selectedMountain, 350, 250, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
+  display() {
+    busSound.stop();
 
-        noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
-      } else if (day == 4) {
-        let targetWidth = 280;
-        let aspectRatio1 = this.selectedCycle.width / this.selectedCycle.height;
-        let aspectRatio2 = this.selectedBird.width / this.selectedBird.height;
-        let targetHeight1 = targetWidth / aspectRatio1;
-        let targetHeight2 = targetWidth / aspectRatio2;
-
-        tint(255, this.storeFadeInAlpha); // 알파 값 적용
-        image(this.selectedCycle, 660, 250, targetWidth, targetHeight1); // 이미지를 특정 위치와 크기로 표시
-        image(this.selectedBird, 340, 250, targetWidth, targetHeight2); // 이미지를 특정 위치와 크기로 표시
-        noTint(); // 다음 이미지에 영향을 주지 않도록 tint 해제
-      }
-    }
-  
-    drawPreEnding() {
-      if (this.fadeOutAlpha < 255) {
-        this.fadeOutAlpha += 3; // 페이드 아웃 속도 조절
-      }
-  
-      let alphaValue = map(this.fadeOutAlpha, 0, 255, 0, 255); // 알파 값을 0에서 255로 매핑
-      let rectHeight = map(this.fadeOutAlpha, 0, 255, 0, height / 2); // 사각형 높이를 0에서 절반 높이로 매핑
-  
-      fill(0, alphaValue);
-      rect(0, 0, width, rectHeight);
-      rect(0, height - rectHeight, width, rectHeight);
-  
-      if (this.fadeOutAlpha >= 255 && !this.displayEndingMessage) {
-        this.displayEndingMessage = true;
-      }
-  
-      if (this.displayEndingMessage) {
-        this.updateEndingMessage();
-      }
-    }
-  
-    updateEndingMessage() {
-      if (this.endingMessageAnimationCounter < this.textAnimationSpeed) {
-        this.endingMessageAnimationCounter++;
-      } else {
-        if (this.endingMessageDisplayed.length < this.endingmessages[this.endingMessageIndex].length) {
-          this.endingMessageDisplayed = this.endingmessages[this.endingMessageIndex].substring(0, this.endingMessageDisplayed.length + 1);
-        } else {
-          this.endingMessageComplete = true;
-        }
-        this.endingMessageAnimationCounter = 0;
-      }
-  
-      fill(255);
-      textSize(24);
-      textAlign(CENTER, CENTER);
-      text(this.endingMessageDisplayed, width / 2, height / 2);
-    }
-  
-    handleClick() {
-        if (day < 5 && this.textComplete &&
-          mouseX > width - 250 && mouseX < width -30 && mouseY > height - 300 && mouseY < height - 80) {
-          day++;
-          console.log(day);
-          changePage(new HomeMorning(), 'DAY '+day); // HomeMorning의 새로운 인스턴스로 전환
-          clickSound.play();
-        } else if (day == 5 && this.displayEndingMessage && this.endingMessageComplete) {
-          if (this.endingMessageIndex < this.endingmessages.length - 1) {
-            this.endingMessageIndex++;
-            this.endingMessageDisplayed = "";
-            this.endingMessageComplete = false;
-            clickSound.play();
-          } else {
-            changePage(new EndingScene, 'Ending...');
-            cameraSound.play();
-          }
-        }
-      }
+    imageMode(CORNER);
+    image(this.images[day-1], 0, 0, width, height);
     
-    drawSleepButton() {
-      if(mouseX > width - 250 && mouseX < width -30 && mouseY > height - 300 && mouseY < height - 80) {
-        image(this.bedImages[day-1], width - 265, height - 315, 250, 250);
-        rectMode(CENTER);
-        fill(0, 100);
-        noStroke();
-        rect(width - 140, height - 190, 200, 40);
+    fill(0);
+    rectMode(CORNER);
+    rect(0, height - 120, 1280, 120);
+    rect(0, 0, 1280, 120);
 
-        fill(255);
-        textSize(32);
-        textFont(fontNeo);
-        textAlign(CENTER, CENTER);
-        text("잠자기", width - 140, height - 190);
-      } else {
-        image(this.bedImages[day-1], width - 250, height - 300, 220, 220);
+    this.textAnimations.update();
+    this.textAnimations.display();
+
+    if (this.status === 0 && this.textAnimations.isComplete()) {
+      this.status = 1;
+    }
+
+    if (this.status === 2) {
+      diary.display();
+    } else if (this.status === 3) {
+      if (this.textAnimations.isComplete()) {
+        this.drawSleepButton();
       }
-      
+
+    } else if (this.status === 4) {
+      if (this.textAnimations.isComplete()) {
+        this.status = 5;
+      }
+
     }
   }
-  
+
+  handleClick() {
+    if (!this.textAnimations.isComplete()) {
+      clickSound.setVolume(0.3);
+      clickSound.play();
+      this.textAnimations.nextLine();
+    }
+
+    if (this.status === 1) {
+        this.status = 2;
+
+      } else if (this.status === 2 && !diary.isFilled) {
+        diary.handleClick();
+
+      } else if (this.status === 2 && diary.isFilled) {
+        clickSound.setVolume(0.3);
+        clickSound.play();
+
+        if (day !== 5) {
+          this.textAnimations = new TextAnimation(this.afterTexts, width/2, 637, 50);
+          this.status = 3;
+
+        } else {
+          this.textAnimations = new TextAnimation(this.day5afterTexts, width/2, 637, 50);
+          this.status = 4;
+        }
+
+      } else if (this.status === 3) {
+        if (this.bedMouseOver) {
+          bgmDay[day-1].stop();
+          day++;
+          changePage(new HomeMorning(), 'DAY '+day);
+          clickSound.play();
+        }
+      } else if (this.status === 5) {
+
+        if (!this.preEndingTextAni.isComplete()) {
+          clickSound.setVolume(0.3);
+          clickSound.play();
+          this.preEndingTextAni.nextLine();
+
+        } else {
+          cameraSound.play();
+          changePage(new EndingScene, 'Ending...');
+        }
+      }
+    }
+
+  drawSleepButton() {
+
+    if(mouseX > width/2 - 110 && mouseX < width/2 + 110 && mouseY > height/2 - 110 && mouseY < height/2 + 110) {
+      this.bedMouseOver = true;
+    } else {
+      this.bedMouseOver = false;
+    }
+
+    if(this.bedMouseOver) {
+      imageMode(CENTER);
+      image(this.bedImages[day-1], width/2, height/2, 250, 250);
+      imageMode(CORNER);
+      rectMode(CENTER);
+      fill(0, 100);
+      noStroke();
+      rect(width/2, height/2, 200, 40);
+
+      fill(255);
+      textSize(32);
+      textFont(fontNeo);
+      textAlign(CENTER, CENTER);
+      text("잠자기", width/2, height/2);
+    } else {
+      imageMode(CENTER);
+      image(this.bedImages[day-1], width/2, height/2, 220, 220);
+      imageMode(CORNER);
+    }
+  }
+
+  drawPreEnding() {
+    if (this.fadeOutAlpha < 255) {
+      this.fadeOutAlpha += 3;
+    }
+
+    let alphaValue = map(this.fadeOutAlpha, 0, 255, 0, 255);
+    let rectHeight = map(this.fadeOutAlpha, 0, 255, 0, height / 2);
+
+    fill(0, alphaValue);
+    rect(0, 0, width, rectHeight);
+    rect(0, height - rectHeight, width, rectHeight);
+
+    if (this.fadeOutAlpha >= 255) {
+      this.preEndingTextAni.update();
+      this.preEndingTextAni.display();
+    }
+  }
+}

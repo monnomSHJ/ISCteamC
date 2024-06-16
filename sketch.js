@@ -5,6 +5,7 @@ let day = 1; // 현재 일차
 let fontNeo;
 let cursorImage1;
 let cursorImage2;
+let cursorImage3;
 
 let cameraSound;
 let clickSound;
@@ -39,11 +40,19 @@ let wthBird = 0; //새 이미지(1: Dove, 2: Small, 3: Black)
 let wthBusStop = 0; //버스 정류장(상호작용 가능)
 let wthRoad = 0; //길(배경 요소)
 
+let diaryPictures = [];
+let diary;
+
+let bgmDay = [];
+
+//다이어리 이미지
+
 let wtsStoreForEnding = 0;
 function preload() {
   fontNeo = loadFont('assets/fonts/neoMo.TTF');
   cursorImage1 = loadImage('assets/images/mouseCursor3.png');
   cursorImage2 = loadImage('assets/images/mouseCursor2.png');
+  cursorImage3 = loadImage('assets/images/objects/mousePencil.png');
   cameraSound = loadSound('assets/sounds/cursorClickSound.mp3');
   clickSound = loadSound('assets/sounds/objectClickSound.mp3');
   busSound = loadSound('assets/sounds/busSound.mp3');
@@ -59,12 +68,17 @@ function preload() {
   HomeNight.preload();
   EndingScene.preload();
   ChoosingButton.preload();
-  bgmDay1 = loadSound('assets/sounds/wayBgmDay1.mp3');
-  bgmDay2 = loadSound('assets/sounds/wayBgmDay2.mp3');
-  bgmDay3 = loadSound('assets/sounds/wayBgmDay3.mp3');
-  bgmDay4= loadSound('assets/sounds/wayBgmDay4.mp3');
-  bgmDay5 = loadSound('assets/sounds/wayBgmDay5.mp3');
+  Diary.preload();
+
+  bgmDay = [
+    loadSound('assets/sounds/wayBgmDay1.mp3'),
+    loadSound('assets/sounds/wayBgmDay2.mp3'),
+    loadSound('assets/sounds/wayBgmDay3.mp3'),
+    loadSound('assets/sounds/wayBgmDay4.mp3'),
+    loadSound('assets/sounds/wayBgmDay5.mp3')
+  ]
 }
+
 
 function setup() {
   createCanvas(1280, 720);
@@ -83,44 +97,28 @@ function setup() {
   if (currentScene.setup) {
     currentScene.setup();
   }
+
+  diary = new Diary();
 }
 
 function draw() {
   background(220);
   noStroke();
   currentScene.display();
+
   //사운드
-  if (currentScene == homeMorning || currentScene == homeNight || currentScene == wayToSchool || currentScene ==WayToHome || currentScene ==school){
-  
-    if (day==1){
-      if (!bgmDay1.isPlaying()) {
-      bgmDay1.setVolume(0.1);
-      bgmDay1.loop(); // 배경음악을 반복 재생 //수정
+  if (currentScene instanceof HomeMorning ||
+    currentScene instanceof WayToSchool ||
+    currentScene instanceof School ||
+    currentScene instanceof WayToHome ||
+    currentScene instanceof HomeNight) {
+
+      if (!bgmDay[day-1].isPlaying()) {
+        bgmDay[day-1].setVolume(0.15);
+        bgmDay[day-1].play();
+      }
     }
-    }else if(day==2){
-      bgmDay1.stop();
-      if (!bgmDay2.isPlaying()) {
-        bgmDay2.setVolume(0.1);
-        bgmDay2.loop();
-    }}else if(day==3){
-      bgmDay2.stop();
-      if (!bgmDay3.isPlaying()) {
-        bgmDay3.setVolume(0.1);
-        bgmDay3.loop();
-    }}else if(day==4){
-      bgmDay3.stop();
-      if (!bgmDay4.isPlaying()) {
-        bgmDay4.setVolume(0.1);
-        bgmDay4.loop();
-    }}else{
-      bgmDay4.stop();
-      if (!bgmDay5.isPlaying()) {
-        bgmDay5.setVolume(0.1);
-        bgmDay5.loop();
-    }
-  }
-    
-  }
+
 
 
   //현재 일차 및 장소 확인
@@ -142,8 +140,6 @@ function draw() {
     pop();
   }
   
-  /*
-  //리셋 안내
   if (currentScene instanceof OpeningScene || currentScene instanceof HomeMorning
     || currentScene instanceof WayToSchool || currentScene instanceof School
     || currentScene instanceof WayToHome || currentScene instanceof HomeNight
@@ -152,9 +148,8 @@ function draw() {
     textSize(16);
     fill(255, 150);
     textAlign(RIGHT, CENTER);
-    text("처음으로 돌아가려면 'r'을 입력하세요.", width-30, 80);
+    text("처음으로 돌아가려면 'f5'를 눌러 새로고침하세요.", width-30, 20);
   }
-    */
 
   // 커서 이미지 조건문
   if (((currentScene instanceof WayToSchool || currentScene instanceof WayToHome)&& (currentScene.changeCursor() === 2))
@@ -163,6 +158,8 @@ function draw() {
     || (currentScene instanceof HomeMorning && currentScene.textComplete && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > height/2 - 150 && mouseY < height/2 + 150)
     || (currentScene instanceof HomeNight && currentScene.textComplete && mouseX > width - 250 && mouseX < width -30 && mouseY > height - 300 && mouseY < height - 80)) {
     cursorImage = cursorImage2; // 상호작용 가능한 물체 위에 있을 때 커서 이미지를 빨간색으로
+  } else if (currentScene instanceof HomeNight && currentScene.status === 2) {
+    cursorImage = cursorImage3;
   } else {
     cursorImage = cursorImage1; // 그 외의 경우 검은색으로
   }
@@ -177,7 +174,13 @@ function draw() {
       scale(0.55);
       image(cursorImage, -60, -60, 120, 120);
       pop();
-    } else {
+    } else if (cursorImage == cursorImage3) {
+      push();
+      translate(mouseX, mouseY);
+      image(cursorImage3, 0, -193, 114, 193);
+      pop();
+    }
+    else {
       push();
       translate(mouseX, mouseY);
       scale(0.55);
@@ -185,10 +188,7 @@ function draw() {
       pop();
     }
   }
-    
-    
   }
-
 }
 
 function mouseClicked() {
@@ -217,12 +217,6 @@ function keyPressed() {
   } else if (key === '9') {
     day += 1;
   }
-
-
-  //리셋
-  if (key === 'r') {
-    resetAll();
-  }
 }
 
 function changePage(newPage, transitionText = 'Loading...') {
@@ -237,46 +231,4 @@ function changePage(newPage, transitionText = 'Loading...') {
   let transitionScene = new Transition(currentScene, newPage, transitionText); // 전환 장면을 거쳐서 다음 장면으로 전환
   transitionScene.setup();
   currentScene = transitionScene;
-}
-
-function resetAll() {
-  day = 1; // day 변수 초기화
-
-  OpeningScene.bgm.stop();
-  EndingScene.bgm.stop();
-  cameraSound.stop();
-  clickSound.stop();
-  busSound.stop();
-  schoolSound.stop();
-  bookSound.stop();
-
-  mainMenu = new MainMenu();
-  openingScene = new OpeningScene();
-  homeMorning = new HomeMorning();
-  wayToSchool = new WayToSchool();
-  school = new School();
-  wayToHome = new WayToHome();
-  homeNight = new HomeNight();
-  endingScene = new EndingScene();
-
-  currentScene = mainMenu;
-  if (currentScene.setup) {
-    currentScene.setup();
-  }
-
-  wtsBG = 0; 
-  wtsBS = 0; 
-  wtsStore = 0; 
-  wtsFlower = 0;
-  wtsCat = 0; 
-  wtsCycle = 0; 
-
-  wthBG = 0;
-  wthBS = 0;
-  wthWall = 0;
-  wthPoster = 0; 
-  wthMountain = 0;
-  wthBird = 0; 
-  wthBusStop = 0; 
-  wthRoad = 0;
 }
