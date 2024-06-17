@@ -233,132 +233,132 @@ class EndingScene{
     // EndingScene.mainMenu = loadImage('assets/images/backgrounds/mainMenuColor.png');
 
 
-    EndingScene.imgHomeMorning = loadImage('assets/images/backgrounds/homeMorningFullColor.png', img => {
+    EndingScene.imgHomeMorning = loadImage('./assets/images/backgrounds/homeMorningFullColor.png', img => {
       EndingScene.imgHomeMorningGray = img.get();
       EndingScene.imgHomeMorningGray.filter(GRAY);
   });
-  EndingScene.imgWayToSchool = loadImage('assets/images/backgrounds/wayToSchoolColor.png', img => {
+  EndingScene.imgWayToSchool = loadImage('./assets/images/backgrounds/wayToSchoolColor.png', img => {
       EndingScene.imgWayToSchoolGray = img.get();
       EndingScene.imgWayToSchoolGray.filter(GRAY);
   });
-  EndingScene.imgSchool = loadImage('assets/images/backgrounds/SchoolColor.png', img => {
+  EndingScene.imgSchool = loadImage('./assets/images/backgrounds/SchoolColor.png', img => {
       EndingScene.imgSchoolGray = img.get();
       EndingScene.imgSchoolGray.filter(GRAY);
   });
-  EndingScene.imgWayToHome = loadImage('assets/images/backgrounds/wayToHomeColor.png', img => {
+  EndingScene.imgWayToHome = loadImage('./assets/images/backgrounds/wayToHomeColor.png', img => {
       EndingScene.imgWayToHomeGray = img.get();
       EndingScene.imgWayToHomeGray.filter(GRAY);
   });
-  EndingScene.imgHomeNight = loadImage('assets/images/backgrounds/homeNightFullColor.png', img => {
+  EndingScene.imgHomeNight = loadImage('./assets/images/backgrounds/homeNightFullColor.png', img => {
       EndingScene.imgHomeNightGray = img.get();
       EndingScene.imgHomeNightGray.filter(GRAY);
   });
-  EndingScene.imgWayToHomeWallBg = loadImage('assets/images/backgrounds/wayToHomeWallBG.png', img => {
+  EndingScene.imgWayToHomeWallBg = loadImage('./assets/images/backgrounds/wayToHomeWallBG.png', img => {
       EndingScene.imgWayToHomeWallBgGray = img.get();
       EndingScene.imgWayToHomeWallBgGray.filter(GRAY);
   });
-  EndingScene.imgWayToHomeMountainColor = loadImage('assets/images/objects/wayToHomeMountainColor.png', img => {
+  EndingScene.imgWayToHomeMountainColor = loadImage('./assets/images/objects/wayToHomeMountainColor.png', img => {
       EndingScene.imgWayToHomeMountainColorGray = img.get();
       EndingScene.imgWayToHomeMountainColorGray.filter(GRAY);
   });
-  EndingScene.imgWayToHomeBusStopColor = loadImage('assets/images/objects/wayToHomeBusStopColor.png', img => {
+  EndingScene.imgWayToHomeBusStopColor = loadImage('./assets/images/objects/wayToHomeBusStopColor.png', img => {
       EndingScene.imgWayToHomeBusStopColorGray = img.get();
       EndingScene.imgWayToHomeBusStopColorGray.filter(GRAY);
   });
-  EndingScene.imgWayBusStopColor = loadImage('assets/images/objects/WayBusStopColor.png', img => {
+  EndingScene.imgWayBusStopColor = loadImage('./assets/images/objects/WayBusStopColor.png', img => {
       EndingScene.imgWayBusStopColorGray = img.get();
       EndingScene.imgWayBusStopColorGray.filter(GRAY);
   });
-  EndingScene.imgWayToHomeRoadColor = loadImage('assets/images/backgrounds/WayToHomeRoadColor.png', img => {
+  EndingScene.imgWayToHomeRoadColor = loadImage('./assets/images/backgrounds/WayToHomeRoadColor.png', img => {
       EndingScene.imgWayToHomeRoadColorGray = img.get();
       EndingScene.imgWayToHomeRoadColorGray.filter(GRAY);
   });
-  EndingScene.bgm = loadSound('assets/sounds/endingSceneBgm.mp3');
-  EndingScene.wtsStore1 = loadImage('assets/images/objects/wayToSchoolStore1.png', img => {
+  EndingScene.bgm = loadSound('./assets/sounds/endingSceneBgm.mp3');
+  EndingScene.wtsStore1 = loadImage('./assets/images/objects/wayToSchoolStore1.png', img => {
       EndingScene.wtsStore1Gray = img.get();
       EndingScene.wtsStore1Gray.filter(GRAY);
   });
-  EndingScene.wtsStore2 = loadImage('assets/images/objects/wayToSchoolStore2.png', img => {
+  EndingScene.wtsStore2 = loadImage('./assets/images/objects/wayToSchoolStore2.png', img => {
       EndingScene.wtsStore2Gray = img.get();
       EndingScene.wtsStore2Gray.filter(GRAY);
   });
-  EndingScene.wtsStore3 = loadImage('assets/images/objects/wayToSchoolStore3.png', img => {
+  EndingScene.wtsStore3 = loadImage('./assets/images/objects/wayToSchoolStore3.png', img => {
       EndingScene.wtsStore3Gray = img.get();
       EndingScene.wtsStore3Gray.filter(GRAY);
   });
-  EndingScene.wtsFlower1 = loadImage('assets/images/objects/wayToSchoolFlower1.png', img => {
+  EndingScene.wtsFlower1 = loadImage('./assets/images/objects/wayToSchoolFlower1.png', img => {
       EndingScene.wtsFlower1Gray = img.get();
       EndingScene.wtsFlower1Gray.filter(GRAY);
   });
-  EndingScene.wtsFlower2 = loadImage('assets/images/objects/wayToSchoolFlower2.png', img => {
+  EndingScene.wtsFlower2 = loadImage('./assets/images/objects/wayToSchoolFlower2.png', img => {
       EndingScene.wtsFlower2Gray = img.get();
       EndingScene.wtsFlower2Gray.filter(GRAY);
   });
-  EndingScene.wtsFlower3 = loadImage('assets/images/objects/wayToSchoolFlower3.png', img => {
+  EndingScene.wtsFlower3 = loadImage('./assets/images/objects/wayToSchoolFlower3.png', img => {
       EndingScene.wtsFlower3Gray = img.get();
       EndingScene.wtsFlower3Gray.filter(GRAY);
   });
-  EndingScene.wtsCat1 = loadImage('assets/images/objects/wayToSchoolCat1.png', img => {
+  EndingScene.wtsCat1 = loadImage('./assets/images/objects/wayToSchoolCat1.png', img => {
       EndingScene.wtsCat1Gray = img.get();
       EndingScene.wtsCat1Gray.filter(GRAY);
   });
-  EndingScene.wtsCat2 = loadImage('assets/images/objects/wayToSchoolCat2.png', img => {
+  EndingScene.wtsCat2 = loadImage('./assets/images/objects/wayToSchoolCat2.png', img => {
       EndingScene.wtsCat2Gray = img.get();
       EndingScene.wtsCat2Gray.filter(GRAY);
   });
-  EndingScene.wtsCat3 = loadImage('assets/images/objects/wayToSchoolCat3.png', img => {
+  EndingScene.wtsCat3 = loadImage('./assets/images/objects/wayToSchoolCat3.png', img => {
       EndingScene.wtsCat3Gray = img.get();
       EndingScene.wtsCat3Gray.filter(GRAY);
   });
-  EndingScene.wtsCycle1 = loadImage('assets/images/objects/wayToSchoolCycle1.png', img => {
+  EndingScene.wtsCycle1 = loadImage('./assets/images/objects/wayToSchoolCycle1.png', img => {
       EndingScene.wtsCycle1Gray = img.get();
       EndingScene.wtsCycle1Gray.filter(GRAY);
   });
-  EndingScene.wtsCycle2 = loadImage('assets/images/objects/wayToSchoolCycle2.png', img => {
+  EndingScene.wtsCycle2 = loadImage('./assets/images/objects/wayToSchoolCycle2.png', img => {
       EndingScene.wtsCycle2Gray = img.get();
       EndingScene.wtsCycle2Gray.filter(GRAY);
   });
-  EndingScene.wtsCycle3 = loadImage('assets/images/objects/wayToSchoolCycle3.png', img => {
+  EndingScene.wtsCycle3 = loadImage('./assets/images/objects/wayToSchoolCycle3.png', img => {
       EndingScene.wtsCycle3Gray = img.get();
       EndingScene.wtsCycle3Gray.filter(GRAY);
   });
-  EndingScene.wthWall1 = loadImage('assets/images/objects/wayToHomeWall1.png', img => {
+  EndingScene.wthWall1 = loadImage('./assets/images/objects/wayToHomeWall1.png', img => {
       EndingScene.wthWall1Gray = img.get();
       EndingScene.wthWall1Gray.filter(GRAY);
   });
-  EndingScene.wthWall2 = loadImage('assets/images/objects/wayToHomeWall2.png', img => {
+  EndingScene.wthWall2 = loadImage('./assets/images/objects/wayToHomeWall2.png', img => {
       EndingScene.wthWall2Gray = img.get();
       EndingScene.wthWall2Gray.filter(GRAY);
   });
-  EndingScene.wthWall3 = loadImage('assets/images/objects/wayToHomeWall3.png', img => {
+  EndingScene.wthWall3 = loadImage('./assets/images/objects/wayToHomeWall3.png', img => {
       EndingScene.wthWall3Gray = img.get();
       EndingScene.wthWall3Gray.filter(GRAY);
   });
-  EndingScene.wthPoster1 = loadImage('assets/images/objects/wayToHomePoster1.png', img => {
+  EndingScene.wthPoster1 = loadImage('./assets/images/objects/wayToHomePoster1.png', img => {
       EndingScene.wthPoster1Gray = img.get();
       EndingScene.wthPoster1Gray.filter(GRAY);
   });
-  EndingScene.wthPoster2 = loadImage('assets/images/objects/wayToHomePoster2.png', img => {
+  EndingScene.wthPoster2 = loadImage('./assets/images/objects/wayToHomePoster2.png', img => {
       EndingScene.wthPoster2Gray = img.get();
       EndingScene.wthPoster2Gray.filter(GRAY);
   });
-  EndingScene.wthPoster3 = loadImage('assets/images/objects/wayToHomePoster3.png', img => {
+  EndingScene.wthPoster3 = loadImage('./assets/images/objects/wayToHomePoster3.png', img => {
       EndingScene.wthPoster3Gray = img.get();
       EndingScene.wthPoster3Gray.filter(GRAY);
   });
-  EndingScene.wthBird1 = loadImage('assets/images/objects/wayToHomeBird1.png', img => {
+  EndingScene.wthBird1 = loadImage('./assets/images/objects/wayToHomeBird1.png', img => {
       EndingScene.wthBird1Gray = img.get();
       EndingScene.wthBird1Gray.filter(GRAY);
   });
-  EndingScene.wthBird2 = loadImage('assets/images/objects/wayToHomeBird2.png', img => {
+  EndingScene.wthBird2 = loadImage('./assets/images/objects/wayToHomeBird2.png', img => {
       EndingScene.wthBird2Gray = img.get();
       EndingScene.wthBird2Gray.filter(GRAY);
   });
-  EndingScene.wthBird3 = loadImage('assets/images/objects/wayToHomeBird3.png', img => {
+  EndingScene.wthBird3 = loadImage('./assets/images/objects/wayToHomeBird3.png', img => {
       EndingScene.wthBird3Gray = img.get();
       EndingScene.wthBird3Gray.filter(GRAY);
   });
-  EndingScene.mainMenu = loadImage('assets/images/backgrounds/mainMenuColor.png', img => {
+  EndingScene.mainMenu = loadImage('./assets/images/backgrounds/mainMenuColor.png', img => {
       EndingScene.mainMenuGray = img.get();
       EndingScene.mainMenuGray.filter(GRAY);
   });
