@@ -82,7 +82,7 @@ class WayToSchool {
 
   static preload() {
     // 이미지 로드
-    WayToSchool.wtsBG = loadImage('./assets/images/backgrounds/WayToSchoolColor.png');
+    WayToSchool.wtsBG = loadImage('./assets/images/backgrounds/wayToSchoolColor.png');
     WayToSchool.wtsBGM = loadImage('./assets/images/backgrounds/wayToSchoolMono.png');
     WayToSchool.wtsBS = loadImage('./assets/images/objects/wayBusStopColor.png');
     WayToSchool.wtsBSM = loadImage('./assets/images/objects/wayBusStopMono.png');
