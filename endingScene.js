@@ -265,7 +265,7 @@ class EndingScene{
       EndingScene.imgWayToHomeBusStopColorGray = img.get();
       EndingScene.imgWayToHomeBusStopColorGray.filter(GRAY);
   });
-  EndingScene.imgWayBusStopColor = loadImage('./assets/images/objects/WayBusStopColor.png', img => {
+  EndingScene.imgWayBusStopColor = loadImage('./assets/images/objects/wayBusStopColor.png', img => {
       EndingScene.imgWayBusStopColorGray = img.get();
       EndingScene.imgWayBusStopColorGray.filter(GRAY);
   });
