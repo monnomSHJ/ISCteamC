@@ -202,6 +202,7 @@ function mouseClicked() {
 }
 
 // 테스트용 키패드 입력 
+/*
 function keyPressed() {
 
   if (key === '1') {
@@ -225,7 +226,9 @@ function keyPressed() {
   }
 
   currentScene.test();
+
 }
+    */
 
 function changePage(newPage, transitionText = 'Loading...') {
   
