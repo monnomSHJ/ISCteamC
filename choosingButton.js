@@ -13,8 +13,8 @@ class ChoosingButton {
 
     static preload() {
         ChoosingButton.images = [
-          loadImage('assets/images/objects/choosingButton.png'),
-          loadImage('assets/images/objects/choosingButtonOver.png')
+          loadImage('./assets/images/objects/choosingButton.png'),
+          loadImage('./assets/images/objects/choosingButtonOver.png')
         ];
       }
 

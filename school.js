@@ -16,11 +16,11 @@ class School {
   
     static preload() {
       School.images = [
-        loadImage('assets/images/backgrounds/School1.png'),
-        loadImage('assets/images/backgrounds/School2.png'),
-        loadImage('assets/images/backgrounds/School3.png'),
-        loadImage('assets/images/backgrounds/School4.png'),
-        loadImage('assets/images/backgrounds/SchoolColor.png')
+        loadImage('./assets/images/backgrounds/School1.png'),
+        loadImage('./assets/images/backgrounds/School2.png'),
+        loadImage('./assets/images/backgrounds/School3.png'),
+        loadImage('./assets/images/backgrounds/School4.png'),
+        loadImage('./assets/images/backgrounds/SchoolColor.png')
       ];
     }
   

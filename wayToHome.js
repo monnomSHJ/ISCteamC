@@ -84,41 +84,41 @@ class WayToHome {
 
   static preload() {
     // 이미지 로드
-    WayToHome.wthBG = loadImage('assets/images/backgrounds/wayToHomeSkyColor.png');
-    WayToHome.wthBGR = loadImage('assets/images/backgrounds/wayToHomeRoadColor.png');
-    WayToHome.wthBGM = loadImage('assets/images/backgrounds/wayToHomeSkyMono.png');
-    WayToHome.wthBGRM = loadImage('assets/images/backgrounds/wayToHomeRoadMono.png');
-    WayToHome.wthWallBG = loadImage('assets/images/backgrounds/wayToHomeWallBG.png');
-    WayToHome.wthWallBGM = loadImage('assets/images/backgrounds/wayToHomeWallBGMono.png')
+    WayToHome.wthBG = loadImage('./assets/images/backgrounds/wayToHomeSkyColor.png');
+    WayToHome.wthBGR = loadImage('./assets/images/backgrounds/wayToHomeRoadColor.png');
+    WayToHome.wthBGM = loadImage('./assets/images/backgrounds/wayToHomeSkyMono.png');
+    WayToHome.wthBGRM = loadImage('./assets/images/backgrounds/wayToHomeRoadMono.png');
+    WayToHome.wthWallBG = loadImage('./assets/images/backgrounds/wayToHomeWallBG.png');
+    WayToHome.wthWallBGM = loadImage('./assets/images/backgrounds/wayToHomeWallBGMono.png')
 
-    WayToHome.wthBS = loadImage('assets/images/objects/wayBusStopColor.png');
-    WayToHome.wthBSM = loadImage('assets/images/objects/wayBusStopMono.png');
+    WayToHome.wthBS = loadImage('./assets/images/objects/wayBusStopColor.png');
+    WayToHome.wthBSM = loadImage('./assets/images/objects/wayBusStopMono.png');
     
-    WayToHome.wthWall = loadImage('assets/images/objects/wayToHomeWall0.png');
-    WayToHome.wthWallFun = loadImage('assets/images/objects/wayToHomeWall1.png');
-    WayToHome.wthWallLove = loadImage('assets/images/objects/wayToHomeWall2.png');
-    WayToHome.wthWallSeize = loadImage('assets/images/objects/wayToHomeWall3.png');
+    WayToHome.wthWall = loadImage('./assets/images/objects/wayToHomeWall0.png');
+    WayToHome.wthWallFun = loadImage('./assets/images/objects/wayToHomeWall1.png');
+    WayToHome.wthWallLove = loadImage('./assets/images/objects/wayToHomeWall2.png');
+    WayToHome.wthWallSeize = loadImage('./assets/images/objects/wayToHomeWall3.png');
 
-    WayToHome.wthPoster = loadImage('assets/images/objects/wayToHomePoster0.png');
-    WayToHome.wthPosterDance = loadImage('assets/images/objects/wayToHomePoster1.png');
-    WayToHome.wthPosterSong = loadImage('assets/images/objects/wayToHomePoster2.png');
-    WayToHome.wthPosterCook = loadImage('assets/images/objects/wayToHomePoster3.png');
+    WayToHome.wthPoster = loadImage('./assets/images/objects/wayToHomePoster0.png');
+    WayToHome.wthPosterDance = loadImage('./assets/images/objects/wayToHomePoster1.png');
+    WayToHome.wthPosterSong = loadImage('./assets/images/objects/wayToHomePoster2.png');
+    WayToHome.wthPosterCook = loadImage('./assets/images/objects/wayToHomePoster3.png');
 
-    WayToHome.wthMountain = loadImage('assets/images/objects/wayToHomeMountainColor.png');
-    WayToHome.wthMountainM = loadImage('assets/images/objects/wayToHomeMountainMono.png');
+    WayToHome.wthMountain = loadImage('./assets/images/objects/wayToHomeMountainColor.png');
+    WayToHome.wthMountainM = loadImage('./assets/images/objects/wayToHomeMountainMono.png');
 
-    WayToHome.wthBird = loadImage('assets/images/objects/wayToHomeBird0.png');
-    WayToHome.wthBirdDove = loadImage('assets/images/objects/wayToHomeBird1.png');
-    WayToHome.wthBirdSmall = loadImage('assets/images/objects/wayToHomeBird2.png');
-    WayToHome.wthBirdBlack = loadImage('assets/images/objects/wayToHomeBird3.png');
+    WayToHome.wthBird = loadImage('./assets/images/objects/wayToHomeBird0.png');
+    WayToHome.wthBirdDove = loadImage('./assets/images/objects/wayToHomeBird1.png');
+    WayToHome.wthBirdSmall = loadImage('./assets/images/objects/wayToHomeBird2.png');
+    WayToHome.wthBirdBlack = loadImage('./assets/images/objects/wayToHomeBird3.png');
     
-    WayToHome.wthBusStop = loadImage('assets/images/objects/wayToHomeBusStopColor.png');
-    WayToHome.wthBusStopM = loadImage('assets/images/objects/wayToHomeBusStopMono.png');
+    WayToHome.wthBusStop = loadImage('./assets/images/objects/wayToHomeBusStopColor.png');
+    WayToHome.wthBusStopM = loadImage('./assets/images/objects/wayToHomeBusStopMono.png');
 
-    WayToHome.pCam = loadImage('assets/images/objects/phoneCamera.png');
-    WayToHome.pCamClean = loadImage('assets/images/objects/phoneCamera2transparent.png');
+    WayToHome.pCam = loadImage('./assets/images/objects/phoneCamera.png');
+    WayToHome.pCamClean = loadImage('./assets/images/objects/phoneCamera2transparent.png');
 
-    WayToHome.blurImage = loadImage('assets/images/backgrounds/blurImage.png');
+    WayToHome.blurImage = loadImage('./assets/images/backgrounds/blurImage.png');
   }
 
   setup() {

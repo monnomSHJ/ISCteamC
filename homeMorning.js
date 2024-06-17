@@ -49,18 +49,18 @@ class HomeMorning {
 
   static preload() {
     HomeMorning.images = [
-      loadImage('assets/images/backgrounds/homeMorningFullMono.png'),
-      loadImage('assets/images/backgrounds/homeMorningFullColor2.png'),
-      loadImage('assets/images/backgrounds/homeMorningFullColor3.png'),
-      loadImage('assets/images/backgrounds/homeMorningFullColor4.png'),
-      loadImage('assets/images/backgrounds/homeMorningFullColor.png')
+      loadImage('./assets/images/backgrounds/homeMorningFullMono.png'),
+      loadImage('./assets/images/backgrounds/homeMorningFullColor2.png'),
+      loadImage('./assets/images/backgrounds/homeMorningFullColor3.png'),
+      loadImage('./assets/images/backgrounds/homeMorningFullColor4.png'),
+      loadImage('./assets/images/backgrounds/homeMorningFullColor.png')
     ]
     HomeMorning.backPackImages = [
-      loadImage('assets/images/objects/backPackMono.png'),
-      loadImage('assets/images/objects/backPackColor2.png'),
-      loadImage('assets/images/objects/backPackColor3.png'),
-      loadImage('assets/images/objects/backPackColor4.png'),
-      loadImage('assets/images/objects/backPackColor5.png')
+      loadImage('./assets/images/objects/backPackMono.png'),
+      loadImage('./assets/images/objects/backPackColor2.png'),
+      loadImage('./assets/images/objects/backPackColor3.png'),
+      loadImage('./assets/images/objects/backPackColor4.png'),
+      loadImage('./assets/images/objects/backPackColor5.png')
     ];
   }
 

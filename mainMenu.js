@@ -4,7 +4,7 @@ class MainMenu {
     }
   
     static preload() {
-      MainMenu.image = loadImage('assets/images/backgrounds/mainImageMono.png');
+      MainMenu.image = loadImage('./assets/images/backgrounds/mainImageMono.png');
     }
   
     display() {

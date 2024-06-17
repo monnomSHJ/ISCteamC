@@ -25,11 +25,11 @@ class Diary {
   
     static preload() {
       Diary.bookImages = [
-        loadImage('assets/images/objects/diaryBookDay1.png'),
-        loadImage('assets/images/objects/diaryBookDay2.png'),
-        loadImage('assets/images/objects/diaryBookDay3.png'),
-        loadImage('assets/images/objects/diaryBookDay4.png'),
-        loadImage('assets/images/objects/diaryBookDay4.png')
+        loadImage('./assets/images/objects/diaryBookDay1.png'),
+        loadImage('./assets/images/objects/diaryBookDay2.png'),
+        loadImage('./assets/images/objects/diaryBookDay3.png'),
+        loadImage('./assets/images/objects/diaryBookDay4.png'),
+        loadImage('./assets/images/objects/diaryBookDay4.png')
       ]
 
       Diary.saveButtonImage = loadImage('assets/images/objects/diarySaveButton.png');

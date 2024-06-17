@@ -72,11 +72,11 @@ class OpeningScene {
 
   static preload() {
     OpeningScene.images = [
-      loadImage('assets/images/backgrounds/homeMorningFullMono.png'),
-      loadImage('assets/images/backgrounds/SchoolFullMono.png'),
-      loadImage('assets/images/backgrounds/wayToHomeMono.png'),
-      loadImage('assets/images/backgrounds/homeNightFullMono.png'),
-      loadImage('assets/images/backgrounds/mainImageMono.png')
+      loadImage('./assets/images/backgrounds/homeMorningFullMono.png'),
+      loadImage('./assets/images/backgrounds/SchoolFullMono.png'),
+      loadImage('./assets/images/backgrounds/wayToHomeMono.png'),
+      loadImage('./assets/images/backgrounds/homeNightFullMono.png'),
+      loadImage('./assets/images/backgrounds/mainImageMono.png')
     ];
     OpeningScene.bgm = loadSound('assets/sounds/openingSceneBgm.mp3');//수정
   }

@@ -58,18 +58,18 @@ class HomeNight {
 
   static preload() {
     HomeNight.images = [
-      loadImage('assets/images/backgrounds/homeNightFullMono.png'),
-      loadImage('assets/images/backgrounds/homeNightFullColor2.png'),
-      loadImage('assets/images/backgrounds/homeNightFullColor3.png'),
-      loadImage('assets/images/backgrounds/homeNightFullColor4.png'),
-      loadImage('assets/images/backgrounds/homeNightFullColor.png')
+      loadImage('./assets/images/backgrounds/homeNightFullMono.png'),
+      loadImage('./assets/images/backgrounds/homeNightFullColor2.png'),
+      loadImage('./assets/images/backgrounds/homeNightFullColor3.png'),
+      loadImage('./assets/images/backgrounds/homeNightFullColor4.png'),
+      loadImage('./assets/images/backgrounds/homeNightFullColor.png')
     ]
 
     HomeNight.bedImages = [
-      loadImage('assets/images/objects/bedMono.png'),
-      loadImage('assets/images/objects/bedColor2.png'),
-      loadImage('assets/images/objects/bedColor3.png'),
-      loadImage('assets/images/objects/bedColor4.png')
+      loadImage('./assets/images/objects/bedMono.png'),
+      loadImage('./assets/images/objects/bedColor2.png'),
+      loadImage('./assets/images/objects/bedColor3.png'),
+      loadImage('./assets/images/objects/bedColor4.png')
     ]
   }
 
