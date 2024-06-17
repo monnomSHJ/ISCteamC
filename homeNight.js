@@ -136,6 +136,7 @@ class HomeNight {
         } else {
           this.textAnimations = new TextAnimation(this.day5afterTexts, width/2, 637, 50);
           this.status = 4;
+          bgmDay[4].stop();
         }
 
       } else if (this.status === 3) {
@@ -147,7 +148,6 @@ class HomeNight {
         }
       } else if (this.status === 5) {
         this.status = 6;
-        bgmDay[day-1].stop();
 
       } else if (this.status === 6) {
         if (!this.preEndingTextAni.isComplete()) {
