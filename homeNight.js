@@ -136,7 +136,6 @@ class HomeNight {
         } else {
           this.textAnimations = new TextAnimation(this.day5afterTexts, width/2, 637, 50);
           this.status = 4;
-          bgmDay[4].stop();
         }
 
       } else if (this.status === 3) {
@@ -191,6 +190,8 @@ class HomeNight {
   }
 
   drawPreEnding() {
+    bgmDay[4].stop();
+    
     if (this.fadeOutAlpha < 255) {
       this.fadeOutAlpha += 3;
     }
@@ -205,6 +206,12 @@ class HomeNight {
     if (this.fadeOutAlpha >= 255) {
       this.preEndingTextAni.update();
       this.preEndingTextAni.display();
+      
+      textFont(fontNeo);
+      textAlign(CENTER);
+      fill(255, 100);
+      textSize(16);
+      text("다음 대사로 넘어가려면 클릭해주세요.", width/2, height/2 + 50);
     }
   }
 }
