@@ -111,7 +111,7 @@ function draw() {
     currentScene instanceof WayToSchool ||
     currentScene instanceof School ||
     currentScene instanceof WayToHome ||
-    currentScene instanceof HomeNight) {
+    (currentScene instanceof HomeNight && homeNight.status === 6)) {
 
       if (!bgmDay[day-1].isPlaying()) {
         bgmDay[day-1].setVolume(0.15);
