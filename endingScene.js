@@ -269,7 +269,7 @@ class EndingScene{
       EndingScene.imgWayBusStopColorGray = img.get();
       EndingScene.imgWayBusStopColorGray.filter(GRAY);
   });
-  EndingScene.imgWayToHomeRoadColor = loadImage('./assets/images/backgrounds/WayToHomeRoadColor.png', img => {
+  EndingScene.imgWayToHomeRoadColor = loadImage('./assets/images/backgrounds/wayToHomeRoadColor.png', img => {
       EndingScene.imgWayToHomeRoadColorGray = img.get();
       EndingScene.imgWayToHomeRoadColorGray.filter(GRAY);
   });
