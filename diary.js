@@ -19,6 +19,8 @@ class Diary {
       ]
 
       this.isFilled = false;
+
+      this.saveMouseOver = false;
     }
   
     static preload() {
@@ -29,6 +31,8 @@ class Diary {
         loadImage('assets/images/objects/diaryBookDay4.png'),
         loadImage('assets/images/objects/diaryBookDay4.png')
       ]
+
+      Diary.saveButtonImage = loadImage('assets/images/objects/diarySaveButton.png');
     }
   
     display() {
@@ -67,6 +71,10 @@ class Diary {
           break;
         }
       }
+
+      if (this.isFilled) {
+        this.saveButton();
+      }
     }
 
     handleClick() {
@@ -81,6 +89,20 @@ class Diary {
     }
 
     saveButton() {
+      if (mouseX > 930 - 32.5 && mouseX < 930 + 32.5 && mouseY > 530 - 32.5 && mouseY < 530 + 32.5) {
+        this.saveMouseOver = true;
+      } else {
+        this.saveMouseOver = false;
+      }
 
+      if (this.saveMouseOver) {
+        imageMode(CENTER);
+        image(Diary.saveButtonImage, 930, 530, 80, 80);
+      } else {
+        imageMode(CENTER);
+        image(Diary.saveButtonImage, 930, 530, 65, 65);
+      }
+
+      imageMode(CORNER);
     }
   }

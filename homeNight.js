@@ -45,8 +45,7 @@ class HomeNight {
       "우리 모두 조금만 힘내 보자.",
       "...지금의 나를 너무 밀어 붙이지는 말고.",
       "조금 더 여유롭게, 천천히...",
-      "'나'인 그대로.",
-      ""
+      "'나'인 그대로."
     ]
 
     this.textAnimations = null;
@@ -127,7 +126,7 @@ class HomeNight {
       } else if (this.status === 2 && !diary.isFilled) {
         diary.handleClick();
 
-      } else if (this.status === 2 && diary.isFilled) {
+      } else if (this.status === 2 && diary.isFilled && diary.saveMouseOver) {
         clickSound.play();
 
         if (day !== 5) {
