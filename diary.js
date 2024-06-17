@@ -2,20 +2,20 @@ class Diary {
     constructor() {
       this.bookImages = Diary.bookImages;
 
-      this.rectW = 156;
-      this.rectH = 102;
+      this.rectW = 130;
+      this.rectH = 85;
 
       this.rects = [
-        { x: 344, y: 334, index: 0, status: 0 },
-        { x: 491, y: 334, index: 1, status: 0 },
-        { x: 344, y: 461, index: 2, status: 0 },
-        { x: 491, y: 461, index: 3, status: 0 },
-        { x: 648, y: 207, index: 4, status: 0 },
-        { x: 795, y: 207, index: 5, status: 0 },
-        { x: 648, y: 334, index: 6, status: 0 },
-        { x: 795, y: 334, index: 7, status: 0 },
-        { x: 648, y: 461, index: 8, status: 0 },
-        { x: 795, y: 461, index: 9, status: 0 }
+        { x: 351, y: 328, index: 0, status: 0 },
+        { x: 496, y: 328, index: 1, status: 0 },
+        { x: 351, y: 454, index: 2, status: 0 },
+        { x: 496, y: 454, index: 3, status: 0 },
+        { x: 654, y: 202, index: 4, status: 0 },
+        { x: 799, y: 202, index: 5, status: 0 },
+        { x: 654, y: 328, index: 6, status: 0 },
+        { x: 799, y: 328, index: 7, status: 0 },
+        { x: 654, y: 454, index: 8, status: 0 },
+        { x: 799, y: 454, index: 9, status: 0 }
       ]
 
       this.isFilled = false;
@@ -35,7 +35,7 @@ class Diary {
       console.log(this.isFilled);
 
       imageMode(CENTER);
-      image(this.bookImages[day-1], width/2, height/2, 710.4, 480);
+      image(this.bookImages[day-1], width/2, height/2, 710, 480);
 
       for (let rect of this.rects) {
         if (diaryPictures[rect.index]) {
