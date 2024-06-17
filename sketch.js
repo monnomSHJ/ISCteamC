@@ -49,15 +49,15 @@ let bgmDay = [];
 
 let wtsStoreForEnding = 0;
 function preload() {
-  fontNeo = loadFont('assets/fonts/neoMo.TTF');
-  cursorImage1 = loadImage('assets/images/mouseCursor3.png');
-  cursorImage2 = loadImage('assets/images/mouseCursor2.png');
-  cursorImage3 = loadImage('assets/images/objects/mousePencil.png');
-  cameraSound = loadSound('assets/sounds/cursorClickSound.mp3');
-  clickSound = loadSound('assets/sounds/objectClickSound.mp3');
-  busSound = loadSound('assets/sounds/busSound.mp3');
-  schoolSound = loadSound('assets/sounds/schoolSound.mp3');
-  bookSound = loadSound('assets/sounds/bookOpenSound.mp3');
+  fontNeo = loadFont('./assets/fonts/neoMo.TTF');
+  cursorImage1 = loadImage('./assets/images/mouseCursor3.png');
+  cursorImage2 = loadImage('./assets/images/mouseCursor2.png');
+  cursorImage3 = loadImage('./assets/images/objects/mousePencil.png');
+  cameraSound = loadSound('./assets/sounds/cursorClickSound.mp3');
+  clickSound = loadSound('./assets/sounds/objectClickSound.mp3');
+  busSound = loadSound('./assets/sounds/busSound.mp3');
+  schoolSound = loadSound('./assets/sounds/schoolSound.mp3');
+  bookSound = loadSound('./assets/sounds/bookOpenSound.mp3');
 
   MainMenu.preload();
   OpeningScene.preload();
@@ -71,14 +71,13 @@ function preload() {
   Diary.preload();
 
   bgmDay = [
-    loadSound('assets/sounds/wayBgmDay1.mp3'),
-    loadSound('assets/sounds/wayBgmDay2.mp3'),
-    loadSound('assets/sounds/wayBgmDay3.mp3'),
-    loadSound('assets/sounds/wayBgmDay4.mp3'),
-    loadSound('assets/sounds/wayBgmDay5.mp3')
+    loadSound('./assets/sounds/wayBgmDay1.mp3'),
+    loadSound('./assets/sounds/wayBgmDay2.mp3'),
+    loadSound('./assets/sounds/wayBgmDay3.mp3'),
+    loadSound('./assets/sounds/wayBgmDay4.mp3'),
+    loadSound('./assets/sounds/wayBgmDay5.mp3')
   ]
 }
-
 
 function setup() {
   createCanvas(1280, 720);
@@ -121,8 +120,6 @@ function draw() {
     } else if (currentScene instanceof HomeNight && currentScene.status > 4) {
       bgmDay[day-1].stop();
     }
-
-
 
   //현재 일차 및 장소 확인
   if ((currentScene instanceof HomeMorning || currentScene instanceof WayToSchool || currentScene instanceof School || currentScene instanceof WayToHome || currentScene instanceof HomeNight)
