@@ -190,7 +190,6 @@ class HomeNight {
   }
 
   drawPreEnding() {
-    bgmDay[4].stop();
     
     if (this.fadeOutAlpha < 255) {
       this.fadeOutAlpha += 3;
@@ -212,6 +211,12 @@ class HomeNight {
       fill(255, 100);
       textSize(16);
       text("다음 대사로 넘어가려면 클릭해주세요.", width/2, height/2 + 50);
+    }
+  }
+
+  test() {
+    if (key === '0') {
+      this.status = 4;
     }
   }
 }

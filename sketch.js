@@ -111,12 +111,15 @@ function draw() {
     currentScene instanceof WayToSchool ||
     currentScene instanceof School ||
     currentScene instanceof WayToHome ||
-    (currentScene instanceof HomeNight && homeNight.status === 6)) {
+    (currentScene instanceof HomeNight && currentScene.status < 5)) {
 
       if (!bgmDay[day-1].isPlaying()) {
         bgmDay[day-1].setVolume(0.15);
         bgmDay[day-1].play();
       }
+
+    } else if (currentScene instanceof HomeNight && currentScene.status > 4) {
+      bgmDay[day-1].stop();
     }
 
 
@@ -220,6 +223,8 @@ function keyPressed() {
   } else if (key === '9') {
     day += 1;
   }
+
+  currentScene.test();
 }
 
 function changePage(newPage, transitionText = 'Loading...') {
