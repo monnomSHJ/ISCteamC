@@ -28,16 +28,20 @@ let wayToHome; // 하굣길
 let homeNight; // 집(밤)
 let endingScene; // 엔딩
 
-//등굣길 오브젝트 변수 -> 엔딩에 영향
-let wtsStore = 1; //가게 이미지(1: 빵, 2: 카페, 3: 주스)
-let wtsFlower = 1; //꽃 이미지(1: 장미, 2: 수국, 3: 백합)
-let wtsCat = 1; // 고양이 이미지(1: Cookie, 2: Fish, 3: Cheeze)
-let wtsCycle = 1; // 자전거 이미지(1: 빨강, 2: 어린이, 3: 외발)
+//등굣길 오브젝트 변수 
+let wtsBackGround = 0;
+let wtsStore = 0; //가게 이미지(1: 빵, 2: 카페, 3: 주스)
+let wtsFlower = 0; //꽃 이미지(1: 장미, 2: 수국, 3: 백합)
+let wtsCat = 0; // 고양이 이미지(1: Cookie, 2: Fish, 3: Cheeze)
+let wtsCycle = 0; // 자전거 이미지(1: 빨강, 2: 어린이, 3: 외발)
 
-//하굣길 오브젝트 변수 -> 엔딩에 영향
-let wthWall = 1; //낙서 이미지(1: Fun, 2: Love, 3: Seize)
-let wthPoster = 1; //포스터 이미지(1: Dance, 2: Song, 3: Cook)
-let wthBird = 1; //새 이미지(1: Dove, 2: Small, 3: Black)
+//하굣길 오브젝트 변수
+let wthBackGround = 0;
+let wthWall = 0; //낙서 이미지(1: Fun, 2: Love, 3: Seize)
+let wthPoster = 0; //포스터 이미지(1: Dance, 2: Song, 3: Cook)
+let wthMountain = 0;
+let wthBird = 0; //새 이미지(1: Dove, 2: Small, 3: Black)
+let wthBusStop = 0;
 
 let diaryPictures = []; //촬영한 사진 저장
 let diary; //다이어리 클래스 할당
@@ -159,6 +163,7 @@ function draw() {
       rect(width/2, height/2, 1000, 200);
       rectMode(CORNER);
 
+      textAlign(CENTER);
       fill(255);
       noStroke();
       textFont(fontNeo);
@@ -218,7 +223,7 @@ function mouseClicked() {
 
 
 function keyPressed() {
-/*
+
   if (key === '1') {
     changePage(new MainMenu, 'Loading...');
   } else if (key === '2') {
@@ -237,7 +242,7 @@ function keyPressed() {
     changePage(new EndingScene, 'Loading...');
   } else if (key === '9') {
     day += 1;
-  }*/
+  }
 
   if (!resetDisplay && currentScene instanceof Transition == false) {
     if (key === 'r' || key === 'R') {
@@ -286,14 +291,18 @@ function resetAll() {
   day = 1;
   resetDisplay = false;
   
-  wtsStore = 1;
-  wtsFlower = 1;
-  wtsCat = 1;
-  wtsCycle = 1;
+  wtsBackGround = 0;
+  wtsStore = 0;
+  wtsFlower = 0;
+  wtsCat = 0;
+  wtsCycle = 0;
 
-  wthWall = 1;
-  wthPoster = 1;
-  wthBird = 1;
+  wthBackGround = 0;
+  wthWall = 0;
+  wthPoster = 0;
+  wthMountain = 0;
+  wthBird = 0;
+  wthBusStop = 0;
 
   diaryPictures = [];
   diary = new Diary();

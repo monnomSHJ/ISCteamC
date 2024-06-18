@@ -1,14 +1,14 @@
 class WayToHome {
   constructor() {
-    this.wthBGSelected = WayToHome.wthBGM; // 기본 배경 이미지 설정
-    this.wthBSSelected = WayToHome.wthBSM; // 기본 버스 정류장 이미지 설정
-    this.wthWallSelected = WayToHome.wthWall; // 기본 낙서 이미지 설정
-    this.wthPosterSelected = WayToHome.wthPoster; // 기본 포스터 이미지 설정
-    this.wthMountainSelected = WayToHome.wthMountainM  ; // 기본 산 이미지 설정
-    this.wthBirdSelected = WayToHome.wthBird; // 기본 새 이미지 설정
-    this.wthBusStopSelected = WayToHome.wthBusStopM; // 기본 버정(요소) 이미지 설정
-    this.wthWallBGSelected = WayToHome.wthWallBGM; //기본 벽(배경) 이미지 설정
-    this.wthRoadSelected = WayToHome.wthBGRM; //기본 길(배경) 이미지 설정
+    this.wthBGSelected = null; // 기본 배경 이미지 설정
+    this.wthBSSelected = null; // 기본 버스 정류장 이미지 설정
+    this.wthWallSelected = null; // 기본 낙서 이미지 설정
+    this.wthPosterSelected = null; // 기본 포스터 이미지 설정
+    this.wthMountainSelected = null; // 기본 산 이미지 설정
+    this.wthBirdSelected = null; // 기본 새 이미지 설정
+    this.wthBusStopSelected = null; // 기본 버정(요소) 이미지 설정
+    this.wthWallBGSelected = null; //기본 벽(배경) 이미지 설정
+    this.wthRoadSelected = null; //기본 길(배경) 이미지 설정
     this.eventOccur = false; // 이벤트 발생 스위치
     this.blackBar = 0; // 상하단 흑색 바 애니메이션
     this.Reading = false; // 출력된 텍스트를 읽고 있는가
@@ -84,36 +84,56 @@ class WayToHome {
 
   static preload() {
     // 이미지 로드
-    WayToHome.wthBG = loadImage('./assets/images/backgrounds/wayToHomeSkyColor.png');
-    WayToHome.wthBGR = loadImage('./assets/images/backgrounds/wayToHomeRoadColor.png');
-    WayToHome.wthBGM = loadImage('./assets/images/backgrounds/wayToHomeSkyMono.png');
-    WayToHome.wthBGRM = loadImage('./assets/images/backgrounds/wayToHomeRoadMono.png');
-    WayToHome.wthWallBG = loadImage('./assets/images/backgrounds/wayToHomeWallBG.png');
-    WayToHome.wthWallBGM = loadImage('./assets/images/backgrounds/wayToHomeWallBGMono.png')
+    WayToHome.wthBGimg = [
+      loadImage('./assets/images/backgrounds/wayToHomeSkyMono.png'),
+      loadImage('./assets/images/backgrounds/wayToHomeSkyColor.png')
+    ]
 
-    WayToHome.wthBS = loadImage('./assets/images/objects/wayBusStopColor.png');
-    WayToHome.wthBSM = loadImage('./assets/images/objects/wayBusStopMono.png');
+    WayToHome.wthBGRimg = [
+      loadImage('./assets/images/backgrounds/wayToHomeRoadMono.png'),
+      loadImage('./assets/images/backgrounds/wayToHomeRoadColor.png')
+    ]
+
+    WayToHome.wthWallBGimg = [
+      loadImage('./assets/images/backgrounds/wayToHomeWallBGMono.png'),
+      loadImage('./assets/images/backgrounds/wayToHomeWallBG.png')
+    ]
+
+    WayToHome.wthBSimg = [
+      loadImage('./assets/images/objects/wayBusStopMono.png'),
+      loadImage('./assets/images/objects/wayBusStopColor.png')
+    ]
+
+    WayToHome.wthWallimg = [
+      loadImage('./assets/images/objects/wayToHomeWall0.png'),
+      loadImage('./assets/images/objects/wayToHomeWall1.png'),
+      loadImage('./assets/images/objects/wayToHomeWall2.png'),
+      loadImage('./assets/images/objects/wayToHomeWall3.png')
+    ]
+
+    WayToHome.wthPosterimg = [
+      loadImage('./assets/images/objects/wayToHomePoster0.png'),
+      loadImage('./assets/images/objects/wayToHomePoster1.png'),
+      loadImage('./assets/images/objects/wayToHomePoster2.png'),
+      loadImage('./assets/images/objects/wayToHomePoster3.png')
+    ]
+
+    WayToHome.wthMountainimg = [
+      loadImage('./assets/images/objects/wayToHomeMountainMono.png'),
+      loadImage('./assets/images/objects/wayToHomeMountainColor.png')
+    ]
+
+    WayToHome.wthBirdimg = [
+      loadImage('./assets/images/objects/wayToHomeBird0.png'),
+      loadImage('./assets/images/objects/wayToHomeBird1.png'),
+      loadImage('./assets/images/objects/wayToHomeBird2.png'),
+      loadImage('./assets/images/objects/wayToHomeBird3.png')
+    ] 
     
-    WayToHome.wthWall = loadImage('./assets/images/objects/wayToHomeWall0.png');
-    WayToHome.wthWallFun = loadImage('./assets/images/objects/wayToHomeWall1.png');
-    WayToHome.wthWallLove = loadImage('./assets/images/objects/wayToHomeWall2.png');
-    WayToHome.wthWallSeize = loadImage('./assets/images/objects/wayToHomeWall3.png');
-
-    WayToHome.wthPoster = loadImage('./assets/images/objects/wayToHomePoster0.png');
-    WayToHome.wthPosterDance = loadImage('./assets/images/objects/wayToHomePoster1.png');
-    WayToHome.wthPosterSong = loadImage('./assets/images/objects/wayToHomePoster2.png');
-    WayToHome.wthPosterCook = loadImage('./assets/images/objects/wayToHomePoster3.png');
-
-    WayToHome.wthMountain = loadImage('./assets/images/objects/wayToHomeMountainColor.png');
-    WayToHome.wthMountainM = loadImage('./assets/images/objects/wayToHomeMountainMono.png');
-
-    WayToHome.wthBird = loadImage('./assets/images/objects/wayToHomeBird0.png');
-    WayToHome.wthBirdDove = loadImage('./assets/images/objects/wayToHomeBird1.png');
-    WayToHome.wthBirdSmall = loadImage('./assets/images/objects/wayToHomeBird2.png');
-    WayToHome.wthBirdBlack = loadImage('./assets/images/objects/wayToHomeBird3.png');
-    
-    WayToHome.wthBusStop = loadImage('./assets/images/objects/wayToHomeBusStopColor.png');
-    WayToHome.wthBusStopM = loadImage('./assets/images/objects/wayToHomeBusStopMono.png');
+    WayToHome.wthBusStopimg = [
+      loadImage('./assets/images/objects/wayToHomeBusStopMono.png'),
+      loadImage('./assets/images/objects/wayToHomeBusStopColor.png')
+    ]
 
     WayToHome.pCam = loadImage('./assets/images/objects/phoneCamera.png');
     WayToHome.pCamClean = loadImage('./assets/images/objects/phoneCamera2transparent.png');
@@ -128,12 +148,15 @@ class WayToHome {
 
     this.textAnimations = new TextAnimation(this.discoveryText[day-1], 640, 637, 50);
 
-    if (day === 5) {
-      this.wthBGSelected = WayToHome.wthBG;
-      this.wthBSSelected = WayToHome.wthBS;
-      this.wthRoadSelected = WayToHome.wthBGR;
-      this.wthWallBGSelected = WayToHome.wthWallBG;
-    }
+    this.wthBGSelected = WayToHome.wthBGimg[wthBackGround];
+    this.wthRoadSelected = WayToHome.wthBGRimg[wthBackGround];
+    this.wthWallBGSelected = WayToHome.wthWallBGimg[wthBackGround];
+    this.wthBSSelected = WayToHome.wthBSimg[wthBackGround];
+    this.wthWallSelected = WayToHome.wthWallimg[wthWall];
+    this.wthPosterSelected = WayToHome.wthPosterimg[wthPoster];
+    this.wthMountainSelected = WayToHome.wthMountainimg[wthMountain];
+    this.wthBirdSelected = WayToHome.wthBirdimg[wthBird];
+    this.wthBusStopSelected = WayToHome.wthBusStopimg[wthBusStop];
   }
 
   display() {
@@ -289,29 +312,24 @@ class WayToHome {
     // day와 chosen 값에 따라 이미지 업데이트
     if (day == 1) {
       wthWall = this.chosen;
-      if (this.chosen == 1) this.wthWallSelected = WayToHome.wthWallFun;
-      else if (this.chosen == 2) this.wthWallSelected = WayToHome.wthWallLove;
-      else if (this.chosen == 3) this.wthWallSelected = WayToHome.wthWallSeize;
+      this.wthWallSelected = WayToHome.wthWallimg[this.chosen];
 
     } else if (day == 2) {
       wthPoster = this.chosen;
-      if (this.chosen == 1) this.wthPosterSelected = WayToHome.wthPosterDance;
-      else if (this.chosen == 2) this.wthPosterSelected = WayToHome.wthPosterSong;
-      else if (this.chosen == 3) this.wthPosterSelected = WayToHome.wthPosterCook;
+      this.wthPosterSelected = WayToHome.wthPosterimg[this.chosen];
+
 
     } else if (day == 3) {
       wthMountain = 1;
-      this.wthMountainSelected = WayToHome.wthMountain;
+      this.wthMountainSelected = WayToHome.wthMountainimg[1];
 
     } else if (day == 4) {
       wthBird = this.chosen;
-      if (this.chosen == 1) this.wthBirdSelected = WayToHome.wthBirdDove;
-      else if (this.chosen == 2) this.wthBirdSelected = WayToHome.wthBirdSmall;
-      else if (this.chosen == 3) this.wthBirdSelected = WayToHome.wthBirdBlack;
+      this.wthBirdSelected = WayToHome.wthBirdimg[this.chosen];
 
     } else if (day == 5) {
-      wthBusStop = this.chosen;
-      this.wthBusStopSelected = WayToHome.wthBusStop;
+      wthBusStop = 1
+      this.wthBusStopSelected = WayToHome.wthBusStopimg[1];
     }
   }
 

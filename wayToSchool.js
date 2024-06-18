@@ -1,11 +1,11 @@
 class WayToSchool {
   constructor() {
-    this.wtsBGSelected = WayToSchool.wtsBGM; // 기본 배경 이미지 설정
-    this.wtsBSSelected = WayToSchool.wtsBSM; // 기본 버스 정류장 이미지 설정
-    this.wtsStoreSelected = WayToSchool.wtsStore; // 기본 가게 이미지 설정
-    this.wtsFlowerSelected = WayToSchool.wtsFlower; // 기본 꽃 이미지 설정
-    this.wtsCatSelected = WayToSchool.wtsCat; // 기본 고양이 이미지 설정
-    this.wtsCycleSelected = WayToSchool.wtsCycle; // 기본 자전거 이미지 설정
+    this.wtsBGSelected = null; // 기본 배경 이미지 설정
+    this.wtsBSSelected = null; // 기본 버스 정류장 이미지 설정
+    this.wtsStoreSelected = null; // 기본 가게 이미지 설정
+    this.wtsFlowerSelected = null; // 기본 꽃 이미지 설정
+    this.wtsCatSelected = null; // 기본 고양이 이미지 설정
+    this.wtsCycleSelected = null; // 기본 자전거 이미지 설정
     this.eventOccur = false; // 이벤트 발생 스위치
     this.blackBar = 0; // 상하단 흑색 바 애니메이션
     this.blackBarAnimation = 0; //흑색 바 애니메이션 설정 (0: 없음, 1: 올라오기, 2: 고정, 3: 내려가기)
@@ -82,26 +82,44 @@ class WayToSchool {
 
   static preload() {
     // 이미지 로드
-    WayToSchool.wtsBG = loadImage('./assets/images/backgrounds/wayToSchoolColor.png');
-    WayToSchool.wtsBGM = loadImage('./assets/images/backgrounds/wayToSchoolMono.png');
-    WayToSchool.wtsBS = loadImage('./assets/images/objects/wayBusStopColor.png');
-    WayToSchool.wtsBSM = loadImage('./assets/images/objects/wayBusStopMono.png');
-    WayToSchool.wtsStore = loadImage('./assets/images/objects/wayToSchoolStore0.png');
-    WayToSchool.wtsStoreBakery = loadImage('./assets/images/objects/wayToSchoolStore1.png');
-    WayToSchool.wtsStoreCafe = loadImage('./assets/images/objects/wayToSchoolStore2.png');
-    WayToSchool.wtsStoreJuice = loadImage('./assets/images/objects/wayToSchoolStore3.png');
-    WayToSchool.wtsFlower = loadImage('./assets/images/objects/wayToSchoolFlower0.png');
-    WayToSchool.wtsFlowerRose = loadImage('./assets/images/objects/wayToSchoolFlower1.png');
-    WayToSchool.wtsFlowerHydrangea = loadImage('./assets/images/objects/wayToSchoolFlower2.png');
-    WayToSchool.wtsFlowerLily = loadImage('./assets/images/objects/wayToSchoolFlower3.png');
-    WayToSchool.wtsCat = loadImage('./assets/images/objects/wayToSchoolCat0.png');
-    WayToSchool.wtsCatCookie = loadImage('./assets/images/objects/wayToSchoolCat1.png');
-    WayToSchool.wtsCatFish = loadImage('./assets/images/objects/wayToSchoolCat2.png');
-    WayToSchool.wtsCatCheese = loadImage('./assets/images/objects/wayToSchoolCat3.png');
-    WayToSchool.wtsCycle = loadImage('./assets/images/objects/wayToSchoolCycle0.png');
-    WayToSchool.wtsCycleRed = loadImage('./assets/images/objects/wayToSchoolCycle1.png');
-    WayToSchool.wtsCycleChild = loadImage('./assets/images/objects/wayToSchoolCycle2.png');
-    WayToSchool.wtsCycleUni = loadImage('./assets/images/objects/wayToSchoolCycle3.png');
+    WayToSchool.wtsBGimg = [
+      loadImage('./assets/images/backgrounds/wayToSchoolMono.png'),
+      loadImage('./assets/images/backgrounds/wayToSchoolColor.png')
+    ]
+
+    WayToSchool.wtsBSimg = [
+      loadImage('./assets/images/objects/wayBusStopMono.png'),
+      loadImage('./assets/images/objects/wayBusStopColor.png')
+    ]
+    
+    WayToSchool.wtsStoreimg = [
+      loadImage('./assets/images/objects/wayToSchoolStore0.png'),
+      loadImage('./assets/images/objects/wayToSchoolStore1.png'),
+      loadImage('./assets/images/objects/wayToSchoolStore2.png'),
+      loadImage('./assets/images/objects/wayToSchoolStore3.png')
+    ]
+
+    WayToSchool.wtsFlowerimg = [
+      loadImage('./assets/images/objects/wayToSchoolFlower0.png'),
+      loadImage('./assets/images/objects/wayToSchoolFlower1.png'),
+      loadImage('./assets/images/objects/wayToSchoolFlower2.png'),
+      loadImage('./assets/images/objects/wayToSchoolFlower3.png')
+    ]
+
+    WayToSchool.wtsCatimg = [
+      loadImage('./assets/images/objects/wayToSchoolCat0.png'),
+      loadImage('./assets/images/objects/wayToSchoolCat1.png'),
+      loadImage('./assets/images/objects/wayToSchoolCat2.png'),
+      loadImage('./assets/images/objects/wayToSchoolCat3.png')
+    ]
+
+    WayToSchool.wtsCycleimg = [
+      loadImage('./assets/images/objects/wayToSchoolCycle0.png'),
+      loadImage('./assets/images/objects/wayToSchoolCycle1.png'),
+      loadImage('./assets/images/objects/wayToSchoolCycle2.png'),
+      loadImage('./assets/images/objects/wayToSchoolCycle3.png')
+    ]
+
     WayToSchool.pCam = loadImage('./assets/images/objects/phoneCamera.png');
     WayToSchool.pCamClean = loadImage('./assets/images/objects/phoneCamera2transparent.png');
     WayToSchool.blurImage = loadImage('./assets/images/backgrounds/blurImage.png');
@@ -113,6 +131,13 @@ class WayToSchool {
     this.button3 = new ChoosingButton(2, this.button3Text[day-1], ",");
 
     this.textAnimations = new TextAnimation(this.discoveryText[day-1], 640, 637, 50);
+    
+    this.wtsBGSelected = WayToSchool.wtsBGimg[wtsBackGround];
+    this.wtsBSSelected = WayToSchool.wtsBSimg[wtsBackGround];
+    this.wtsStoreSelected = WayToSchool.wtsStoreimg[wtsStore];
+    this.wtsFlowerSelected = WayToSchool.wtsFlowerimg[wtsFlower];
+    this.wtsCatSelected = WayToSchool.wtsCatimg[wtsCat];
+    this.wtsCycleSelected = WayToSchool.wtsCycleimg[wtsCycle];
   }
 
   display() {
@@ -266,36 +291,25 @@ class WayToSchool {
     // day와 chosen 값에 따라 이미지 업데이트
     if (day == 1) {
       wtsStore = this.chosen;
-      if (this.chosen == 1) this.wtsStoreSelected = WayToSchool.wtsStoreBakery;
-      else if (this.chosen == 2) this.wtsStoreSelected = WayToSchool.wtsStoreCafe;
-      else if (this.chosen == 3) this.wtsStoreSelected = WayToSchool.wtsStoreJuice;
+      this.wtsStoreSelected = WayToSchool.wtsStoreimg[this.chosen];
 
     } else if (day == 2) {
       wtsFlower = this.chosen;
-      if (this.chosen == 1) this.wtsFlowerSelected = WayToSchool.wtsFlowerRose;
-      else if (this.chosen == 2) this.wtsFlowerSelected = WayToSchool.wtsFlowerHydrangea;
-      else if (this.chosen == 3) this.wtsFlowerSelected = WayToSchool.wtsFlowerLily;
+      this.wtsFlowerSelected = WayToSchool.wtsFlowerimg[this.chosen];
 
     } else if (day == 3) {
       wtsCat = this.chosen;
-      if (this.chosen == 1) this.wtsCatSelected = WayToSchool.wtsCatCookie;
-      else if (this.chosen == 2) this.wtsCatSelected = WayToSchool.wtsCatFish;
-      else if (this.chosen == 3) this.wtsCatSelected = WayToSchool.wtsCatCheese;
+      this.wtsCatSelected = WayToSchool.wtsCatimg[this.chosen];
 
     } else if (day == 4) {
       wtsCycle = this.chosen;
-      if (this.chosen == 1) this.wtsCycleSelected = WayToSchool.wtsCycleRed;
-      else if (this.chosen == 2) this.wtsCycleSelected = WayToSchool.wtsCycleChild;
-      else if (this.chosen == 3) this.wtsCycleSelected = WayToSchool.wtsCycleUni;
+      this.wtsCycleSelected = WayToSchool.wtsCycleimg[this.chosen];
 
     } else if (day == 5) {
-      wtsBG = 1;
-      wtsBS = 1;
-      wthBG = 1;
-      wthBS = 1;
-      wthRoad = 1;
-      this.wtsBGSelected = WayToSchool.wtsBG;
-      this.wtsBSSelected = WayToSchool.wtsBS;
+      wtsBackGround = 1;
+      wthBackGround = 1;
+      this.wtsBGSelected = WayToSchool.wtsBGimg[1];
+      this.wtsBSSelected = WayToSchool.wtsBSimg[1];
     }
   }
 

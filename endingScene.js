@@ -7,7 +7,7 @@ class EndingScene {
 
     this.alpha = 255;
     this.lastChangeTime = 0;
-    this.changeInterval = 5000;
+    this.changeInterval = 10000;
     this.fadeSpeed = 10;
 
     this.imageConfigurations = [];
