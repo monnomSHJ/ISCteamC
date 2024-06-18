@@ -241,7 +241,7 @@ class EndingScene {
     textSize(18);
     textAlign(LEFT, CENTER);
     let combinedText = this.displayedTexts.concat(this.displayedText).join("\n");
-    text(combinedText, width/2 + 100, height/2 - 18);
+    text(combinedText, width/2 + 100, height/2 - 40);
   }
 
   updateDisplayedText() {
