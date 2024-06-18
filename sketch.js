@@ -2,17 +2,23 @@ let currentScene; // 현재 장면
 let cursorImage; // 커서 이미지
 let day = 1; // 현재 일차
 
+let resetDisplay = false; //리셋 하시겠습니까?
+
+//폰트
 let fontNeo;
+
+//이미지
 let cursorImage1;
 let cursorImage2;
 let cursorImage3;
 
+//사운드
 let cameraSound;
 let clickSound;
 let busSound;
 let schoolSound;
-let bookSound;
 
+//각 클래스 할당
 let mainMenu; // 메인화면
 let openingScene; // 오프닝
 let homeMorning; // 집(아침)
@@ -22,32 +28,24 @@ let wayToHome; // 하굣길
 let homeNight; // 집(밤)
 let endingScene; // 엔딩
 
-//등굣길 변수
-let wtsBG = 1; //배경 이미지
-let wtsBS = 1; //버스 정류장 이미지
+//등굣길 오브젝트 변수 -> 엔딩에 영향
 let wtsStore = 1; //가게 이미지(1: 빵, 2: 카페, 3: 주스)
 let wtsFlower = 1; //꽃 이미지(1: 장미, 2: 수국, 3: 백합)
 let wtsCat = 1; // 고양이 이미지(1: Cookie, 2: Fish, 3: Cheeze)
 let wtsCycle = 1; // 자전거 이미지(1: 빨강, 2: 어린이, 3: 외발)
 
-//하굣길 변수
-let wthBG = 1; //기본 배경 이미지
-let wthBS = 1; //버스 정류장 이미지
+//하굣길 오브젝트 변수 -> 엔딩에 영향
 let wthWall = 1; //낙서 이미지(1: Fun, 2: Love, 3: Seize)
 let wthPoster = 1; //포스터 이미지(1: Dance, 2: Song, 3: Cook)
-let wthMountain = 1; //산 이미지
 let wthBird = 1; //새 이미지(1: Dove, 2: Small, 3: Black)
-let wthBusStop = 1; //버스 정류장(상호작용 가능)
-let wthRoad = 1; //길(배경 요소)
 
-let diaryPictures = [];
-let diary;
+let diaryPictures = []; //촬영한 사진 저장
+let diary; //다이어리 클래스 할당
 
-let bgmDay = [];
+let bgmDay = []; //일차별 브금 저장
 
-//다이어리 이미지
 
-let wtsStoreForEnding = 0;
+
 function preload() {
   fontNeo = loadFont('./assets/fonts/neoMo.TTF');
   cursorImage1 = loadImage('./assets/images/mouseCursor3.png');
@@ -57,7 +55,6 @@ function preload() {
   clickSound = loadSound('./assets/sounds/objectClickSound.mp3');
   busSound = loadSound('./assets/sounds/busSound.mp3');
   schoolSound = loadSound('./assets/sounds/schoolSound.mp3');
-  bookSound = loadSound('./assets/sounds/bookOpenSound.mp3');
 
   MainMenu.preload();
   OpeningScene.preload();
@@ -79,37 +76,33 @@ function preload() {
   ]
 }
 
+
+
 function setup() {
   createCanvas(1280, 720);
   noCursor();
 
   mainMenu = new MainMenu();
-  openingScene = new OpeningScene();
-  homeMorning = new HomeMorning();
-  wayToSchool = new WayToSchool();
-  school = new School();
-  wayToHome = new WayToHome();
-  homeNight = new HomeNight();
-  endingScene = new EndingScene();
+
+  diary = new Diary();
 
   currentScene = mainMenu;
   if (currentScene.setup) {
     currentScene.setup();
   }
-
-  diary = new Diary();
 }
+
+
 
 function draw() {
   background(220);
   noStroke();
+
   currentScene.display();
 
-  //사운드
-  if (currentScene instanceof HomeMorning ||
-    currentScene instanceof WayToSchool ||
-    currentScene instanceof School ||
-    currentScene instanceof WayToHome ||
+  //bgm 재생
+  if (currentScene instanceof HomeMorning || currentScene instanceof WayToSchool ||
+    currentScene instanceof School || currentScene instanceof WayToHome ||
     (currentScene instanceof HomeNight && currentScene.status < 5)) {
 
       if (!bgmDay[day-1].isPlaying()) {
@@ -119,11 +112,14 @@ function draw() {
 
     } else if (currentScene instanceof HomeNight && currentScene.status > 4) {
       bgmDay[day-1].stop();
-    }
+    } //5일차 밤 -> preEnding 넘어갈 때 브금 중지
+
 
   //현재 일차 및 장소 확인
-  if ((currentScene instanceof HomeMorning || currentScene instanceof WayToSchool || currentScene instanceof School || currentScene instanceof WayToHome || currentScene instanceof HomeNight)
+  if ((currentScene instanceof HomeMorning || currentScene instanceof WayToSchool ||
+    currentScene instanceof School || currentScene instanceof WayToHome || currentScene instanceof HomeNight)
     && !currentScene.isCapturing) {
+
     fill(255);  
     textFont(fontNeo);
     textSize(24);
@@ -143,33 +139,51 @@ function draw() {
     textSize(16);
     fill(255, 150);
     textAlign(RIGHT, CENTER);
-    text("처음으로 돌아가려면 'f5'를 눌러 새로고침하세요.", width-30, 20);
+    text("새로 시작하려면 'r'을 눌러 처음으로 돌아가세요.", width-30, 30);
   }
 
-  if (currentScene instanceof EndingScene) {
+  if (currentScene instanceof EndingScene) { //엔딩씬에서는 더 잘 보이도록
     textFont(fontNeo);
     textSize(16);
     fill(255);
     textAlign(RIGHT, CENTER);
-    text("처음으로 돌아가려면 'f5'를 눌러 새로고침하세요.", width-30, 20);
+    text("새로 시작하려면 'r'을 입력해 처음으로 돌아가세요.", width-30, 30);
   }
 
+    //리셋 확인 창
+    if(resetDisplay) {
+      rectMode(CENTER);
+      fill(0);
+      stroke(255, 100);
+      strokeWeight(8);
+      rect(width/2, height/2, 1000, 200);
+      rectMode(CORNER);
+
+      fill(255);
+      noStroke();
+      textFont(fontNeo);
+      textSize(20);
+      text('현재 진행 상황을 모두 리셋하고 처음으로 돌아가시겠습니까?', width/2, height/2 - 40);
+      text("리셋을 원하시면 'y'를, 현재 진행 상황으로 돌아가시려면 'n'을 입력해주세요.", width/2, height/2 - 10);
+
+      fill(255, 180);
+      textSize(16);
+      text('처음으로 돌아가면 다시는 되돌릴 수 없습니다.', width/2, height/2 + 40)
+    }
+
   // 커서 이미지 조건문
-  if (((currentScene instanceof WayToSchool || currentScene instanceof WayToHome)&& (currentScene.changeCursor() === 2))
-    || (currentScene instanceof OpeningScene && currentScene.textComplete == true)
-    || currentScene instanceof MainMenu
-    || (currentScene instanceof HomeMorning && currentScene.textComplete && mouseX > width/2 - 150 && mouseX < width/2 + 150 && mouseY > height/2 - 150 && mouseY < height/2 + 150)
-    || (currentScene instanceof HomeNight && currentScene.textComplete && mouseX > width - 250 && mouseX < width -30 && mouseY > height - 300 && mouseY < height - 80)) {
-    cursorImage = cursorImage2; // 상호작용 가능한 물체 위에 있을 때 커서 이미지를 빨간색으로
-  } else if (currentScene instanceof HomeNight && currentScene.status === 2) {
-    cursorImage = cursorImage3;
+  if (currentScene instanceof HomeNight && currentScene.status === 2) {
+    cursorImage = cursorImage3; //밤이면서 다이어리 사용 중일 때 펜슬로 변경
+  } else if (((currentScene instanceof WayToSchool || currentScene instanceof WayToHome) && currentScene.changeCursor() === 2)
+    || currentScene instanceof OpeningScene || currentScene instanceof MainMenu) {
+    cursorImage = cursorImage2; //등하굣길 오브젝트 마우스오버 or 오프닝 or 메인화면에서 빨간 초점 이미지
   } else {
-    cursorImage = cursorImage1; // 그 외의 경우 검은색으로
+    cursorImage = cursorImage1; //이외의 경우에는 무조건 흰색 초점 이미지 
   }
 
   //커서 이미지 적용
-  if(currentScene instanceof EndingScene == false) {
-    if((currentScene instanceof WayToSchool || currentScene instanceof WayToHome) && currentScene.isCapturing == true) {
+  if(currentScene instanceof EndingScene == false) { //엔딩씬에서는 커서X
+    if((currentScene instanceof WayToSchool || currentScene instanceof WayToHome) && currentScene.isCapturing == true) { 
   } else {
     if(cursorImage == cursorImage2) {
       push();
@@ -182,61 +196,106 @@ function draw() {
       translate(mouseX, mouseY);
       image(cursorImage3, 0, -193, 114, 193);
       pop();
-    }
-    else {
+    } else {
       push();
       translate(mouseX, mouseY);
       scale(0.55);
       image(cursorImage, -50, -50, 100, 100);
       pop();
+      }
     }
   }
+
+}
+
+
+
+function mouseClicked() {
+  if(currentScene.handleClick()) {
+    currentScene.handleClick();
   }
 }
 
-function mouseClicked() {
-  currentScene.handleClick();
-}
-
-// 테스트용 키패드 입력 
 
 function keyPressed() {
-
+/*
   if (key === '1') {
-    changePage(mainMenu, 'Loading...');
+    changePage(new MainMenu, 'Loading...');
   } else if (key === '2') {
-    changePage(openingScene, 'Loading...');
+    changePage(new OpeningScene, 'Loading...');
   } else if (key === '3') {
-    changePage(homeMorning, 'Loading...');
+    changePage(new HomeMorning, 'Loading...');
   } else if (key === '4') {
-    changePage(wayToSchool, 'Loading...');
+    changePage(new WayToSchool, 'Loading...');
   } else if (key === '5') {
-    changePage(school, 'Loading...');
+    changePage(new School, 'Loading...');
   } else if (key === '6') {
-    changePage(wayToHome, 'Loading...');
+    changePage(new WayToHome, 'Loading...');
   } else if (key === '7') {
-    changePage(homeNight, 'Loading...');
+    changePage(new HomeNight, 'Loading...');
   } else if (key === '8') {
     changePage(new EndingScene, 'Loading...');
   } else if (key === '9') {
     day += 1;
-  }
+  }*/
 
-  currentScene.test();
+  if (!resetDisplay && currentScene instanceof Transition == false) {
+    if (key === 'r' || key === 'R') {
+      clickSound.play();
+      resetDisplay = true;
+    }
+  } else {
+    if (key === 'y' || key === 'Y') {
+      clickSound.play();
+      resetAll();
+    } else if (key === 'n' || key === 'N') {
+      clickSound.play();
+      resetDisplay = false;
+    }
+  }
 
 }
 
 
-function changePage(newPage, transitionText = 'Loading...') {
+
+function changePage(newPage, transitionText = 'Loading...') { //화면 전환 function
   
-  if (newPage.constructor.name === 'HomeMorning') {
-    homeMorning = new HomeMorning(); // 새로운 HomeMorning 인스턴스 생성
-    newPage = homeMorning; // 새로운 인스턴스를 newPage로 설정
-  } else if (newPage.constructor.name === 'HomeNight') {
-    homeNight = new HomeNight();
-    newPage = new HomeNight();
-  }
-  let transitionScene = new Transition(currentScene, newPage, transitionText); // 전환 장면을 거쳐서 다음 장면으로 전환
+  let transitionScene = new Transition(currentScene, newPage, transitionText);
   transitionScene.setup();
   currentScene = transitionScene;
+}
+
+
+
+function resetAll() {
+
+  for (let bgm of bgmDay) {
+    bgm.stop();
+  }
+
+  clickSound.stop();
+  cameraSound.stop();
+  busSound.stop();
+
+  OpeningScene.bgm.stop();
+  EndingScene.bgm.stop();
+
+  mainMenu = new MainMenu();
+  changePage(mainMenu, 'Restarting...');
+
+  day = 1;
+  resetDisplay = false;
+  
+  wtsStore = 1;
+  wtsFlower = 1;
+  wtsCat = 1;
+  wtsCycle = 1;
+
+  wthWall = 1;
+  wthPoster = 1;
+  wthBird = 1;
+
+  diaryPictures = [];
+  diary = new Diary();
+
 }

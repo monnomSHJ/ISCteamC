@@ -42,6 +42,7 @@ class MainMenu {
   
     handleClick() {
       cameraSound.play();
+      openingScene = new OpeningScene();
       changePage(openingScene, 'Loading...');
     }
   }

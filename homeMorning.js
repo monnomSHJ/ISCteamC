@@ -88,6 +88,7 @@ class HomeMorning {
       this.textAnimations.nextLine();
     } else {
       if(this.backPackMouseOver === true) {
+        wayToSchool = new WayToSchool();
         changePage(wayToSchool, 'Loading...');
         clickSound.play();
     }

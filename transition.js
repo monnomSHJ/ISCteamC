@@ -3,8 +3,8 @@ class Transition {
     this.currentScene = currentScene;
     this.nextScene = nextScene;
     this.transitionText = transitionText;
-    this.fadeDuration = 1000; // 페이드인 시간 (밀리초)
-    this.waitDuration = 3000; // 대기 시간 (밀리초)
+    this.fadeDuration = 800; // 페이드인 시간 (밀리초)
+    this.waitDuration = 2000; // 대기 시간 (밀리초)
     this.startTime = millis(); // 전환 시작 시간
     this.alpha = 0; // 초기 알파 값
   }
@@ -43,9 +43,5 @@ class Transition {
     textSize(32);
     textAlign(CENTER, CENTER);
     text(this.transitionText, width / 2, height / 2);
-  }
-
-  handleClick() {
-    // 전환 중에는 클릭 이벤트 처리하지 않음
   }
 }

@@ -280,6 +280,7 @@ class WayToHome {
       clickSound.play();
       busSound.setVolume(0.5);
       busSound.play();
+      homeNight = new HomeNight();
       changePage(homeNight, 'Loading...');
     }
   }
@@ -423,7 +424,7 @@ class WayToHome {
 
   busStopDisplay() {
 
-    if(this.selected && (this.selected && 50 < mouseX && mouseX < 50+132 && 260 < mouseY && mouseY < 260+230)) {
+    if(this.over() == 'go') {
       imageMode(CENTER);
       image(this.wthBSSelected, 50+66, 260+115, 158.4, 276);
       imageMode(CORNER);
@@ -459,7 +460,7 @@ class WayToHome {
       } else if ((day == 5) && (300 < mouseX && mouseX < 300 + 679 && 140 < mouseY && mouseY < 140+385)) {
         return 5;
       } else { return 0 };
-    } else if (this.selected && 50 < mouseX && mouseX < 50+132 && 260 < mouseY && mouseY < 260+230) {
+    } else if (this.blackBar < 10 && this.selected && this.selected && 50 < mouseX && mouseX < 50+132 && 260 < mouseY && mouseY < 260+230) {
       return 'go';
     } else { return 0; } 
   }

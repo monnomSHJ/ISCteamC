@@ -142,7 +142,8 @@ class HomeNight {
         if (this.bedMouseOver) {
           bgmDay[day-1].stop();
           day++;
-          changePage(new HomeMorning(), 'DAY '+day);
+          homeMorning = new HomeMorning();
+          changePage(homeMorning, 'DAY '+day);
           clickSound.play();
         }
       } else if (this.status === 5) {
@@ -155,7 +156,8 @@ class HomeNight {
 
         } else {
           cameraSound.play();
-          changePage(new EndingScene, 'Ending...');
+          endingScene = new EndingScene();
+          changePage(endingScene, 'Ending...');
         }
       }
     }

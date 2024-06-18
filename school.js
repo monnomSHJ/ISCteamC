@@ -33,6 +33,7 @@ class School {
       
       setTimeout(() => {
         schoolSound.stop();
+        wayToHome = new WayToHome();
         changePage(wayToHome, 'Loading...');
       }, 5000); // 5초 후에 wayToHome으로 전환
 

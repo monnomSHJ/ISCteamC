@@ -251,12 +251,13 @@ class WayToSchool {
       this.Reading2 = false;
     }
 
-    if (this.over() == 'go'){
+    if (this.over() == 'go') {
       this.selected = false;
       this.blackBarAnimation = 0;
       clickSound.play();
       busSound.setVolume(0.5);
       busSound.play();
+      school = new School();
       changePage(school, 'Loading...');
     }
   }
@@ -408,7 +409,7 @@ class WayToSchool {
   
   busStopDisplay() {
 
-    if(this.selected && (1040 < mouseX && mouseX < 1040+132 && 265 < mouseY && mouseY < 265+230)) {
+    if(this.over() == 'go') {
       imageMode(CENTER);
       image(this.wtsBSSelected, 1040+66, 265+115, 158.4, 276);
       imageMode(CORNER);
@@ -444,7 +445,7 @@ class WayToSchool {
       } else if (day == 5) {
         return 5;
       } else { return 0 };
-    } else if (this.selected && (1040 < mouseX && mouseX < 1040+132 && 265 < mouseY && mouseY < 265+230)) {
+    } else if (this.blackBar < 10 && this.selected && (1040 < mouseX && mouseX < 1040+132 && 265 < mouseY && mouseY < 265+230)) {
       return 'go';
     } else { return 0;}
   }
