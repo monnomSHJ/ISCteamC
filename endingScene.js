@@ -13,7 +13,7 @@ class EndingScene {
     this.imageConfigurations = [];
 
     this.initialDelay = 5000; // 이미지 표시 시작 전 지연 시간 (밀리초 단위)
-    this.startTime = 1000;
+    this.startTime = 0;
 
     this.currentScene = null;
     this.nextScene = null;
@@ -241,7 +241,7 @@ class EndingScene {
     textSize(18);
     textAlign(LEFT, CENTER);
     let combinedText = this.displayedTexts.concat(this.displayedText).join("\n");
-    text(combinedText, width/2 + 100, height/2 - 40);
+    text(combinedText, width/2 + 100, height/2 + 40);
   }
 
   updateDisplayedText() {
