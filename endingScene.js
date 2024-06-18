@@ -1,22 +1,22 @@
-class EndingScene{
+class EndingScene {
   constructor() {
-    console.log(day);
-    
-    this.currentImageIndex = 0;
-    this.alpha = 0;
-    this.fadeIn = true;
-    this.lastChangeTime = 0;
-    this.changeInterval = 2800;
-    this.graphicsArray = [];
-  
+    this.images = EndingScene.images;
 
-    // this.selectedStore ;
-    // this.selectedFlower;
-    // this.selectedCat ;
-    // this.selectedCycle ;
-    // this.wthWallSelected ;
-    // this.wthPosterSelected;
-    // this.wthBirdSelected;
+    this.currentSceneIndex = 0;
+    this.nextSceneIndex = 1;
+
+    this.alpha = 255;
+    this.lastChangeTime = 0;
+    this.changeInterval = 5000;
+    this.fadeSpeed = 10;
+
+    this.imageConfigurations = [];
+
+    this.initialDelay = 5000; // 이미지 표시 시작 전 지연 시간 (밀리초 단위)
+    this.startTime = 1000;
+
+    this.currentScene = null;
+    this.nextScene = null;
 
     this.texts = [
       "평범해 보이는 무채색의 하루에도",
@@ -33,7 +33,9 @@ class EndingScene{
       "",
       "오늘도 당신의 행복을 응원합니다.",
       "",
-      "플레이해주셔서 감사합니다."
+      "플레이해주셔서 감사합니다.",
+      "",
+      "by 2024-1 정보문화기술입문 C조"
     ];
 
     this.displayedTexts = [];
@@ -44,404 +46,203 @@ class EndingScene{
     this.textComplete = false;
 
     this.finalMessageDisplayed = false;
-    
-    
-
-
-    this.updateImages();
-    this.createGraphicsTool();
-    console.log(wtsStore);
-    
-    
-
-
-    
-  }
-
-  
-  
-
-
-  updateImages(){
-    if(wtsStore ===1 || wtsStore ===0){
-      this.selectedStore =  EndingScene.wtsStore1;
-      //this.selectedStoreGray =  EndingScene.wtsStore1Gray;
-    }else if(wtsStore===2){
-      this.selectedStore =  EndingScene.wtsStore2;
-      //this.selectedStoreGray =  EndingScene.wtsStore2Gray;
-    }else if(wtsStore ===3){
-      this.selectedStore =  EndingScene.wtsStore3;
-      //this.selectedStoreGray =  EndingScene.wtsStore3Gray;
-    }
-
-    if(wtsFlower ==1 || wtsFlower ==0){
-      this.selectedFlower =  EndingScene.wtsFlower1;
-      //this.selectedFlowerGray =  EndingScene.wtsFlower1Gray;
-    }else if(wtsFlower ==2){
-      this.selectedFlower = EndingScene.wtsFlower2;
-      //this.selectedFlowerGray = EndingScene.wtsFlower2Gray;
-    }else if(wtsFlower ==3){
-      this.selectedFlower = EndingScene.wtsFlower3;
-      //this.selectedFlowerGray = EndingScene.wtsFlower3Gray;
-    }
-
-    if(wtsCat ==1 || wtsCat ==0){
-      this.selectedCat = EndingScene.wtsCat1;
-      //this.selectedCatGray = EndingScene.wtsCat1Gray;
-    }else if(wtsCat ==2){
-      this.selectedCat = EndingScene.wtsCat2;
-      //this.selectedCatGray = EndingScene.wtsCat2Gray;
-    }else if(wtsCat ==3){
-      this.selectedCat = EndingScene.wtsCat3;
-      //this.selectedCatGray = EndingScene.wtsCat3Gray;
-    }
-
-    if(wtsCycle ==1 || wtsCycle ==0){
-      this.selectedCycle = EndingScene.wtsCycle1;
-      //this.selectedCycleGray = EndingScene.wtsCycle1Gray;
-    }else if(wtsCycle ==2){
-      this.selectedCycle = EndingScene.wtsCycle2;
-      //this.selectedCycleGray = EndingScene.wtsCycle2Gray;
-    }else if(wtsCycle ==3){
-      this.selectedCycle = EndingScene.wtsCycle3;
-      //this.selectedCycleGray = EndingScene.wtsCycle3Gray;
-    }
-
-    if(wthWall ==1 || wthWall ==0){
-      this.wthWallSelected = EndingScene.wthWall1;
-      //this.wthWallSelectedGray = EndingScene.wthWall1Gray;
-    }else if(wthWall ==2){
-      this.wthWallSelected = EndingScene.wthWall2;
-      //this.wthWallSelectedGray = EndingScene.wthWall2Gray;
-    }else if(wthWall ==3){
-      this.wthWallSelected = EndingScene.wthWall3;
-     // this.wthWallSelectedGray = EndingScene.wthWall3Gray;
-    }
-
-    if(wthPoster ==1 || wthPoster ==0){
-      this.wthPosterSelected = EndingScene.wthPoster1;
-     // this.wthPosterSelectedGray = EndingScene.wthPoster1Gray;
-    }else if(wthPoster ==2){
-      this.wthPosterSelected = EndingScene.wthPoster2;
-      //this.wthPosterSelectedGray = EndingScene.wthPoster2Gray;
-    }else if(wthPoster ==3){
-      this.wthPosterSelected = EndingScene.wthPoster3;
-      //this.wthPosterSelectedGray = EndingScene.wthPoster3Gray;
-    }
-
-    if(wthBird ==1 || wthBird ==0){
-      this.wthBirdSelected = EndingScene.wthBird1;
-      //this.wthBirdSelectedGray = EndingScene.wthBird1Gray;
-    }else if(wthBird ==2){
-      this.wthBirdSelected = EndingScene.wthBird2;
-      //this.wthBirdSelectedGray = EndingScene.wthBird2Gray;
-    }else if(wthBird ==3){
-      this.wthBirdSelected = EndingScene.wthBird3;
-      //this.wthBirdSelectedGray = EndingScene.wthBird3Gray;
-    }
-
-    console.log(wtsStore);
-    this.images = [
-      EndingScene.imgHomeMorningGray,
-      EndingScene.imgHomeMorningGray,
-      EndingScene.imgHomeMorning,
-      
-      EndingScene.imgWayToSchoolGray,
-        //this.selectedStoreGray,
-        //this.selectedFlowerGray,
-        //this.selectedCatGray,
-        //this.selectedCycleGray
-  
-      
-    [
-      EndingScene.imgWayToSchool,
-      this.selectedStore,
-      this.selectedFlower,
-      this.selectedCat,
-      this.selectedCycle
-
-    ],
-    EndingScene.imgSchoolGray,
-    EndingScene.imgSchool,
-    [
-      EndingScene.imgWayToHomeGray,
-      EndingScene.imgWayToHomeMountainColorGray,
-      EndingScene.imgWayToHomeRoadColorGray,
-      EndingScene.imgWayToHomeWallBgGray,
-      EndingScene.imgWayToHomeBusStopColorGray,
-      EndingScene.imgWayBusStopColorGray,
-      //EndingScene.imgWayToHomeWallBg,
-      //this.wthWallSelectedGray,
-      //this.wthPosterSelectedGray,
-      //this.wthBirdSelectedGray
-      //wayToHome.wthBusStopSelected
-    ],
-    [
-      EndingScene.imgWayToHome,
-      EndingScene.imgWayToHomeMountainColor,
-      EndingScene.imgWayToHomeRoadColor,
-      EndingScene.imgWayToHomeWallBg,
-      EndingScene.imgWayToHomeBusStopColor,
-      EndingScene.imgWayBusStopColor,
-      //EndingScene.imgWayToHomeWallBg,
-      this.wthWallSelected,
-      this.wthPosterSelected,
-      this.wthBirdSelected
-      //wayToHome.wthBusStopSelected
-    ],
-    EndingScene.imgHomeNightGray,
-    EndingScene.imgHomeNight,
-    EndingScene.mainMenuGray,
-    EndingScene.mainMenu
-  ];
-
   }
 
   static preload() {
-    // EndingScene.imgHomeMorning = loadImage('assets/images/backgrounds/homeMorningFullColor.png');
-    // EndingScene.imgWayToSchool = loadImage('assets/images/backgrounds/wayToSchoolColor.png');
-    // EndingScene.imgSchool = loadImage('assets/images/backgrounds/SchoolColor.png');
-    // EndingScene.imgWayToHome = loadImage('assets/images/backgrounds/wayToHomeColor.png');
-    // EndingScene.imgHomeNight = loadImage('assets/images/backgrounds/homeNightFullColor.png');
-    // EndingScene.imgWayToHomeWallBg = loadImage('assets/images/backgrounds/wayToHomeWallBG.png');
-    // EndingScene.imgWayToHomeMountainColor = loadImage('assets/images/objects/wayToHomeMountainColor.png');
-    // EndingScene.imgWayToHomeBusStopColor = loadImage('assets/images/objects/wayToHomeBusStopColor.png');
-    // EndingScene.imgWayBusStopColor = loadImage('assets/images/objects/WayBusStopColor.png');
-    // EndingScene.imgWayToHomeRoadColor = loadImage('assets/images/backgrounds/WayToHomeRoadColor.png');
-    // EndingScene.bgm = loadSound('assets/sounds/endingSceneBgm.mp3');
-    // EndingScene.wtsStore1 = loadImage('assets/images/objects/wayToSchoolStore1.png');
-    // EndingScene.wtsStore2 = loadImage('assets/images/objects/wayToSchoolStore2.png');
-    // EndingScene.wtsStore3 = loadImage('assets/images/objects/wayToSchoolStore3.png');
-    // EndingScene.wtsFlower1 = loadImage('assets/images/objects/wayToSchoolFlower1.png');
-    // EndingScene.wtsFlower2 = loadImage('assets/images/objects/wayToSchoolFlower2.png');
-    // EndingScene.wtsFlower3 = loadImage('assets/images/objects/wayToSchoolFlower3.png');
-    // EndingScene.wtsCat1 = loadImage('assets/images/objects/wayToSchoolCat1.png');
-    // EndingScene.wtsCat2 = loadImage('assets/images/objects/wayToSchoolCat2.png');
-    // EndingScene.wtsCat3 = loadImage('assets/images/objects/wayToSchoolCat3.png');
-    // EndingScene.wtsCycle1 = loadImage('assets/images/objects/wayToSchoolCycle1.png');
-    // EndingScene.wtsCycle2 = loadImage('assets/images/objects/wayToSchoolCycle2.png');
-    // EndingScene.wtsCycle3 = loadImage('assets/images/objects/wayToSchoolCycle3.png');
-    // EndingScene.wthWall1 = loadImage('assets/images/objects/wayToHomeWall1.png');
-    // EndingScene.wthWall2 = loadImage('assets/images/objects/wayToHomeWall2.png');
-    // EndingScene.wthWall3 = loadImage('assets/images/objects/wayToHomeWall3.png');
-    // EndingScene.wthPoster1 = loadImage('assets/images/objects/wayToHomePoster1.png');
-    // EndingScene.wthPoster2 = loadImage('assets/images/objects/wayToHomePoster2.png');
-    // EndingScene.wthPoster3 = loadImage('assets/images/objects/wayToHomePoster3.png');
-    // EndingScene.wthBird1 = loadImage('assets/images/objects/wayToHomeBird1.png');
-    // EndingScene.wthBird2 = loadImage('assets/images/objects/wayToHomeBird2.png');
-    // EndingScene.wthBird3 = loadImage('assets/images/objects/wayToHomeBird3.png');
-    // EndingScene.mainMenu = loadImage('assets/images/backgrounds/mainMenuColor.png');
+    let imagePaths = [
+      { key: 'homeMorningMono', path: './assets/images/backgrounds/homeMorningFullMono.png' },
+      { key: 'homeMorningColor', path: './assets/images/backgrounds/homeMorningFullColor.png' },
 
+      { key: 'wtsBackgroundMono', path: './assets/images/backgrounds/wayToSchoolMono.png' },
+      { key: 'wtsBackgroundColor', path: './assets/images/backgrounds/wayToSchoolColor.png' },
+      { key: 'wtsBusStopMono', path: './assets/images/objects/wayBusStopMono.png' },
+      { key: 'wtsBusStopColor', path: './assets/images/objects/wayBusStopColor.png' },
+      { key: 'wtsStore0', path: './assets/images/objects/wayToSchoolStore0.png' },
+      { key: 'wtsStore1', path: './assets/images/objects/wayToSchoolStore1.png' },
+      { key: 'wtsStore2', path: './assets/images/objects/wayToSchoolStore2.png' },
+      { key: 'wtsStore3', path: './assets/images/objects/wayToSchoolStore3.png' },
+      { key: 'wtsFlower0', path: './assets/images/objects/wayToSchoolFlower0.png' },
+      { key: 'wtsFlower1', path: './assets/images/objects/wayToSchoolFlower1.png' },
+      { key: 'wtsFlower2', path: './assets/images/objects/wayToSchoolFlower2.png' },
+      { key: 'wtsFlower3', path: './assets/images/objects/wayToSchoolFlower3.png' },
+      { key: 'wtsCat0', path: './assets/images/objects/wayToSchoolCat0.png' },
+      { key: 'wtsCat1', path: './assets/images/objects/wayToSchoolCat1.png' },
+      { key: 'wtsCat2', path: './assets/images/objects/wayToSchoolCat2.png' },
+      { key: 'wtsCat3', path: './assets/images/objects/wayToSchoolCat3.png' },
+      { key: 'wtsCycle0', path: './assets/images/objects/wayToSchoolCycle0.png' },
+      { key: 'wtsCycle1', path: './assets/images/objects/wayToSchoolCycle1.png' },
+      { key: 'wtsCycle2', path: './assets/images/objects/wayToSchoolCycle2.png' },
+      { key: 'wtsCycle3', path: './assets/images/objects/wayToSchoolCycle3.png' },
 
-    EndingScene.imgHomeMorning = loadImage('./assets/images/backgrounds/homeMorningFullColor.png', img => {
-      EndingScene.imgHomeMorningGray = img.get();
-      EndingScene.imgHomeMorningGray.filter(GRAY);
-  });
-  EndingScene.imgWayToSchool = loadImage('./assets/images/backgrounds/wayToSchoolColor.png', img => {
-      EndingScene.imgWayToSchoolGray = img.get();
-      EndingScene.imgWayToSchoolGray.filter(GRAY);
-  });
-  EndingScene.imgSchool = loadImage('./assets/images/backgrounds/SchoolColor.png', img => {
-      EndingScene.imgSchoolGray = img.get();
-      EndingScene.imgSchoolGray.filter(GRAY);
-  });
-  EndingScene.imgWayToHome = loadImage('./assets/images/backgrounds/wayToHomeColor.png', img => {
-      EndingScene.imgWayToHomeGray = img.get();
-      EndingScene.imgWayToHomeGray.filter(GRAY);
-  });
-  EndingScene.imgHomeNight = loadImage('./assets/images/backgrounds/homeNightFullColor.png', img => {
-      EndingScene.imgHomeNightGray = img.get();
-      EndingScene.imgHomeNightGray.filter(GRAY);
-  });
-  EndingScene.imgWayToHomeWallBg = loadImage('./assets/images/backgrounds/wayToHomeWallBG.png', img => {
-      EndingScene.imgWayToHomeWallBgGray = img.get();
-      EndingScene.imgWayToHomeWallBgGray.filter(GRAY);
-  });
-  EndingScene.imgWayToHomeMountainColor = loadImage('./assets/images/objects/wayToHomeMountainColor.png', img => {
-      EndingScene.imgWayToHomeMountainColorGray = img.get();
-      EndingScene.imgWayToHomeMountainColorGray.filter(GRAY);
-  });
-  EndingScene.imgWayToHomeBusStopColor = loadImage('./assets/images/objects/wayToHomeBusStopColor.png', img => {
-      EndingScene.imgWayToHomeBusStopColorGray = img.get();
-      EndingScene.imgWayToHomeBusStopColorGray.filter(GRAY);
-  });
-  EndingScene.imgWayBusStopColor = loadImage('./assets/images/objects/wayBusStopColor.png', img => {
-      EndingScene.imgWayBusStopColorGray = img.get();
-      EndingScene.imgWayBusStopColorGray.filter(GRAY);
-  });
-  EndingScene.imgWayToHomeRoadColor = loadImage('./assets/images/backgrounds/wayToHomeRoadColor.png', img => {
-      EndingScene.imgWayToHomeRoadColorGray = img.get();
-      EndingScene.imgWayToHomeRoadColorGray.filter(GRAY);
-  });
-  EndingScene.bgm = loadSound('./assets/sounds/endingSceneBgm.mp3');
-  EndingScene.wtsStore1 = loadImage('./assets/images/objects/wayToSchoolStore1.png', img => {
-      EndingScene.wtsStore1Gray = img.get();
-      EndingScene.wtsStore1Gray.filter(GRAY);
-  });
-  EndingScene.wtsStore2 = loadImage('./assets/images/objects/wayToSchoolStore2.png', img => {
-      EndingScene.wtsStore2Gray = img.get();
-      EndingScene.wtsStore2Gray.filter(GRAY);
-  });
-  EndingScene.wtsStore3 = loadImage('./assets/images/objects/wayToSchoolStore3.png', img => {
-      EndingScene.wtsStore3Gray = img.get();
-      EndingScene.wtsStore3Gray.filter(GRAY);
-  });
-  EndingScene.wtsFlower1 = loadImage('./assets/images/objects/wayToSchoolFlower1.png', img => {
-      EndingScene.wtsFlower1Gray = img.get();
-      EndingScene.wtsFlower1Gray.filter(GRAY);
-  });
-  EndingScene.wtsFlower2 = loadImage('./assets/images/objects/wayToSchoolFlower2.png', img => {
-      EndingScene.wtsFlower2Gray = img.get();
-      EndingScene.wtsFlower2Gray.filter(GRAY);
-  });
-  EndingScene.wtsFlower3 = loadImage('./assets/images/objects/wayToSchoolFlower3.png', img => {
-      EndingScene.wtsFlower3Gray = img.get();
-      EndingScene.wtsFlower3Gray.filter(GRAY);
-  });
-  EndingScene.wtsCat1 = loadImage('./assets/images/objects/wayToSchoolCat1.png', img => {
-      EndingScene.wtsCat1Gray = img.get();
-      EndingScene.wtsCat1Gray.filter(GRAY);
-  });
-  EndingScene.wtsCat2 = loadImage('./assets/images/objects/wayToSchoolCat2.png', img => {
-      EndingScene.wtsCat2Gray = img.get();
-      EndingScene.wtsCat2Gray.filter(GRAY);
-  });
-  EndingScene.wtsCat3 = loadImage('./assets/images/objects/wayToSchoolCat3.png', img => {
-      EndingScene.wtsCat3Gray = img.get();
-      EndingScene.wtsCat3Gray.filter(GRAY);
-  });
-  EndingScene.wtsCycle1 = loadImage('./assets/images/objects/wayToSchoolCycle1.png', img => {
-      EndingScene.wtsCycle1Gray = img.get();
-      EndingScene.wtsCycle1Gray.filter(GRAY);
-  });
-  EndingScene.wtsCycle2 = loadImage('./assets/images/objects/wayToSchoolCycle2.png', img => {
-      EndingScene.wtsCycle2Gray = img.get();
-      EndingScene.wtsCycle2Gray.filter(GRAY);
-  });
-  EndingScene.wtsCycle3 = loadImage('./assets/images/objects/wayToSchoolCycle3.png', img => {
-      EndingScene.wtsCycle3Gray = img.get();
-      EndingScene.wtsCycle3Gray.filter(GRAY);
-  });
-  EndingScene.wthWall1 = loadImage('./assets/images/objects/wayToHomeWall1.png', img => {
-      EndingScene.wthWall1Gray = img.get();
-      EndingScene.wthWall1Gray.filter(GRAY);
-  });
-  EndingScene.wthWall2 = loadImage('./assets/images/objects/wayToHomeWall2.png', img => {
-      EndingScene.wthWall2Gray = img.get();
-      EndingScene.wthWall2Gray.filter(GRAY);
-  });
-  EndingScene.wthWall3 = loadImage('./assets/images/objects/wayToHomeWall3.png', img => {
-      EndingScene.wthWall3Gray = img.get();
-      EndingScene.wthWall3Gray.filter(GRAY);
-  });
-  EndingScene.wthPoster1 = loadImage('./assets/images/objects/wayToHomePoster1.png', img => {
-      EndingScene.wthPoster1Gray = img.get();
-      EndingScene.wthPoster1Gray.filter(GRAY);
-  });
-  EndingScene.wthPoster2 = loadImage('./assets/images/objects/wayToHomePoster2.png', img => {
-      EndingScene.wthPoster2Gray = img.get();
-      EndingScene.wthPoster2Gray.filter(GRAY);
-  });
-  EndingScene.wthPoster3 = loadImage('./assets/images/objects/wayToHomePoster3.png', img => {
-      EndingScene.wthPoster3Gray = img.get();
-      EndingScene.wthPoster3Gray.filter(GRAY);
-  });
-  EndingScene.wthBird1 = loadImage('./assets/images/objects/wayToHomeBird1.png', img => {
-      EndingScene.wthBird1Gray = img.get();
-      EndingScene.wthBird1Gray.filter(GRAY);
-  });
-  EndingScene.wthBird2 = loadImage('./assets/images/objects/wayToHomeBird2.png', img => {
-      EndingScene.wthBird2Gray = img.get();
-      EndingScene.wthBird2Gray.filter(GRAY);
-  });
-  EndingScene.wthBird3 = loadImage('./assets/images/objects/wayToHomeBird3.png', img => {
-      EndingScene.wthBird3Gray = img.get();
-      EndingScene.wthBird3Gray.filter(GRAY);
-  });
-  EndingScene.mainMenu = loadImage('./assets/images/backgrounds/mainMenuColor.png', img => {
-      EndingScene.mainMenuGray = img.get();
-      EndingScene.mainMenuGray.filter(GRAY);
-  });
+      { key: 'schoolMono', path: './assets/images/backgrounds/School1.png' },
+      { key: 'schoolColor', path: './assets/images/backgrounds/SchoolColor.png' },
 
+      { key: 'wthBackgroundMono', path: './assets/images/backgrounds/wayToHomeSkyMono.png' },
+      { key: 'wthBackgroundColor', path: './assets/images/backgrounds/wayToHomeSkyColor.png' },
+      { key: 'wthBackgroundRoadMono', path: './assets/images/backgrounds/wayToHomeRoadMono.png' },
+      { key: 'wthBackgroundRoadColor', path: './assets/images/backgrounds/wayToHomeRoadColor.png' },
+      { key: 'wthBackgroundWallMono', path: './assets/images/backgrounds/wayToHomeWallBGMono.png' },
+      { key: 'wthBackgroundWallColor', path: './assets/images/backgrounds/wayToHomeWallBG.png' },
+      { key: 'wthBusStopMono', path: './assets/images/objects/wayBusStopMono.png' },
+      { key: 'wthBusStopColor', path: './assets/images/objects/wayBusStopColor.png' },
+      { key: 'wthWall0', path: './assets/images/objects/wayToHomeWall0.png' },
+      { key: 'wthWall1', path: './assets/images/objects/wayToHomeWall1.png' },
+      { key: 'wthWall2', path: './assets/images/objects/wayToHomeWall2.png' },
+      { key: 'wthWall3', path: './assets/images/objects/wayToHomeWall3.png' },
+      { key: 'wthPoster0', path: './assets/images/objects/wayToHomePoster0.png' },
+      { key: 'wthPoster1', path: './assets/images/objects/wayToHomePoster1.png' },
+      { key: 'wthPoster2', path: './assets/images/objects/wayToHomePoster2.png' },
+      { key: 'wthPoster3', path: './assets/images/objects/wayToHomePoster3.png' },
+      { key: 'wthMountainMono', path: './assets/images/objects/wayToHomeMountainMono.png' },
+      { key: 'wthMountainColor', path: './assets/images/objects/wayToHomeMountainColor.png' },
+      { key: 'wthBird0', path: './assets/images/objects/wayToHomeBird0.png' },
+      { key: 'wthBird1', path: './assets/images/objects/wayToHomeBird1.png' },
+      { key: 'wthBird2', path: './assets/images/objects/wayToHomeBird2.png' },
+      { key: 'wthBird3', path: './assets/images/objects/wayToHomeBird3.png' },
+      { key: 'wthStationMono', path: './assets/images/objects/wayToHomeBusStopMono.png' },
+      { key: 'wthStationColor', path: './assets/images/objects/wayToHomeBusStopColor.png' },
 
+      { key: 'homeNightMono', path: './assets/images/backgrounds/homeNightFullMono.png' },
+      { key: 'homeNightColor', path: './assets/images/backgrounds/homeNightFullColor.png' },
 
+      { key: 'mainMenuMono', path: './assets/images/backgrounds/mainImageMono.png' },
+      { key: 'mainMenuColor', path: './assets/images/backgrounds/mainMenuColor.png' }
+    ]
 
-    
+    EndingScene.images = {};
+
+    for(let img of imagePaths) {
+      EndingScene.images[img.key] = loadImage(img.path);
+    }
+
+    EndingScene.bgm = loadSound('./assets/sounds/endingSceneBgm.mp3');
   }
 
-  createGraphicsTool() {
-    const imageConfigurations = [
-      { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270 }] },
-      { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270 }] },
-      { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270 }] },
-      { count: 1, positions: [
-          { x: 80, y: 200, w: 480, h: 270 }
-          //{ x: 404, y: 275, w: 150, h: 113 },
-          //{ x: 155, y: 343, w: 49, h: 49 },
-          //{ x: 286, y: 339, w: 41, h: 41 },
-          //{ x: 493, y: 339, w: 56, h: 38 }
-        ]
-      },
-      { count: 5, positions: [
-        { x: 80, y: 200, w: 480, h: 270 },
-        { x: 404, y: 275, w: 150, h: 113 },
-        { x: 155, y: 343, w: 49, h: 49 },
-        { x: 286, y: 339, w: 41, h: 41 },
-        { x: 493, y: 339, w: 56, h: 38 }
-      ]
-    },
-      { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270 }] },
-      { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270 }] },
-      { count: 6, positions: [
-        { x: 80, y: 200, w: 480, h: 270 }, //배경
-        { x: 80, y: 200, w: 480, h: 270 }, //산
-        { x: 80, y: 200, w: 480, h: 270 },
-        { x:410, y:114, w:228, h:270}, //벽
-        { x: 193, y: 252, w: 255, h: 144 },//버스정류장
-        { x: 91, y: 290, w: 50, h: 86 } //표지판
-        
-        //{ x: 410, y: 208, w: 68, h:68}, //벽 낙서
-        //{ x: 474, y: 279, w: 68, h: 83 }, //포스터
-        //{ x: 455, y: 395, w: 56, h: 45}, //새
-        //{ x: 193, y: 252, w: 255, h: 144}
-      ]
-    },
+  setup() {
+    createCanvas(1280, 720);
 
-      { count: 9, positions: [
-          { x: 80, y: 200, w: 480, h: 270 }, //배경
-          { x: 80, y: 200, w: 480, h: 270 }, //산
-          { x: 80, y: 200, w: 480, h: 270 },
-          { x:410, y:114, w:228, h:270}, //벽
-          { x: 193, y: 252, w: 255, h: 144 },//버스정류장
-          { x: 91, y: 290, w: 50, h: 86 }, //표지판
-          
-          { x: 410, y: 208, w: 68, h:68}, //벽 낙서
-          { x: 474, y: 279, w: 68, h: 83 }, //포스터
-          { x: 455, y: 395, w: 56, h: 45}, //새
-          //{ x: 193, y: 252, w: 255, h: 144}
-        ]
-      },
-      
-      { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270}] },
-      { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270}] },
-      { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270}] },
-      { count: 1, positions: [{ x: 80, y: 200, w: 480, h: 270}] }
-    ];
+    this.imageConfigurations = [
+      [ { key: 'homeMorningMono', x: 0, y: 0 } ],
+      [ { key: 'homeMorningColor', x: 0, y: 0 } ],
+      [
+        { key: 'wtsBackgroundMono', x: 0, y: 0 },
+        { key: 'wtsStore0', x: 650, y: 200 },
+        { key: 'wtsFlower0', x: 200, y: 380 },
+        { key: 'wtsCat0', x: 550, y: 420 },
+        { key: 'wtsCycle0', x: 1100, y: 390 },
+        { key: 'wtsBusStopMono', x: 1040, y: 265 }
+      ],
+      [
+        { key: 'wtsBackgroundColor', x: 0, y: 0 },
+        { key: 'wtsStore${wtsStore}', x: 650, y: 200 },
+        { key: 'wtsFlower${wtsFlower}', x: 200, y: 380 },
+        { key: 'wtsCat${wtsCat}', x: 550, y: 420 },
+        { key: 'wtsCycle${wtsCycle}', x: 1100, y: 390 },
+        { key: 'wtsBusStopColor', x: 1040, y: 265 }
+      ],
+      [ { key: 'schoolMono', x: 0, y: 0 } ],
+      [ { key: 'schoolColor', x: 0, y: 0 } ],
+      [
+        { key: 'wthBackgroundMono', x: 0, y: 0 },
+        { key: 'wthMountainMono', x: 0, y: 0 },
+        { key: 'wthBackgroundRoadMono', x: 0, y: 0 },
+        { key: 'wthBackgroundWallMono', x: 880, y: 0 },
+        { key: 'wthWall0', x: 880, y: 20 },
+        { key: 'wthPoster0', x: 1050, y: 210 },
+        { key: 'wthBird0', x: 1000, y: 520 },
+        { key: 'wthStationMono', x: 300, y: 140 },
+        { key: 'wthBusStopMono', x: 50, y: 260 }
+      ],
+      [
+        { key: 'wthBackgroundColor', x: 0, y: 0 },
+        { key: 'wthMountainColor', x: 0, y: 0 },
+        { key: 'wthBackgroundRoadColor', x: 0, y: 0 },
+        { key: 'wthBackgroundWallColor', x: 880, y: 0 },
+        { key: 'wthWall${wthWall}', x: 880, y: 20 },
+        { key: 'wthPoster${wthPoster}', x: 1050, y: 210 },
+        { key: 'wthBird${wthBird}', x: 1000, y: 520 },
+        { key: 'wthStationColor', x: 300, y: 140 },
+        { key: 'wthBusStopColor', x: 50, y: 260 }
+      ],
+      [ { key: 'homeNightMono', x: 0, y: 0 } ],
+      [ { key: 'homeNightColor', x: 0, y: 0 } ],
+      [ { key: 'mainMenuMono', x: 0, y: 0 } ],
+      [ { key: 'mainMenuColor', x: 0, y: 0 } ]
+    ]
+  }
 
-    for (let i = 0; i < imageConfigurations.length; i++) {
-      let compositeGraphics = createGraphics(1280, 720);
-      if (Array.isArray(this.images[i])) {
-        for (let j = 0; j < imageConfigurations[i].count; j++) {
-          let pos = imageConfigurations[i].positions[j];
-          compositeGraphics.image(this.images[i][j], pos.x, pos.y, pos.w, pos.h);
-        }
-      } else {
-        let pos = imageConfigurations[i].positions[0];
-        compositeGraphics.image(this.images[i], pos.x, pos.y, pos.w, pos.h);
-      }
-      this.graphicsArray.push(compositeGraphics);
+  display() {
+    background(0);
+
+    if (!EndingScene.bgm.isPlaying()) {
+      EndingScene.bgm.setVolume(0.5);
+      EndingScene.bgm.loop();
     }
-  } //각 단계별 이미지를 하나의 그래픽으로 묶어주는 코드 
+
+    this.currentScene = this.imageConfigurations[this.currentSceneIndex];
+    this.nextScene = this.imageConfigurations[this.nextSceneIndex];
+
+    let currentTime = millis();
+    let elapsedTime = currentTime - this.startTime;
+
+    if (elapsedTime < this.initialDelay) {
+      this.nextSceneIndex = 0;
+    } else {
+      this.changeInterval = 5000;
+    }
+
+    if (currentTime - this.lastChangeTime > this.changeInterval) {
+      this.lastChangeTime = currentTime;
+      this.currentSceneIndex = this.nextSceneIndex;
+      this.nextSceneIndex = (this.nextSceneIndex + 1) % this.imageConfigurations.length;
+      this.alpha = 0; // 알파 값을 초기화하여 페이드 인 효과를 시작
+    }
+
+    this.alpha += this.fadeSpeed;
+    if (this.alpha > 255) {
+      this.alpha = 255;
+    }
+
+    push();
+    translate(width/2 - 512, height/2 - 144);
+    scale(0.4);
+
+    rectMode(CORNER);
+    stroke(255, 100);
+    strokeWeight(40);
+    fill(255);
+    rect(0, 0, 1280, 720);
+
+
+
+    // 현재 씬 이미지 표시
+    for (let imgConfig of this.currentScene) {
+      let imgKey = imgConfig.key.includes('${') ? eval('`' + imgConfig.key + '`') : imgConfig.key; // 동적 키 생성
+      let img = this.images[imgKey];
+      tint(255, 255 - this.alpha);
+      image(img, imgConfig.x, imgConfig.y);
+    }
+
+    // 다음 씬 이미지 표시
+    for (let imgConfig of this.nextScene) {
+      let imgKey = imgConfig.key.includes('${') ? eval('`' + imgConfig.key + '`') : imgConfig.key; // 동적 키 생성
+      let img = this.images[imgKey];
+      tint(255, this.alpha);
+      image(img, imgConfig.x, imgConfig.y);
+    }
+
+    pop();
+
+    noTint();
+
+    this.updateDisplayedText();
+
+    fill(255);
+    textSize(18);
+    textAlign(LEFT, CENTER);
+    let combinedText = this.displayedTexts.concat(this.displayedText).join("\n");
+    text(combinedText, width/2 + 100, height/2 - 18);
+  }
 
   updateDisplayedText() {
     if (this.textAnimationCounter < this.textAnimationSpeed) {
@@ -459,82 +260,7 @@ class EndingScene{
             }
         }
         this.textAnimationCounter = 0;
+      }
     }
-  }
-}
-
-
-
-
-  display() {
-    // bgmDay1.stop();
-    // bgmDay2.stop();
-    // bgmDay3.stop();
-    // bgmDay4.stop();
-    // bgmDay5.stop();
-    background(0);
-    //clip(80, 200, 480, 270);
-    if (!EndingScene.bgm.isPlaying()) {
-      EndingScene.bgm.setVolume(0.5);
-      EndingScene.bgm.loop(); // 배경음악을 반복 재생 //수정
-    }
-
-    
-    
-
-    if (this.graphicsArray.length > 0) {
-      if (millis() - this.lastChangeTime > this.changeInterval) {
-        if (this.currentImageIndex < this.graphicsArray.length - 1) {
-            this.currentImageIndex++;
-            this.lastChangeTime = millis();
-            this.alpha = 0; // 새 이미지로 변경 시 페이드 인 효과 초기화
-            this.fadeIn = true;
-        }
-    }
-    let currentGraphics = this.graphicsArray[this.currentImageIndex];
-    tint(255, this.alpha); // 이미지에 알파 값 적용
-    image(currentGraphics, 0, 0, 1280, 720); // 기본 크기로 이미지 그리기
-    noTint();
-
-    if (this.fadeIn) {
-        this.alpha += 10;
-        if (this.alpha >= 255) {
-            this.alpha = 255;
-            this.fadeIn = false; // 페이드인 효과 완료
-        }
-    }
-    }
-
-
- 
-   
-
-
-    
-    
-  
-
-    fill(0);
-    noStroke();
-    rect(0,0,width,200);
-    rect(560,200,600,200);
-
-  
-    this.updateDisplayedText();
-
-    fill(255);
-    textSize(23);
-    textAlign(CENTER, CENTER);
-    let combinedText = this.displayedTexts.concat(this.displayedText).join("\n");
-    text(combinedText, 900, 400);
-
-    
-
- 
-  }
-  
-
-  handleClick() {
-    //클릭 시 이벤트 여기에다가!
   }
 }

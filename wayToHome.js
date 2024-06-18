@@ -142,7 +142,7 @@ class WayToHome {
     image(this.wthBGSelected, 0, 0);
     image(this.wthMountainSelected, 0, 0);
     image(this.wthRoadSelected, 0, 0);
-    image(this.wthWallBGSelected, 880, -230);
+    image(this.wthWallBGSelected, 880, 0);
     image(this.wthWallSelected, 880, 20);
     image(this.wthPosterSelected, 1050, 210); 
     image(this.wthBirdSelected, 1000, 520);

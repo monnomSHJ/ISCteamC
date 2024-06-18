@@ -23,22 +23,22 @@ let homeNight; // 집(밤)
 let endingScene; // 엔딩
 
 //등굣길 변수
-let wtsBG = 0; //배경 이미지
-let wtsBS = 0; //버스 정류장 이미지
-let wtsStore = 0; //가게 이미지(1: 빵, 2: 카페, 3: 주스)
-let wtsFlower = 0; //꽃 이미지(1: 장미, 2: 수국, 3: 백합)
-let wtsCat = 0; // 고양이 이미지(1: Cookie, 2: Fish, 3: Cheeze)
-let wtsCycle = 0; // 자전거 이미지(1: 빨강, 2: 어린이, 3: 외발)
+let wtsBG = 1; //배경 이미지
+let wtsBS = 1; //버스 정류장 이미지
+let wtsStore = 1; //가게 이미지(1: 빵, 2: 카페, 3: 주스)
+let wtsFlower = 1; //꽃 이미지(1: 장미, 2: 수국, 3: 백합)
+let wtsCat = 1; // 고양이 이미지(1: Cookie, 2: Fish, 3: Cheeze)
+let wtsCycle = 1; // 자전거 이미지(1: 빨강, 2: 어린이, 3: 외발)
 
 //하굣길 변수
-let wthBG = 0; //기본 배경 이미지
-let wthBS = 0; //버스 정류장 이미지
-let wthWall = 0; //낙서 이미지(1: Fun, 2: Love, 3: Seize)
-let wthPoster = 0; //포스터 이미지(1: Dance, 2: Song, 3: Cook)
-let wthMountain = 0; //산 이미지
-let wthBird = 0; //새 이미지(1: Dove, 2: Small, 3: Black)
-let wthBusStop = 0; //버스 정류장(상호작용 가능)
-let wthRoad = 0; //길(배경 요소)
+let wthBG = 1; //기본 배경 이미지
+let wthBS = 1; //버스 정류장 이미지
+let wthWall = 1; //낙서 이미지(1: Fun, 2: Love, 3: Seize)
+let wthPoster = 1; //포스터 이미지(1: Dance, 2: Song, 3: Cook)
+let wthMountain = 1; //산 이미지
+let wthBird = 1; //새 이미지(1: Dove, 2: Small, 3: Black)
+let wthBusStop = 1; //버스 정류장(상호작용 가능)
+let wthRoad = 1; //길(배경 요소)
 
 let diaryPictures = [];
 let diary;
@@ -199,7 +199,7 @@ function mouseClicked() {
 }
 
 // 테스트용 키패드 입력 
-/*
+
 function keyPressed() {
 
   if (key === '1') {
@@ -225,7 +225,7 @@ function keyPressed() {
   currentScene.test();
 
 }
-    */
+
 
 function changePage(newPage, transitionText = 'Loading...') {
   
